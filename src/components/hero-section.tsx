@@ -182,6 +182,12 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center overflow-hidden bg-navy dark:bg-[#0A1428]"
       aria-label="Hero Section"
     >
+      {/* Animated gradient mesh background — 2 slowly-moving radial blobs */}
+      <div className="gradient-mesh-hero" aria-hidden="true" />
+
+      {/* Horizontal gold light beam sweep — 8s cycle */}
+      <div className="light-sweep" aria-hidden="true" />
+
       {/* Diagonal light sweep overlay — very subtle 5% opacity */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -217,6 +223,9 @@ export default function HeroSection() {
 
       {/* Vignette — dark edges */}
       <div className="vignette" aria-hidden="true" />
+
+      {/* Subtle grain/noise texture overlay for premium depth */}
+      <div className="grain-texture" aria-hidden="true" />
 
       {/* Right side: Ashoka Chakra decorative watermark — hidden on mobile, with parallax */}
       <motion.div
@@ -293,11 +302,12 @@ export default function HeroSection() {
           <a
             href="#admissions"
             className={cn(
-              'inline-flex items-center justify-center font-sans font-semibold rounded-md',
+              'inline-flex items-center justify-center font-sans font-bold rounded-md',
               'px-8 py-4 sm:py-5 text-sm transition-all duration-300',
               'hover:brightness-110 active:scale-[0.98]',
               'btn-gold-shimmer btn-magnetic',
-              'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]'
+              'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]',
+              'shadow-[0_2px_8px_rgba(200,150,12,0.35)]'
             )}
           >
             Book Free Demo Class

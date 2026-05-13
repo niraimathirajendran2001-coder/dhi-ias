@@ -185,7 +185,7 @@ export default function FacultySection() {
           className="mb-12 text-center md:mb-16"
         >
           {/* Section Label */}
-          <p className="section-label ui-label mb-4 text-champagne-gold">Our Mentors</p>
+          <p className="section-label ui-label section-label-diamond mb-4 text-champagne-gold">Our Mentors</p>
 
           {/* Section Heading */}
           <h2

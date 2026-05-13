@@ -193,7 +193,7 @@ export default function GallerySection() {
           className="mb-10 md:mb-14 text-center"
         >
           {/* Section Label */}
-          <p className="section-label ui-label mb-4 text-[#C8960C] dark:text-[#E8B830]">
+          <p className="section-label ui-label section-label-diamond mb-4 text-[#C8960C] dark:text-[#E8B830]">
             CAMPUS LIFE
           </p>
 

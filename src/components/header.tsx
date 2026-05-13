@@ -29,6 +29,17 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Contact', href: '#contact', id: 'contact' },
 ]
 
+const NAV_DESCRIPTIONS: Record<string, string> = {
+  home: 'Welcome & Overview',
+  about: 'Our Story & Team',
+  courses: 'Programs & Fees',
+  faculty: 'Expert Mentors',
+  results: 'Selections & Toppers',
+  resources: 'Free Study Material',
+  admissions: 'Enroll & Inquire',
+  contact: 'Location & Reach Us',
+}
+
 const SCROLL_THRESHOLD = 50
 const HEADER_HEIGHT_DEFAULT = 80
 const HEADER_HEIGHT_SCROLLED = 60
@@ -372,14 +383,20 @@ export function Header() {
                         ease: 'easeOut',
                       }}
                       className={cn(
-                        'flex items-center text-lg font-medium py-3 px-4 rounded-[6px] transition-colors duration-200',
+                        'flex flex-col py-3 px-4 rounded-[6px] transition-colors duration-200 mobile-nav-link-hover',
                         isActive
                           ? 'text-champagne-gold bg-white/5'
                           : 'text-ivory-cream/75 hover:text-ivory-cream hover:bg-white/5',
                       )}
                       aria-current={isActive ? 'page' : undefined}
                     >
-                      <span>{item.label}</span>
+                      <span className="text-lg font-medium">{item.label}</span>
+                      <span className={cn(
+                        'text-xs font-sans mt-0.5',
+                        isActive ? 'text-champagne-gold/60' : 'text-ivory-cream/35'
+                      )}>
+                        {NAV_DESCRIPTIONS[item.id]}
+                      </span>
                       {isActive && (
                         <span className="ml-3 h-[2px] w-6 bg-sovereign-gold rounded-full flex-shrink-0" />
                       )}
@@ -396,7 +413,7 @@ export function Header() {
                 </div>
                 <Button
                   onClick={() => scrollToSection('admissions')}
-                  className="w-full bg-sovereign-gold text-navy hover:bg-champagne-gold font-semibold rounded-[6px] h-12 text-base transition-colors duration-200"
+                  className="w-full bg-sovereign-gold text-navy hover:bg-champagne-gold font-bold rounded-[6px] h-14 text-base transition-colors duration-200 btn-gold-shimmer"
                 >
                   Book Demo Class
                 </Button>

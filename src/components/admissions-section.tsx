@@ -161,7 +161,7 @@ export default function AdmissionsSection() {
         >
           <motion.span
             variants={fadeInUp}
-            className="inline-block mb-4 font-sans ui-label text-[11px] text-champagne-gold"
+            className="inline-block mb-4 font-sans ui-label text-[11px] text-champagne-gold section-label-diamond"
           >
             ADMISSIONS
           </motion.span>

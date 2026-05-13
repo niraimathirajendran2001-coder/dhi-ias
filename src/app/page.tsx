@@ -28,6 +28,8 @@ import PageLoader from '@/components/page-loader'
 import GallerySection from '@/components/gallery-section'
 import ExamCalendarSection from '@/components/exam-calendar-section'
 import SuccessTimeline from '@/components/success-timeline'
+import StudyPlannerSection from '@/components/study-planner-section'
+import VideoTestimonialsSection from '@/components/video-testimonials-section'
 
 export default function Home() {
   return (
@@ -104,6 +106,16 @@ export default function Home() {
 
         {/* Success Timeline — Cream background */}
         <SuccessTimeline />
+
+        <SectionDivider variant="gold-line" />
+
+        {/* Study Planner — Cream background */}
+        <StudyPlannerSection />
+
+        <SectionDivider variant="wave" />
+
+        {/* Video Testimonials — Navy background */}
+        <VideoTestimonialsSection />
 
         <SectionDivider variant="gold-line" />
 

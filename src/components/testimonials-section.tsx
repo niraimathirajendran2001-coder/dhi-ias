@@ -151,7 +151,7 @@ export default function TestimonialsSection() {
           className="mb-12 text-center md:mb-16"
         >
           {/* Section Label */}
-          <p className="section-label ui-label mb-4">Success Stories</p>
+          <p className="section-label ui-label section-label-diamond mb-4">Success Stories</p>
 
           {/* Section Heading */}
           <h2

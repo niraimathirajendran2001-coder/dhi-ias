@@ -35,18 +35,20 @@ export function WhatsAppButton() {
         aria-label="Chat with us on WhatsApp"
         className={cn(
           'flex items-center justify-center',
-          'w-14 h-14 rounded-full bg-navy text-ivory-cream',
+          'w-12 h-12 rounded-full bg-navy dark:bg-[#0A1428] text-ivory-cream',
           'transition-all duration-200 ease-out',
-          /* Hover: scale + gold ring */
-          'hover:scale-110 hover:ring-[3px] hover:ring-sovereign-gold/60 hover:ring-offset-2 hover:ring-offset-background',
+          'gold-ring-btn',
+          /* Hover: scale */
+          'hover:scale-110',
           /* Focus-visible for keyboard users */
           'focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-sovereign-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-          /* Pulse animation — CSS class defined in globals.css */
+          /* Pulse animation */
           'whatsapp-pulse-btn',
           'animate-bounce-in',
         )}
+        style={{ animationDelay: '0.4s' }}
       >
-        <MessageCircle className="w-6 h-6" strokeWidth={2} />
+        <MessageCircle className="w-5 h-5" strokeWidth={2} />
       </a>
     </div>
   )

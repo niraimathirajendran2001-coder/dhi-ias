@@ -159,7 +159,7 @@ export default function CountdownSection() {
           className="mb-10 md:mb-14"
         >
           {/* Section Label */}
-          <p className="section-label ui-label mb-4">Limited Seats Available</p>
+          <p className="section-label ui-label section-label-diamond mb-4">Limited Seats Available</p>
 
           {/* Heading */}
           <h2

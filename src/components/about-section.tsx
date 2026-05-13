@@ -108,7 +108,7 @@ export default function AboutSection() {
         >
           <motion.span
             variants={fadeInUp}
-            className="section-label ui-label inline-block mb-4"
+            className="section-label ui-label section-label-diamond inline-block mb-4"
           >
             ABOUT US
           </motion.span>

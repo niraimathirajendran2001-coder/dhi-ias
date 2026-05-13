@@ -161,7 +161,7 @@ export default function CoursesSection() {
           viewport={{ once: true, amount: 0.3 }}
           variants={headingVariants}
         >
-          <span className="section-label ui-label">YOUR PREPARATION PATH</span>
+          <span className="section-label ui-label section-label-diamond">YOUR PREPARATION PATH</span>
 
           {/* Section Heading */}
           <h2

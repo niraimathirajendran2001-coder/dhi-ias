@@ -131,7 +131,7 @@ export function ResourcesSection() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-10 text-center md:mb-14">
-          <span className="section-label ui-label">Free Resources</span>
+          <span className="section-label ui-label section-label-diamond">Free Resources</span>
           <h2
             className={cn(
               'mt-3 font-serif section-heading text-3xl md:text-4xl lg:text-5xl',

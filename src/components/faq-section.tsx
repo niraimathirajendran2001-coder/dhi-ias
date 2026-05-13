@@ -93,7 +93,7 @@ export function FAQSection() {
         >
           <motion.span
             variants={fadeInUp}
-            className="inline-block mb-4 font-sans ui-label text-[11px] text-sovereign-gold dark:text-champagne-gold"
+            className="inline-block mb-4 font-sans ui-label text-[11px] text-sovereign-gold dark:text-champagne-gold section-label-diamond"
           >
             FAQ
           </motion.span>

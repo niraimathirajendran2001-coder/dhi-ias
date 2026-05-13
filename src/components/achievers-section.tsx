@@ -138,7 +138,7 @@ export default function AchieversSection() {
           className="mb-12 md:mb-16 text-center"
         >
           {/* Section Label */}
-          <p className="section-label ui-label mb-4">Hall of Fame</p>
+          <p className="section-label ui-label section-label-diamond mb-4">Hall of Fame</p>
 
           {/* Heading */}
           <h2

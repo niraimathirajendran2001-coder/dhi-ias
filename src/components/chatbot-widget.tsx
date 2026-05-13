@@ -97,18 +97,18 @@ export function ChatbotWidget() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.2 }}
             className="fixed bottom-[3rem] right-5 sm:right-6 z-50 group/chat"
           >
+            {/* Vertical gold connector line to WhatsApp button below */}
+            <div className="fab-connector" style={{ top: '100%', height: '2.5rem' }} />
             <Button
               onClick={() => setIsOpen(true)}
-              className="w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow bg-navy dark:bg-[#0A1428] text-ivory-cream chatbot-gold-ring-pulse"
+              className="w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-shadow bg-navy dark:bg-[#0A1428] text-ivory-cream gold-ring-btn chatbot-gold-ring-pulse"
               aria-label="Open chat assistant"
             >
-              <MessageCircle className="w-6 h-6" />
+              <MessageCircle className="w-5 h-5" />
             </Button>
-            {/* Gold ring pulse — replaces green dot */}
-            <span className="absolute inset-0 rounded-full pointer-events-none border-2 border-sovereign-gold dark:border-champagne-gold animate-ping opacity-20" />
             {/* Tooltip */}
             <span className="tooltip-left">
               Chat with us

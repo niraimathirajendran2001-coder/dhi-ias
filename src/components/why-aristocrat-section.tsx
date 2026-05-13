@@ -97,7 +97,7 @@ export default function WhyAristocratSection() {
           viewport={{ once: true, amount: 0.3 }}
           variants={headingVariants}
         >
-          <span className="section-label ui-label">THE ARISTOCRAT DIFFERENCE</span>
+          <span className="section-label ui-label section-label-diamond">THE ARISTOCRAT DIFFERENCE</span>
 
           {/* Section Heading */}
           <h2
