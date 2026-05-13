@@ -133,10 +133,17 @@ const headingVariants = {
 export default function CoursesSection() {
   return (
     <section
-      className="bg-gradient-to-b from-ivory-cream to-light-gray py-16 md:py-24"
+      className="relative bg-gradient-to-b from-ivory-cream to-light-gray py-16 md:py-24 overflow-hidden"
       aria-labelledby="courses-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* Subtle background pattern/texture */}
+      <div
+        className="absolute inset-0 pointer-events-none pattern-dots"
+        style={{ opacity: 0.5 }}
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Label */}
         <motion.div
           className="text-center"
@@ -173,15 +180,23 @@ export default function CoursesSection() {
               variants={cardVariants}
               className={cn(
                 'group relative flex flex-col rounded-xl border bg-white p-6',
-                'border-l-[1px] transition-all duration-200',
-                'hover:border-l-[4px] hover:border-l-navy hover:-translate-y-[3px]',
+                'gold-border-animate',
+                'transition-all duration-300',
+                'hover:-translate-y-[4px] hover:shadow-lg',
                 course.isMostPopular
-                  ? 'border-sovereign-gold border-l-[1px] bg-gold-pale/30 hover:border-l-navy'
+                  ? 'border-sovereign-gold bg-gold-pale/30'
                   : 'border-light-gray'
               )}
             >
-              {/* Badge */}
-              {course.badge && (
+              {/* Most Popular ribbon treatment */}
+              {course.isMostPopular && (
+                <div className="ribbon" aria-label="Most Popular">
+                  Most Popular
+                </div>
+              )}
+
+              {/* Badge (non-Most-Popular) */}
+              {course.badge && !course.isMostPopular && (
                 <Badge
                   className={cn(
                     'mb-4 w-fit rounded-md text-xs font-semibold',
@@ -193,7 +208,8 @@ export default function CoursesSection() {
               )}
 
               {/* Spacer if no badge to align content */}
-              {!course.badge && <div className="mb-4 h-5" />}
+              {!course.badge && !course.isMostPopular && <div className="mb-4 h-5" />}
+              {course.isMostPopular && <div className="mb-4 h-5" />}
 
               {/* Course Name */}
               <h3 className="text-lg font-sans card-title text-navy md:text-xl">
@@ -217,9 +233,10 @@ export default function CoursesSection() {
                 {course.description}
               </p>
 
-              {/* Fee */}
-              <span className="mt-4 font-mono text-base font-medium text-navy">
-                {course.fee}
+              {/* Fee with gold accent */}
+              <span className="mt-4 font-mono text-base font-medium">
+                <span style={{ color: '#C8960C' }}>\u20B9</span>
+                <span className="text-navy">{course.fee.replace('\u20B9', '')}</span>
               </span>
 
               {/* Know More Link */}

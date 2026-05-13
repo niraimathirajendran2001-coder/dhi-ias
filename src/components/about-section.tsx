@@ -56,14 +56,56 @@ const philosophyQuotes = [
   },
 ]
 
+/** Decorative gold flourish/ornament SVG */
+function GoldFlourish() {
+  return (
+    <svg
+      className="w-40 h-6 mx-auto my-8"
+      viewBox="0 0 160 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {/* Left scroll */}
+      <path d="M0 12C8 4 20 4 30 12C20 20 8 20 0 12Z" stroke="#C8960C" strokeWidth="1" fill="none" />
+      <line x1="30" y1="12" x2="60" y2="12" stroke="#C8960C" strokeWidth="0.8" />
+      {/* Center diamond */}
+      <path d="M75 6L82 12L75 18L68 12Z" stroke="#C8960C" strokeWidth="1" fill="none" />
+      <circle cx="75" cy="12" r="2" fill="#C8960C" opacity="0.4" />
+      {/* Right line */}
+      <line x1="82" y1="12" x2="130" y2="12" stroke="#C8960C" strokeWidth="0.8" />
+      {/* Right scroll */}
+      <path d="M160 12C152 4 140 4 130 12C140 20 152 20 160 12Z" stroke="#C8960C" strokeWidth="1" fill="none" />
+    </svg>
+  )
+}
+
 export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-16 md:py-24"
-      style={{ backgroundColor: '#FAFAF7' }}
+      className="relative py-16 md:py-24 overflow-hidden"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* Cream-to-white gradient background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 30%, #FAFAF7 60%, #FFFFFF 100%)',
+        }}
+      />
+
+      {/* Subtle paper texture feel */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          opacity: 0.015,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%233D3D3A' fill-opacity='1'/%3E%3C/svg%3E")`,
+          backgroundRepeat: 'repeat',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           variants={staggerContainer}
@@ -98,26 +140,29 @@ export default function AboutSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="mb-20"
+          className="mb-12"
         >
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
-            {/* Portrait */}
+            {/* Portrait with gold ring + subtle pulse */}
             <motion.div variants={fadeInLeft} className="flex-shrink-0 self-center md:self-start">
-              <div
-                className="flex items-center justify-center rounded-full"
-                style={{
-                  width: 160,
-                  height: 160,
-                  backgroundColor: '#0F1F4B',
-                  border: '2px solid #C8960C',
-                }}
-              >
-                <span
-                  className="font-serif text-[40px] font-semibold"
-                  style={{ color: '#C8960C' }}
+              <div className="gold-ring-pulse inline-block">
+                <div
+                  className="flex items-center justify-center rounded-full"
+                  style={{
+                    width: 160,
+                    height: 160,
+                    backgroundColor: '#0F1F4B',
+                    border: '3px solid #C8960C',
+                    boxShadow: '0 0 0 6px rgba(200,150,12,0.1), 0 8px 32px rgba(15,31,75,0.15)',
+                  }}
                 >
-                  AK
-                </span>
+                  <span
+                    className="font-serif text-[40px] font-semibold"
+                    style={{ color: '#C8960C' }}
+                  >
+                    AK
+                  </span>
+                </div>
               </div>
             </motion.div>
 
@@ -202,6 +247,9 @@ export default function AboutSection() {
             </motion.div>
           </div>
         </motion.div>
+
+        {/* Decorative gold flourish between sections */}
+        <GoldFlourish />
 
         {/* Our Philosophy */}
         <motion.div

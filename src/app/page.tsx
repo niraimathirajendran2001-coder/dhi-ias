@@ -11,14 +11,19 @@ import FacultySection from '@/components/faculty-section'
 import TestimonialsSection from '@/components/testimonials-section'
 import AboutSection from '@/components/about-section'
 import { ResourcesSection } from '@/components/resources-section'
+import { FAQSection } from '@/components/faq-section'
 import AdmissionsSection from '@/components/admissions-section'
 import { LocationSection } from '@/components/location-section'
 import Footer from '@/components/footer'
 import { WhatsAppButton } from '@/components/whatsapp-button'
+import { ChatbotWidget } from '@/components/chatbot-widget'
+import { BackToTop } from '@/components/back-to-top'
+import { AnnouncementBar } from '@/components/announcement-bar'
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
+      <AnnouncementBar />
       <ScrollProgress />
       <Header />
 
@@ -60,6 +65,9 @@ export default function Home() {
           <ResourcesSection />
         </section>
 
+        {/* FAQ — Cream background */}
+        <FAQSection />
+
         {/* Admissions — Navy background */}
         <section id="admissions">
           <AdmissionsSection />
@@ -72,6 +80,8 @@ export default function Home() {
       </main>
 
       <Footer />
+      <BackToTop />
+      <ChatbotWidget />
       <WhatsAppButton />
     </div>
   )

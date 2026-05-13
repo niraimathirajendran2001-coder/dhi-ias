@@ -2,7 +2,7 @@
 
 import { useRef, useCallback, useEffect, useState } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { cn } from '@/lib/utils'
 
@@ -29,6 +29,19 @@ const testimonials = [
       'The faculty at Aristocrat brings real administrative experience into the classroom. When your Polity teacher has actually drafted policy, the subject comes alive in ways no textbook can replicate.',
   },
 ]
+
+function StarRating() {
+  return (
+    <div className="flex items-center gap-0.5 mb-4" aria-label="5 out of 5 stars">
+      {[...Array(5)].map((_, i) => (
+        <Star
+          key={i}
+          className="w-4 h-4 fill-[#C8960C] star-gold"
+        />
+      ))}
+    </div>
+  )
+}
 
 export default function TestimonialsSection() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -75,12 +88,50 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#FAFAF7] py-16 md:py-24"
+      className="relative bg-[#FAFAF7] py-16 md:py-24 overflow-hidden"
       aria-labelledby="testimonials-heading"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Decorative quote SVG mark in the background */}
+      <svg
+        className="absolute top-20 left-8 w-40 h-40 opacity-[0.03] pointer-events-none"
+        viewBox="0 0 200 200"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M40 100C40 72 60 40 100 40C80 60 70 80 70 100H100V160H40V100ZM120 100C120 72 140 40 180 40C160 60 150 80 150 100H180V160H120V100Z"
+          fill="#C8960C"
+        />
+      </svg>
+
+      {/* Decorative quote SVG mark in the background (bottom-right) */}
+      <svg
+        className="absolute bottom-20 right-8 w-32 h-32 opacity-[0.03] pointer-events-none"
+        viewBox="0 0 200 200"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M40 100C40 72 60 40 100 40C80 60 70 80 70 100H100V160H40V100ZM120 100C120 72 140 40 180 40C160 60 150 80 150 100H180V160H120V100Z"
+          fill="#C8960C"
+        />
+      </svg>
+
+      {/* Subtle gradient overlay at section edges */}
+      <div
+        className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, #FAFAF7, transparent)' }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+        style={{ background: 'linear-gradient(to top, #FAFAF7, transparent)' }}
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -153,7 +204,8 @@ export default function TestimonialsSection() {
                       transition={{ duration: 0.4, ease: 'easeOut' }}
                       className={cn(
                         'relative mx-auto max-w-3xl rounded-xl border border-[#E8E8E4] bg-white',
-                        'p-8 md:p-12'
+                        'p-8 md:p-12',
+                        'gold-top-border'
                       )}
                     >
                       {/* Decorative Quote Mark */}
@@ -167,10 +219,15 @@ export default function TestimonialsSection() {
                         &ldquo;
                       </span>
 
+                      {/* 5 Gold Stars */}
+                      <div className="mt-4">
+                        <StarRating />
+                      </div>
+
                       {/* Quote Text */}
                       <blockquote
                         className={cn(
-                          'mb-8 mt-6 font-serif pull-quote text-[26px]',
+                          'mb-8 font-serif pull-quote text-[26px]',
                           'text-[#0F1F4B] md:text-[32px]'
                         )}
                       >

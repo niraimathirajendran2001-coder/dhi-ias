@@ -77,10 +77,18 @@ const headingVariants = {
 export default function WhyAristocratSection() {
   return (
     <section
-      className="bg-ivory-cream py-16 md:py-24 lg:py-24"
+      className="relative py-16 md:py-24 lg:py-24 overflow-hidden"
       aria-labelledby="why-aristocrat-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* Subtle gradient background instead of flat white */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, #FAFAF7 0%, #F5F3ED 50%, #FAFAF7 100%)',
+        }}
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Label */}
         <motion.div
           className="text-center"
@@ -116,17 +124,23 @@ export default function WhyAristocratSection() {
               key={index}
               variants={cardVariants}
               className={cn(
-                'group cursor-default rounded-xl border border-light-gray bg-white p-8',
-                'border-l-[1px] transition-all duration-200',
-                'hover:border-l-[4px] hover:border-l-navy hover:-translate-y-[3px]'
+                'group cursor-default relative rounded-xl p-8',
+                'glass-card hover-lift hover-glow',
+                'transition-all duration-300'
               )}
             >
+              {/* Decorative gold corner accents — visible on hover */}
+              <span className="corner-accent-tl" aria-hidden="true" />
+              <span className="corner-accent-tr" aria-hidden="true" />
+              <span className="corner-accent-bl" aria-hidden="true" />
+              <span className="corner-accent-br" aria-hidden="true" />
+
               <div className="flex flex-col items-center text-center">
                 {/* Icon */}
                 <div className="mb-5">{feature.icon}</div>
 
-                {/* Stat */}
-                <span className="font-serif stat-number text-[48px] leading-none text-navy">
+                {/* Stat with gold gradient text fill */}
+                <span className="font-serif stat-number text-[48px] leading-none gold-gradient-text">
                   {feature.stat}
                 </span>
 

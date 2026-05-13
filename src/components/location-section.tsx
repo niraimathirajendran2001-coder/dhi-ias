@@ -36,15 +36,49 @@ const socialLinks = [
 const googleMapsUrl =
   'https://www.google.com/maps/search/Aristocrat+IAS+Academy+Chandralayout+Bengaluru+560040'
 
+/* ─── Decorative Compass SVG ─── */
+function CompassDecorative() {
+  return (
+    <svg
+      className="absolute bottom-16 right-16 w-32 h-32 opacity-[0.04] pointer-events-none"
+      viewBox="0 0 100 100"
+      fill="none"
+      aria-hidden="true"
+      style={{ animation: 'rotate-slow 90s linear infinite' }}
+    >
+      <circle cx="50" cy="50" r="46" stroke="#C8960C" strokeWidth="0.8" />
+      <circle cx="50" cy="50" r="36" stroke="#C8960C" strokeWidth="0.4" />
+      <circle cx="50" cy="50" r="26" stroke="#C8960C" strokeWidth="0.3" />
+      {/* Cardinal lines */}
+      <line x1="50" y1="4" x2="50" y2="20" stroke="#C8960C" strokeWidth="0.6" />
+      <line x1="50" y1="80" x2="50" y2="96" stroke="#C8960C" strokeWidth="0.6" />
+      <line x1="4" y1="50" x2="20" y2="50" stroke="#C8960C" strokeWidth="0.6" />
+      <line x1="80" y1="50" x2="96" y2="50" stroke="#C8960C" strokeWidth="0.6" />
+      {/* N/S/E/W labels */}
+      <text x="50" y="14" textAnchor="middle" fill="#C8960C" fontSize="6" fontFamily="serif">N</text>
+      <text x="50" y="92" textAnchor="middle" fill="#C8960C" fontSize="6" fontFamily="serif">S</text>
+      <text x="90" y="52" textAnchor="middle" fill="#C8960C" fontSize="6" fontFamily="serif">E</text>
+      <text x="10" y="52" textAnchor="middle" fill="#C8960C" fontSize="6" fontFamily="serif">W</text>
+      {/* Compass needle */}
+      <polygon points="50,22 47,50 50,48 53,50" fill="#C8960C" opacity="0.3" />
+      <polygon points="50,78 47,50 50,52 53,50" fill="#E8E8E4" opacity="0.2" />
+      <circle cx="50" cy="50" r="3" fill="#C8960C" opacity="0.2" />
+    </svg>
+  )
+}
+
 /* ─── Component ─── */
 export function LocationSection() {
   return (
     <section
       id="location"
-      className="py-16 md:py-24"
+      className="relative py-16 md:py-24 overflow-hidden"
       style={{ backgroundColor: '#FAFAF7' }}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Decorative compass SVG */}
+      <CompassDecorative />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           {/* ── Left: Map placeholder ── */}
           <motion.div
@@ -78,6 +112,15 @@ export function LocationSection() {
               }}
             />
 
+            {/* Subtle gradient overlay on the map */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(ellipse at center, transparent 30%, rgba(15,31,75,0.5) 100%)',
+              }}
+              aria-hidden="true"
+            />
+
             {/* Pin + content */}
             <div className="relative z-10 flex flex-col items-center text-center">
               <motion.div
@@ -85,11 +128,25 @@ export function LocationSection() {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}
+                className="relative"
               >
                 <MapPin
                   className="mb-4 h-14 w-14 drop-shadow-lg"
                   style={{ color: '#E8B830' }}
                   strokeWidth={1.6}
+                />
+                {/* Pulsing dot on the map pin */}
+                <span
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full"
+                  style={{ backgroundColor: '#E8B830' }}
+                  aria-hidden="true"
+                />
+                <motion.span
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full"
+                  style={{ backgroundColor: '#E8B830' }}
+                  animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+                  aria-hidden="true"
                 />
               </motion.div>
 
@@ -108,7 +165,7 @@ export function LocationSection() {
 
                 <Button
                   asChild
-                  className="mt-5 gap-2 rounded-md font-semibold"
+                  className="mt-5 gap-2 rounded-md font-semibold btn-gold-shimmer"
                   style={{ backgroundColor: '#C8960C', color: '#0F1F4B' }}
                 >
                   <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
@@ -119,7 +176,7 @@ export function LocationSection() {
               </motion.div>
             </div>
 
-            {/* Corner accent */}
+            {/* Corner accent — gold gradient bottom bar */}
             <div
               className="absolute bottom-0 left-0 right-0 h-1"
               style={{
@@ -237,7 +294,7 @@ export function LocationSection() {
               </ul>
             </div>
 
-            {/* Social links */}
+            {/* Social links with gold border on hover */}
             <div className="mt-8 flex items-center gap-4">
               {socialLinks.map((s) => (
                 <a
@@ -249,8 +306,10 @@ export function LocationSection() {
                   className={cn(
                     'flex h-10 w-10 items-center justify-center rounded-full',
                     'border border-light-gray bg-white text-navy',
-                    'transition-all duration-200',
-                    'hover:border-sovereign-gold hover:text-sovereign-gold hover:shadow-sm'
+                    'transition-all duration-300',
+                    'hover:border-sovereign-gold hover:text-sovereign-gold',
+                    'hover:shadow-md hover:shadow-[rgba(200,150,12,0.12)]',
+                    'hover:scale-110'
                   )}
                 >
                   <s.icon className="h-5 w-5" />

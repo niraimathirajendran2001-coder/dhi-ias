@@ -60,8 +60,7 @@ function StatItem({
   return (
     <div className="flex flex-col items-center px-4 text-center">
       <motion.span
-        className="font-serif stat-number text-5xl md:text-6xl"
-        style={{ color: '#E8B830' }}
+        className="font-serif stat-number text-5xl md:text-6xl gold-gradient-text"
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -88,10 +87,41 @@ export function StatsCounterSection() {
   return (
     <section
       ref={ref}
-      className="py-12"
-      style={{ backgroundColor: '#0F1F4B' }}
+      className="relative py-12 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Subtle gradient background instead of flat navy */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(135deg, #0F1F4B 0%, #1A2E6B 50%, #0F1F4B 100%)',
+        }}
+      />
+
+      {/* Decorative diagonal line pattern overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none pattern-diagonal"
+        aria-hidden="true"
+      />
+
+      {/* Gold gradient top border */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[2px] z-10"
+        style={{
+          background: 'linear-gradient(90deg, transparent, #C8960C, #E8B830, #C8960C, transparent)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Gold gradient bottom border */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[2px] z-10"
+        style={{
+          background: 'linear-gradient(90deg, transparent, #C8960C, #E8B830, #C8960C, transparent)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 items-center md:grid-cols-4">
           {stats.map((stat, i) => (
             <div key={stat.label} className="flex items-center justify-center">
@@ -101,7 +131,7 @@ export function StatsCounterSection() {
                 label={stat.label}
                 inView={inView}
               />
-              {/* Vertical gold separator — not after last item */}
+              {/* Vertical gold separator — not after last item (desktop) */}
               {i < stats.length - 1 && (
                 <div
                   className="hidden h-14 w-px md:block"
@@ -110,7 +140,25 @@ export function StatsCounterSection() {
                   }}
                 />
               )}
+              {/* Gold divider dots between stats on mobile */}
+              {i < stats.length - 1 && (
+                <div
+                  className="block md:hidden absolute"
+                  style={{ display: 'none' }}
+                />
+              )}
             </div>
+          ))}
+        </div>
+
+        {/* Mobile gold divider dots between rows */}
+        <div className="flex md:hidden justify-center gap-2 mt-4" aria-hidden="true">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="w-1.5 h-1.5 rounded-full"
+              style={{ backgroundColor: 'rgba(200, 150, 12, 0.3)' }}
+            />
           ))}
         </div>
       </div>

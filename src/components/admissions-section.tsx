@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Loader2, CheckCircle, ArrowRight } from 'lucide-react'
+import { Loader2, CheckCircle, ArrowRight, ClipboardList, GraduationCap, Award } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -50,16 +50,19 @@ const steps = [
     number: 1,
     title: 'Fill Inquiry Form',
     description: 'Share your details and course interest',
+    icon: ClipboardList,
   },
   {
     number: 2,
     title: 'Attend Free Demo Class',
     description: 'Experience our teaching methodology',
+    icon: GraduationCap,
   },
   {
     number: 3,
     title: 'Complete Enrollment',
     description: 'Begin your civil services journey',
+    icon: Award,
   },
 ]
 
@@ -138,10 +141,24 @@ export default function AdmissionsSection() {
   return (
     <section
       id="admissions"
-      className="py-16 md:py-24"
-      style={{ backgroundColor: '#0F1F4B' }}
+      className="relative py-16 md:py-24 overflow-hidden"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      {/* Subtle gradient on the navy background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, #0F1F4B 0%, #162557 30%, #0F1F4B 60%, #0D1A3F 100%)',
+        }}
+      />
+
+      {/* Subtle pattern overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none pattern-dots"
+        style={{ opacity: 0.3 }}
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           variants={staggerContainer}
@@ -171,7 +188,7 @@ export default function AdmissionsSection() {
           />
         </motion.div>
 
-        {/* Three-Step Process */}
+        {/* Three-Step Process with decorative icons and animated gold connector */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -179,28 +196,36 @@ export default function AdmissionsSection() {
           viewport={{ once: true, margin: '-40px' }}
           className="mb-16"
         >
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
+          <div className="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0">
             {steps.map((step, index) => (
               <motion.div
                 key={step.number}
                 variants={scaleIn}
-                className="flex flex-col md:flex-row items-center gap-4 md:gap-0"
+                className="relative flex flex-col md:flex-row items-center gap-4 md:gap-0"
               >
                 <div className="flex flex-col items-center text-center">
+                  {/* Step badge with decorative icon */}
                   <div
-                    className="flex items-center justify-center rounded-full mb-3"
+                    className="relative flex items-center justify-center rounded-full mb-3"
                     style={{
-                      width: 40,
-                      height: 40,
+                      width: 56,
+                      height: 56,
                       border: '2px solid #C8960C',
+                      background: 'linear-gradient(135deg, rgba(200,150,12,0.1), rgba(200,150,12,0.05))',
                     }}
                   >
-                    <span
-                      className="font-sans text-[16px] font-semibold"
-                      style={{ color: '#C8960C' }}
+                    <step.icon
+                      className="w-5 h-5"
+                      style={{ color: '#E8B830' }}
+                      strokeWidth={1.8}
+                    />
+                    {/* Step number badge */}
+                    <div
+                      className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center font-sans text-[10px] font-bold"
+                      style={{ backgroundColor: '#C8960C', color: '#0F1F4B' }}
                     >
                       {step.number}
-                    </span>
+                    </div>
                   </div>
                   <p
                     className="font-sans text-[16px] font-semibold mb-1"
@@ -215,11 +240,23 @@ export default function AdmissionsSection() {
                     {step.description}
                   </p>
                 </div>
+                {/* Animated gold connector arrow between steps */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:flex items-center px-6 pt-0 md:pt-[-24px]">
+                  <div className="hidden md:flex items-center px-4 relative">
+                    {/* Gold animated line */}
+                    <motion.div
+                      className="h-[2px] w-12"
+                      style={{
+                        background: 'linear-gradient(90deg, #C8960C, #E8B830)',
+                      }}
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
+                    />
                     <ArrowRight
-                      className="size-6"
-                      style={{ color: '#C8960C', opacity: 0.4 }}
+                      className="size-5 ml-1"
+                      style={{ color: '#E8B830', opacity: 0.6 }}
                     />
                   </div>
                 )}
@@ -431,7 +468,7 @@ export default function AdmissionsSection() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 h-auto font-sans text-[16px] font-semibold rounded-md"
+                  className="w-full py-4 h-auto font-sans text-[16px] font-semibold rounded-md btn-gold-shimmer"
                   style={{
                     backgroundColor: '#C8960C',
                     color: '#0F1F4B',
@@ -482,7 +519,7 @@ export default function AdmissionsSection() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Fee Structure */}
+        {/* Fee Structure with improved styling */}
         <motion.div
           variants={fadeInUp}
           initial="hidden"
@@ -497,17 +534,17 @@ export default function AdmissionsSection() {
             Transparent Fee Structure
           </h3>
 
-          <div className="overflow-hidden rounded-lg border" style={{ borderColor: 'rgba(232,232,228,0.15)' }}>
+          <div className="overflow-hidden rounded-xl border" style={{ borderColor: 'rgba(232,232,228,0.15)' }}>
             <table className="w-full">
               <thead>
-                <tr style={{ backgroundColor: '#C8960C' }}>
-                  <th className="font-sans text-[13px] font-semibold text-left px-4 py-3" style={{ color: '#0F1F4B' }}>
+                <tr style={{ background: 'linear-gradient(135deg, #C8960C, #E8B830)' }}>
+                  <th className="font-sans text-[13px] font-semibold text-left px-4 py-3.5" style={{ color: '#0F1F4B' }}>
                     Course
                   </th>
-                  <th className="font-sans text-[13px] font-semibold text-left px-4 py-3" style={{ color: '#0F1F4B' }}>
+                  <th className="font-sans text-[13px] font-semibold text-left px-4 py-3.5" style={{ color: '#0F1F4B' }}>
                     Duration
                   </th>
-                  <th className="font-sans text-[13px] font-semibold text-right px-4 py-3" style={{ color: '#0F1F4B' }}>
+                  <th className="font-sans text-[13px] font-semibold text-right px-4 py-3.5" style={{ color: '#0F1F4B' }}>
                     Fee
                   </th>
                 </tr>
@@ -516,17 +553,24 @@ export default function AdmissionsSection() {
                 {feeStructure.map((row, index) => (
                   <tr
                     key={row.course}
+                    className="transition-colors duration-200"
                     style={{
                       backgroundColor: index % 2 === 0 ? '#1A2E6B' : 'rgba(26,46,107,0.6)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(200,150,12,0.08)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#1A2E6B' : 'rgba(26,46,107,0.6)'
                     }}
                   >
                     <td className="font-sans text-[14px] px-4 py-3" style={{ color: '#FAFAF7' }}>
                       {row.course}
                     </td>
-                    <td className="font-sans text-[14px] px-4 py-3" style={{ color: '#FAFAF7' }}>
+                    <td className="font-sans text-[14px] px-4 py-3" style={{ color: 'rgba(250,250,247,0.7)' }}>
                       {row.duration}
                     </td>
-                    <td className="font-sans text-[14px] text-right px-4 py-3 font-medium" style={{ color: '#FAFAF7' }}>
+                    <td className="font-sans text-[14px] text-right px-4 py-3 font-medium" style={{ color: '#E8B830' }}>
                       {row.fee}
                     </td>
                   </tr>

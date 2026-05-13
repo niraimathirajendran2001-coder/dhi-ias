@@ -1,8 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useRef } from 'react'
 
 const containerVariants = {
   hidden: {},
@@ -59,8 +60,18 @@ const ctaVariants = {
 }
 
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+
+  // Parallax: Ashoka Chakra moves at 40% of scroll speed
+  const chakraY = useTransform(scrollYProgress, [0, 1], [0, 150])
+
   return (
     <section
+      ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: '#0F1F4B' }}
       aria-label="Hero Section"
@@ -86,13 +97,20 @@ export default function HeroSection() {
         aria-hidden="true"
       />
 
-      {/* Right side: Ashoka Chakra decorative watermark — hidden on mobile */}
+      {/* Particle/dot pattern overlay for depth */}
       <div
+        className="absolute inset-0 pointer-events-none pattern-dots"
+        aria-hidden="true"
+      />
+
+      {/* Right side: Ashoka Chakra decorative watermark — hidden on mobile, with parallax */}
+      <motion.div
         className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[15%] md:translate-x-[10%] lg:translate-x-[5%] pointer-events-none hidden md:block"
+        style={{ y: chakraY }}
         aria-hidden="true"
       >
         <AshokaChakra />
-      </div>
+      </motion.div>
 
       {/* Main content */}
       <motion.div
@@ -151,7 +169,8 @@ export default function HeroSection() {
             className={cn(
               'inline-flex items-center justify-center font-sans font-semibold rounded-md',
               'px-8 py-4 text-sm transition-all duration-300',
-              'hover:brightness-90 active:scale-[0.98]'
+              'hover:brightness-110 active:scale-[0.98]',
+              'btn-gold-shimmer'
             )}
             style={{
               backgroundColor: '#C8960C',
@@ -177,23 +196,40 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator — bottom center */}
+      {/* Gold gradient overlay at bottom edge for smooth transition */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-20"
+        style={{
+          background: 'linear-gradient(to top, #FAFAF7 0%, transparent 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Scroll down indicator — gold line that draws down + chevron */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
+        animate={{ opacity: 0.6 }}
         transition={{ delay: 1.5, duration: 0.8 }}
         aria-hidden="true"
       >
+        {/* Gold line that draws down */}
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          className="w-px"
+          style={{ backgroundColor: '#C8960C' }}
+          initial={{ height: 0 }}
+          animate={{ height: 28 }}
+          transition={{ delay: 2, duration: 1, ease: 'easeOut' }}
+        />
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
           transition={{
             duration: 2,
             repeat: Infinity,
             ease: 'easeInOut',
           }}
         >
-          <ChevronDown className="w-6 h-6" style={{ color: '#FAFAF7' }} />
+          <ChevronDown className="w-5 h-5" style={{ color: '#C8960C' }} />
         </motion.div>
       </motion.div>
     </section>

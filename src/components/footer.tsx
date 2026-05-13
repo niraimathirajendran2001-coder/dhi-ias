@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import {
   Instagram,
   Youtube,
@@ -11,6 +12,7 @@ import {
   Mail,
   Clock,
   ArrowRight,
+  ChevronUp,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -44,10 +46,34 @@ const fadeInUp = {
 export default function Footer() {
   return (
     <footer
-      className="pt-16 pb-8"
+      className="relative pt-16 pb-8 overflow-hidden"
       style={{ backgroundColor: '#0F1F4B' }}
     >
-      <div className="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+      {/* Subtle gradient background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, #0F1F4B 0%, #0D1A3F 60%, #0A1428 100%)',
+        }}
+      />
+
+      {/* Decorative top border — gold gradient line */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[2px] z-10"
+        style={{
+          background: 'linear-gradient(90deg, transparent 5%, #C8960C, #E8B830, #C8960C, transparent 95%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Subtle pattern overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none pattern-dots"
+        style={{ opacity: 0.2 }}
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
         {/* Four Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
           {/* Column 1: Brand */}
@@ -57,18 +83,29 @@ export default function Footer() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <h2
-              className="font-serif text-[24px] font-semibold mb-1"
-              style={{ color: '#E8B830' }}
-            >
-              ARISTOCRAT
-            </h2>
-            <p
-              className="font-sans text-[11px] uppercase tracking-[0.15em] mb-4"
-              style={{ color: 'rgba(250,250,247,0.7)' }}
-            >
-              IAS ACADEMY
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/logo.jpg"
+                alt="Aristocrat IAS Academy Logo"
+                width={48}
+                height={48}
+                className="rounded-full"
+              />
+              <div>
+                <h2
+                  className="font-serif text-[24px] font-semibold leading-none"
+                  style={{ color: '#E8B830' }}
+                >
+                  ARISTOCRAT
+                </h2>
+                <p
+                  className="font-sans text-[11px] uppercase tracking-[0.15em] mt-0.5"
+                  style={{ color: 'rgba(250,250,247,0.7)' }}
+                >
+                  IAS ACADEMY
+                </p>
+              </div>
+            </div>
             <p
               className="font-sans text-[13px] leading-relaxed mb-6"
               style={{ color: 'rgba(250,250,247,0.5)' }}
@@ -77,7 +114,7 @@ export default function Footer() {
               Driven by results.
             </p>
 
-            {/* Social Icons */}
+            {/* Social Icons with hover scale + gold color transition */}
             <div className="flex items-center gap-4">
               {[
                 { Icon: Instagram, label: 'Instagram' },
@@ -89,7 +126,10 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="transition-colors duration-200"
+                  className={cn(
+                    'transition-all duration-300',
+                    'hover:scale-125 hover:drop-shadow-[0_0_6px_rgba(200,150,12,0.4)]'
+                  )}
                   style={{ color: '#FAFAF7' }}
                   onMouseEnter={(e) =>
                     (e.currentTarget.style.color = '#C8960C')
@@ -240,10 +280,10 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Separator */}
+        {/* Separator — gold gradient */}
         <div
           className="h-px w-full mb-6"
-          style={{ backgroundColor: 'rgba(200,150,12,0.2)' }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(200,150,12,0.3), rgba(232,184,48,0.3), rgba(200,150,12,0.3), transparent)' }}
         />
 
         {/* Bottom Bar */}
@@ -266,6 +306,34 @@ export default function Footer() {
           >
             Privacy Policy | Terms of Use
           </p>
+        </div>
+
+        {/* Back-to-top visual hint */}
+        <div className="mt-8 flex justify-center">
+          <a
+            href="#"
+            className={cn(
+              'flex flex-col items-center gap-1',
+              'transition-all duration-300',
+              'hover:opacity-80'
+            )}
+            onClick={(e) => {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+            aria-label="Back to top"
+          >
+            <ChevronUp
+              className="w-5 h-5"
+              style={{ color: 'rgba(200,150,12,0.4)' }}
+            />
+            <span
+              className="font-sans text-[10px] uppercase tracking-widest"
+              style={{ color: 'rgba(200,150,12,0.3)' }}
+            >
+              Top
+            </span>
+          </a>
         </div>
       </div>
     </footer>

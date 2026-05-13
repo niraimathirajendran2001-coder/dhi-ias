@@ -58,6 +58,30 @@ const resources = [
   },
 ]
 
+/* ─── Decorative Book SVG ─── */
+function BookDecorative() {
+  return (
+    <svg
+      className="absolute top-8 right-8 w-24 h-24 opacity-[0.04] pointer-events-none"
+      viewBox="0 0 100 100"
+      fill="none"
+      aria-hidden="true"
+    >
+      {/* Open book shape */}
+      <path d="M15 25L50 35V85L15 75V25Z" stroke="#C8960C" strokeWidth="1" />
+      <path d="M85 25L50 35V85L85 75V25Z" stroke="#C8960C" strokeWidth="1" />
+      <line x1="50" y1="35" x2="50" y2="85" stroke="#C8960C" strokeWidth="0.8" />
+      {/* Page lines */}
+      <line x1="22" y1="38" x2="45" y2="44" stroke="#C8960C" strokeWidth="0.4" />
+      <line x1="22" y1="48" x2="45" y2="54" stroke="#C8960C" strokeWidth="0.4" />
+      <line x1="22" y1="58" x2="45" y2="64" stroke="#C8960C" strokeWidth="0.4" />
+      <line x1="78" y1="38" x2="55" y2="44" stroke="#C8960C" strokeWidth="0.4" />
+      <line x1="78" y1="48" x2="55" y2="54" stroke="#C8960C" strokeWidth="0.4" />
+      <line x1="78" y1="58" x2="55" y2="64" stroke="#C8960C" strokeWidth="0.4" />
+    </svg>
+  )
+}
+
 /* ─── Component ─── */
 export function ResourcesSection() {
   const [submitted, setSubmitted] = useState(false)
@@ -92,10 +116,27 @@ export function ResourcesSection() {
   return (
     <section
       id="free-resources"
-      className="py-16 md:py-24"
-      style={{ backgroundColor: '#FDF4DC' }}
+      className="relative py-16 md:py-24 overflow-hidden"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Improved gold-pale background with subtle gradient */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, #FDF4DC 0%, #FBF0D0 40%, #FDF4DC 100%)',
+        }}
+      />
+
+      {/* Subtle pattern overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none pattern-dots"
+        style={{ opacity: 0.4 }}
+        aria-hidden="true"
+      />
+
+      {/* Decorative book SVG */}
+      <BookDecorative />
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-10 text-center md:mb-14">
           <span className="section-label ui-label">Free Resources</span>
@@ -221,7 +262,7 @@ export function ResourcesSection() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-md py-3 text-base font-semibold text-navy hover:brightness-110 disabled:opacity-60"
+                    className="w-full rounded-md py-3 text-base font-semibold text-navy hover:brightness-110 disabled:opacity-60 btn-gold-shimmer"
                     style={{ backgroundColor: '#C8960C' }}
                   >
                     {isSubmitting ? (
@@ -260,8 +301,11 @@ export function ResourcesSection() {
                 transition={{ duration: 0.4, delay: 0.08 * i }}
                 className={cn(
                   'group cursor-pointer rounded-xl border border-light-gray bg-white p-4',
-                  'transition-all duration-300 hover:-translate-y-1 hover:shadow-md',
-                  'border-l-4 border-l-transparent hover:border-l-navy'
+                  'transition-all duration-300',
+                  'hover:-translate-y-2 hover:shadow-lg',
+                  'hover:shadow-[rgba(200,150,12,0.08)]',
+                  'border-l-4 border-l-transparent hover:border-l-[#C8960C]',
+                  'premium-shadow'
                 )}
               >
                 <res.icon

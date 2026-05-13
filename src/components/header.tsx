@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, useSyncExternalStore } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, MessageCircle } from 'lucide-react'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
@@ -88,6 +89,26 @@ function useScrolled(threshold: number): boolean {
   return scrolled
 }
 
+const ANNOUNCEMENT_KEY = 'aristocrat-announcement-dismissed'
+
+function subscribeToAnnouncement(callback: () => void) {
+  window.addEventListener('storage', callback)
+  return () => window.removeEventListener('storage', callback)
+}
+
+function getAnnouncementVisible(): boolean {
+  if (typeof window === 'undefined') return false
+  try {
+    return localStorage.getItem(ANNOUNCEMENT_KEY) !== 'true'
+  } catch {
+    return true
+  }
+}
+
+function getAnnouncementServerSnapshot(): boolean {
+  return false
+}
+
 /* ------------------------------------------------------------------ */
 /*  Component: Header                                                  */
 /* ------------------------------------------------------------------ */
@@ -97,6 +118,11 @@ export function Header() {
   const sectionIds = useMemo(() => NAV_ITEMS.map((item) => item.id), [])
   const activeSection = useActiveSection(sectionIds)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const announcementVisible = useSyncExternalStore(
+    subscribeToAnnouncement,
+    getAnnouncementVisible,
+    getAnnouncementServerSnapshot,
+  )
 
   /* ---- Smooth-scroll handler ---- */
   const scrollToSection = useCallback((id: string) => {
@@ -132,11 +158,12 @@ export function Header() {
       {/* ==================== DESKTOP + MOBILE HEADER ==================== */}
       <motion.header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+          'fixed left-0 right-0 z-50 transition-all duration-300',
           isScrolled
             ? 'bg-navy border-b border-sovereign-gold/25'
             : 'bg-ivory-cream/80 backdrop-blur-md',
         )}
+        style={{ top: announcementVisible ? 36 : 0 }}
         animate={{ height: headerHeight }}
         transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
         role="banner"
@@ -149,20 +176,30 @@ export function Header() {
               e.preventDefault()
               scrollToSection('home')
             }}
-            className="flex-shrink-0 select-none"
+            className="flex-shrink-0 select-none flex items-center gap-2.5"
             aria-label="Aristocrat IAS Academy — go to home"
           >
-            <span
-              className={cn(
-                'block font-serif text-[22px] sm:text-2xl font-semibold leading-none tracking-tight transition-colors duration-300',
-                isScrolled ? 'text-ivory-cream' : 'text-navy',
-              )}
-            >
-              ARISTOCRAT
-            </span>
-            <span className="block font-sans text-[9px] sm:text-[10px] font-semibold tracking-[0.2em] uppercase text-sovereign-gold leading-none mt-0.5">
-              IAS ACADEMY
-            </span>
+            <Image
+              src="/logo.jpg"
+              alt="Aristocrat IAS Academy Logo"
+              width={44}
+              height={44}
+              className="rounded-full"
+              priority
+            />
+            <div className="flex flex-col">
+              <span
+                className={cn(
+                  'block font-serif text-[22px] sm:text-2xl font-semibold leading-none tracking-tight transition-colors duration-300',
+                  isScrolled ? 'text-ivory-cream' : 'text-navy',
+                )}
+              >
+                ARISTOCRAT
+              </span>
+              <span className="block font-sans text-[9px] sm:text-[10px] font-semibold tracking-[0.2em] uppercase text-sovereign-gold leading-none mt-0.5">
+                IAS ACADEMY
+              </span>
+            </div>
           </a>
 
           {/* -------- Desktop Nav -------- */}
@@ -278,13 +315,23 @@ export function Header() {
                     e.preventDefault()
                     scrollToSection('home')
                   }}
+                  className="flex items-center gap-2.5"
                 >
-                  <span className="block font-serif text-xl font-semibold text-ivory-cream leading-none">
-                    ARISTOCRAT
-                  </span>
-                  <span className="block font-sans text-[9px] font-semibold tracking-[0.2em] uppercase text-sovereign-gold leading-none mt-0.5">
-                    IAS ACADEMY
-                  </span>
+                  <Image
+                    src="/logo.jpg"
+                    alt="Aristocrat IAS Academy Logo"
+                    width={36}
+                    height={36}
+                    className="rounded-full"
+                  />
+                  <div className="flex flex-col">
+                    <span className="block font-serif text-xl font-semibold text-ivory-cream leading-none">
+                      ARISTOCRAT
+                    </span>
+                    <span className="block font-sans text-[9px] font-semibold tracking-[0.2em] uppercase text-sovereign-gold leading-none mt-0.5">
+                      IAS ACADEMY
+                    </span>
+                  </div>
                 </a>
                 <button
                   type="button"

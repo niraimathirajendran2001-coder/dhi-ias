@@ -3,6 +3,7 @@ import { Cormorant_Garamond, IBM_Plex_Sans, JetBrains_Mono } from "next/font/goo
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 
 const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant-garamond",
@@ -79,6 +80,7 @@ export default function RootLayout({
           </a>
           {children}
           <Toaster />
+          <SonnerToaster position="top-right" richColors />
         </ThemeProvider>
       </body>
     </html>

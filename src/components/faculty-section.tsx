@@ -78,18 +78,23 @@ function FacultyCard({
         'transition-all duration-300 ease-out',
         'border-[#243A80] bg-[#1A2E6B]',
         'hover:-translate-y-[3px] hover:border-t-[4px] hover:border-t-[#C8960C]',
+        'hover:shadow-lg hover:shadow-[rgba(200,150,12,0.08)]',
         'border-t-[2px] border-t-transparent'
       )}
     >
-      {/* Avatar */}
-      <div
-        className={cn(
-          'mb-4 flex h-20 w-20 items-center justify-center rounded-full',
-          'bg-[#0F1F4B] text-[#E8B830]',
-          'font-serif text-xl font-semibold tracking-wide'
-        )}
-      >
-        {member.initials}
+      {/* Avatar with gold ring animation on hover */}
+      <div className="relative mb-4 inline-block">
+        <div
+          className={cn(
+            'flex h-20 w-20 items-center justify-center rounded-full',
+            'bg-[#0F1F4B] text-[#E8B830]',
+            'font-serif text-xl font-semibold tracking-wide',
+            'transition-all duration-300',
+            'ring-2 ring-transparent group-hover:ring-[#C8960C] group-hover:ring-offset-2 group-hover:ring-offset-[#1A2E6B]'
+          )}
+        >
+          {member.initials}
+        </div>
       </div>
 
       {/* Name */}
@@ -122,10 +127,49 @@ export default function FacultySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#0F1F4B] py-16 md:py-24"
+      className="relative py-16 md:py-24 overflow-hidden"
       aria-labelledby="faculty-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Subtle navy gradient instead of flat */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(180deg, #0F1F4B 0%, #152560 40%, #0F1F4B 100%)',
+        }}
+      />
+
+      {/* Subtle background grid pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none pattern-grid"
+        aria-hidden="true"
+      />
+
+      {/* Decorative geometric accent SVG (top-right) */}
+      <svg
+        className="absolute top-12 right-8 w-24 h-24 opacity-[0.06] pointer-events-none"
+        viewBox="0 0 100 100"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path d="M50 5L95 50L50 95L5 50Z" stroke="#E8B830" strokeWidth="1" />
+        <path d="M50 20L80 50L50 80L20 50Z" stroke="#E8B830" strokeWidth="0.5" />
+      </svg>
+
+      {/* Decorative geometric accent SVG (bottom-left) */}
+      <svg
+        className="absolute bottom-12 left-8 w-20 h-20 opacity-[0.05] pointer-events-none"
+        viewBox="0 0 100 100"
+        fill="none"
+        aria-hidden="true"
+        style={{ animation: 'rotate-slow 60s linear infinite' }}
+      >
+        <circle cx="50" cy="50" r="45" stroke="#C8960C" strokeWidth="0.8" />
+        <circle cx="50" cy="50" r="30" stroke="#C8960C" strokeWidth="0.5" />
+        <line x1="50" y1="5" x2="50" y2="95" stroke="#C8960C" strokeWidth="0.3" />
+        <line x1="5" y1="50" x2="95" y2="50" stroke="#C8960C" strokeWidth="0.3" />
+      </svg>
+
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
