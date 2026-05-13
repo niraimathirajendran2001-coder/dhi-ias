@@ -15,6 +15,7 @@ interface Course {
   duration: string
   nextBatch: string
   description: string
+  tooltipText: string
   fee: string
   isMostPopular?: boolean
   isLimitedSeats?: boolean
@@ -33,6 +34,7 @@ const courses: Course[] = [
     nextBatch: 'June 2026',
     description:
       'Comprehensive integrated program covering all GS papers, CSAT, and essay writing.',
+    tooltipText: 'Our flagship program — 1200+ hours of guided preparation',
     fee: '\u20B91,20,000',
     isMostPopular: true,
   },
@@ -47,6 +49,7 @@ const courses: Course[] = [
     nextBatch: 'July 2026',
     description:
       'Dedicated Karnataka Administrative Service preparation with state-specific focus.',
+    tooltipText: 'Karnataka-specific syllabus & KPSC exam strategy',
     fee: '\u20B985,000',
   },
   {
@@ -60,6 +63,7 @@ const courses: Course[] = [
     nextBatch: 'Rolling Admissions',
     description:
       'History, Geography, PSIR, Sociology, Public Administration & Anthropology.',
+    tooltipText: 'Expert-led optional papers with answer writing practice',
     fee: '\u20B945,000 onwards',
   },
   {
@@ -73,6 +77,7 @@ const courses: Course[] = [
     nextBatch: 'Prelims 2026 Batch',
     description:
       '50 Prelims tests + 15 Mains tests with detailed individual evaluation and model answers.',
+    tooltipText: 'Performance analytics & All-India ranking included',
     fee: '\u20B915,000',
   },
   {
@@ -82,6 +87,7 @@ const courses: Course[] = [
     nextBatch: 'Monthly Enrollment',
     description:
       'Daily analyses, monthly compilations, and expert-led discussions on national & international events.',
+    tooltipText: 'Stay updated with curated daily & monthly digests',
     fee: '\u20B98,000/month',
   },
   {
@@ -95,6 +101,7 @@ const courses: Course[] = [
     nextBatch: 'Post-Mains 2026',
     description:
       'Mock interviews with former UPSC board members, personality development & DAF analysis.',
+    tooltipText: 'Personalized DAF analysis & mock interview sessions',
     fee: '\u20B925,000',
     isLimitedSeats: true,
   },
@@ -201,9 +208,12 @@ export default function CoursesSection() {
                   'shadow-[inset_0_2px_4px_rgba(0,0,0,0.04)]'
                 )}
               >
-                {/* Most Popular ribbon treatment — slight rotation */}
+                {/* Tooltip on hover — brief course description */}
+                <div className="tooltip-course">{course.tooltipText}</div>
+
+                {/* Most Popular ribbon treatment — slight rotation + pulse */}
                 {course.isMostPopular && (
-                  <div className="ribbon -rotate-[2deg]" aria-label="Most Popular">
+                  <div className="ribbon ribbon-pulse -rotate-[2deg]" aria-label="Most Popular">
                     Most Popular
                   </div>
                 )}
@@ -266,9 +276,9 @@ export default function CoursesSection() {
                   <span className="text-navy dark:text-ivory-cream">{course.fee.replace('\u20B9', '')}</span>
                 </span>
 
-                {/* Limited Seats indicator */}
+                {/* Limited Seats indicator — gentle opacity blink */}
                 {course.isLimitedSeats && (
-                  <div className="mt-2 flex items-center gap-1.5">
+                  <div className="mt-2 flex items-center gap-1.5 limited-seats-blink">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-deep-crimson opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-deep-crimson"></span>

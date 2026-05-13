@@ -83,7 +83,6 @@ function GoldFlourish() {
 export default function AboutSection() {
   return (
     <section
-      id="about"
       className="relative py-16 md:py-24 overflow-hidden bg-ivory-cream dark:bg-[#0D1525]"
     >
       {/* Subtle paper texture feel */}

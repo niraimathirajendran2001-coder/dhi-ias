@@ -66,7 +66,7 @@ function StatItem({
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        {count}
+        {inView ? count : '—'}
         <span className="text-champagne-gold">{suffix}</span>
       </motion.span>
       <span
@@ -128,13 +128,7 @@ export function StatsCounterSection() {
                   className="hidden h-14 w-px md:block bg-sovereign-gold/20"
                 />
               )}
-              {/* Gold divider dots between stats on mobile */}
-              {i < stats.length - 1 && (
-                <div
-                  className="block md:hidden absolute"
-                  style={{ display: 'none' }}
-                />
-              )}
+
             </div>
           ))}
         </div>

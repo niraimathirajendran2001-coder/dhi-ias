@@ -30,6 +30,9 @@ import ExamCalendarSection from '@/components/exam-calendar-section'
 import SuccessTimeline from '@/components/success-timeline'
 import StudyPlannerSection from '@/components/study-planner-section'
 import VideoTestimonialsSection from '@/components/video-testimonials-section'
+import { SyllabusSection } from '@/components/syllabus-section'
+import { MentorshipSection } from '@/components/mentorship-section'
+import { CookieConsent } from '@/components/cookie-consent'
 
 export default function Home() {
   return (
@@ -143,6 +146,16 @@ export default function Home() {
 
         <SectionDivider variant="gold-line" />
 
+        {/* Syllabus — Cream background */}
+        <SyllabusSection />
+
+        <SectionDivider variant="wave" />
+
+        {/* Mentorship — Navy background */}
+        <MentorshipSection />
+
+        <SectionDivider variant="gold-line" />
+
         {/* Admissions — Navy background */}
         <section id="admissions">
           <AdmissionsSection />
@@ -157,6 +170,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <CookieConsent />
       <BackToTop />
       <ChatbotWidget />
       <WhatsAppButton />

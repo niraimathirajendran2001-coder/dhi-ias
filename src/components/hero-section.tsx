@@ -88,11 +88,13 @@ function useTypingEffect(text: string, speed: number = 30, startDelay: number = 
 /* ─── Floating geometric shapes ─── */
 function FloatingShapes() {
   const shapes = [
-    { type: 'triangle', x: '8%', y: '15%', size: 60, opacity: 0.04 },
-    { type: 'circle', x: '85%', y: '25%', size: 40, opacity: 0.03 },
-    { type: 'triangle', x: '75%', y: '70%', size: 50, opacity: 0.035 },
-    { type: 'circle', x: '15%', y: '75%', size: 30, opacity: 0.03 },
-    { type: 'diamond', x: '92%', y: '55%', size: 35, opacity: 0.04 },
+    { type: 'triangle', x: '8%', y: '15%', size: 60, opacity: 0.04, duration: '14s', delay: '0s' },
+    { type: 'circle', x: '85%', y: '25%', size: 40, opacity: 0.03, duration: '16s', delay: '-2s' },
+    { type: 'square', x: '60%', y: '20%', size: 30, opacity: 0.03, duration: '18s', delay: '-4s' },
+    { type: 'triangle', x: '75%', y: '70%', size: 50, opacity: 0.035, duration: '15s', delay: '-3s' },
+    { type: 'circle', x: '15%', y: '75%', size: 30, opacity: 0.03, duration: '17s', delay: '-5s' },
+    { type: 'diamond', x: '92%', y: '55%', size: 35, opacity: 0.04, duration: '13s', delay: '-1s' },
+    { type: 'square', x: '30%', y: '85%', size: 24, opacity: 0.025, duration: '19s', delay: '-6s' },
   ]
 
   return (
@@ -100,13 +102,14 @@ function FloatingShapes() {
       {shapes.map((shape, i) => (
         <div
           key={i}
-          className="absolute floating-shape"
+          className="absolute geometric-float"
           style={{
             left: shape.x,
             top: shape.y,
             opacity: shape.opacity,
-            animationDelay: `${-i * 2.5}s`,
-          }}
+            '--geo-duration': shape.duration,
+            '--geo-delay': shape.delay,
+          } as React.CSSProperties}
         >
           {shape.type === 'triangle' && (
             <svg width={shape.size} height={shape.size} viewBox="0 0 60 60">
@@ -121,6 +124,11 @@ function FloatingShapes() {
           {shape.type === 'diamond' && (
             <svg width={shape.size} height={shape.size} viewBox="0 0 40 40">
               <polygon points="20,2 38,20 20,38 2,20" fill="none" stroke="#E8B830" strokeWidth="1.5" />
+            </svg>
+          )}
+          {shape.type === 'square' && (
+            <svg width={shape.size} height={shape.size} viewBox="0 0 30 30">
+              <rect x="2" y="2" width="26" height="26" fill="none" stroke="#C8960C" strokeWidth="1.2" rx="2" />
             </svg>
           )}
         </div>
@@ -172,9 +180,13 @@ export default function HeroSection() {
   // Parallax: Ashoka Chakra moves at 40% of scroll speed
   const chakraY = useTransform(scrollYProgress, [0, 1], [0, 150])
 
+  // Typing effect for tagline
+  const taglineText = 'Where Future Officers Are Forged'
+  const { displayedText: taglineDisplayed, isTyping: isTaglineTyping } = useTypingEffect(taglineText, 45, 1200)
+
   // Typing effect for subtitle
   const subtitleText = 'Elite UPSC & KAS coaching guided by former civil servants. Structured mentorship. Proven results. Your path to serving the nation starts here.'
-  const { displayedText, isTyping } = useTypingEffect(subtitleText, 25, 1400)
+  const { displayedText, isTyping } = useTypingEffect(subtitleText, 25, 3500)
 
   return (
     <section
@@ -277,13 +289,22 @@ export default function HeroSection() {
 
         {/* Gold decorative line */}
         <motion.div
-          className="mb-6"
+          className="mb-4"
           variants={lineVariants}
         >
           <div
             className="h-[2px] w-10 origin-left bg-sovereign-gold dark:bg-champagne-gold"
           />
         </motion.div>
+
+        {/* Tagline — typing animation with gold shimmer */}
+        <motion.p
+          className="font-serif text-xl md:text-2xl mb-4 text-sovereign-gold dark:text-champagne-gold"
+          variants={subtextVariants}
+        >
+          {taglineDisplayed}
+          {isTaglineTyping && <span className="typing-cursor" />}
+        </motion.p>
 
         {/* Supporting subtext — typing animation */}
         <motion.p
@@ -305,7 +326,7 @@ export default function HeroSection() {
               'inline-flex items-center justify-center font-sans font-bold rounded-md',
               'px-8 py-4 sm:py-5 text-sm transition-all duration-300',
               'hover:brightness-110 active:scale-[0.98]',
-              'btn-gold-shimmer btn-magnetic',
+              'btn-gold-shimmer btn-magnetic cta-gold-border-glow',
               'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]',
               'shadow-[0_2px_8px_rgba(200,150,12,0.35)]'
             )}
@@ -318,7 +339,7 @@ export default function HeroSection() {
               'inline-flex items-center justify-center font-sans font-semibold rounded-md',
               'px-8 py-4 text-sm transition-all duration-300',
               'border-2 hover:bg-ivory-cream hover:text-navy active:scale-[0.98]',
-              'border-ivory-cream text-ivory-cream btn-magnetic'
+              'border-ivory-cream text-ivory-cream btn-magnetic cta-gold-border-glow'
             )}
           >
             Explore Courses

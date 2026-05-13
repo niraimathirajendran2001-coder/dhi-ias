@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import {
@@ -13,8 +14,10 @@ import {
   Clock,
   ArrowRight,
   ChevronUp,
+  Loader2,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { toast } from 'sonner'
 
 const quickLinks = [
   'About Us',
@@ -52,6 +55,39 @@ const fadeInUp = {
 }
 
 export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [isSubscribing, setIsSubscribing] = useState(false)
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email || !email.includes('@')) {
+      toast.error('Please enter a valid email address.')
+      return
+    }
+    setIsSubscribing(true)
+    try {
+      const res = await fetch('/api/lead-capture', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: 'Newsletter Subscriber',
+          email,
+          phone: 'N/A',
+        }),
+      })
+      if (res.ok) {
+        toast.success('Thank you for subscribing! Check your inbox for UPSC tips.')
+        setEmail('')
+      } else {
+        toast.error('Something went wrong. Please try again.')
+      }
+    } catch {
+      toast.error('Something went wrong. Please try again.')
+    } finally {
+      setIsSubscribing(false)
+    }
+  }
+
   return (
     <footer
       className="relative pt-16 pb-8 overflow-hidden bg-navy dark:bg-[#0A1428]"
@@ -124,16 +160,23 @@ export default function Footer() {
               </p>
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 sm:w-[260px] h-11 px-4 rounded-lg bg-white/5 border border-sovereign-gold/20 text-ivory-cream text-sm font-sans placeholder:text-ivory-cream/30 focus:outline-none focus:border-sovereign-gold/50 focus:ring-1 focus:ring-sovereign-gold/30 transition-all"
-              />
-              <button
-                className="h-11 px-5 rounded-lg bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] font-semibold text-sm font-sans btn-gold-shimmer transition-all duration-200 hover:bg-champagne-gold dark:hover:bg-[#F5D060]"
-              >
-                Subscribe
-              </button>
+              <form onSubmit={handleNewsletterSubmit} className="flex items-center gap-2 w-full sm:w-auto">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="flex-1 sm:w-[260px] h-11 px-4 rounded-lg bg-white/5 border border-sovereign-gold/20 text-ivory-cream text-sm font-sans placeholder:text-ivory-cream/30 focus:outline-none focus:border-sovereign-gold/50 focus:ring-1 focus:ring-sovereign-gold/30 transition-all"
+                />
+                <button
+                  type="submit"
+                  disabled={isSubscribing}
+                  className="h-11 px-5 rounded-lg bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] font-semibold text-sm font-sans btn-gold-shimmer transition-all duration-200 hover:bg-champagne-gold dark:hover:bg-[#F5D060] disabled:opacity-60"
+                >
+                  {isSubscribing ? <Loader2 className="size-5 animate-spin" /> : 'Subscribe'}
+                </button>
+              </form>
             </div>
           </div>
         </motion.div>

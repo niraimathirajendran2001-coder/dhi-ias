@@ -1,8 +1,8 @@
 'use client'
 
 import { useRef, useCallback, useEffect, useState } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight, Star, BadgeCheck } from 'lucide-react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { cn } from '@/lib/utils'
 
@@ -40,6 +40,37 @@ function StarRating() {
         />
       ))}
     </div>
+  )
+}
+
+/* ─── Parallax Quote Mark Decorations ─── */
+function QuoteMarkParallax({ position }: { position: 'top-left' | 'bottom-right' }) {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+  const y = useTransform(scrollYProgress, [0, 1], [0, position === 'top-left' ? -30 : 30])
+  const x = useTransform(scrollYProgress, [0, 1], [0, position === 'top-left' ? -15 : 15])
+
+  const className = position === 'top-left'
+    ? 'absolute top-20 left-8 w-40 h-40 opacity-[0.03]'
+    : 'absolute bottom-20 right-8 w-32 h-32 opacity-[0.03]'
+
+  return (
+    <motion.div
+      ref={sectionRef}
+      className={cn(className, 'pointer-events-none')}
+      style={{ y, x }}
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 200 200" fill="none" className="w-full h-full">
+        <path
+          d="M40 100C40 72 60 40 100 40C80 60 70 80 70 100H100V160H40V100ZM120 100C120 72 140 40 180 40C160 60 150 80 150 100H180V160H120V100Z"
+          fill="#C8960C"
+        />
+      </svg>
+    </motion.div>
   )
 }
 
@@ -93,31 +124,9 @@ export default function TestimonialsSection() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Decorative quote SVG mark in the background */}
-      <svg
-        className="absolute top-20 left-8 w-40 h-40 opacity-[0.03] pointer-events-none"
-        viewBox="0 0 200 200"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M40 100C40 72 60 40 100 40C80 60 70 80 70 100H100V160H40V100ZM120 100C120 72 140 40 180 40C160 60 150 80 150 100H180V160H120V100Z"
-          fill="#C8960C"
-        />
-      </svg>
-
-      {/* Decorative quote SVG mark in the background (bottom-right) */}
-      <svg
-        className="absolute bottom-20 right-8 w-32 h-32 opacity-[0.03] pointer-events-none"
-        viewBox="0 0 200 200"
-        fill="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M40 100C40 72 60 40 100 40C80 60 70 80 70 100H100V160H40V100ZM120 100C120 72 140 40 180 40C160 60 150 80 150 100H180V160H120V100Z"
-          fill="#C8960C"
-        />
-      </svg>
+      {/* Decorative quote SVG mark in the background — with parallax */}
+      <QuoteMarkParallax position="top-left" />
+      <QuoteMarkParallax position="bottom-right" />
 
       {/* Subtle gradient overlay at section edges */}
       <div
@@ -216,7 +225,8 @@ export default function TestimonialsSection() {
                       className={cn(
                         'relative mx-auto max-w-3xl rounded-xl border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827]',
                         'p-8 md:p-12',
-                        'gold-top-border'
+                        'gold-top-border',
+                        selectedIndex === index && 'card-gold-border-left is-active'
                       )}
                     >
                       {/* Decorative Quote Mark */}
@@ -258,7 +268,7 @@ export default function TestimonialsSection() {
                           {testimonial.initials}
                         </div>
 
-                        {/* Name & Rank */}
+                        {/* Name, Rank & Verified Badge */}
                         <div>
                           <p className="font-sans text-[16px] font-semibold text-navy dark:text-ivory-cream">
                             {testimonial.name}
@@ -266,6 +276,11 @@ export default function TestimonialsSection() {
                           <p className="font-sans text-[14px] text-stone-gray dark:text-ivory-cream/70">
                             {testimonial.rank}
                           </p>
+                          {/* Verified Student badge */}
+                          <span className="badge-verified-icon mt-1">
+                            <BadgeCheck className="w-3.5 h-3.5" />
+                            Verified Student
+                          </span>
                         </div>
                       </div>
                     </motion.div>

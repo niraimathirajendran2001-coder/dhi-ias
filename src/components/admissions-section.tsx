@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Loader2, CheckCircle, ArrowRight, ClipboardList, GraduationCap, Award } from 'lucide-react'
+import { Loader2, CheckCircle, ArrowRight, ClipboardList, GraduationCap, Award, Check } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -113,6 +113,19 @@ export default function AdmissionsSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
+  // Compute form completion progress (3 steps: personal info → course → referral)
+  const progressSteps = useMemo(() => {
+    const personalComplete = formData.fullName.trim() !== '' && formData.phone.trim() !== '' && formData.email.trim() !== ''
+    const courseComplete = formData.course.trim() !== '' && formData.city.trim() !== ''
+    const referralComplete = formData.referral.trim() !== ''
+    return {
+      personal: personalComplete,
+      course: courseComplete,
+      referral: referralComplete,
+      completedCount: [personalComplete, courseComplete, referralComplete].filter(Boolean).length,
+    }
+  }, [formData])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -140,7 +153,6 @@ export default function AdmissionsSection() {
 
   return (
     <section
-      id="admissions"
       className="relative py-16 md:py-24 overflow-hidden bg-navy dark:bg-[#0A1428]"
     >
       {/* Subtle pattern overlay */}
@@ -272,45 +284,68 @@ export default function AdmissionsSection() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
               >
+                {/* Step Progress Indicator */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className={cn('form-progress-step', progressSteps.personal && 'completed', !progressSteps.personal && progressSteps.completedCount === 0 && 'active')}>
+                      {progressSteps.personal ? <Check className="w-3.5 h-3.5" /> : <span>1</span>}
+                      Personal
+                    </span>
+                    <span className={cn('form-progress-step', progressSteps.course && 'completed', !progressSteps.personal && !progressSteps.course && 'active', progressSteps.personal && !progressSteps.course && 'active')}>
+                      {progressSteps.course ? <Check className="w-3.5 h-3.5" /> : <span>2</span>}
+                      Course
+                    </span>
+                    <span className={cn('form-progress-step', progressSteps.referral && 'completed', progressSteps.course && !progressSteps.referral && 'active')}>
+                      {progressSteps.referral ? <Check className="w-3.5 h-3.5" /> : <span>3</span>}
+                      Details
+                    </span>
+                  </div>
+                  <div className="form-progress-bar">
+                    <div
+                      className="form-progress-bar-fill"
+                      style={{ width: `${(progressSteps.completedCount / 3) * 100}%` }}
+                    />
+                  </div>
+                </div>
                 {/* Full Name */}
                 <div className="space-y-2">
                   <Label
-                    htmlFor="fullName"
+                    htmlFor="admissions-fullName"
                     className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     Full Name
                   </Label>
                   <Input
-                    id="fullName"
+                    id="admissions-fullName"
                     type="text"
                     required
                     placeholder="Enter your full name"
                     value={formData.fullName}
                     onChange={(e) => updateField('fullName', e.target.value)}
-                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
+                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15 form-focus-ring"
                   />
                 </div>
 
                 {/* Phone + WhatsApp */}
                 <div className="space-y-2">
                   <Label
-                    htmlFor="phone"
+                    htmlFor="admissions-phone"
                     className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     Phone Number
                   </Label>
                   <Input
-                    id="phone"
+                    id="admissions-phone"
                     type="tel"
                     required
                     placeholder="+91 XXXXX XXXXX"
                     value={formData.phone}
                     onChange={(e) => updateField('phone', e.target.value)}
-                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
+                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15 form-focus-ring"
                   />
                   <div className="flex items-center gap-2 pt-1">
                     <Checkbox
-                      id="whatsapp"
+                      id="admissions-whatsapp"
                       checked={formData.whatsapp}
                       onCheckedChange={(checked) =>
                         updateField('whatsapp', checked === true)
@@ -318,7 +353,7 @@ export default function AdmissionsSection() {
                       className="border-ivory-cream/40 data-[state=checked]:bg-sovereign-gold data-[state=checked]:border-sovereign-gold"
                     />
                     <Label
-                      htmlFor="whatsapp"
+                      htmlFor="admissions-whatsapp"
                       className="font-sans text-[13px] font-normal cursor-pointer text-ivory-cream/70"
                     >
                       Contact me on WhatsApp
@@ -329,19 +364,19 @@ export default function AdmissionsSection() {
                 {/* Email */}
                 <div className="space-y-2">
                   <Label
-                    htmlFor="email"
+                    htmlFor="admissions-email"
                     className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     Email Address
                   </Label>
                   <Input
-                    id="email"
+                    id="admissions-email"
                     type="email"
                     required
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={(e) => updateField('email', e.target.value)}
-                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
+                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15 form-focus-ring"
                   />
                 </div>
 
@@ -357,7 +392,7 @@ export default function AdmissionsSection() {
                     onValueChange={(val) => updateField('course', val)}
                   >
                     <SelectTrigger
-                      className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
+                      className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream dark:bg-ivory-cream/5 dark:border-ivory-cream/15 form-focus-ring"
                     >
                       <SelectValue placeholder="Select a course" className="text-ivory-cream/50" />
                     </SelectTrigger>
@@ -386,7 +421,7 @@ export default function AdmissionsSection() {
                     placeholder="Your city"
                     value={formData.city}
                     onChange={(e) => updateField('city', e.target.value)}
-                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
+                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15 form-focus-ring"
                   />
                 </div>
 
@@ -402,7 +437,7 @@ export default function AdmissionsSection() {
                     onValueChange={(val) => updateField('referral', val)}
                   >
                     <SelectTrigger
-                      className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
+                      className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream dark:bg-ivory-cream/5 dark:border-ivory-cream/15 form-focus-ring"
                     >
                       <SelectValue placeholder="Select an option" className="text-ivory-cream/50" />
                     </SelectTrigger>
@@ -498,6 +533,7 @@ export default function AdmissionsSection() {
                   <tr
                     key={row.course}
                     className={cn(
+                      'fee-table-row',
                       'transition-colors duration-200',
                       index % 2 === 0
                         ? 'bg-royal-navy dark:bg-[#0D1525]/80'
