@@ -33,6 +33,8 @@ import VideoTestimonialsSection from '@/components/video-testimonials-section'
 import { SyllabusSection } from '@/components/syllabus-section'
 import { MentorshipSection } from '@/components/mentorship-section'
 import { CookieConsent } from '@/components/cookie-consent'
+import SuccessStoriesSection from '@/components/success-stories-section'
+import PrepTipsSection from '@/components/prep-tips-section'
 
 export default function Home() {
   return (
@@ -102,6 +104,11 @@ export default function Home() {
 
         <SectionDivider variant="gold-line" />
 
+        {/* Success Stories — Cream background */}
+        <SuccessStoriesSection />
+
+        <SectionDivider variant="gold-line" />
+
         {/* Exam Calendar — Navy background */}
         <ExamCalendarSection />
 
@@ -153,6 +160,11 @@ export default function Home() {
 
         {/* Mentorship — Navy background */}
         <MentorshipSection />
+
+        <SectionDivider variant="gold-line" />
+
+        {/* Prep Tips — Navy background */}
+        <PrepTipsSection />
 
         <SectionDivider variant="gold-line" />
 

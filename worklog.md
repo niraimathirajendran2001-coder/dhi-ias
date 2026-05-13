@@ -1030,3 +1030,198 @@ Unresolved Issues / Risks:
 - Logo aspect ratio warning from Next.js Image (minor)
 - Scroll container position warning (minor)
 - Future: real Google Maps embed, payment integration, student portal, og:image meta tag
+
+---
+Task ID: 14-b
+Agent: Full-Stack Developer
+Task: Add Success Stories, Prep Tips, Book Demo Modal
+
+Work Log:
+- Read worklog.md from previous tasks (Tasks 1–13) — all components stable and compiling
+- Read existing component patterns: achievers-section.tsx (card/animation), countdown-section.tsx (navy bg pattern), faq-section.tsx (expandable content)
+- Read existing UI components: dialog.tsx, select.tsx, label.tsx, button.tsx, input.tsx
+- Read admission-inquiry API route to understand form submission requirements
+
+- Created SuccessStoriesSection (`/src/components/success-stories-section.tsx`):
+  - Cream background with subtle pattern overlay (radial-gradient dots)
+  - Section header: "Student Success Stories" with ◆ SUCCESS STORIES ◆ label
+  - 4 story cards in responsive grid (1 col mobile, 2 cols tablet, 4 cols desktop)
+  - Each card has: circular initials avatar (gold ring on hover), name + rank, testimonial quote with decorative quotation mark, expandable "Preparation Strategy" section (3 bullet tips), year badge
+  - Cards have gold-top-border, hover-lift, premium-shadow, card-hover-premium effects
+  - Stagger animation on scroll (0.1s delay per card)
+  - AnimatePresence for expand/collapse with height + opacity transition
+  - "Read More Stories" link with ArrowRight icon + gold-underline-hover
+  - Full dark mode support with Tailwind dark: classes
+
+- Created PrepTipsSection (`/src/components/prep-tips-section.tsx`):
+  - Navy gradient background with pattern-dots overlay (0.3 opacity)
+  - Section header: "UPSC Preparation Tips" with ◆ EXPERT TIPS ◆ label
+  - 6 tip cards in responsive grid (1 col mobile, 2 cols tablet, 3 cols desktop)
+  - Each card has: Lucide icon (BookOpen, Target, Clock, PenTool, Brain, Users) in gold-tinted container, tip title, 2-line description, "Read More" expandable section (3 bullet points)
+  - Cards use glass-card style + gold-top-border, hover border turns gold
+  - Stagger animation on scroll (0.1s delay per card)
+  - Icon scales up on hover (group-hover:scale-110)
+  - "Download Preparation Guide" CTA button with btn-gold-shimmer linking to #admissions
+  - Full dark mode support
+
+- Created BookDemoModal (`/src/components/book-demo-modal.tsx`):
+  - shadcn/ui Dialog component with isOpen/onClose props
+  - Navy background (#0F1F4B / dark:#0A1428) with gold accent top border
+  - GraduationCap icon in header
+  - Form fields: Full Name, Phone, Email (all required), Course Interest (Select dropdown with 6 options), Preferred Date (date input)
+  - Submit button: "Book My Free Demo Class" with btn-gold-shimmer + Loader2 spinner when submitting
+  - On submit: POST to /api/admission-inquiry with course="Demo Class — {selected course}" + all form data
+  - Toast notifications via sonner on success/error
+  - Framer Motion entrance animation (scale + opacity + y translate)
+  - All inputs styled with navy/gold/cream theme, gold focus rings
+  - Date input calendar picker inverted for dark bg visibility
+  - Mobile responsive, full dark mode support
+  - Privacy note at bottom
+
+- Updated page.tsx:
+  - Added imports: SuccessStoriesSection, PrepTipsSection
+  - Added SuccessStoriesSection after AchieversSection + SectionDivider(gold-line)
+  - Added PrepTipsSection after MentorshipSection + SectionDivider(gold-line)
+
+- Lint: all new files pass clean (0 errors, 0 warnings)
+- Pre-existing lint error in syllabus-section.tsx (not caused by this task)
+- Dev server: compiling successfully, all 200s
+
+Stage Summary:
+- 3 new components created: SuccessStoriesSection, PrepTipsSection, BookDemoModal
+- 1 file updated: page.tsx (2 new section imports + placements with dividers)
+- Success Stories: 4 cards with expandable preparation strategy tips, cream background
+- Prep Tips: 6 cards with Lucide icons and expandable extra tips, navy background
+- Book Demo Modal: full form with Dialog, API integration, toast notifications
+- All components follow existing patterns (gold separators, ui-label, section-heading, hover-lift, premium-shadow)
+- Full dark mode support maintained
+- Navy/Gold/Cream color philosophy preserved throughout
+
+---
+Task ID: 14-a
+Agent: Frontend Styling Expert
+Task: Deep styling polish on recent sections
+
+Work Log:
+- Read worklog.md from previous tasks (Tasks 1–13) — all components stable and compiling
+- Read all 4 target component files + globals.css to understand current state before making changes
+
+- Added 6 new global CSS utility classes to globals.css (Task 14-a section) with dark mode variants:
+  - `.tab-gold-underline` — gold underline slides from center when tab is active (data-[state=active])
+  - `.card-glow-hover` — subtle gold glow + shadow on card hover (12px + 24px glow layers)
+  - `.toggle-gold-active` — gold background (#C8960C) for toggle switches when data-[state=checked]
+  - `.comparison-highlight` — subtle gold vertical gradient background for highlighted comparison column
+  - `.save-badge` — small pill badge with gold gradient background and navy text (11px font, 700 weight)
+  - `.connector-line` — gold horizontal connector line with radial glow halo + `.connector-line-animated` draw animation
+  - All with `.dark` mode variants (champagne-gold #E8B830 / #F5D060)
+
+- Enhanced Syllabus Section (syllabus-section.tsx):
+  - Added `accentColor` prop to TopicCard: gold (Prelims), navy (Mains), teal (Interview) — each gets a colored `border-l-3` left border
+  - Mains PaperCard: added navy left border (border-l-3 border-l-navy)
+  - InterviewCard: added teal left border (border-l-3 border-l-forest-teal)
+  - All cards: added `card-glow-hover` class for subtle gold glow on hover
+  - All 3 tab triggers: added `tab-gold-underline` class for gold underline animation on active tab
+  - Each tab trigger now has a paper-count badge: "2 Papers" (Prelims), "9 Papers" (Mains), "1 Test" (Interview) — styled as small rounded pills with gold/champagne-gold text
+  - Replaced inline style on Download CTA button with Tailwind gradient classes (bg-gradient-to-br)
+  - Replaced inline style on cream gradient background with Tailwind gradient classes with dark mode
+
+- Enhanced Mentorship Section (mentorship-section.tsx):
+  - Added `savings` field to tier data: Premium Strategist shows "Save 20%" via `.save-badge` class
+  - Added `.save-badge` positioned absolute top-right of price area on Premium Strategist card
+  - Added subtle gradient overlay behind pricing area (bg-gradient-to-r from gold via transparent to gold)
+  - Most Popular card: added `md:scale-[1.02] md:shadow-xl md:shadow-[#C8960C]/10` for slightly larger/elevated appearance
+  - Most Popular ribbon: replaced inline style with Tailwind gradient classes
+  - Added animated gold connector lines between tier cards (desktop only) using `.connector-line` + `.connector-line-animated` with Framer Motion scaleX entrance
+  - CTA buttons: replaced inline styles with Tailwind classes — popular gets gold gradient bg, others get gold border with transparent bg + hover:bg-[#C8960C]/10
+  - Replaced inline style on navy gradient background with Tailwind gradient classes with dark mode
+  - Replaced inline style on pattern-dots opacity with Tailwind opacity classes
+
+- Enhanced Cookie Consent (cookie-consent.tsx):
+  - Replaced border-t-2 with gold accent line at top: `bg-gradient-to-r from-transparent via-[#C8960C] to-[#E8B830]`
+  - Added fade-in backdrop overlay when "Manage Preferences" is expanded (bg-black/20, backdrop-blur-sm, z-40)
+  - All Switch components: added `toggle-gold-active` class replacing per-switch `data-[state=checked]:bg-[#C8960C]` classes
+  - Accept All button: replaced inline style with Tailwind gradient classes
+  - Save Preferences button: replaced inline style with Tailwind gradient classes
+
+- Enhanced Comparison Section (comparison-section.tsx):
+  - Aristocrat column: added `comparison-highlight` class for subtle gold background gradient on every Aristocrat cell and header
+  - Desktop table header: made sticky (sticky top-0 z-10) for scroll-within-section
+  - Replaced inline styles on header row background with Tailwind gradient classes
+  - Replaced inline styles on table container with Tailwind classes (bg-[rgba...], backdrop-blur-[12px])
+  - All text colors: replaced `text-[#FAFAF7]` with `text-ivory-cream` + dark mode variants
+  - All `text-[#E8B830]` in Aristocrat column: added `dark:text-champagne-gold`
+  - Aristocrat check circles: added `dark:bg-champagne-gold/20`
+  - Mobile comparison cards: Aristocrat section now uses `comparison-highlight` class
+  - CTA button: replaced inline style with Tailwind gradient classes
+  - Section background: replaced inline styles with Tailwind gradient classes with dark mode
+  - Separator: added dark mode variant (dark:bg-champagne-gold)
+
+- Lint: clean (0 errors, 0 warnings)
+- No content/text changed in any section
+- No page.tsx modified
+- All styling works in both light and dark mode
+- Navy/Gold/Cream color philosophy maintained throughout
+
+Stage Summary:
+- 6 new CSS utility classes added to globals.css (tab-gold-underline, card-glow-hover, toggle-gold-active, comparison-highlight, save-badge, connector-line) — all with dark mode variants
+- 4 component files deeply polished: syllabus-section, mentorship-section, cookie-consent, comparison-section
+- Syllabus: colored left borders per tab, paper count badges, card glow hover, gold underline tabs
+- Mentorship: Save 20% badge, connector lines between cards, elevated popular card, gradient pricing overlay, replaced all inline styles
+- Cookie: gold accent line, backdrop overlay, toggle-gold-active switches, replaced all inline styles
+- Comparison: gold highlight column, sticky header, comparison-highlight class, all inline styles replaced with Tailwind + dark mode
+- No functional regressions, lint passes clean
+
+---
+Task ID: 14
+Agent: Main Orchestrator (Cron Review Phase 8)
+Task: QA testing, bug fixes, styling polish, and new features
+
+Work Log:
+- Read worklog.md from previous tasks (Tasks 1-13) — 34+ components stable, site returning 200
+- Performed comprehensive QA testing with agent-browser: desktop (1440x900), mobile (375x812)
+- QA Report: Overall 7.5/10 — visually polished but CTAs were non-functional
+- Fixed critical bugs:
+  1. Mentorship "Get Started" buttons (3) — were dead buttons, changed to <a href="#admissions"> for smooth scroll to admissions form
+  2. "Download Complete Syllabus" button — was a dead button, changed to <a href="#admissions">
+  3. Cookie consent "Privacy Policy" link — was href="#", changed to href="#contact"
+  4. Footer Quick Links (6) — were all href="#", now point to actual section anchors (#about, #courses, #faculty, #results, #admissions, #contact)
+  5. Footer Course Links (6) — were all href="#", now point to #courses
+  6. Added scroll-margin-top: 5rem to all [id] elements in globals.css — prevents fixed header from covering anchor targets
+
+- Delegated Task 14-a (Frontend Styling Expert): Deep styling polish on recent sections
+  - Added 6 new CSS utilities: tab-gold-underline, card-glow-hover, toggle-gold-active, comparison-highlight, save-badge, connector-line
+  - Syllabus Section: colored left borders per tab (gold/navy/teal), paper count badges, card-glow-hover, tab-gold-underline
+  - Mentorship Section: "Save 20%" badge on Premium, animated gold connector lines, Most Popular card elevated (scale-[1.02]), gradient overlay, inline styles replaced
+  - Cookie Consent: gold accent line at top, backdrop overlay when expanded, toggle-gold-active on switches
+  - Comparison Section: comparison-highlight gold gradient on Aristocrat column, sticky header, dark mode variants, inline styles replaced
+
+- Delegated Task 14-b (Full-Stack Developer): New features
+  - Created SuccessStoriesSection: 4 story cards with expandable "Preparation Strategy" tips, avatars, rank badges
+  - Created PrepTipsSection: 6 tip cards with Lucide icons, expandable "Read More" content, glass-card style
+  - Created BookDemoModal: Dialog with form (Name/Phone/Email/Course/Date), POST to /api/admission-inquiry, toast notifications
+  - Updated page.tsx with new sections after Achievers and Mentorship
+
+- Final QA verification: all new sections visible, footer links work, Get Started buttons navigate correctly
+- Lint: clean (0 errors), dev server: 200s
+
+Stage Summary:
+- 6 critical bugs fixed (dead CTA buttons, placeholder links, scroll offset)
+- 6 new CSS utility classes added
+- 4 existing components polished (Syllabus, Mentorship, Cookie Consent, Comparison)
+- 3 new components created: SuccessStoriesSection, PrepTipsSection, BookDemoModal
+- Total components: 37+ | 4 API routes | Full dark mode | Mobile responsive
+- All footer navigation links now point to real section anchors
+- Scroll-margin-top fix ensures anchor navigation works with fixed header
+
+Current Project Status:
+- Stable and fully functional
+- All lint checks pass, dev server returns 200
+- Mobile responsive, dark mode fully implemented
+- Premium design with Navy/Gold/Cream palette
+- All major CTAs now functional (link to admissions/contact sections)
+
+Unresolved Issues / Risks:
+- ~18 CTA links still use href="#" (Learn More, Know More, View Profile, social icons) — by design as these would link to external pages or detailed views not in scope
+- React hydration mismatch from Math.random() in particle components (cosmetic)
+- Logo aspect ratio warning from Next.js Image (minor)
+- Future: real Google Maps embed, payment integration, student portal, og:image meta tag

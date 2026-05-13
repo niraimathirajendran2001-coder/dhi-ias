@@ -88,6 +88,20 @@ export function CookieConsent() {
 
   return (
     <AnimatePresence>
+      {/* Backdrop overlay when preferences expanded */}
+      <AnimatePresence>
+        {showPreferences && (
+          <motion.div
+            key="cookie-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-black/20 dark:bg-black/40 backdrop-blur-sm"
+            aria-hidden="true"
+          />
+        )}
+      </AnimatePresence>
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -95,11 +109,12 @@ export function CookieConsent() {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           'fixed bottom-0 left-0 right-0 z-50',
-          'border-t-2 border-[#C8960C] dark:border-champagne-gold',
           'bg-[#0F1F4B] dark:bg-[#0A1428]',
           'shadow-[0_-8px_30px_rgba(0,0,0,0.3)]',
         )}
       >
+        {/* Gold accent line at top */}
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-[#C8960C] to-[#E8B830] dark:via-[#E8B830] dark:to-[#F5D060]" />
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           {/* Main content */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -109,7 +124,7 @@ export function CookieConsent() {
               <p className="font-sans text-[14px] leading-relaxed text-ivory-cream/80 dark:text-ivory-cream/70">
                 We use cookies to enhance your experience. By continuing, you agree to our{' '}
                 <a
-                  href="#"
+                  href="#contact"
                   className="text-[#C8960C] dark:text-champagne-gold underline underline-offset-2 hover:text-[#E8B830] transition-colors"
                 >
                   Privacy Policy
@@ -151,11 +166,9 @@ export function CookieConsent() {
                   'transition-all duration-300',
                   'btn-gold-shimmer',
                   'w-full sm:w-auto text-center',
+                  'bg-gradient-to-br from-[#C8960C] to-[#E8B830] dark:from-champagne-gold dark:to-[#F5D060]',
+                  'text-navy dark:text-[#0F1F4B]',
                 )}
-                style={{
-                  background: 'linear-gradient(135deg, #C8960C, #E8B830)',
-                  color: '#0F1F4B',
-                }}
               >
                 Accept All
               </button>
@@ -184,7 +197,7 @@ export function CookieConsent() {
                           Required for the website to function. Cannot be disabled.
                         </p>
                       </div>
-                      <Switch checked disabled className="opacity-60 cursor-not-allowed" />
+                      <Switch checked disabled className="opacity-60 cursor-not-allowed toggle-gold-active" />
                     </div>
 
                     {/* Analytics */}
@@ -200,7 +213,7 @@ export function CookieConsent() {
                       <Switch
                         checked={preferences.analytics}
                         onCheckedChange={() => togglePreference('analytics')}
-                        className="data-[state=checked]:bg-[#C8960C] dark:data-[state=checked]:bg-champagne-gold"
+                        className="toggle-gold-active"
                       />
                     </div>
 
@@ -217,7 +230,7 @@ export function CookieConsent() {
                       <Switch
                         checked={preferences.marketing}
                         onCheckedChange={() => togglePreference('marketing')}
-                        className="data-[state=checked]:bg-[#C8960C] dark:data-[state=checked]:bg-champagne-gold"
+                        className="toggle-gold-active"
                       />
                     </div>
                   </div>
@@ -231,11 +244,9 @@ export function CookieConsent() {
                         'font-sans text-[13px] font-semibold tracking-wide',
                         'transition-all duration-300',
                         'btn-gold-shimmer',
+                        'bg-gradient-to-br from-[#C8960C] to-[#E8B830] dark:from-champagne-gold dark:to-[#F5D060]',
+                        'text-navy dark:text-[#0F1F4B]',
                       )}
-                      style={{
-                        background: 'linear-gradient(135deg, #C8960C, #E8B830)',
-                        color: '#0F1F4B',
-                      }}
                     >
                       Save Preferences
                     </button>

@@ -140,6 +140,10 @@
   html {
     scroll-behavior: smooth;
   }
+  /* Prevent fixed header from covering anchor targets */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 /* Custom scrollbar */
@@ -1754,4 +1758,134 @@
 .group:hover .tooltip-course {
   opacity: 1;
   transform: translateX(-50%) translateY(calc(-100% - 4px));
+}
+
+/* ══════════════════════════════════════════════
+   PREMIUM STYLING ENHANCEMENTS — Task 14-a
+   ══════════════════════════════════════════════ */
+
+/* ── Tab Gold Underline — slides from center on active ── */
+@keyframes tab-underline-center {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.tab-gold-underline {
+  position: relative;
+}
+
+.tab-gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C8960C, #E8B830, #C8960C, transparent);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tab-gold-underline[data-state="active"]::after {
+  transform: scaleX(1);
+}
+
+.dark .tab-gold-underline::after {
+  background: linear-gradient(90deg, transparent, #E8B830, #F5D060, #E8B830, transparent);
+}
+
+/* ── Card Glow Hover — subtle gold glow on card hover ── */
+.card-glow-hover {
+  position: relative;
+  transition: box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-glow-hover:hover {
+  box-shadow:
+    0 0 12px rgba(200, 150, 12, 0.15),
+    0 0 24px rgba(200, 150, 12, 0.06),
+    0 4px 16px rgba(15, 31, 75, 0.08);
+}
+
+.dark .card-glow-hover:hover {
+  box-shadow:
+    0 0 12px rgba(232, 184, 48, 0.12),
+    0 0 24px rgba(232, 184, 48, 0.05),
+    0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ── Toggle Gold Active — gold accent for toggle switches when active ── */
+.toggle-gold-active[data-state="checked"] {
+  background-color: #C8960C !important;
+}
+
+.dark .toggle-gold-active[data-state="checked"] {
+  background-color: #E8B830 !important;
+}
+
+/* ── Comparison Highlight — gold background gradient for highlighted column ── */
+.comparison-highlight {
+  background: linear-gradient(180deg, rgba(200, 150, 12, 0.06) 0%, rgba(232, 184, 48, 0.03) 50%, rgba(200, 150, 12, 0.06) 100%);
+}
+
+.dark .comparison-highlight {
+  background: linear-gradient(180deg, rgba(232, 184, 48, 0.05) 0%, rgba(245, 208, 96, 0.02) 50%, rgba(232, 184, 48, 0.05) 100%);
+}
+
+/* ── Save Badge — small savings badge with gradient ── */
+.save-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-family: var(--font-ibm-plex-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0F1F4B;
+  background: linear-gradient(135deg, #C8960C, #E8B830);
+  box-shadow: 0 2px 8px rgba(200, 150, 12, 0.25);
+}
+
+.dark .save-badge {
+  color: #0F1F4B;
+  background: linear-gradient(135deg, #E8B830, #F5D060);
+  box-shadow: 0 2px 8px rgba(232, 184, 48, 0.2);
+}
+
+/* ── Connector Line — animated horizontal connector between cards ── */
+@keyframes connector-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.connector-line {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(200, 150, 12, 0.4), rgba(232, 184, 48, 0.6), rgba(200, 150, 12, 0.4));
+  transform-origin: center;
+  border-radius: 1px;
+}
+
+.connector-line::before {
+  content: '';
+  position: absolute;
+  inset: -2px 0;
+  height: 6px;
+  background: radial-gradient(ellipse at center, rgba(200, 150, 12, 0.15), transparent 70%);
+  border-radius: 3px;
+}
+
+.dark .connector-line {
+  background: linear-gradient(90deg, rgba(232, 184, 48, 0.3), rgba(245, 208, 96, 0.5), rgba(232, 184, 48, 0.3));
+}
+
+.dark .connector-line::before {
+  background: radial-gradient(ellipse at center, rgba(232, 184, 48, 0.1), transparent 70%);
+}
+
+.connector-line-animated {
+  animation: connector-draw 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }

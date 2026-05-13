@@ -96,12 +96,20 @@ function TopicCard({
   title,
   desc,
   index,
+  accentColor,
 }: {
   icon: React.ComponentType<{ className?: string }>
   title: string
   desc: string
   index: number
+  accentColor?: 'gold' | 'navy' | 'teal'
 }) {
+  const borderClass = accentColor === 'teal'
+    ? 'border-l-3 border-l-forest-teal dark:border-l-[#14B8A6]'
+    : accentColor === 'navy'
+      ? 'border-l-3 border-l-navy dark:border-l-royal-navy'
+      : 'border-l-3 border-l-[#C8960C] dark:border-l-champagne-gold'
+
   return (
     <motion.div
       variants={fadeInUp}
@@ -110,8 +118,9 @@ function TopicCard({
         'group relative rounded-xl p-4 sm:p-5',
         'bg-white dark:bg-[#111827]',
         'border border-light-gray dark:border-[#1C2541]',
-        'hover-lift transition-all duration-300',
+        'hover-lift card-glow-hover transition-all duration-300',
         'gold-top-border',
+        borderClass,
       )}
     >
       <div className="flex items-start gap-3">
@@ -159,8 +168,9 @@ function PaperCard({
         'group relative rounded-xl p-4 sm:p-5 text-center',
         'bg-white dark:bg-[#111827]',
         'border border-light-gray dark:border-[#1C2541]',
-        'hover-lift transition-all duration-300',
+        'hover-lift card-glow-hover transition-all duration-300',
         'gold-top-border',
+        'border-l-3 border-l-navy dark:border-l-royal-navy',
       )}
     >
       <div
@@ -204,9 +214,10 @@ function InterviewCard({
         'group relative rounded-xl p-5 sm:p-6',
         'bg-white dark:bg-[#111827]',
         'border border-light-gray dark:border-[#1C2541]',
-        'hover-lift transition-all duration-300',
+        'hover-lift card-glow-hover transition-all duration-300',
         'gold-top-border',
         'text-center',
+        'border-l-3 border-l-forest-teal dark:border-l-[#14B8A6]',
       )}
     >
       <div
@@ -250,10 +261,8 @@ export function SyllabusSection() {
 
       {/* Cream gradient background */}
       <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, #FAFAF7 0%, #F5F0E8 50%, #FAFAF7 100%)',
-        }}
+        className="absolute inset-0 bg-gradient-to-b from-ivory-cream via-[#F5F0E8] to-ivory-cream dark:from-[#0D1525] dark:via-[#111D35] dark:to-[#0D1525]"
+        aria-hidden="true"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -304,9 +313,19 @@ export function SyllabusSection() {
                   'dark:data-[state=active]:bg-champagne-gold dark:data-[state=active]:text-[#0F1F4B]',
                   'data-[state=inactive]:text-mid-gray dark:data-[state=inactive]:text-ivory-cream/50',
                   'transition-all duration-200',
+                  'tab-gold-underline',
                 )}
               >
                 Prelims
+                <span className={cn(
+                  'ml-1.5 px-1.5 py-0.5 rounded-full',
+                  'text-[10px] font-bold',
+                  'bg-[#C8960C]/15 dark:bg-champagne-gold/15',
+                  'text-[#C8960C] dark:text-champagne-gold',
+                  'data-[state=active]:bg-[#0F1F4B]/20 data-[state=active]:text-[#0F1F4B]',
+                )}>
+                  2 Papers
+                </span>
               </TabsTrigger>
               <TabsTrigger
                 value="mains"
@@ -317,9 +336,19 @@ export function SyllabusSection() {
                   'dark:data-[state=active]:bg-champagne-gold dark:data-[state=active]:text-[#0F1F4B]',
                   'data-[state=inactive]:text-mid-gray dark:data-[state=inactive]:text-ivory-cream/50',
                   'transition-all duration-200',
+                  'tab-gold-underline',
                 )}
               >
                 Mains
+                <span className={cn(
+                  'ml-1.5 px-1.5 py-0.5 rounded-full',
+                  'text-[10px] font-bold',
+                  'bg-[#C8960C]/15 dark:bg-champagne-gold/15',
+                  'text-[#C8960C] dark:text-champagne-gold',
+                  'data-[state=active]:bg-[#0F1F4B]/20 data-[state=active]:text-[#0F1F4B]',
+                )}>
+                  9 Papers
+                </span>
               </TabsTrigger>
               <TabsTrigger
                 value="interview"
@@ -330,9 +359,19 @@ export function SyllabusSection() {
                   'dark:data-[state=active]:bg-champagne-gold dark:data-[state=active]:text-[#0F1F4B]',
                   'data-[state=inactive]:text-mid-gray dark:data-[state=inactive]:text-ivory-cream/50',
                   'transition-all duration-200',
+                  'tab-gold-underline',
                 )}
               >
                 Interview
+                <span className={cn(
+                  'ml-1.5 px-1.5 py-0.5 rounded-full',
+                  'text-[10px] font-bold',
+                  'bg-[#C8960C]/15 dark:bg-champagne-gold/15',
+                  'text-[#C8960C] dark:text-champagne-gold',
+                  'data-[state=active]:bg-[#0F1F4B]/20 data-[state=active]:text-[#0F1F4B]',
+                )}>
+                  1 Test
+                </span>
               </TabsTrigger>
             </TabsList>
 
@@ -353,7 +392,7 @@ export function SyllabusSection() {
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                       {gsPaperITopics.map((topic, i) => (
-                        <TopicCard key={topic.title} {...topic} index={i} />
+                        <TopicCard key={topic.title} {...topic} index={i} accentColor="gold" />
                       ))}
                     </div>
                   </div>
@@ -366,7 +405,7 @@ export function SyllabusSection() {
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                       {csatPaperIITopics.map((topic, i) => (
-                        <TopicCard key={topic.title} {...topic} index={i + gsPaperITopics.length} />
+                        <TopicCard key={topic.title} {...topic} index={i + gsPaperITopics.length} accentColor="gold" />
                       ))}
                     </div>
                   </div>
@@ -434,22 +473,22 @@ export function SyllabusSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-12 md:mt-16 text-center"
         >
-          <button
+          <a
+            href="#admissions"
             className={cn(
               'inline-flex items-center gap-2',
               'px-7 py-3 rounded-lg',
               'font-sans text-[14px] font-semibold tracking-wide',
               'transition-all duration-300',
               'btn-gold-shimmer',
+              'bg-gradient-to-br from-[#C8960C] to-[#E8B830]',
+              'dark:from-champagne-gold dark:to-[#F5D060]',
+              'text-navy dark:text-[#0F1F4B]',
             )}
-            style={{
-              background: 'linear-gradient(135deg, #C8960C, #E8B830)',
-              color: '#0F1F4B',
-            }}
           >
             <Download className="w-4 h-4" />
             Download Complete Syllabus
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

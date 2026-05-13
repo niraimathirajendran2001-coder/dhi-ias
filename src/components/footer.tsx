@@ -20,21 +20,21 @@ import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
 
 const quickLinks = [
-  'About Us',
-  'Courses',
-  'Faculty',
-  'Results & Toppers',
-  'Admissions',
-  'Contact Us',
+  { name: 'About Us', href: '#about' },
+  { name: 'Courses', href: '#courses' },
+  { name: 'Faculty', href: '#faculty' },
+  { name: 'Results & Toppers', href: '#results' },
+  { name: 'Admissions', href: '#admissions' },
+  { name: 'Contact Us', href: '#contact' },
 ]
 
 const courseLinks = [
-  'GS Foundation',
-  'KAS Coaching',
-  'Optional Subjects',
-  'Test Series',
-  'Current Affairs',
-  'Interview Guidance',
+  { name: 'GS Foundation', href: '#courses' },
+  { name: 'KAS Coaching', href: '#courses' },
+  { name: 'Optional Subjects', href: '#courses' },
+  { name: 'Test Series', href: '#courses' },
+  { name: 'Current Affairs', href: '#courses' },
+  { name: 'Interview Guidance', href: '#courses' },
 ]
 
 const mediaLogos = [
@@ -258,12 +258,12 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
-                <li key={link}>
+                <li key={link.name}>
                   <a
-                    href="#"
+                    href={link.href}
                     className="font-sans text-[14px] transition-colors duration-200 text-ivory-cream/70 hover:text-sovereign-gold dark:hover:text-champagne-gold footer-link-animated"
                   >
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -284,12 +284,12 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               {courseLinks.map((link) => (
-                <li key={link}>
+                <li key={link.name}>
                   <a
-                    href="#"
+                    href={link.href}
                     className="font-sans text-[14px] transition-colors duration-200 text-ivory-cream/70 hover:text-sovereign-gold dark:hover:text-champagne-gold footer-link-animated"
                   >
-                    {link}
+                    {link.name}
                   </a>
                 </li>
               ))}

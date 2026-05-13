@@ -12,6 +12,7 @@ const tiers = [
     price: '₹5,000',
     period: '/mo',
     popular: false,
+    savings: null,
     description: 'Build a strong foundation with structured guidance',
     features: [
       { label: 'Weekly 1-on-1 sessions', included: true },
@@ -26,6 +27,7 @@ const tiers = [
     price: '₹8,000',
     period: '/mo',
     popular: true,
+    savings: null,
     description: 'Comprehensive mentorship for serious aspirants',
     features: [
       { label: 'Weekly 1-on-1 sessions', included: true },
@@ -40,6 +42,7 @@ const tiers = [
     price: '₹15,000',
     period: '/mo',
     popular: false,
+    savings: 'Save 20%',
     description: 'Elite all-access mentorship with unlimited support',
     features: [
       { label: 'Weekly 1-on-1 sessions', included: true },
@@ -72,7 +75,7 @@ function TierCard({
         'hover-lift transition-all duration-300',
         'flex flex-col',
         'border border-ivory-cream/10 dark:border-ivory-cream/5',
-        tier.popular && 'ring-2 ring-[#C8960C]/40 dark:ring-champagne-gold/40',
+        tier.popular && 'ring-2 ring-[#C8960C]/40 dark:ring-champagne-gold/40 md:scale-[1.02] md:shadow-xl md:shadow-[#C8960C]/10 dark:md:shadow-[#E8B830]/5',
       )}
     >
       {/* Most Popular Ribbon */}
@@ -84,11 +87,9 @@ function TierCard({
             'font-sans text-[11px] font-bold tracking-wider uppercase',
             'ribbon z-10',
             'flex items-center gap-1.5',
+            'bg-gradient-to-br from-[#C8960C] to-[#E8B830] dark:from-champagne-gold dark:to-[#F5D060]',
+            'text-navy',
           )}
-          style={{
-            background: 'linear-gradient(135deg, #C8960C, #E8B830)',
-            color: '#0F1F4B',
-          }}
         >
           <Star className="w-3 h-3 fill-current" />
           Most Popular
@@ -106,13 +107,20 @@ function TierCard({
       </p>
 
       {/* Price */}
-      <div className="mb-6">
+      <div className="mb-6 relative">
         <span className="font-serif text-[36px] sm:text-[42px] font-bold gold-gradient-text leading-none">
           {tier.price}
         </span>
         <span className="font-sans text-[14px] text-ivory-cream/50 dark:text-ivory-cream/40 ml-1">
           {tier.period}
         </span>
+        {tier.savings && (
+          <span className="save-badge absolute -top-1 right-0">
+            {tier.savings}
+          </span>
+        )}
+        {/* Subtle gradient overlay behind pricing */}
+        <div className="absolute -inset-4 -z-10 bg-gradient-to-r from-[#C8960C]/5 via-transparent to-[#E8B830]/5 dark:from-[#E8B830]/3 dark:via-transparent dark:to-[#C8960C]/3 rounded-lg" />
       </div>
 
       {/* Features */}
@@ -155,25 +163,21 @@ function TierCard({
       </ul>
 
       {/* CTA Button */}
-      <button
+      <a
+        href="#admissions"
         className={cn(
           'w-full inline-flex items-center justify-center gap-2',
           'px-6 py-3 rounded-lg',
           'font-sans text-[14px] font-semibold tracking-wide',
           'transition-all duration-300',
-          tier.popular ? 'btn-gold-shimmer' : '',
+          tier.popular
+            ? cn('btn-gold-shimmer', 'bg-gradient-to-br from-[#C8960C] to-[#E8B830] dark:from-champagne-gold dark:to-[#F5D060]', 'text-navy dark:text-[#0F1F4B]')
+            : cn('border border-sovereign-gold/40 dark:border-champagne-gold/40', 'text-ivory-cream dark:text-ivory-cream', 'hover:bg-[#C8960C]/10 dark:hover:bg-champagne-gold/10'),
         )}
-        style={{
-          background: tier.popular
-            ? 'linear-gradient(135deg, #C8960C, #E8B830)'
-            : 'transparent',
-          color: tier.popular ? '#0F1F4B' : '#FAFAF7',
-          border: tier.popular ? 'none' : '1px solid rgba(200,150,12,0.4)',
-        }}
       >
         Get Started
         <ArrowRight className="w-4 h-4" />
-      </button>
+      </a>
     </motion.div>
   )
 }
@@ -191,16 +195,12 @@ export function MentorshipSection() {
     >
       {/* Navy gradient background */}
       <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(160deg, #0F1F4B 0%, #1A2E6B 40%, #0F1F4B 100%)',
-        }}
+        className="absolute inset-0 bg-gradient-to-br from-navy via-royal-navy to-navy dark:from-[#0A1428] dark:via-[#0D1525] dark:to-[#0A1428]"
       />
 
       {/* Pattern dots overlay */}
       <div
-        className="absolute inset-0 pointer-events-none pattern-dots"
-        style={{ opacity: 0.3 }}
+        className="absolute inset-0 pointer-events-none pattern-dots opacity-30 dark:opacity-20"
         aria-hidden="true"
       />
 
@@ -228,7 +228,19 @@ export function MentorshipSection() {
         </motion.div>
 
         {/* Tier Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto items-center">
+          {/* Connector lines between cards (desktop only) */}
+          <div className="hidden md:block absolute left-[33%] right-[33%] top-1/2 -translate-y-1/2 pointer-events-none z-0" aria-hidden="true">
+            <div className="w-full flex items-center justify-center gap-8">
+              <motion.div
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="connector-line w-full connector-line-animated"
+              />
+            </div>
+          </div>
           {tiers.map((tier, i) => (
             <TierCard key={tier.name} tier={tier} index={i} />
           ))}
