@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:../db/custom.db"
+}
+
+model AdmissionInquiry {
+  id          String   @id @default(uuid())
+  fullName    String
+  phone       String
+  email       String
+  course      String
+  city        String
+  referral    String   @default("N/A")
+  whatsapp    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model LeadCapture {
+  id        String   @id @default(uuid())
+  fullName  String
+  email     String
+  phone     String
+  source    String   @default("study-plan-pdf")
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  phone     String
+  email     String   @default("")
+  message   String
+  createdAt DateTime @default(now())
+}
