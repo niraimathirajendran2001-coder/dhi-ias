@@ -98,10 +98,10 @@ export function ResourcesSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="mb-10 text-center md:mb-14">
-          <span className="section-label">Free Resources</span>
+          <span className="section-label ui-label">Free Resources</span>
           <h2
             className={cn(
-              'mt-3 font-serif text-3xl font-bold md:text-4xl lg:text-5xl',
+              'mt-3 font-serif section-heading text-3xl md:text-4xl lg:text-5xl',
               'text-navy'
             )}
           >
@@ -119,7 +119,7 @@ export function ResourcesSection() {
             transition={{ duration: 0.6 }}
           >
             <p
-              className="mb-6 max-w-lg text-[15px] leading-relaxed text-stone-gray"
+              className="mb-6 max-w-lg text-[15px] font-sans body-text text-stone-gray"
             >
               Get our comprehensive 60-Day UPSC Study Plan delivered to your
               inbox. No spam. No calls. Just a solid plan to start your
@@ -268,7 +268,7 @@ export function ResourcesSection() {
                   className="mb-3 h-6 w-6 text-sovereign-gold"
                   strokeWidth={1.8}
                 />
-                <h4 className="text-base font-semibold text-navy">{res.title}</h4>
+                <h4 className="text-base font-sans card-title text-navy">{res.title}</h4>
                 <p className="mt-0.5 text-[13px] text-mid-gray">
                   {res.description}
                 </p>

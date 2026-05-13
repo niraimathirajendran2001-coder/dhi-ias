@@ -89,12 +89,12 @@ export default function WhyAristocratSection() {
           viewport={{ once: true, amount: 0.3 }}
           variants={headingVariants}
         >
-          <span className="section-label">THE ARISTOCRAT DIFFERENCE</span>
+          <span className="section-label ui-label">THE ARISTOCRAT DIFFERENCE</span>
 
           {/* Section Heading */}
           <h2
             id="why-aristocrat-heading"
-            className="mt-3 font-serif text-[36px] leading-tight text-navy md:text-[40px] lg:text-[44px]"
+            className="mt-3 font-serif section-heading text-[40px] text-navy md:text-[46px]"
           >
             Why Future Officers Choose Us
           </h2>
@@ -126,7 +126,7 @@ export default function WhyAristocratSection() {
                 <div className="mb-5">{feature.icon}</div>
 
                 {/* Stat */}
-                <span className="font-serif text-[48px] leading-none text-navy">
+                <span className="font-serif stat-number text-[48px] leading-none text-navy">
                   {feature.stat}
                 </span>
 

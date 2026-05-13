@@ -89,13 +89,13 @@ export default function TestimonialsSection() {
           className="mb-12 text-center md:mb-16"
         >
           {/* Section Label */}
-          <p className="section-label mb-4">Success Stories</p>
+          <p className="section-label ui-label mb-4">Success Stories</p>
 
           {/* Section Heading */}
           <h2
             id="testimonials-heading"
             className={cn(
-              'mb-6 font-serif text-[36px] font-bold leading-tight text-[#0F1F4B] md:text-[44px]'
+              'mb-6 font-serif section-heading text-[36px] leading-tight text-[#0F1F4B] md:text-[44px]'
             )}
           >
             Voices of Achievement
@@ -170,8 +170,8 @@ export default function TestimonialsSection() {
                       {/* Quote Text */}
                       <blockquote
                         className={cn(
-                          'mb-8 mt-6 font-serif text-[24px] leading-relaxed italic',
-                          'text-[#0F1F4B] md:text-[28px]'
+                          'mb-8 mt-6 font-serif pull-quote text-[26px]',
+                          'text-[#0F1F4B] md:text-[32px]'
                         )}
                       >
                         {testimonial.quote}

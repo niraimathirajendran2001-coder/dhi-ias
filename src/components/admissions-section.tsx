@@ -152,14 +152,14 @@ export default function AdmissionsSection() {
         >
           <motion.span
             variants={fadeInUp}
-            className="inline-block mb-4 font-sans text-[11px] font-semibold uppercase tracking-[0.15em]"
+            className="inline-block mb-4 font-sans ui-label text-[11px]"
             style={{ color: '#E8B830' }}
           >
             ADMISSIONS
           </motion.span>
           <motion.h2
             variants={fadeInUp}
-            className="font-serif text-[36px] md:text-[44px] font-bold leading-tight mb-4"
+            className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4"
             style={{ color: '#FAFAF7' }}
           >
             Your Journey Starts Here
@@ -491,7 +491,7 @@ export default function AdmissionsSection() {
           className="mx-auto max-w-xl"
         >
           <h3
-            className="font-serif text-[24px] font-semibold mb-6 text-center"
+            className="font-serif section-heading text-[24px] mb-6 text-center"
             style={{ color: '#FAFAF7' }}
           >
             Transparent Fee Structure

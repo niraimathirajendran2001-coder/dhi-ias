@@ -74,13 +74,13 @@ export default function AboutSection() {
         >
           <motion.span
             variants={fadeInUp}
-            className="section-label inline-block mb-4"
+            className="section-label ui-label inline-block mb-4"
           >
             ABOUT US
           </motion.span>
           <motion.h2
             variants={fadeInUp}
-            className="font-serif text-[36px] md:text-[44px] font-bold leading-tight mb-4"
+            className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4"
             style={{ color: '#0F1F4B' }}
           >
             Built Around a Single Belief
@@ -153,7 +153,7 @@ export default function AboutSection() {
                 </span>
                 <div className="relative pl-4 md:pl-6">
                   <p
-                    className="font-serif italic text-[15px] md:text-[16px] leading-relaxed mb-4"
+                    className="font-serif message-body text-[15px] md:text-[16px] mb-4"
                     style={{ color: '#1C1C1E' }}
                   >
                     When I left the service after a decade in the Karnataka cadre, I did so with one
@@ -163,7 +163,7 @@ export default function AboutSection() {
                     not.
                   </p>
                   <p
-                    className="font-serif italic text-[15px] md:text-[16px] leading-relaxed mb-4"
+                    className="font-serif message-body text-[15px] md:text-[16px] mb-4"
                     style={{ color: '#1C1C1E' }}
                   >
                     Aristocrat IAS Academy was founded to bridge that gap. Not by making promises we
@@ -172,7 +172,7 @@ export default function AboutSection() {
                     attention — regardless of their background.
                   </p>
                   <p
-                    className="font-serif italic text-[15px] md:text-[16px] leading-relaxed mb-4"
+                    className="font-serif message-body text-[15px] md:text-[16px] mb-4"
                     style={{ color: '#1C1C1E' }}
                   >
                     I have sat on the other side of the interview table. I know what the examiners
@@ -183,7 +183,7 @@ export default function AboutSection() {
                     the serious endeavor it is.
                   </p>
                   <p
-                    className="font-serif italic text-[15px] md:text-[16px] leading-relaxed mb-4"
+                    className="font-serif message-body text-[15px] md:text-[16px] mb-4"
                     style={{ color: '#1C1C1E' }}
                   >
                     Every member of our faculty shares this belief. Every system we have built — from
@@ -191,7 +191,7 @@ export default function AboutSection() {
                     that no aspirant walks this path alone.
                   </p>
                   <p
-                    className="font-serif italic text-[16px] md:text-[17px] leading-relaxed font-semibold"
+                    className="font-serif message-body text-[16px] md:text-[17px] font-semibold"
                     style={{ color: '#0F1F4B' }}
                   >
                     This is not a coaching center. This is the place where your service to the nation
@@ -227,13 +227,13 @@ export default function AboutSection() {
                 style={{ borderColor: '#C8960C' }}
               >
                 <blockquote
-                  className="font-serif italic text-[20px] md:text-[22px] leading-snug mb-2"
+                  className="font-serif pull-quote text-[22px] md:text-[24px] mb-2"
                   style={{ color: '#0F1F4B' }}
                 >
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
                 <p
-                  className="font-sans text-[14px] leading-relaxed"
+                  className="font-sans text-[14px] body-text"
                   style={{ color: '#3D3D3A' }}
                 >
                   {item.subtext}

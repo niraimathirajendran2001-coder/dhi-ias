@@ -137,7 +137,7 @@ export function LocationSection() {
             transition={{ duration: 0.7 }}
             className="flex flex-col"
           >
-            <h2 className="font-serif text-3xl font-bold text-navy md:text-4xl">
+            <h2 className="font-serif section-heading text-3xl text-navy md:text-4xl">
               Find Us
             </h2>
 

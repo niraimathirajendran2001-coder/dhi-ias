@@ -58,7 +58,7 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <h2
-              className="font-serif text-[24px] font-bold mb-1"
+              className="font-serif text-[24px] font-semibold mb-1"
               style={{ color: '#E8B830' }}
             >
               ARISTOCRAT
@@ -112,7 +112,7 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <h3
-              className="font-sans text-[14px] uppercase font-semibold mb-5"
+              className="font-sans ui-label text-[14px] mb-5"
               style={{ color: '#E8B830' }}
             >
               Quick Links
@@ -146,7 +146,7 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <h3
-              className="font-sans text-[14px] uppercase font-semibold mb-5"
+              className="font-sans ui-label text-[14px] mb-5"
               style={{ color: '#E8B830' }}
             >
               Our Courses
@@ -180,7 +180,7 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <h3
-              className="font-sans text-[14px] uppercase font-semibold mb-5"
+              className="font-sans ui-label text-[14px] mb-5"
               style={{ color: '#E8B830' }}
             >
               Get in Touch

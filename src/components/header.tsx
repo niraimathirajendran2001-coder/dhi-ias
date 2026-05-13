@@ -154,7 +154,7 @@ export function Header() {
           >
             <span
               className={cn(
-                'block font-serif text-[22px] sm:text-2xl font-bold leading-none tracking-tight transition-colors duration-300',
+                'block font-serif text-[22px] sm:text-2xl font-semibold leading-none tracking-tight transition-colors duration-300',
                 isScrolled ? 'text-ivory-cream' : 'text-navy',
               )}
             >
@@ -279,7 +279,7 @@ export function Header() {
                     scrollToSection('home')
                   }}
                 >
-                  <span className="block font-serif text-xl font-bold text-ivory-cream leading-none">
+                  <span className="block font-serif text-xl font-semibold text-ivory-cream leading-none">
                     ARISTOCRAT
                   </span>
                   <span className="block font-sans text-[9px] font-semibold tracking-[0.2em] uppercase text-sovereign-gold leading-none mt-0.5">

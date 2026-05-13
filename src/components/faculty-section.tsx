@@ -95,7 +95,7 @@ function FacultyCard({
       {/* Name */}
       <h3
         className={cn(
-          'mb-1 font-serif text-[20px] font-semibold leading-tight',
+          'mb-1 font-serif card-title text-[20px] leading-tight',
           'text-[#FAFAF7]'
         )}
       >
@@ -134,13 +134,13 @@ export default function FacultySection() {
           className="mb-12 text-center md:mb-16"
         >
           {/* Section Label */}
-          <p className="section-label mb-4 text-[#E8B830]">Our Mentors</p>
+          <p className="section-label ui-label mb-4 text-[#E8B830]">Our Mentors</p>
 
           {/* Section Heading */}
           <h2
             id="faculty-heading"
             className={cn(
-              'mb-6 font-serif text-[36px] font-bold leading-tight md:text-[44px]',
+              'mb-6 font-serif section-heading text-[36px] leading-tight md:text-[44px]',
               'text-[#FAFAF7]'
             )}
           >
@@ -153,7 +153,7 @@ export default function FacultySection() {
           {/* Subtext */}
           <p
             className={cn(
-              'mx-auto max-w-2xl text-[16px] leading-relaxed',
+              'mx-auto max-w-2xl text-[16px] font-sans body-text leading-relaxed',
               'text-[#FAFAF7]/65'
             )}
           >

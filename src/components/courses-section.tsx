@@ -145,12 +145,12 @@ export default function CoursesSection() {
           viewport={{ once: true, amount: 0.3 }}
           variants={headingVariants}
         >
-          <span className="section-label">YOUR PREPARATION PATH</span>
+          <span className="section-label ui-label">YOUR PREPARATION PATH</span>
 
           {/* Section Heading */}
           <h2
             id="courses-heading"
-            className="mt-3 font-serif text-[36px] leading-tight text-navy md:text-[40px] lg:text-[44px]"
+            className="mt-3 font-serif section-heading text-[40px] text-navy md:text-[46px]"
           >
             Find Your Path
           </h2>
@@ -196,7 +196,7 @@ export default function CoursesSection() {
               {!course.badge && <div className="mb-4 h-5" />}
 
               {/* Course Name */}
-              <h3 className="text-lg font-sans font-semibold text-navy md:text-xl">
+              <h3 className="text-lg font-sans card-title text-navy md:text-xl">
                 {course.name}
               </h3>
 

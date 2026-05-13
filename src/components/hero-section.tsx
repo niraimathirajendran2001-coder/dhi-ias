@@ -103,16 +103,16 @@ export default function HeroSection() {
       >
         {/* Gold uppercase label */}
         <motion.p
-          className="font-sans text-[11px] font-semibold uppercase tracking-[0.15em] mb-6"
+          className="font-sans ui-label text-[11px] mb-6"
           style={{ color: '#C8960C' }}
           variants={labelVariants}
         >
           Aristocrat IAS Academy
         </motion.p>
 
-        {/* Main headline */}
+        {/* Main headline — Cormorant Garamond at display size */}
         <motion.h1
-          className="font-serif text-[clamp(2.5rem,6vw,4rem)] font-semibold leading-[1.1] mb-6"
+          className="font-serif display-headline text-[clamp(2.75rem,7vw,4.5rem)] mb-6"
           style={{ color: '#FAFAF7' }}
           variants={headlineVariants}
         >
@@ -132,7 +132,7 @@ export default function HeroSection() {
 
         {/* Supporting subtext */}
         <motion.p
-          className="font-sans text-lg leading-relaxed max-w-lg mb-10"
+          className="font-sans body-text text-lg max-w-lg mb-10"
           style={{ color: 'rgba(250,250,247,0.65)' }}
           variants={subtextVariants}
         >

@@ -60,7 +60,7 @@ function StatItem({
   return (
     <div className="flex flex-col items-center px-4 text-center">
       <motion.span
-        className="font-serif text-4xl font-bold md:text-5xl"
+        className="font-serif stat-number text-5xl md:text-6xl"
         style={{ color: '#E8B830' }}
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ function StatItem({
         {suffix}
       </motion.span>
       <span
-        className="mt-2 text-sm font-sans"
+        className="mt-2 text-sm font-sans body-text"
         style={{ color: 'rgba(250, 250, 247, 0.7)' }}
       >
         {label}
