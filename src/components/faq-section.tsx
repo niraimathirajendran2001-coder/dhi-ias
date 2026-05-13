@@ -81,8 +81,7 @@ export function FAQSection() {
   return (
     <section
       id="faq"
-      className="py-16 md:py-24"
-      style={{ backgroundColor: '#FAFAF7' }}
+      className="py-16 md:py-24 bg-ivory-cream dark:bg-[#0D1525]"
     >
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -95,22 +94,19 @@ export function FAQSection() {
         >
           <motion.span
             variants={fadeInUp}
-            className="inline-block mb-4 font-sans ui-label text-[11px]"
-            style={{ color: '#C8960C' }}
+            className="inline-block mb-4 font-sans ui-label text-[11px] text-sovereign-gold dark:text-champagne-gold"
           >
             FAQ
           </motion.span>
           <motion.h2
             variants={fadeInUp}
-            className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4"
-            style={{ color: '#0F1F4B' }}
+            className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4 text-navy dark:text-ivory-cream"
           >
             Common Questions
           </motion.h2>
           <motion.div
             variants={fadeInUp}
-            className="mx-auto h-[2px] w-20"
-            style={{ backgroundColor: '#C8960C' }}
+            className="mx-auto h-[2px] w-20 bg-sovereign-gold dark:bg-champagne-gold"
           />
         </motion.div>
 
@@ -126,19 +122,14 @@ export function FAQSection() {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="rounded-lg border px-5 overflow-hidden transition-all duration-200"
-                style={{
-                  borderColor: '#E8E8E4',
-                  backgroundColor: '#FFFFFF',
-                }}
+                className="rounded-lg border px-4 sm:px-5 overflow-hidden transition-all duration-200 border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827]"
               >
-                <AccordionTrigger className="hover:no-underline py-4 text-left font-sans text-[15px] font-semibold group"
-                  style={{ color: '#0F1F4B' }}
+                <AccordionTrigger className="hover:no-underline py-4 text-left font-sans text-[15px] font-semibold group text-navy dark:text-ivory-cream px-1"
                 >
                   <span className="flex-1 pr-4">{faq.question}</span>
-                  <ChevronDown className="w-5 h-5 shrink-0 transition-transform duration-200 text-sovereign-gold group-[&[data-state=open]]:rotate-180" />
+                  <ChevronDown className="w-5 h-5 shrink-0 transition-transform duration-200 text-sovereign-gold dark:text-champagne-gold group-[&[data-state=open]]:rotate-180" />
                 </AccordionTrigger>
-                <AccordionContent className="font-sans body-text text-[14px] pb-4" style={{ color: '#3D3D3A' }}>
+                <AccordionContent className="font-sans body-text text-[14px] pb-4 px-1 text-stone-gray dark:text-ivory-cream/70">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

@@ -88,7 +88,7 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#FAFAF7] py-16 md:py-24 overflow-hidden"
+      className="relative bg-ivory-cream dark:bg-[#0D1525] py-16 md:py-24 overflow-hidden"
       aria-labelledby="testimonials-heading"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -146,14 +146,14 @@ export default function TestimonialsSection() {
           <h2
             id="testimonials-heading"
             className={cn(
-              'mb-6 font-serif section-heading text-[36px] leading-tight text-[#0F1F4B] md:text-[44px]'
+              'mb-6 font-serif section-heading text-[36px] leading-tight text-navy dark:text-ivory-cream md:text-[44px]'
             )}
           >
             Voices of Achievement
           </h2>
 
           {/* Gold Separator */}
-          <div className="mx-auto mb-6 h-[2px] w-10 bg-[#C8960C]" />
+          <div className="mx-auto mb-6 h-[2px] w-10 bg-sovereign-gold dark:bg-champagne-gold" />
         </motion.div>
 
         {/* Carousel Container */}
@@ -164,9 +164,9 @@ export default function TestimonialsSection() {
             className={cn(
               'absolute -left-4 top-1/2 z-10 hidden -translate-y-1/2 md:flex',
               'h-10 w-10 items-center justify-center rounded-full',
-              'border border-[#E8E8E4] bg-white text-[#0F1F4B]',
-              'transition-all duration-200 hover:border-[#C8960C] hover:text-[#C8960C]',
-              'focus-visible:outline-2 focus-visible:outline-[#0F1F4B]'
+              'border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827] text-navy dark:text-ivory-cream',
+              'transition-all duration-200 hover:border-sovereign-gold dark:hover:border-champagne-gold hover:text-sovereign-gold dark:hover:text-champagne-gold',
+              'focus-visible:outline-2 focus-visible:outline-sovereign-gold'
             )}
             aria-label="Previous testimonial"
           >
@@ -178,9 +178,9 @@ export default function TestimonialsSection() {
             className={cn(
               'absolute -right-4 top-1/2 z-10 hidden -translate-y-1/2 md:flex',
               'h-10 w-10 items-center justify-center rounded-full',
-              'border border-[#E8E8E4] bg-white text-[#0F1F4B]',
-              'transition-all duration-200 hover:border-[#C8960C] hover:text-[#C8960C]',
-              'focus-visible:outline-2 focus-visible:outline-[#0F1F4B]'
+              'border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827] text-navy dark:text-ivory-cream',
+              'transition-all duration-200 hover:border-sovereign-gold dark:hover:border-champagne-gold hover:text-sovereign-gold dark:hover:text-champagne-gold',
+              'focus-visible:outline-2 focus-visible:outline-sovereign-gold'
             )}
             aria-label="Next testimonial"
           >
@@ -203,7 +203,7 @@ export default function TestimonialsSection() {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.4, ease: 'easeOut' }}
                       className={cn(
-                        'relative mx-auto max-w-3xl rounded-xl border border-[#E8E8E4] bg-white',
+                        'relative mx-auto max-w-3xl rounded-xl border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827]',
                         'p-8 md:p-12',
                         'gold-top-border'
                       )}
@@ -212,7 +212,7 @@ export default function TestimonialsSection() {
                       <span
                         className={cn(
                           'absolute -top-2 left-6 font-serif text-[72px] leading-none',
-                          'text-[#C8960C] select-none md:left-10'
+                          'text-sovereign-gold dark:text-champagne-gold select-none md:left-10'
                         )}
                         aria-hidden="true"
                       >
@@ -228,7 +228,7 @@ export default function TestimonialsSection() {
                       <blockquote
                         className={cn(
                           'mb-8 font-serif pull-quote text-[26px]',
-                          'text-[#0F1F4B] md:text-[32px]'
+                          'text-navy dark:text-ivory-cream md:text-[32px]'
                         )}
                       >
                         {testimonial.quote}
@@ -240,7 +240,7 @@ export default function TestimonialsSection() {
                         <div
                           className={cn(
                             'flex h-12 w-12 items-center justify-center rounded-full',
-                            'bg-[#0F1F4B] text-[#E8B830]',
+                            'bg-navy dark:bg-[#0A1428] text-champagne-gold',
                             'font-serif text-sm font-semibold'
                           )}
                         >
@@ -249,10 +249,10 @@ export default function TestimonialsSection() {
 
                         {/* Name & Rank */}
                         <div>
-                          <p className="font-sans text-[16px] font-semibold text-[#0F1F4B]">
+                          <p className="font-sans text-[16px] font-semibold text-navy dark:text-ivory-cream">
                             {testimonial.name}
                           </p>
-                          <p className="font-sans text-[14px] text-[#3D3D3A]">
+                          <p className="font-sans text-[14px] text-stone-gray dark:text-ivory-cream/70">
                             {testimonial.rank}
                           </p>
                         </div>
@@ -274,8 +274,8 @@ export default function TestimonialsSection() {
               className={cn(
                 'h-2.5 rounded-full transition-all duration-300',
                 selectedIndex === index
-                  ? 'w-8 bg-[#C8960C]'
-                  : 'w-2.5 bg-[#C8960C]/30 hover:bg-[#C8960C]/60'
+                  ? 'w-8 bg-sovereign-gold dark:bg-champagne-gold'
+                  : 'w-2.5 bg-sovereign-gold/30 dark:bg-champagne-gold/30 hover:bg-sovereign-gold/60 dark:hover:bg-champagne-gold/60'
               )}
               aria-label={`Go to testimonial ${index + 1}`}
               aria-current={selectedIndex === index ? 'true' : undefined}

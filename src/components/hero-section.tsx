@@ -72,8 +72,7 @@ export default function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ backgroundColor: '#0F1F4B' }}
+      className="relative min-h-screen flex items-center overflow-hidden bg-navy dark:bg-[#0A1428]"
       aria-label="Hero Section"
     >
       {/* Diagonal light sweep overlay — very subtle 5% opacity */}
@@ -121,8 +120,7 @@ export default function HeroSection() {
       >
         {/* Gold uppercase label */}
         <motion.p
-          className="font-sans ui-label text-[11px] mb-6"
-          style={{ color: '#C8960C' }}
+          className="font-sans ui-label text-[11px] mb-6 text-sovereign-gold dark:text-champagne-gold"
           variants={labelVariants}
         >
           Aristocrat IAS Academy
@@ -130,8 +128,7 @@ export default function HeroSection() {
 
         {/* Main headline — Cormorant Garamond at display size */}
         <motion.h1
-          className="font-serif display-headline text-[clamp(2.75rem,7vw,4.5rem)] mb-6"
-          style={{ color: '#FAFAF7' }}
+          className="font-serif display-headline text-[clamp(2.75rem,7vw,4.5rem)] mb-6 text-ivory-cream"
           variants={headlineVariants}
         >
           Where Civil Servants Begin.
@@ -143,15 +140,13 @@ export default function HeroSection() {
           variants={lineVariants}
         >
           <div
-            className="h-[2px] w-10 origin-left"
-            style={{ backgroundColor: '#C8960C' }}
+            className="h-[2px] w-10 origin-left bg-sovereign-gold dark:bg-champagne-gold"
           />
         </motion.div>
 
         {/* Supporting subtext */}
         <motion.p
-          className="font-sans body-text text-lg max-w-lg mb-10"
-          style={{ color: 'rgba(250,250,247,0.65)' }}
+          className="font-sans body-text text-lg max-w-lg mb-10 text-ivory-cream/65"
           variants={subtextVariants}
         >
           Elite UPSC &amp; KAS coaching guided by former civil servants.
@@ -170,12 +165,9 @@ export default function HeroSection() {
               'inline-flex items-center justify-center font-sans font-semibold rounded-md',
               'px-8 py-4 text-sm transition-all duration-300',
               'hover:brightness-110 active:scale-[0.98]',
-              'btn-gold-shimmer'
+              'btn-gold-shimmer',
+              'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]'
             )}
-            style={{
-              backgroundColor: '#C8960C',
-              color: '#0F1F4B',
-            }}
           >
             Book Free Demo Class
           </a>
@@ -184,12 +176,9 @@ export default function HeroSection() {
             className={cn(
               'inline-flex items-center justify-center font-sans font-semibold rounded-md',
               'px-8 py-4 text-sm transition-all duration-300',
-              'border-2 hover:bg-[#FAFAF7] hover:text-[#0F1F4B] active:scale-[0.98]'
+              'border-2 hover:bg-ivory-cream hover:text-navy active:scale-[0.98]',
+              'border-ivory-cream text-ivory-cream'
             )}
-            style={{
-              borderColor: '#FAFAF7',
-              color: '#FAFAF7',
-            }}
           >
             Explore Courses
           </a>
@@ -215,8 +204,7 @@ export default function HeroSection() {
       >
         {/* Gold line that draws down */}
         <motion.div
-          className="w-px"
-          style={{ backgroundColor: '#C8960C' }}
+          className="w-px bg-sovereign-gold dark:bg-champagne-gold"
           initial={{ height: 0 }}
           animate={{ height: 28 }}
           transition={{ delay: 2, duration: 1, ease: 'easeOut' }}
@@ -229,7 +217,7 @@ export default function HeroSection() {
             ease: 'easeInOut',
           }}
         >
-          <ChevronDown className="w-5 h-5" style={{ color: '#C8960C' }} />
+          <ChevronDown className="w-5 h-5 text-sovereign-gold dark:text-champagne-gold" />
         </motion.div>
       </motion.div>
     </section>

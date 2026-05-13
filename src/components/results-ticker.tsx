@@ -18,8 +18,7 @@ const RESULTS = [
 function Separator() {
   return (
     <span
-      className="inline-flex items-center mx-4 text-[10px]"
-      style={{ color: '#C8960C' }}
+      className="inline-flex items-center mx-4 text-[10px] text-sovereign-gold dark:text-champagne-gold"
       aria-hidden="true"
     >
       ◆
@@ -37,8 +36,7 @@ export default function ResultsTicker() {
 
   return (
     <div
-      className="relative overflow-hidden py-3"
-      style={{ backgroundColor: '#0F1F4B' }}
+      className="relative overflow-hidden py-3 bg-navy dark:bg-[#0A1428]"
       role="marquee"
       aria-label="Our successful candidates"
     >
@@ -61,7 +59,7 @@ export default function ResultsTicker() {
       />
 
       {/* Marquee track */}
-      <div className={cn('animate-marquee flex whitespace-nowrap font-sans text-sm font-medium')} style={{ color: '#C8960C' }}>
+      <div className={cn('animate-marquee flex whitespace-nowrap font-sans text-sm font-medium text-sovereign-gold dark:text-champagne-gold')}>
         {/* First copy */}
         {content}
         {/* Separator between copies */}

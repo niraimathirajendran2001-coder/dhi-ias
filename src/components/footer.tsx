@@ -46,8 +46,7 @@ const fadeInUp = {
 export default function Footer() {
   return (
     <footer
-      className="relative pt-16 pb-8 overflow-hidden"
-      style={{ backgroundColor: '#0F1F4B' }}
+      className="relative pt-16 pb-8 overflow-hidden bg-navy dark:bg-[#0A1428]"
     >
       {/* Subtle gradient background */}
       <div
@@ -93,22 +92,19 @@ export default function Footer() {
               />
               <div>
                 <h2
-                  className="font-serif text-[24px] font-semibold leading-none"
-                  style={{ color: '#E8B830' }}
+                  className="font-serif text-[24px] font-semibold leading-none text-champagne-gold"
                 >
                   ARISTOCRAT
                 </h2>
                 <p
-                  className="font-sans text-[11px] uppercase tracking-[0.15em] mt-0.5"
-                  style={{ color: 'rgba(250,250,247,0.7)' }}
+                  className="font-sans text-[11px] uppercase tracking-[0.15em] mt-0.5 text-ivory-cream/70"
                 >
                   IAS ACADEMY
                 </p>
               </div>
             </div>
             <p
-              className="font-sans text-[13px] leading-relaxed mb-6"
-              style={{ color: 'rgba(250,250,247,0.5)' }}
+              className="font-sans text-[13px] leading-relaxed mb-6 text-ivory-cream/50"
             >
               Elite UPSC &amp; KAS coaching in Chandralayout, Bengaluru. Guided by experience.
               Driven by results.
@@ -128,15 +124,9 @@ export default function Footer() {
                   aria-label={label}
                   className={cn(
                     'transition-all duration-300',
-                    'hover:scale-125 hover:drop-shadow-[0_0_6px_rgba(200,150,12,0.4)]'
+                    'hover:scale-125 hover:drop-shadow-[0_0_6px_rgba(200,150,12,0.4)]',
+                    'text-ivory-cream hover:text-sovereign-gold dark:hover:text-champagne-gold'
                   )}
-                  style={{ color: '#FAFAF7' }}
-                  onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = '#C8960C')
-                  }
-                  onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = '#FAFAF7')
-                  }
                 >
                   <Icon className="size-5" />
                 </a>
@@ -152,8 +142,7 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <h3
-              className="font-sans ui-label text-[14px] mb-5"
-              style={{ color: '#E8B830' }}
+              className="font-sans ui-label text-[14px] mb-5 text-champagne-gold"
             >
               Quick Links
             </h3>
@@ -162,14 +151,7 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="font-sans text-[14px] transition-colors duration-200"
-                    style={{ color: 'rgba(250,250,247,0.7)' }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = '#C8960C')
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = 'rgba(250,250,247,0.7)')
-                    }
+                    className="font-sans text-[14px] transition-colors duration-200 text-ivory-cream/70 hover:text-sovereign-gold dark:hover:text-champagne-gold"
                   >
                     {link}
                   </a>
@@ -186,8 +168,7 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <h3
-              className="font-sans ui-label text-[14px] mb-5"
-              style={{ color: '#E8B830' }}
+              className="font-sans ui-label text-[14px] mb-5 text-champagne-gold"
             >
               Our Courses
             </h3>
@@ -196,14 +177,7 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="font-sans text-[14px] transition-colors duration-200"
-                    style={{ color: 'rgba(250,250,247,0.7)' }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = '#C8960C')
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = 'rgba(250,250,247,0.7)')
-                    }
+                    className="font-sans text-[14px] transition-colors duration-200 text-ivory-cream/70 hover:text-sovereign-gold dark:hover:text-champagne-gold"
                   >
                     {link}
                   </a>
@@ -220,44 +194,39 @@ export default function Footer() {
             viewport={{ once: true }}
           >
             <h3
-              className="font-sans ui-label text-[14px] mb-5"
-              style={{ color: '#E8B830' }}
+              className="font-sans ui-label text-[14px] mb-5 text-champagne-gold"
             >
               Get in Touch
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="size-4 mt-0.5 flex-shrink-0" style={{ color: '#C8960C' }} />
+                <MapPin className="size-4 mt-0.5 flex-shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                 <span
-                  className="font-sans text-[14px]"
-                  style={{ color: 'rgba(250,250,247,0.7)' }}
+                  className="font-sans text-[14px] text-ivory-cream/70"
                 >
                   Chandralayout, Bengaluru 560040
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="size-4 mt-0.5 flex-shrink-0" style={{ color: '#C8960C' }} />
+                <Phone className="size-4 mt-0.5 flex-shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                 <span
-                  className="font-sans text-[14px]"
-                  style={{ color: 'rgba(250,250,247,0.7)' }}
+                  className="font-sans text-[14px] text-ivory-cream/70"
                 >
                   +91 80 XXXX XXXX
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Mail className="size-4 mt-0.5 flex-shrink-0" style={{ color: '#C8960C' }} />
+                <Mail className="size-4 mt-0.5 flex-shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                 <span
-                  className="font-sans text-[14px]"
-                  style={{ color: 'rgba(250,250,247,0.7)' }}
+                  className="font-sans text-[14px] text-ivory-cream/70"
                 >
                   info@aristocratiasacademy.in
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <Clock className="size-4 mt-0.5 flex-shrink-0" style={{ color: '#C8960C' }} />
+                <Clock className="size-4 mt-0.5 flex-shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                 <span
-                  className="font-sans text-[14px]"
-                  style={{ color: 'rgba(250,250,247,0.7)' }}
+                  className="font-sans text-[14px] text-ivory-cream/70"
                 >
                   Mon-Sat: 8AM - 8PM
                 </span>
@@ -265,14 +234,7 @@ export default function Footer() {
             </ul>
             <a
               href="#admissions"
-              className="inline-flex items-center gap-1 mt-5 font-sans text-[14px] font-medium transition-colors duration-200"
-              style={{ color: '#C8960C' }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.color = '#E8B830')
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.color = '#C8960C')
-              }
+              className="inline-flex items-center gap-1 mt-5 font-sans text-[14px] font-medium transition-colors duration-200 text-sovereign-gold dark:text-champagne-gold hover:text-champagne-gold"
             >
               Book a Demo Class
               <ArrowRight className="size-4" />
@@ -289,20 +251,17 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p
-            className="font-sans text-[12px]"
-            style={{ color: 'rgba(250,250,247,0.4)' }}
+            className="font-sans text-[12px] text-ivory-cream/40"
           >
             &copy; 2026 Aristocrat IAS Academy. All rights reserved.
           </p>
           <p
-            className="font-serif italic text-[13px] order-first md:order-none"
-            style={{ color: 'rgba(232,184,48,0.6)' }}
+            className="font-serif italic text-[13px] order-first md:order-none text-champagne-gold/60"
           >
             Built for those who dare to serve.
           </p>
           <p
-            className="font-sans text-[12px]"
-            style={{ color: 'rgba(250,250,247,0.4)' }}
+            className="font-sans text-[12px] text-ivory-cream/40"
           >
             Privacy Policy | Terms of Use
           </p>
@@ -324,12 +283,10 @@ export default function Footer() {
             aria-label="Back to top"
           >
             <ChevronUp
-              className="w-5 h-5"
-              style={{ color: 'rgba(200,150,12,0.4)' }}
+              className="w-5 h-5 text-sovereign-gold/40"
             />
             <span
-              className="font-sans text-[10px] uppercase tracking-widest"
-              style={{ color: 'rgba(200,150,12,0.3)' }}
+              className="font-sans text-[10px] uppercase tracking-widest text-sovereign-gold/30"
             >
               Top
             </span>

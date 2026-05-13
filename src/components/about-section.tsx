@@ -84,16 +84,8 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden bg-ivory-cream dark:bg-[#0D1525]"
     >
-      {/* Cream-to-white gradient background */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, #FAFAF7 0%, #FFFFFF 30%, #FAFAF7 60%, #FFFFFF 100%)',
-        }}
-      />
-
       {/* Subtle paper texture feel */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -122,15 +114,13 @@ export default function AboutSection() {
           </motion.span>
           <motion.h2
             variants={fadeInUp}
-            className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4"
-            style={{ color: '#0F1F4B' }}
+            className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4 text-navy dark:text-ivory-cream"
           >
             Built Around a Single Belief
           </motion.h2>
           <motion.div
             variants={fadeInUp}
-            className="mx-auto h-[2px] w-20"
-            style={{ backgroundColor: '#C8960C' }}
+            className="mx-auto h-[2px] w-20 bg-sovereign-gold dark:bg-champagne-gold"
           />
         </motion.div>
 
@@ -147,18 +137,15 @@ export default function AboutSection() {
             <motion.div variants={fadeInLeft} className="flex-shrink-0 self-center md:self-start">
               <div className="gold-ring-pulse inline-block">
                 <div
-                  className="flex items-center justify-center rounded-full"
+                  className="flex items-center justify-center rounded-full bg-navy dark:bg-[#0A1428] border-[3px] border-sovereign-gold dark:border-champagne-gold"
                   style={{
                     width: 160,
                     height: 160,
-                    backgroundColor: '#0F1F4B',
-                    border: '3px solid #C8960C',
                     boxShadow: '0 0 0 6px rgba(200,150,12,0.1), 0 8px 32px rgba(15,31,75,0.15)',
                   }}
                 >
                   <span
-                    className="font-serif text-[40px] font-semibold"
-                    style={{ color: '#C8960C' }}
+                    className="font-serif text-[40px] font-semibold text-sovereign-gold dark:text-champagne-gold"
                   >
                     AK
                   </span>
@@ -169,20 +156,17 @@ export default function AboutSection() {
             {/* Message */}
             <motion.div variants={fadeInRight} className="flex-1">
               <h3
-                className="font-serif text-[22px] md:text-[26px] font-semibold mb-1"
-                style={{ color: '#0F1F4B' }}
+                className="font-serif text-[22px] md:text-[26px] font-semibold mb-1 text-navy dark:text-ivory-cream"
               >
                 Arun Kumar
               </h3>
               <p
-                className="font-sans text-[14px] font-medium mb-5"
-                style={{ color: '#C8960C' }}
+                className="font-sans text-[14px] font-medium mb-5 text-sovereign-gold dark:text-champagne-gold"
               >
                 Founder &amp; Director
               </p>
               <p
-                className="font-sans text-[14px] font-medium mb-6"
-                style={{ color: '#C8960C' }}
+                className="font-sans text-[14px] font-medium mb-6 text-sovereign-gold dark:text-champagne-gold"
               >
                 Former IAS Officer | Karnataka Cadre (2005 Batch)
               </p>
@@ -190,16 +174,14 @@ export default function AboutSection() {
               {/* Quote with decorative gold quotation mark */}
               <div className="relative">
                 <span
-                  className="absolute -top-6 -left-4 font-serif text-[72px] leading-none select-none"
-                  style={{ color: '#C8960C', opacity: 0.35 }}
+                  className="absolute -top-6 -left-4 font-serif text-[72px] leading-none select-none text-sovereign-gold dark:text-champagne-gold opacity-35"
                   aria-hidden="true"
                 >
                   &ldquo;
                 </span>
                 <div className="relative pl-4 md:pl-6">
                   <p
-                    className="font-serif message-body text-[15px] md:text-[16px] mb-4"
-                    style={{ color: '#1C1C1E' }}
+                    className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
                   >
                     When I left the service after a decade in the Karnataka cadre, I did so with one
                     conviction: that the path to becoming a civil servant should not depend on where
@@ -208,8 +190,7 @@ export default function AboutSection() {
                     not.
                   </p>
                   <p
-                    className="font-serif message-body text-[15px] md:text-[16px] mb-4"
-                    style={{ color: '#1C1C1E' }}
+                    className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
                   >
                     Aristocrat IAS Academy was founded to bridge that gap. Not by making promises we
                     cannot keep, but by building a system where every aspirant receives the same
@@ -217,8 +198,7 @@ export default function AboutSection() {
                     attention — regardless of their background.
                   </p>
                   <p
-                    className="font-serif message-body text-[15px] md:text-[16px] mb-4"
-                    style={{ color: '#1C1C1E' }}
+                    className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
                   >
                     I have sat on the other side of the interview table. I know what the examiners
                     look for. I know the common mistakes that even brilliant aspirants make. And I
@@ -228,16 +208,14 @@ export default function AboutSection() {
                     the serious endeavor it is.
                   </p>
                   <p
-                    className="font-serif message-body text-[15px] md:text-[16px] mb-4"
-                    style={{ color: '#1C1C1E' }}
+                    className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
                   >
                     Every member of our faculty shares this belief. Every system we have built — from
                     our structured curriculum to our one-on-one mentorship program — exists to ensure
                     that no aspirant walks this path alone.
                   </p>
                   <p
-                    className="font-serif message-body text-[16px] md:text-[17px] font-semibold"
-                    style={{ color: '#0F1F4B' }}
+                    className="font-serif message-body text-[16px] md:text-[17px] font-semibold text-navy dark:text-ivory-cream"
                   >
                     This is not a coaching center. This is the place where your service to the nation
                     begins.
@@ -260,8 +238,7 @@ export default function AboutSection() {
         >
           <motion.h3
             variants={fadeInUp}
-            className="font-serif text-[28px] font-semibold mb-10 text-center"
-            style={{ color: '#0F1F4B' }}
+            className="font-serif text-[28px] font-semibold mb-10 text-center text-navy dark:text-ivory-cream"
           >
             Our Philosophy
           </motion.h3>
@@ -271,18 +248,15 @@ export default function AboutSection() {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="border-l-[4px] pl-6 md:pl-8 py-2"
-                style={{ borderColor: '#C8960C' }}
+                className="border-l-[4px] pl-6 md:pl-8 py-2 border-sovereign-gold dark:border-champagne-gold"
               >
                 <blockquote
-                  className="font-serif pull-quote text-[22px] md:text-[24px] mb-2"
-                  style={{ color: '#0F1F4B' }}
+                  className="font-serif pull-quote text-[22px] md:text-[24px] mb-2 text-navy dark:text-ivory-cream"
                 >
                   &ldquo;{item.quote}&rdquo;
                 </blockquote>
                 <p
-                  className="font-sans text-[14px] body-text"
-                  style={{ color: '#3D3D3A' }}
+                  className="font-sans text-[14px] body-text text-stone-gray dark:text-ivory-cream/70"
                 >
                   {item.subtext}
                 </p>

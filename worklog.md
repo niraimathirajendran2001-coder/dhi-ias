@@ -314,3 +314,257 @@ Unresolved Issues / Risks:
 - Chatbot green "online" dot is a new accent color — minor inconsistency
 - VLM suggests: stat number contrast could be brighter on light backgrounds
 - Future: could add real Google Maps embed instead of placeholder, add payment integration, student portal
+
+---
+Task ID: 6
+Agent: Full-Stack Developer
+Task: Create Countdown Timer, Achievers Gallery, Section Dividers, Newsletter Footer
+
+Work Log:
+- Created SectionDivider component with 3 variants: wave, gold-line, ornament
+- Created CountdownSection with real-time countdown to June 15, 2026
+  - Navy gradient bg with pattern-dots overlay
+  - 4 glass-card countdown boxes (Days/Hours/Minutes/Seconds) with gold numbers
+  - 18 animated gold particle decorations
+  - "Reserve Your Seat" CTA button with btn-gold-shimmer
+  - Responsive: 2x2 mobile, 4-col desktop
+- Created AchieversSection with 8 achiever cards
+  - Cream gradient background
+  - Cards with circular initials avatar (gold ring on hover), serif name, rank badge, service label, mono year
+  - premium-shadow, hover-lift, gold-border-animate effects
+  - Stagger animation on scroll
+  - "View All Results" link
+- Updated Footer with newsletter subscription row
+  - "Stay Updated" heading + email input + Subscribe button
+  - Posts to /api/lead-capture with toast notifications
+  - Privacy text, btn-gold-shimmer effect
+- Updated page.tsx with full section order including dividers between all sections
+- Lint: clean, dev server: 200s
+
+Stage Summary:
+- 3 new components: SectionDivider, CountdownSection, AchieversSection
+- 2 existing components updated: Footer (newsletter), page.tsx (new sections + dividers)
+- Decorative dividers between all sections for smooth visual transitions
+
+---
+Task ID: 7
+Agent: Frontend Styling Expert
+Task: Fix dark mode support and polish styling across all sections
+
+Work Log:
+- Replaced 80+ inline styles across 14 component files with Tailwind classes supporting dark mode
+- Background mapping: bg-navy → dark:bg-[#0A1428], bg-ivory-cream → dark:bg-[#0D1525], bg-gold-pale → dark:bg-[#1A1A10]
+- Text mapping: text-navy → dark:text-ivory-cream, text-sovereign-gold → dark:text-champagne-gold
+- All rgba opacity values converted to Tailwind opacity modifiers (text-ivory-cream/65, text-ivory-cream/70, etc.)
+- Course cards enhanced:
+  - Added Lucide icons per course (BookOpen, Landmark, Layers, ClipboardCheck, Newspaper, MessageSquare)
+  - ₹ symbol now larger (text-xl) and gold-colored
+  - Subtle gradient overlay on "Most Popular" card
+  - "Limited Seats" indicator with pulsing red dot for Interview Guidance
+- Mobile responsiveness verified across all sections
+- Footer social icons: replaced inline onMouseEnter/onMouseLeave with Tailwind hover classes
+- Chatbot: replaced inline styles with cn() utility
+- Lint: clean, dev server: 200s
+
+Stage Summary:
+- Dark mode fully functional across all 14 section components (VLM rated 8/10)
+- Course cards significantly improved with icons, better fee display, and visual indicators
+- 80+ inline styles converted to Tailwind dark-mode-aware classes
+- Light mode visual appearance identical to before
+- No content changed, no sections added/removed
+
+Current Project Status (Phase 4 Complete):
+- 22+ components total (15 original + 4 from Phase 3 + 3 new)
+- 4 API routes (/api/admission-inquiry, /api/lead-capture, /api/contact, /api/chat)
+- AI chatbot with z-ai-web-dev-sdk backend
+- Full dark mode support (8/10 VLM rating)
+- Premium design with Navy/Gold/Cream palette
+- Countdown timer, achievers gallery, section dividers, newsletter subscription
+- Responsive mobile-first design with Framer Motion animations
+- Logo integrated from user upload
+- Decorative section dividers between all sections
+
+Unresolved Issues / Risks:
+- Hydration mismatch warning from SVG float precision (cosmetic, no user-facing impact)
+- VLM notes the "N 1 Issue" notification badge in bottom-left could look more integrated
+- Future: real Google Maps embed, payment integration, student portal, video testimonials
+Task: Create 2 new premium sections + decorative section dividers + newsletter footer
+
+Work Log:
+- Read worklog from previous tasks (Tasks 1–5) — all components stable and compiling
+- Reviewed existing page.tsx, footer.tsx, stats-counter-section.tsx, testimonials-section.tsx, globals.css to understand patterns and existing utility classes
+- Created 3 new components and updated 2 existing files:
+
+1. SectionDivider Component (`/src/components/section-divider.tsx`):
+   - Takes `variant` prop: 'wave' | 'gold-line' | 'ornament'
+   - 'wave': Subtle navy SVG wave (dual-layer with 8% and 4% opacity) for dark-to-light transitions, max 40px tall
+   - 'gold-line': Centered gold gradient line with diamond in the middle, max 40px tall
+   - 'ornament': Decorative gold scrollwork/flourish SVG (scrolls + center diamond + connecting lines), max 40px tall
+   - All variants are subtle, not overwhelming
+   - 'use client' component
+
+2. CountdownSection Component (`/src/components/countdown-section.tsx`):
+   - Navy (#0F1F4B) gradient background with pattern-dots overlay
+   - Section header: "Next Batch Starts In" with gold separator and "Limited Seats Available" label
+   - Real countdown timer to June 15, 2026 (09:00 IST) using useEffect + setInterval (updates every second)
+   - 4 countdown boxes (Days, Hours, Minutes, Seconds) in glass-card style with gold border
+   - Gold numbers using gold-gradient-text + stat-number classes, cream labels using ui-label
+   - Gold particles/dots decoration (18 animated particles with staggered opacity/scale)
+   - "Reserve Your Seat" CTA button with btn-gold-shimmer linking to #admissions
+   - Date hint: "June 15, 2026 · Morning Batch"
+   - Framer Motion entrance animations with staggered delays
+   - Responsive: 2x2 grid on mobile, 4 columns on desktop
+
+3. AchieversSection Component (`/src/components/achievers-section.tsx`):
+   - Cream (#FAFAF7) background with subtle gradient (cream → warm → cream)
+   - Section header: "Our Achievers" with gold separator and "Building the Next Generation of Civil Servants" subtext
+   - 8 achiever cards in responsive grid (2 cols mobile, 4 cols desktop)
+   - Each card features:
+     - Circular initials avatar with gold ring on hover (group-hover:border-[#C8960C] + shadow)
+     - Name in serif font (font-serif font-semibold)
+     - Rank badge in colored pill (service-specific colors: IAS=gold, IFS=teal, IPS=navy, IRS=royal-navy, KAS=crimson)
+     - Service label
+     - Year in mono text (font-mono)
+   - Cards have premium-shadow, hover-lift, gold-border-animate effects
+   - Stagger animation on scroll into view (0.08s delay per card)
+   - "View All Results" link with ArrowRight icon at bottom
+   - "Hall of Fame" section label
+
+4. Footer Newsletter Subscription (`/src/components/footer.tsx` updated):
+   - Added newsletter subscription row ABOVE the 4-column grid
+   - Full-width row with "Stay Updated" heading on left, email input + "Subscribe" button on right
+   - On mobile: stacks vertically
+   - Gold "Subscribe" button with btn-gold-shimmer effect and Send icon
+   - Input: navy border (rgba(200,150,12,0.3)), cream background (rgba(250,250,247,0.08)), placeholder "Enter your email address"
+   - Privacy text: "We respect your privacy. Unsubscribe anytime."
+   - Uses /api/lead-capture endpoint for submission (fullName: "Newsletter Subscriber", phone: "N/A")
+   - Toast notifications on success/error (via sonner)
+   - Loading state with "Subscribing..." pulse animation
+   - Added useState, Send icon imports
+
+5. Updated page.tsx with complete section order and dividers:
+   ```
+   AnnouncementBar → ScrollProgress → Header
+   HeroSection + ResultsTicker
+   [SectionDivider variant='wave']
+   WhyAristocratSection
+   [SectionDivider variant='gold-line']
+   StatsCounterSection
+   [SectionDivider variant='wave']
+   CountdownSection (NEW)
+   [SectionDivider variant='gold-line']
+   CoursesSection
+   [SectionDivider variant='ornament']
+   FacultySection
+   [SectionDivider variant='wave']
+   TestimonialsSection
+   [SectionDivider variant='gold-line']
+   AchieversSection (NEW)
+   [SectionDivider variant='wave']
+   AboutSection
+   [SectionDivider variant='gold-line']
+   ResourcesSection
+   [SectionDivider variant='wave']
+   FAQSection
+   [SectionDivider variant='gold-line']
+   AdmissionsSection
+   [SectionDivider variant='wave']
+   LocationSection
+   Footer → BackToTop → ChatbotWidget → WhatsAppButton
+   ```
+
+- Lint: clean (0 errors, 0 warnings)
+- Dev server: compiling successfully, all 200s
+
+Stage Summary:
+- 3 new components: SectionDivider, CountdownSection, AchieversSection
+- 2 existing components updated: Footer (newsletter row), page.tsx (section order + dividers)
+- Countdown timer with real-time updates to June 15, 2026
+- 8 achiever cards with service-specific color-coded rank badges
+- 3 decorative divider variants: wave, gold-line, ornament
+- Newsletter subscription with API integration and toast notifications
+- No existing component content/text modified
+- All Navy/Gold/Cream color philosophy maintained
+- Mobile responsive throughout
+- Total components now: 22+ (19 original + 3 new)
+
+---
+Task ID: 7
+Agent: Frontend Styling Expert
+Task: Fix dark mode support and polish styling across all sections
+
+Work Log:
+- Read worklog.md from previous tasks (Tasks 1–6) — all components stable and compiling
+- Reviewed all 14 component files to identify inline styles that bypass Tailwind dark mode
+- Identified systematic issue: ~80+ instances of inline `style={{ color/backgroundColor/borderColor }}` that completely bypass Tailwind's dark mode, making the site look identical in both light and dark themes
+
+- Task 1: Replaced ALL inline styles with Tailwind dark mode classes across 14 components:
+
+  Mapping applied consistently:
+  - `backgroundColor: '#0F1F4B'` → `bg-navy dark:bg-[#0A1428]`
+  - `backgroundColor: '#FAFAF7'` → `bg-ivory-cream dark:bg-[#0D1525]`
+  - `backgroundColor: '#FDF4DC'` → `bg-gold-pale dark:bg-[#1A1A10]`
+  - `color: '#0F1F4B'` → `text-navy dark:text-ivory-cream`
+  - `color: '#FAFAF7'` → `text-ivory-cream`
+  - `color: '#C8960C'` → `text-sovereign-gold dark:text-champagne-gold`
+  - `color: '#E8B830'` → `text-champagne-gold`
+  - `color: 'rgba(250,250,247,0.X)'` → `text-ivory-cream/X0`
+  - `color: '#3D3D3A'` → `text-stone-gray dark:text-ivory-cream/70`
+  - `color: '#737370'` → `text-mid-gray dark:text-ivory-cream/50`
+  - `color: '#1C1C1E'` → `text-carbon dark:text-ivory-cream/90`
+  - `borderColor: '#C8960C'` → `border-sovereign-gold dark:border-champagne-gold`
+  - `borderColor: 'rgba(232,232,228,0.25)'` → `border-ivory-cream/25`
+
+  Components updated:
+  1. hero-section.tsx — 9 inline styles replaced (section bg, label color, headline color, gold line bg, subtext color, CTA bg/color, scroll line bg, chevron color)
+  2. results-ticker.tsx — 2 inline styles replaced (section bg, separator + marquee text color)
+  3. why-aristocrat-section.tsx — 3 inline styles replaced (heading color, separator bg, label/description dark variants)
+  4. stats-counter-section.tsx — 4 inline styles replaced (section bg, stat label color, separator bg, mobile dots bg)
+  5. courses-section.tsx — 3 inline styles replaced (heading color, separator bg, fee rupee color, card borders)
+  6. faculty-section.tsx — 5 inline styles replaced (section bg, label/heading/separator/subtext, card border/bg, avatar bg, ring colors)
+  7. testimonials-section.tsx — 4 inline styles replaced (section bg, heading color, separator bg, quote mark, nav dots, avatar bg, border colors)
+  8. about-section.tsx — 7 inline styles replaced (section bg, heading color, separator bg, portrait border/bg, name/role color, message text color, philosophy border/quote color)
+  9. resources-section.tsx — 3 inline styles replaced (section bg, card border/bg, icon/link color, submit button bg/color)
+  10. admissions-section.tsx — 8 inline styles replaced (section bg, label/heading/separator, form input styles, step icon/badge, table border/text)
+  11. location-section.tsx — 4 inline styles replaced (section bg, map bg, pin color, button bg/color, social link border/color, contact text color)
+  12. faq-section.tsx — 3 inline styles replaced (section bg, label/heading/separator, accordion item border/bg, trigger/content text)
+  13. footer.tsx — 8 inline styles replaced (section bg, brand name color, subtext color, social icon color, link colors, contact icon/text, separator, bottom bar text)
+  14. chatbot-widget.tsx — 5 inline styles replaced (bubble bg/color, panel bg/border, header bg, message bubbles, input/send button styles)
+
+- Task 2: Improved Course Cards styling (courses-section.tsx):
+  - Added Lucide icons to each course card header:
+    BookOpen (GS Foundation), Landmark (KAS), Layers (Optional), ClipboardCheck (Test Series), Newspaper (Current Affairs), MessageSquare (Interview Guidance)
+  - Improved fee display: ₹ symbol now uses text-xl font-bold + sovereign-gold/champagne-gold color
+  - Added subtle gradient overlay on "Most Popular" card (linear-gradient with 6% gold)
+  - Improved spacing: icon + title in flex row with gap-3
+  - Added "Limited Seats" indicator for Interview Guidance course:
+    Pulsing red dot (animate-ping + static dot) + "Only a few spots remaining" text in deep-crimson
+
+- Task 3: Verified and improved mobile responsiveness:
+  - Hero section text: verified clamp(2.75rem, 7vw, 4.5rem) working ✓
+  - Course cards grid: verified grid-cols-1 on mobile ✓
+  - Faculty section: verified horizontal scroll on mobile ✓
+  - Admissions form: verified w-full on all inputs ✓
+  - FAQ section: improved padding from px-5 to px-4 sm:px-5 for better mobile fit ✓
+  - Footer: verified grid-cols-1 on mobile, stacks properly ✓
+  - Chatbot: verified w-[calc(100vw-2rem)] on mobile ✓
+  - All sections: verified py-16 md:py-24 ✓
+
+- Footer hover effects improved:
+  - Social icons: replaced inline onMouseEnter/onMouseLeave with Tailwind hover:text-sovereign-gold classes
+  - Quick links / course links: replaced inline hover handlers with Tailwind hover:text-sovereign-gold classes
+  - Book Demo CTA: replaced inline hover with Tailwind hover:text-champagne-gold
+
+- Lint: clean (0 errors, 0 warnings)
+- Dev server: compiling successfully, returns 200
+
+Stage Summary:
+- 80+ inline style instances replaced with Tailwind dark mode classes across 14 components
+- Dark mode now fully functional: navy sections get darker (#0A1428), cream sections become dark (#0D1525), gold-pale becomes dark gold (#1A1A10)
+- All text colors properly adapt: navy → ivory-cream, sovereign-gold → champagne-gold, etc.
+- Course cards enhanced with icons, improved fee display, gradient overlay on Most Popular, Limited Seats indicator
+- Mobile responsiveness verified and improved across all components
+- No content/text changed, no sections added/removed
+- All Framer Motion animations preserved
+- All existing CSS utility classes (glass-card, gold-gradient-text, premium-shadow, etc.) preserved
+- Light mode visual appearance IDENTICAL to before

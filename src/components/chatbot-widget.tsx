@@ -6,6 +6,7 @@ import { MessageCircle, X, Send, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { cn } from '@/lib/utils'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -101,14 +102,13 @@ export function ChatbotWidget() {
           >
             <Button
               onClick={() => setIsOpen(true)}
-              className="w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow"
-              style={{ backgroundColor: '#0F1F4B', color: '#FAFAF7' }}
+              className="w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow bg-navy dark:bg-[#0A1428] text-ivory-cream"
               aria-label="Open chat assistant"
             >
               <MessageCircle className="w-6 h-6" />
             </Button>
             {/* Pulse ring */}
-            <span className="absolute inset-0 rounded-full animate-ping opacity-20 pointer-events-none" style={{ backgroundColor: '#C8960C' }} />
+            <span className="absolute inset-0 rounded-full animate-ping opacity-20 pointer-events-none bg-sovereign-gold" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -121,25 +121,18 @@ export function ChatbotWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed z-50 bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] max-h-[70vh] flex flex-col rounded-xl overflow-hidden shadow-2xl border"
-            style={{
-              backgroundColor: '#FAFAF7',
-              borderColor: '#E8E8E4',
-            }}
+            className="fixed z-50 bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] max-h-[70vh] flex flex-col rounded-xl overflow-hidden shadow-2xl border border-light-gray dark:border-[#1C2541] bg-ivory-cream dark:bg-[#0D1525]"
           >
             {/* Header */}
             <div
-              className="flex items-center justify-between px-4 py-3 shrink-0"
-              style={{ backgroundColor: '#0F1F4B' }}
+              className="flex items-center justify-between px-4 py-3 shrink-0 bg-navy dark:bg-[#0A1428]"
             >
               <div className="flex items-center gap-2">
                 <div
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: '#22C55E' }}
+                  className="w-2 h-2 rounded-full bg-green-500"
                 />
                 <h3
-                  className="font-serif text-[18px] font-medium"
-                  style={{ color: '#FAFAF7' }}
+                  className="font-serif text-[18px] font-medium text-ivory-cream"
                 >
                   Ask Aristocrat
                 </h3>
@@ -148,8 +141,7 @@ export function ChatbotWidget() {
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(false)}
-                className="h-8 w-8 hover:bg-white/10"
-                style={{ color: '#FAFAF7' }}
+                className="h-8 w-8 hover:bg-white/10 text-ivory-cream"
                 aria-label="Close chat"
               >
                 <X className="w-4 h-4" />
@@ -168,16 +160,12 @@ export function ChatbotWidget() {
                     className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                   >
                     <div
-                      className={`max-w-[80%] px-4 py-2.5 rounded-xl text-[14px] font-sans leading-relaxed ${
+                      className={cn(
+                        'max-w-[80%] px-4 py-2.5 rounded-xl text-[14px] font-sans leading-relaxed',
                         msg.role === 'user'
-                          ? 'rounded-br-sm'
-                          : 'rounded-bl-sm'
-                      }`}
-                      style={{
-                        backgroundColor:
-                          msg.role === 'user' ? '#C8960C' : '#0F1F4B',
-                        color: '#FAFAF7',
-                      }}
+                          ? 'rounded-br-sm bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]'
+                          : 'rounded-bl-sm bg-navy dark:bg-[#0A1428] text-ivory-cream'
+                      )}
                     >
                       {msg.content}
                     </div>
@@ -190,8 +178,7 @@ export function ChatbotWidget() {
                     className="flex justify-start"
                   >
                     <div
-                      className="px-4 py-2.5 rounded-xl rounded-bl-sm text-[14px] font-sans"
-                      style={{ backgroundColor: '#0F1F4B', color: '#FAFAF7' }}
+                      className="px-4 py-2.5 rounded-xl rounded-bl-sm text-[14px] font-sans bg-navy dark:bg-[#0A1428] text-ivory-cream"
                     >
                       <span className="flex items-center gap-2">
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -205,8 +192,7 @@ export function ChatbotWidget() {
 
             {/* Input */}
             <div
-              className="flex items-center gap-2 px-4 py-3 border-t shrink-0"
-              style={{ borderColor: '#E8E8E4', backgroundColor: '#FAFAF7' }}
+              className="flex items-center gap-2 px-4 py-3 border-t shrink-0 border-light-gray dark:border-[#1C2541] bg-ivory-cream dark:bg-[#0D1525]"
             >
               <Input
                 ref={inputRef}
@@ -215,18 +201,18 @@ export function ChatbotWidget() {
                 onKeyDown={handleKeyDown}
                 placeholder="Ask about courses, fees..."
                 disabled={isLoading}
-                className="flex-1 font-sans text-[14px] h-10 border-none bg-white/80 focus-visible:ring-1 focus-visible:ring-sovereign-gold"
-                style={{ backgroundColor: 'rgba(255,255,255,0.8)' }}
+                className="flex-1 font-sans text-[14px] h-10 border-none bg-white/80 dark:bg-[#111827] focus-visible:ring-1 focus-visible:ring-sovereign-gold dark:focus-visible:ring-champagne-gold"
               />
               <Button
                 onClick={handleSend}
                 disabled={isLoading || !input.trim()}
                 size="icon"
-                className="h-10 w-10 shrink-0 rounded-lg"
-                style={{
-                  backgroundColor: input.trim() ? '#C8960C' : '#E8E8E4',
-                  color: input.trim() ? '#0F1F4B' : '#737370',
-                }}
+                className={cn(
+                  'h-10 w-10 shrink-0 rounded-lg',
+                  input.trim()
+                    ? 'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]'
+                    : 'bg-light-gray dark:bg-[#1C2541] text-mid-gray dark:text-ivory-cream/50'
+                )}
                 aria-label="Send message"
               >
                 <Send className="w-4 h-4" />

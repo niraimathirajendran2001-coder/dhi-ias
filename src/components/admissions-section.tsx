@@ -141,16 +141,8 @@ export default function AdmissionsSection() {
   return (
     <section
       id="admissions"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden bg-navy dark:bg-[#0A1428]"
     >
-      {/* Subtle gradient on the navy background */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, #0F1F4B 0%, #162557 30%, #0F1F4B 60%, #0D1A3F 100%)',
-        }}
-      />
-
       {/* Subtle pattern overlay */}
       <div
         className="absolute inset-0 pointer-events-none pattern-dots"
@@ -169,22 +161,19 @@ export default function AdmissionsSection() {
         >
           <motion.span
             variants={fadeInUp}
-            className="inline-block mb-4 font-sans ui-label text-[11px]"
-            style={{ color: '#E8B830' }}
+            className="inline-block mb-4 font-sans ui-label text-[11px] text-champagne-gold"
           >
             ADMISSIONS
           </motion.span>
           <motion.h2
             variants={fadeInUp}
-            className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4"
-            style={{ color: '#FAFAF7' }}
+            className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4 text-ivory-cream"
           >
             Your Journey Starts Here
           </motion.h2>
           <motion.div
             variants={fadeInUp}
-            className="mx-auto h-[2px] w-20"
-            style={{ backgroundColor: '#C8960C' }}
+            className="mx-auto h-[2px] w-20 bg-sovereign-gold dark:bg-champagne-gold"
           />
         </motion.div>
 
@@ -206,36 +195,31 @@ export default function AdmissionsSection() {
                 <div className="flex flex-col items-center text-center">
                   {/* Step badge with decorative icon */}
                   <div
-                    className="relative flex items-center justify-center rounded-full mb-3"
+                    className="relative flex items-center justify-center rounded-full mb-3 border-2 border-sovereign-gold dark:border-champagne-gold"
                     style={{
                       width: 56,
                       height: 56,
-                      border: '2px solid #C8960C',
                       background: 'linear-gradient(135deg, rgba(200,150,12,0.1), rgba(200,150,12,0.05))',
                     }}
                   >
                     <step.icon
-                      className="w-5 h-5"
-                      style={{ color: '#E8B830' }}
+                      className="w-5 h-5 text-champagne-gold"
                       strokeWidth={1.8}
                     />
                     {/* Step number badge */}
                     <div
-                      className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center font-sans text-[10px] font-bold"
-                      style={{ backgroundColor: '#C8960C', color: '#0F1F4B' }}
+                      className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center font-sans text-[10px] font-bold bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]"
                     >
                       {step.number}
                     </div>
                   </div>
                   <p
-                    className="font-sans text-[16px] font-semibold mb-1"
-                    style={{ color: '#FAFAF7' }}
+                    className="font-sans text-[16px] font-semibold mb-1 text-ivory-cream"
                   >
                     {step.title}
                   </p>
                   <p
-                    className="font-sans text-[13px] max-w-[180px]"
-                    style={{ color: 'rgba(250,250,247,0.6)' }}
+                    className="font-sans text-[13px] max-w-[180px] text-ivory-cream/60"
                   >
                     {step.description}
                   </p>
@@ -245,18 +229,14 @@ export default function AdmissionsSection() {
                   <div className="hidden md:flex items-center px-4 relative">
                     {/* Gold animated line */}
                     <motion.div
-                      className="h-[2px] w-12"
-                      style={{
-                        background: 'linear-gradient(90deg, #C8960C, #E8B830)',
-                      }}
+                      className="h-[2px] w-12 bg-gradient-to-r from-sovereign-gold to-champagne-gold"
                       initial={{ scaleX: 0 }}
                       whileInView={{ scaleX: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.3 + index * 0.2 }}
                     />
                     <ArrowRight
-                      className="size-5 ml-1"
-                      style={{ color: '#E8B830', opacity: 0.6 }}
+                      className="size-5 ml-1 text-champagne-gold opacity-60"
                     />
                   </div>
                 )}
@@ -287,8 +267,7 @@ export default function AdmissionsSection() {
                 <div className="space-y-2">
                   <Label
                     htmlFor="fullName"
-                    className="font-sans text-[13px] font-medium"
-                    style={{ color: '#FAFAF7' }}
+                    className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     Full Name
                   </Label>
@@ -299,12 +278,7 @@ export default function AdmissionsSection() {
                     placeholder="Enter your full name"
                     value={formData.fullName}
                     onChange={(e) => updateField('fullName', e.target.value)}
-                    className="w-full font-sans"
-                    style={{
-                      backgroundColor: 'rgba(250,250,247,0.08)',
-                      borderColor: 'rgba(232,232,228,0.25)',
-                      color: '#FAFAF7',
-                    }}
+                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
                   />
                 </div>
 
@@ -312,8 +286,7 @@ export default function AdmissionsSection() {
                 <div className="space-y-2">
                   <Label
                     htmlFor="phone"
-                    className="font-sans text-[13px] font-medium"
-                    style={{ color: '#FAFAF7' }}
+                    className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     Phone Number
                   </Label>
@@ -324,12 +297,7 @@ export default function AdmissionsSection() {
                     placeholder="+91 XXXXX XXXXX"
                     value={formData.phone}
                     onChange={(e) => updateField('phone', e.target.value)}
-                    className="w-full font-sans"
-                    style={{
-                      backgroundColor: 'rgba(250,250,247,0.08)',
-                      borderColor: 'rgba(232,232,228,0.25)',
-                      color: '#FAFAF7',
-                    }}
+                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
                   />
                   <div className="flex items-center gap-2 pt-1">
                     <Checkbox
@@ -338,12 +306,11 @@ export default function AdmissionsSection() {
                       onCheckedChange={(checked) =>
                         updateField('whatsapp', checked === true)
                       }
-                      className="border-[rgba(232,232,228,0.4)] data-[state=checked]:bg-[#C8960C] data-[state=checked]:border-[#C8960C]"
+                      className="border-ivory-cream/40 data-[state=checked]:bg-sovereign-gold data-[state=checked]:border-sovereign-gold"
                     />
                     <Label
                       htmlFor="whatsapp"
-                      className="font-sans text-[13px] font-normal cursor-pointer"
-                      style={{ color: 'rgba(250,250,247,0.7)' }}
+                      className="font-sans text-[13px] font-normal cursor-pointer text-ivory-cream/70"
                     >
                       Contact me on WhatsApp
                     </Label>
@@ -354,8 +321,7 @@ export default function AdmissionsSection() {
                 <div className="space-y-2">
                   <Label
                     htmlFor="email"
-                    className="font-sans text-[13px] font-medium"
-                    style={{ color: '#FAFAF7' }}
+                    className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     Email Address
                   </Label>
@@ -366,20 +332,14 @@ export default function AdmissionsSection() {
                     placeholder="you@example.com"
                     value={formData.email}
                     onChange={(e) => updateField('email', e.target.value)}
-                    className="w-full font-sans"
-                    style={{
-                      backgroundColor: 'rgba(250,250,247,0.08)',
-                      borderColor: 'rgba(232,232,228,0.25)',
-                      color: '#FAFAF7',
-                    }}
+                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
                   />
                 </div>
 
                 {/* Course of Interest */}
                 <div className="space-y-2">
                   <Label
-                    className="font-sans text-[13px] font-medium"
-                    style={{ color: '#FAFAF7' }}
+                    className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     Course of Interest
                   </Label>
@@ -388,14 +348,9 @@ export default function AdmissionsSection() {
                     onValueChange={(val) => updateField('course', val)}
                   >
                     <SelectTrigger
-                      className="w-full font-sans"
-                      style={{
-                        backgroundColor: 'rgba(250,250,247,0.08)',
-                        borderColor: 'rgba(232,232,228,0.25)',
-                        color: formData.course ? '#FAFAF7' : 'rgba(250,250,247,0.5)',
-                      }}
+                      className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
                     >
-                      <SelectValue placeholder="Select a course" />
+                      <SelectValue placeholder="Select a course" className="text-ivory-cream/50" />
                     </SelectTrigger>
                     <SelectContent>
                       {courseOptions.map((course) => (
@@ -411,8 +366,7 @@ export default function AdmissionsSection() {
                 <div className="space-y-2">
                   <Label
                     htmlFor="city"
-                    className="font-sans text-[13px] font-medium"
-                    style={{ color: '#FAFAF7' }}
+                    className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     City / Location
                   </Label>
@@ -423,20 +377,14 @@ export default function AdmissionsSection() {
                     placeholder="Your city"
                     value={formData.city}
                     onChange={(e) => updateField('city', e.target.value)}
-                    className="w-full font-sans"
-                    style={{
-                      backgroundColor: 'rgba(250,250,247,0.08)',
-                      borderColor: 'rgba(232,232,228,0.25)',
-                      color: '#FAFAF7',
-                    }}
+                    className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream placeholder:text-ivory-cream/50 dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
                   />
                 </div>
 
                 {/* How did you hear */}
                 <div className="space-y-2">
                   <Label
-                    className="font-sans text-[13px] font-medium"
-                    style={{ color: '#FAFAF7' }}
+                    className="font-sans text-[13px] font-medium text-ivory-cream"
                   >
                     How did you hear about us?
                   </Label>
@@ -445,14 +393,9 @@ export default function AdmissionsSection() {
                     onValueChange={(val) => updateField('referral', val)}
                   >
                     <SelectTrigger
-                      className="w-full font-sans"
-                      style={{
-                        backgroundColor: 'rgba(250,250,247,0.08)',
-                        borderColor: 'rgba(232,232,228,0.25)',
-                        color: formData.referral ? '#FAFAF7' : 'rgba(250,250,247,0.5)',
-                      }}
+                      className="w-full font-sans bg-ivory-cream/8 border-ivory-cream/25 text-ivory-cream dark:bg-ivory-cream/5 dark:border-ivory-cream/15"
                     >
-                      <SelectValue placeholder="Select an option" />
+                      <SelectValue placeholder="Select an option" className="text-ivory-cream/50" />
                     </SelectTrigger>
                     <SelectContent>
                       {referralOptions.map((option) => (
@@ -468,11 +411,7 @@ export default function AdmissionsSection() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 h-auto font-sans text-[16px] font-semibold rounded-md btn-gold-shimmer"
-                  style={{
-                    backgroundColor: '#C8960C',
-                    color: '#0F1F4B',
-                  }}
+                  className="w-full py-4 h-auto font-sans text-[16px] font-semibold rounded-md btn-gold-shimmer bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
@@ -498,19 +437,16 @@ export default function AdmissionsSection() {
                   transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
                 >
                   <CheckCircle
-                    className="mx-auto size-16 mb-6"
-                    style={{ color: '#22C55E' }}
+                    className="mx-auto size-16 mb-6 text-green-500"
                   />
                 </motion.div>
                 <p
-                  className="font-sans text-[18px] font-semibold mb-2"
-                  style={{ color: '#FAFAF7' }}
+                  className="font-sans text-[18px] font-semibold mb-2 text-ivory-cream"
                 >
                   Thank you!
                 </p>
                 <p
-                  className="font-sans text-[15px]"
-                  style={{ color: 'rgba(250,250,247,0.8)' }}
+                  className="font-sans text-[15px] text-ivory-cream/80"
                 >
                   We&apos;ll reach out within 2 hours.
                 </p>
@@ -528,23 +464,22 @@ export default function AdmissionsSection() {
           className="mx-auto max-w-xl"
         >
           <h3
-            className="font-serif section-heading text-[24px] mb-6 text-center"
-            style={{ color: '#FAFAF7' }}
+            className="font-serif section-heading text-[24px] mb-6 text-center text-ivory-cream"
           >
             Transparent Fee Structure
           </h3>
 
-          <div className="overflow-hidden rounded-xl border" style={{ borderColor: 'rgba(232,232,228,0.15)' }}>
+          <div className="overflow-hidden rounded-xl border border-ivory-cream/15">
             <table className="w-full">
               <thead>
                 <tr style={{ background: 'linear-gradient(135deg, #C8960C, #E8B830)' }}>
-                  <th className="font-sans text-[13px] font-semibold text-left px-4 py-3.5" style={{ color: '#0F1F4B' }}>
+                  <th className="font-sans text-[13px] font-semibold text-left px-4 py-3.5 text-navy">
                     Course
                   </th>
-                  <th className="font-sans text-[13px] font-semibold text-left px-4 py-3.5" style={{ color: '#0F1F4B' }}>
+                  <th className="font-sans text-[13px] font-semibold text-left px-4 py-3.5 text-navy">
                     Duration
                   </th>
-                  <th className="font-sans text-[13px] font-semibold text-right px-4 py-3.5" style={{ color: '#0F1F4B' }}>
+                  <th className="font-sans text-[13px] font-semibold text-right px-4 py-3.5 text-navy">
                     Fee
                   </th>
                 </tr>
@@ -553,7 +488,7 @@ export default function AdmissionsSection() {
                 {feeStructure.map((row, index) => (
                   <tr
                     key={row.course}
-                    className="transition-colors duration-200"
+                    className="transition-colors duration-200 bg-royal-navy/60 dark:bg-[#0D1525]/80"
                     style={{
                       backgroundColor: index % 2 === 0 ? '#1A2E6B' : 'rgba(26,46,107,0.6)',
                     }}
@@ -564,13 +499,13 @@ export default function AdmissionsSection() {
                       e.currentTarget.style.backgroundColor = index % 2 === 0 ? '#1A2E6B' : 'rgba(26,46,107,0.6)'
                     }}
                   >
-                    <td className="font-sans text-[14px] px-4 py-3" style={{ color: '#FAFAF7' }}>
+                    <td className="font-sans text-[14px] px-4 py-3 text-ivory-cream">
                       {row.course}
                     </td>
-                    <td className="font-sans text-[14px] px-4 py-3" style={{ color: 'rgba(250,250,247,0.7)' }}>
+                    <td className="font-sans text-[14px] px-4 py-3 text-ivory-cream/70">
                       {row.duration}
                     </td>
-                    <td className="font-sans text-[14px] text-right px-4 py-3 font-medium" style={{ color: '#E8B830' }}>
+                    <td className="font-sans text-[14px] text-right px-4 py-3 font-medium text-champagne-gold">
                       {row.fee}
                     </td>
                   </tr>
@@ -580,8 +515,7 @@ export default function AdmissionsSection() {
           </div>
 
           <p
-            className="font-sans text-[12px] mt-4 text-center"
-            style={{ color: 'rgba(250,250,247,0.6)' }}
+            className="font-sans text-[12px] mt-4 text-center text-ivory-cream/60"
           >
             All fees inclusive of study material, test series, and mentorship. EMI options available.
           </p>

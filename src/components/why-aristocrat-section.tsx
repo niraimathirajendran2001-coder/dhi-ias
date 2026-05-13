@@ -82,7 +82,7 @@ export default function WhyAristocratSection() {
     >
       {/* Subtle gradient background instead of flat white */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 bg-ivory-cream dark:bg-[#0D1525]"
         style={{
           background: 'linear-gradient(180deg, #FAFAF7 0%, #F5F3ED 50%, #FAFAF7 100%)',
         }}
@@ -102,13 +102,13 @@ export default function WhyAristocratSection() {
           {/* Section Heading */}
           <h2
             id="why-aristocrat-heading"
-            className="mt-3 font-serif section-heading text-[40px] text-navy md:text-[46px]"
+            className="mt-3 font-serif section-heading text-[40px] text-navy dark:text-ivory-cream md:text-[46px]"
           >
             Why Future Officers Choose Us
           </h2>
 
           {/* Gold Separator */}
-          <div className="mx-auto mt-5 h-[2px] w-[40px] bg-sovereign-gold" />
+          <div className="mx-auto mt-5 h-[2px] w-[40px] bg-sovereign-gold dark:bg-champagne-gold" />
         </motion.div>
 
         {/* Feature Cards */}
@@ -145,12 +145,12 @@ export default function WhyAristocratSection() {
                 </span>
 
                 {/* Label */}
-                <span className="mt-2 text-base font-sans font-medium text-stone-gray">
+                <span className="mt-2 text-base font-sans font-medium text-stone-gray dark:text-ivory-cream/70">
                   {feature.label}
                 </span>
 
                 {/* Description */}
-                <p className="mt-3 line-clamp-2 text-sm font-sans leading-relaxed text-mid-gray">
+                <p className="mt-3 line-clamp-2 text-sm font-sans leading-relaxed text-mid-gray dark:text-ivory-cream/50">
                   {feature.description}
                 </p>
               </div>

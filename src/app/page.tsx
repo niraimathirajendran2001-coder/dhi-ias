@@ -19,6 +19,9 @@ import { WhatsAppButton } from '@/components/whatsapp-button'
 import { ChatbotWidget } from '@/components/chatbot-widget'
 import { BackToTop } from '@/components/back-to-top'
 import { AnnouncementBar } from '@/components/announcement-bar'
+import { SectionDivider } from '@/components/section-divider'
+import CountdownSection from '@/components/countdown-section'
+import AchieversSection from '@/components/achievers-section'
 
 export default function Home() {
   return (
@@ -34,44 +37,74 @@ export default function Home() {
           <ResultsTicker />
         </section>
 
+        <SectionDivider variant="wave" />
+
         {/* Why Aristocrat — Cream background */}
         <WhyAristocratSection />
 
+        <SectionDivider variant="gold-line" />
+
         {/* Stats Counter — Navy dark strip */}
         <StatsCounterSection />
+
+        <SectionDivider variant="wave" />
+
+        {/* Countdown — Navy background */}
+        <CountdownSection />
+
+        <SectionDivider variant="gold-line" />
 
         {/* Courses — Light gradient background */}
         <section id="courses">
           <CoursesSection />
         </section>
 
+        <SectionDivider variant="ornament" />
+
         {/* Faculty — Navy dark section */}
         <section id="faculty">
           <FacultySection />
         </section>
+
+        <SectionDivider variant="wave" />
 
         {/* Testimonials — Cream background */}
         <section id="results">
           <TestimonialsSection />
         </section>
 
+        <SectionDivider variant="gold-line" />
+
+        {/* Achievers — Cream background */}
+        <AchieversSection />
+
+        <SectionDivider variant="wave" />
+
         {/* About — Cream background */}
         <section id="about">
           <AboutSection />
         </section>
+
+        <SectionDivider variant="gold-line" />
 
         {/* Resources — Gold pale background */}
         <section id="resources">
           <ResourcesSection />
         </section>
 
+        <SectionDivider variant="wave" />
+
         {/* FAQ — Cream background */}
         <FAQSection />
+
+        <SectionDivider variant="gold-line" />
 
         {/* Admissions — Navy background */}
         <section id="admissions">
           <AdmissionsSection />
         </section>
+
+        <SectionDivider variant="wave" />
 
         {/* Location — Ivory cream background */}
         <section id="contact">

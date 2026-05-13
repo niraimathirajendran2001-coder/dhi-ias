@@ -116,16 +116,8 @@ export function ResourcesSection() {
   return (
     <section
       id="free-resources"
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden bg-gold-pale dark:bg-[#1A1A10]"
     >
-      {/* Improved gold-pale background with subtle gradient */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, #FDF4DC 0%, #FBF0D0 40%, #FDF4DC 100%)',
-        }}
-      />
-
       {/* Subtle pattern overlay */}
       <div
         className="absolute inset-0 pointer-events-none pattern-dots"
@@ -143,7 +135,7 @@ export function ResourcesSection() {
           <h2
             className={cn(
               'mt-3 font-serif section-heading text-3xl md:text-4xl lg:text-5xl',
-              'text-navy'
+              'text-navy dark:text-ivory-cream'
             )}
           >
             Start Your UPSC Journey — Free
@@ -160,7 +152,7 @@ export function ResourcesSection() {
             transition={{ duration: 0.6 }}
           >
             <p
-              className="mb-6 max-w-lg text-[15px] font-sans body-text text-stone-gray"
+              className="mb-6 max-w-lg text-[15px] font-sans body-text text-stone-gray dark:text-ivory-cream/70"
             >
               Get our comprehensive 60-Day UPSC Study Plan delivered to your
               inbox. No spam. No calls. Just a solid plan to start your
@@ -174,18 +166,18 @@ export function ResourcesSection() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
-                  className="flex flex-col items-center justify-center rounded-xl bg-white p-8 text-center shadow-sm"
+                  className="flex flex-col items-center justify-center rounded-xl bg-white dark:bg-[#111827] p-8 text-center shadow-sm"
                 >
                   <CheckCircle2 className="mb-3 h-14 w-14 text-green-600" />
-                  <h3 className="font-serif text-2xl font-bold text-navy">
+                  <h3 className="font-serif text-2xl font-bold text-navy dark:text-ivory-cream">
                     Check your inbox!
                   </h3>
-                  <p className="mt-2 text-sm text-stone-gray">
+                  <p className="mt-2 text-sm text-stone-gray dark:text-ivory-cream/70">
                     Your 60-Day Study Plan is on its way.
                   </p>
                   <Button
                     variant="outline"
-                    className="mt-5 border-navy text-navy hover:bg-navy hover:text-white"
+                    className="mt-5 border-navy dark:border-ivory-cream/30 text-navy dark:text-ivory-cream hover:bg-navy hover:text-white"
                     onClick={() => setSubmitted(false)}
                   >
                     Download Another Copy
@@ -201,14 +193,14 @@ export function ResourcesSection() {
                 >
                   {/* Full Name */}
                   <div className="space-y-1.5">
-                    <Label htmlFor="fullName" className="text-sm font-medium text-navy">
+                    <Label htmlFor="fullName" className="text-sm font-medium text-navy dark:text-ivory-cream">
                       Full Name
                     </Label>
                     <Input
                       id="fullName"
                       placeholder="Your full name"
                       className={cn(
-                        'bg-white',
+                        'bg-white dark:bg-[#111827]',
                         errors.fullName && 'border-red-500 focus-visible:ring-red-500/30'
                       )}
                       {...register('fullName')}
@@ -220,7 +212,7 @@ export function ResourcesSection() {
 
                   {/* Email */}
                   <div className="space-y-1.5">
-                    <Label htmlFor="email" className="text-sm font-medium text-navy">
+                    <Label htmlFor="email" className="text-sm font-medium text-navy dark:text-ivory-cream">
                       Email Address
                     </Label>
                     <Input
@@ -228,7 +220,7 @@ export function ResourcesSection() {
                       type="email"
                       placeholder="your@email.com"
                       className={cn(
-                        'bg-white',
+                        'bg-white dark:bg-[#111827]',
                         errors.email && 'border-red-500 focus-visible:ring-red-500/30'
                       )}
                       {...register('email')}
@@ -240,7 +232,7 @@ export function ResourcesSection() {
 
                   {/* Phone */}
                   <div className="space-y-1.5">
-                    <Label htmlFor="phone" className="text-sm font-medium text-navy">
+                    <Label htmlFor="phone" className="text-sm font-medium text-navy dark:text-ivory-cream">
                       Phone Number
                     </Label>
                     <Input
@@ -248,7 +240,7 @@ export function ResourcesSection() {
                       type="tel"
                       placeholder="+91 XXXXX XXXXX"
                       className={cn(
-                        'bg-white',
+                        'bg-white dark:bg-[#111827]',
                         errors.phone && 'border-red-500 focus-visible:ring-red-500/30'
                       )}
                       {...register('phone')}
@@ -262,8 +254,7 @@ export function ResourcesSection() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full rounded-md py-3 text-base font-semibold text-navy hover:brightness-110 disabled:opacity-60 btn-gold-shimmer"
-                    style={{ backgroundColor: '#C8960C' }}
+                    className="w-full rounded-md py-3 text-base font-semibold text-navy dark:text-[#0A1428] hover:brightness-110 disabled:opacity-60 btn-gold-shimmer bg-sovereign-gold dark:bg-champagne-gold"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">
@@ -275,7 +266,7 @@ export function ResourcesSection() {
                     )}
                   </Button>
 
-                  <p className="text-[11px] leading-relaxed text-mid-gray">
+                  <p className="text-[11px] leading-relaxed text-mid-gray dark:text-ivory-cream/50">
                     By downloading, you agree to receive study materials via email.
                     Unsubscribe anytime.
                   </p>
@@ -300,23 +291,23 @@ export function ResourcesSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.08 * i }}
                 className={cn(
-                  'group cursor-pointer rounded-xl border border-light-gray bg-white p-4',
+                  'group cursor-pointer rounded-xl border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827] p-4',
                   'transition-all duration-300',
                   'hover:-translate-y-2 hover:shadow-lg',
                   'hover:shadow-[rgba(200,150,12,0.08)]',
-                  'border-l-4 border-l-transparent hover:border-l-[#C8960C]',
+                  'border-l-4 border-l-transparent hover:border-l-sovereign-gold dark:hover:border-l-champagne-gold',
                   'premium-shadow'
                 )}
               >
                 <res.icon
-                  className="mb-3 h-6 w-6 text-sovereign-gold"
+                  className="mb-3 h-6 w-6 text-sovereign-gold dark:text-champagne-gold"
                   strokeWidth={1.8}
                 />
-                <h4 className="text-base font-sans card-title text-navy">{res.title}</h4>
-                <p className="mt-0.5 text-[13px] text-mid-gray">
+                <h4 className="text-base font-sans card-title text-navy dark:text-ivory-cream">{res.title}</h4>
+                <p className="mt-0.5 text-[13px] text-mid-gray dark:text-ivory-cream/50">
                   {res.description}
                 </p>
-                <span className="mt-2 inline-block text-sm font-medium text-sovereign-gold transition-colors hover:underline">
+                <span className="mt-2 inline-block text-sm font-medium text-sovereign-gold dark:text-champagne-gold transition-colors hover:underline">
                   {res.linkText}
                 </span>
               </motion.div>

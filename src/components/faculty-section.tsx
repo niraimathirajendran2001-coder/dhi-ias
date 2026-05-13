@@ -76,7 +76,7 @@ function FacultyCard({
       className={cn(
         'group min-w-[280px] flex-shrink-0 rounded-xl border p-6',
         'transition-all duration-300 ease-out',
-        'border-[#243A80] bg-[#1A2E6B]',
+        'border-[#243A80] dark:border-[#1C2541] bg-[#1A2E6B] dark:bg-[#0D1525]',
         'hover:-translate-y-[3px] hover:border-t-[4px] hover:border-t-[#C8960C]',
         'hover:shadow-lg hover:shadow-[rgba(200,150,12,0.08)]',
         'border-t-[2px] border-t-transparent'
@@ -87,10 +87,10 @@ function FacultyCard({
         <div
           className={cn(
             'flex h-20 w-20 items-center justify-center rounded-full',
-            'bg-[#0F1F4B] text-[#E8B830]',
+            'bg-navy dark:bg-[#0A1428] text-champagne-gold',
             'font-serif text-xl font-semibold tracking-wide',
             'transition-all duration-300',
-            'ring-2 ring-transparent group-hover:ring-[#C8960C] group-hover:ring-offset-2 group-hover:ring-offset-[#1A2E6B]'
+            'ring-2 ring-transparent group-hover:ring-sovereign-gold dark:group-hover:ring-champagne-gold group-hover:ring-offset-2 group-hover:ring-offset-[#1A2E6B] dark:group-hover:ring-offset-[#0D1525]'
           )}
         >
           {member.initials}
@@ -101,19 +101,19 @@ function FacultyCard({
       <h3
         className={cn(
           'mb-1 font-serif card-title text-[20px] leading-tight',
-          'text-[#FAFAF7]'
+          'text-ivory-cream'
         )}
       >
         {member.name}
       </h3>
 
       {/* Subject */}
-      <p className="mb-2 text-[14px] font-medium text-[#E8B830]">
+      <p className="mb-2 text-[14px] font-medium text-champagne-gold">
         {member.subject}
       </p>
 
       {/* Credential */}
-      <p className="text-[13px] leading-snug text-[#FAFAF7]/60">
+      <p className="text-[13px] leading-snug text-ivory-cream/60">
         {member.credential}
       </p>
     </motion.div>
@@ -127,17 +127,9 @@ export default function FacultySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 md:py-24 overflow-hidden"
+      className="relative py-16 md:py-24 overflow-hidden bg-navy dark:bg-[#0A1428]"
       aria-labelledby="faculty-heading"
     >
-      {/* Subtle navy gradient instead of flat */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, #0F1F4B 0%, #152560 40%, #0F1F4B 100%)',
-        }}
-      />
-
       {/* Subtle background grid pattern */}
       <div
         className="absolute inset-0 pointer-events-none pattern-grid"
@@ -178,27 +170,27 @@ export default function FacultySection() {
           className="mb-12 text-center md:mb-16"
         >
           {/* Section Label */}
-          <p className="section-label ui-label mb-4 text-[#E8B830]">Our Mentors</p>
+          <p className="section-label ui-label mb-4 text-champagne-gold">Our Mentors</p>
 
           {/* Section Heading */}
           <h2
             id="faculty-heading"
             className={cn(
               'mb-6 font-serif section-heading text-[36px] leading-tight md:text-[44px]',
-              'text-[#FAFAF7]'
+              'text-ivory-cream'
             )}
           >
             Guided by Those Who Served
           </h2>
 
           {/* Gold Separator */}
-          <div className="mx-auto mb-6 h-[2px] w-10 bg-[#C8960C]" />
+          <div className="mx-auto mb-6 h-[2px] w-10 bg-sovereign-gold dark:bg-champagne-gold" />
 
           {/* Subtext */}
           <p
             className={cn(
               'mx-auto max-w-2xl text-[16px] font-sans body-text leading-relaxed',
-              'text-[#FAFAF7]/65'
+              'text-ivory-cream/65'
             )}
           >
             Our faculty brings decades of administrative experience, academic
@@ -233,7 +225,7 @@ export default function FacultySection() {
           <a
             href="#faculty"
             className={cn(
-              'group inline-flex items-center gap-2 text-[#E8B830] transition-all duration-200',
+              'group inline-flex items-center gap-2 text-champagne-gold transition-all duration-200',
               'font-sans text-sm font-medium',
               'hover:underline'
             )}

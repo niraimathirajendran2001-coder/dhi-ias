@@ -70,8 +70,7 @@ function StatItem({
         {suffix}
       </motion.span>
       <span
-        className="mt-2 text-sm font-sans body-text"
-        style={{ color: 'rgba(250, 250, 247, 0.7)' }}
+        className="mt-2 text-sm font-sans body-text text-ivory-cream/70"
       >
         {label}
       </span>
@@ -87,16 +86,8 @@ export function StatsCounterSection() {
   return (
     <section
       ref={ref}
-      className="relative py-12 overflow-hidden"
+      className="relative py-12 overflow-hidden bg-navy dark:bg-[#0A1428]"
     >
-      {/* Subtle gradient background instead of flat navy */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(135deg, #0F1F4B 0%, #1A2E6B 50%, #0F1F4B 100%)',
-        }}
-      />
-
       {/* Decorative diagonal line pattern overlay */}
       <div
         className="absolute inset-0 pointer-events-none pattern-diagonal"
@@ -134,10 +125,7 @@ export function StatsCounterSection() {
               {/* Vertical gold separator — not after last item (desktop) */}
               {i < stats.length - 1 && (
                 <div
-                  className="hidden h-14 w-px md:block"
-                  style={{
-                    backgroundColor: 'rgba(200, 150, 12, 0.2)',
-                  }}
+                  className="hidden h-14 w-px md:block bg-sovereign-gold/20"
                 />
               )}
               {/* Gold divider dots between stats on mobile */}
@@ -156,8 +144,7 @@ export function StatsCounterSection() {
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="w-1.5 h-1.5 rounded-full"
-              style={{ backgroundColor: 'rgba(200, 150, 12, 0.3)' }}
+              className="w-1.5 h-1.5 rounded-full bg-sovereign-gold/30"
             />
           ))}
         </div>

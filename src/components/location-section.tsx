@@ -72,8 +72,7 @@ export function LocationSection() {
   return (
     <section
       id="location"
-      className="relative py-16 md:py-24 overflow-hidden"
-      style={{ backgroundColor: '#FAFAF7' }}
+      className="relative py-16 md:py-24 overflow-hidden bg-ivory-cream dark:bg-[#0D1525]"
     >
       {/* Decorative compass SVG */}
       <CompassDecorative />
@@ -86,8 +85,7 @@ export function LocationSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7 }}
-            className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-2xl md:min-h-[480px]"
-            style={{ backgroundColor: '#0F1F4B' }}
+            className="relative flex min-h-[360px] items-center justify-center overflow-hidden rounded-2xl md:min-h-[480px] bg-navy dark:bg-[#0A1428]"
           >
             {/* Grid pattern overlay */}
             <div
@@ -131,19 +129,16 @@ export function LocationSection() {
                 className="relative"
               >
                 <MapPin
-                  className="mb-4 h-14 w-14 drop-shadow-lg"
-                  style={{ color: '#E8B830' }}
+                  className="mb-4 h-14 w-14 drop-shadow-lg text-champagne-gold"
                   strokeWidth={1.6}
                 />
                 {/* Pulsing dot on the map pin */}
                 <span
-                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full"
-                  style={{ backgroundColor: '#E8B830' }}
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-champagne-gold"
                   aria-hidden="true"
                 />
                 <motion.span
-                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full"
-                  style={{ backgroundColor: '#E8B830' }}
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-champagne-gold"
                   animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
                   transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
                   aria-hidden="true"
@@ -165,8 +160,7 @@ export function LocationSection() {
 
                 <Button
                   asChild
-                  className="mt-5 gap-2 rounded-md font-semibold btn-gold-shimmer"
-                  style={{ backgroundColor: '#C8960C', color: '#0F1F4B' }}
+                  className="mt-5 gap-2 rounded-md font-semibold btn-gold-shimmer bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]"
                 >
                   <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="h-4 w-4" />
@@ -194,14 +188,14 @@ export function LocationSection() {
             transition={{ duration: 0.7 }}
             className="flex flex-col"
           >
-            <h2 className="font-serif section-heading text-3xl text-navy md:text-4xl">
+            <h2 className="font-serif section-heading text-3xl text-navy dark:text-ivory-cream md:text-4xl">
               Find Us
             </h2>
 
             {/* Address */}
             <div className="mt-5 flex items-start gap-3">
-              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sovereign-gold" />
-              <p className="text-[15px] leading-relaxed text-stone-gray">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
+              <p className="text-[15px] leading-relaxed text-stone-gray dark:text-ivory-cream/70">
                 Aristocrat IAS Academy, Chandralayout, Bengaluru — 560040,
                 Karnataka
               </p>
@@ -211,46 +205,46 @@ export function LocationSection() {
             <div className="mt-4 space-y-3">
               <a
                 href="tel:+9180XXXX0000"
-                className="flex items-center gap-3 text-[15px] text-stone-gray transition-colors hover:text-navy"
+                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-colors hover:text-navy dark:hover:text-ivory-cream"
               >
-                <Phone className="h-5 w-5 shrink-0 text-sovereign-gold" />
+                <Phone className="h-5 w-5 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                 +91 80 XXXX XXXX
               </a>
               <a
                 href="https://wa.me/9198XXX00000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[15px] text-stone-gray transition-colors hover:text-forest-teal"
+                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-colors hover:text-forest-teal"
               >
                 <MessageCircle className="h-5 w-5 shrink-0 text-forest-teal" />
                 +91 98XXX XXXXX
               </a>
               <a
                 href="mailto:info@aristocratiasacademy.in"
-                className="flex items-center gap-3 text-[15px] text-stone-gray transition-colors hover:text-navy"
+                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-colors hover:text-navy dark:hover:text-ivory-cream"
               >
-                <Mail className="h-5 w-5 shrink-0 text-sovereign-gold" />
+                <Mail className="h-5 w-5 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                 info@aristocratiasacademy.in
               </a>
             </div>
 
             {/* Operational Hours */}
             <div className="mt-6">
-              <h4 className="flex items-center gap-2 text-sm font-semibold text-navy">
-                <Clock className="h-4 w-4 text-sovereign-gold" />
+              <h4 className="flex items-center gap-2 text-sm font-semibold text-navy dark:text-ivory-cream">
+                <Clock className="h-4 w-4 text-sovereign-gold dark:text-champagne-gold" />
                 Operational Hours
               </h4>
               <ul className="mt-2 space-y-1.5">
                 {hours.map((h) => (
                   <li
                     key={h.day}
-                    className="flex items-baseline justify-between text-[14px] text-stone-gray"
+                    className="flex items-baseline justify-between text-[14px] text-stone-gray dark:text-ivory-cream/70"
                   >
                     <span className="font-medium">{h.day}</span>
                     <span className="flex items-center gap-1.5">
                       {h.time}
                       {h.note && (
-                        <span className="text-[11px] text-mid-gray">
+                        <span className="text-[11px] text-mid-gray dark:text-ivory-cream/50">
                           ({h.note})
                         </span>
                       )}
@@ -262,12 +256,12 @@ export function LocationSection() {
 
             {/* How to Reach */}
             <div className="mt-6">
-              <h4 className="text-sm font-semibold text-navy">
+              <h4 className="text-sm font-semibold text-navy dark:text-ivory-cream">
                 How to Reach Us
               </h4>
               <ul className="mt-2 space-y-2">
-                <li className="flex items-start gap-2.5 text-[14px] text-stone-gray">
-                  <Train className="mt-0.5 h-4 w-4 shrink-0 text-sovereign-gold" />
+                <li className="flex items-start gap-2.5 text-[14px] text-stone-gray dark:text-ivory-cream/70">
+                  <Train className="mt-0.5 h-4 w-4 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                   <span>
                     Nearest Metro:{' '}
                     <span className="font-medium">
@@ -275,8 +269,8 @@ export function LocationSection() {
                     </span>
                   </span>
                 </li>
-                <li className="flex items-start gap-2.5 text-[14px] text-stone-gray">
-                  <Landmark className="mt-0.5 h-4 w-4 shrink-0 text-sovereign-gold" />
+                <li className="flex items-start gap-2.5 text-[14px] text-stone-gray dark:text-ivory-cream/70">
+                  <Landmark className="mt-0.5 h-4 w-4 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                   <span>
                     Landmark:{' '}
                     <span className="font-medium">
@@ -284,8 +278,8 @@ export function LocationSection() {
                     </span>
                   </span>
                 </li>
-                <li className="flex items-start gap-2.5 text-[14px] text-stone-gray">
-                  <Bus className="mt-0.5 h-4 w-4 shrink-0 text-sovereign-gold" />
+                <li className="flex items-start gap-2.5 text-[14px] text-stone-gray dark:text-ivory-cream/70">
+                  <Bus className="mt-0.5 h-4 w-4 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                   <span>
                     Bus Routes:{' '}
                     <span className="font-medium">BMTC Routes 335, 500, 501</span>
@@ -305,9 +299,9 @@ export function LocationSection() {
                   rel="noopener noreferrer"
                   className={cn(
                     'flex h-10 w-10 items-center justify-center rounded-full',
-                    'border border-light-gray bg-white text-navy',
+                    'border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827] text-navy dark:text-ivory-cream',
                     'transition-all duration-300',
-                    'hover:border-sovereign-gold hover:text-sovereign-gold',
+                    'hover:border-sovereign-gold dark:hover:border-champagne-gold hover:text-sovereign-gold dark:hover:text-champagne-gold',
                     'hover:shadow-md hover:shadow-[rgba(200,150,12,0.12)]',
                     'hover:scale-110'
                   )}
