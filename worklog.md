@@ -1225,3 +1225,39 @@ Unresolved Issues / Risks:
 - React hydration mismatch from Math.random() in particle components (cosmetic)
 - Logo aspect ratio warning from Next.js Image (minor)
 - Future: real Google Maps embed, payment integration, student portal, og:image meta tag
+
+---
+Task ID: 10
+Agent: Main Orchestrator
+Task: Fix hydration errors, replace dummy data with xxxxxxx placeholders, update contact info from uploaded image
+
+Work Log:
+- Read uploaded image (pasted_image_1778651715353.jpg) using VLM — extracted contact info and tagline
+- Fixed CookieConsent duplicate key error: added `key="cookie-backdrop-wrapper"` to inner AnimatePresence and `key="cookie-consent-panel"` to main panel div
+- Fixed hydration mismatch in ParticleDust (hero-section.tsx): replaced Math.random() with deterministic particleDustData array (12 particles with fixed positions)
+- Fixed hydration mismatch in GoldParticles (countdown-section.tsx): replaced Math.random() with deterministic goldParticleData array (18 particles with fixed positions)
+- Fixed hydration mismatch in CountdownSection: initialized timeLeft with zeros instead of getTimeLeft(), updated via setTimeout(0) in useEffect to avoid cascading render lint error
+- Fixed AshokaChakra SVG float precision hydration issue: used .toFixed(2) on Math.cos/sin results to ensure consistent values between server and client
+- Replaced dummy fee data with xxxxxxx: courses-section.tsx (6 fees), admissions-section.tsx (fee structure table)
+- Replaced dummy faculty data with xxxxxxx: faculty-section.tsx (6 faculty members' names and credentials)
+- Replaced dummy toppers/achievers data with xxxxxxx: achievers-section.tsx (8 achievers), results-ticker.tsx (10 results), testimonials-section.tsx (3 testimonials), success-stories-section.tsx (4 stories), video-testimonials-section.tsx (6 testimonials)
+- Replaced about section director name/credential with xxxxxxx: about-section.tsx
+- Updated hero tagline: "Where Future Officers Are Forged" → "Where Strategy Meets Selection" (from image)
+- Updated contact info from image data:
+  - Phone: +91 9108333136 (location-section.tsx, footer.tsx)
+  - WhatsApp: +91 9845806645 (location-section.tsx, whatsapp-button.tsx)
+  - Full address: 4th Cross, 4th Main, Chandra Layout, 4th Main Rd, Basaveshwara HBCS Layout, 2nd Stage Rd, Maruthi Nagar, Attiguppe, Bengaluru, Karnataka 560040 (location-section.tsx)
+- All lint checks passing (0 errors), dev server compiling with 200 status
+- Created 15-minute cron task (job ID: 146798) for webDevReview
+
+Stage Summary:
+- All hydration errors fixed: CookieConsent duplicate key, ParticleDust Math.random, GoldParticles Math.random, Countdown Date.now, AshokaChakra float precision
+- All dummy data replaced with xxxxxxx placeholders: fee (6 courses + fee table), faculty (6 members), toppers/achievers (8+10+3+4+6 = 31 entries), director name
+- Contact info updated from uploaded image: phone numbers, WhatsApp, full address, tagline
+- No new sections added (per user request), only existing sections revised
+- Lint clean, dev server stable
+
+Unresolved Issues / Risks:
+- xxxxxxx placeholders need to be replaced with actual data from the academy office when available
+- Could further improve styling details per the cron task mandate
+- Future: real Google Maps embed, payment integration, student portal

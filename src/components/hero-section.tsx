@@ -138,14 +138,30 @@ function FloatingShapes() {
 }
 
 /* ─── Particle dust ─── */
+/* Deterministic particle positions to avoid hydration mismatch */
+const particleDustData = [
+  { left: 8, size: 2.5, duration: 8, delay: 0.5, driftX: 12 },
+  { left: 17, size: 3.0, duration: 10, delay: 2.0, driftX: -8 },
+  { left: 25, size: 2.2, duration: 7, delay: 4.5, driftX: 22 },
+  { left: 33, size: 3.5, duration: 9, delay: 1.2, driftX: -15 },
+  { left: 42, size: 2.8, duration: 11, delay: 3.0, driftX: 5 },
+  { left: 50, size: 2.0, duration: 8, delay: 6.5, driftX: -25 },
+  { left: 58, size: 3.2, duration: 10, delay: 0.8, driftX: 18 },
+  { left: 67, size: 2.6, duration: 7, delay: 5.0, driftX: -10 },
+  { left: 75, size: 3.8, duration: 9, delay: 2.5, driftX: 30 },
+  { left: 83, size: 2.4, duration: 11, delay: 7.0, driftX: -20 },
+  { left: 90, size: 3.0, duration: 8, delay: 3.5, driftX: 8 },
+  { left: 95, size: 2.8, duration: 10, delay: 1.0, driftX: -12 },
+]
+
 function ParticleDust() {
-  const particles = Array.from({ length: 12 }, (_, i) => ({
+  const particles = particleDustData.map((p, i) => ({
     id: i,
-    left: `${5 + Math.random() * 90}%`,
-    size: 2 + Math.random() * 2,
-    duration: 6 + Math.random() * 6,
-    delay: Math.random() * 8,
-    driftX: -30 + Math.random() * 60,
+    left: `${p.left}%`,
+    size: p.size,
+    duration: p.duration,
+    delay: p.delay,
+    driftX: p.driftX,
   }))
 
   return (
@@ -181,7 +197,7 @@ export default function HeroSection() {
   const chakraY = useTransform(scrollYProgress, [0, 1], [0, 150])
 
   // Typing effect for tagline
-  const taglineText = 'Where Future Officers Are Forged'
+  const taglineText = 'Where Strategy Meets Selection'
   const { displayedText: taglineDisplayed, isTyping: isTaglineTyping } = useTypingEffect(taglineText, 45, 1200)
 
   // Typing effect for subtitle
@@ -384,52 +400,33 @@ export default function HeroSection() {
 }
 
 /** Pure SVG Ashoka Chakra watermark — gold accents at low opacity */
+/* Precomputed coordinates to avoid hydration mismatch from Math.cos/sin float precision differences */
 function AshokaChakra() {
   const size = 480
-  const cx = size / 2
-  const cy = size / 2
-  const outerR = size / 2 - 20
-  const innerR = outerR - 16
-  const spokeR = outerR - 4
+  const cx = 240
+  const cy = 240
+  const outerR = 220
+  const innerR = 204
+  const spokeR = 216
   const hubR = 36
   const numSpokes = 24
 
-  const spokes = Array.from({ length: numSpokes }, (_, i) => {
+  // Precompute spoke endpoints with fixed precision to avoid hydration mismatch
+  const spokeData = Array.from({ length: numSpokes }, (_, i) => {
     const angle = (i * 360) / numSpokes
     const rad = (angle * Math.PI) / 180
-    const x2 = cx + spokeR * Math.cos(rad)
-    const y2 = cy + spokeR * Math.sin(rad)
-    return (
-      <line
-        key={i}
-        x1={cx}
-        y1={cy}
-        x2={x2}
-        y2={y2}
-        stroke="#C8960C"
-        strokeWidth="1.2"
-        opacity="0.18"
-      />
-    )
+    const x2 = Number((cx + spokeR * Math.cos(rad)).toFixed(2))
+    const y2 = Number((cy + spokeR * Math.sin(rad)).toFixed(2))
+    return { x2, y2 }
   })
 
-  // Decorative dots between spokes on the outer ring
-  const dots = Array.from({ length: numSpokes }, (_, i) => {
+  const dotData = Array.from({ length: numSpokes }, (_, i) => {
     const angle = ((i + 0.5) * 360) / numSpokes
     const rad = (angle * Math.PI) / 180
     const dotR = (outerR + innerR) / 2
-    const dx = cx + dotR * Math.cos(rad)
-    const dy = cy + dotR * Math.sin(rad)
-    return (
-      <circle
-        key={`dot-${i}`}
-        cx={dx}
-        cy={dy}
-        r="2.5"
-        fill="#C8960C"
-        opacity="0.15"
-      />
-    )
+    const dx = Number((cx + dotR * Math.cos(rad)).toFixed(2))
+    const dy = Number((cy + dotR * Math.sin(rad)).toFixed(2))
+    return { dx, dy }
   })
 
   return (
@@ -460,9 +457,29 @@ function AshokaChakra() {
         opacity="0.12"
       />
       {/* Spokes */}
-      {spokes}
+      {spokeData.map((spoke, i) => (
+        <line
+          key={i}
+          x1={cx}
+          y1={cy}
+          x2={spoke.x2}
+          y2={spoke.y2}
+          stroke="#C8960C"
+          strokeWidth="1.2"
+          opacity="0.18"
+        />
+      ))}
       {/* Dots between spokes */}
-      {dots}
+      {dotData.map((dot, i) => (
+        <circle
+          key={`dot-${i}`}
+          cx={dot.dx}
+          cy={dot.dy}
+          r="2.5"
+          fill="#C8960C"
+          opacity="0.15"
+        />
+      ))}
       {/* Central hub */}
       <circle
         cx={cx}

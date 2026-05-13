@@ -7,40 +7,40 @@ import { cn } from '@/lib/utils'
 
 const facultyMembers = [
   {
-    name: 'Dr. Raghavan Iyer',
-    initials: 'RI',
+    name: 'xxxxxxx',
+    initials: 'F1',
     subject: 'Indian Polity & Governance',
-    credential: 'Former IAS Officer | Ministry of Home Affairs',
+    credential: 'xxxxxxx',
   },
   {
-    name: 'Prof. Lakshmi Narayan',
-    initials: 'LN',
+    name: 'xxxxxxx',
+    initials: 'F2',
     subject: 'Geography & Environment',
-    credential: 'PhD JNU | 18 Years Teaching Experience',
+    credential: 'xxxxxxx',
   },
   {
-    name: 'Shankar Menon',
-    initials: 'SM',
+    name: 'xxxxxxx',
+    initials: 'F3',
     subject: 'Economy & Current Affairs',
-    credential: 'Former IRS Officer | CBDT',
+    credential: 'xxxxxxx',
   },
   {
-    name: 'Dr. Aparna Rao',
-    initials: 'AR',
+    name: 'xxxxxxx',
+    initials: 'F4',
     subject: 'History & Art & Culture',
-    credential: 'PhD IISc | Author of 3 UPSC Books',
+    credential: 'xxxxxxx',
   },
   {
-    name: 'Vikram Singh Rathore',
-    initials: 'VR',
+    name: 'xxxxxxx',
+    initials: 'F5',
     subject: 'Ethics & Essay',
-    credential: 'Former IPS Officer | Karnataka Cadre',
+    credential: 'xxxxxxx',
   },
   {
-    name: 'Dr. Nandini Sharma',
-    initials: 'NS',
+    name: 'xxxxxxx',
+    initials: 'F6',
     subject: 'Science & Technology',
-    credential: 'PhD IIT-D | Research Scientist',
+    credential: 'xxxxxxx',
   },
 ]
 

@@ -314,7 +314,7 @@ export default function Footer() {
                 <span
                   className="font-sans text-[14px] text-ivory-cream/70"
                 >
-                  Chandralayout, Bengaluru 560040
+                  Chandra Layout, Bengaluru 560040
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -322,7 +322,7 @@ export default function Footer() {
                 <span
                   className="font-sans text-[14px] text-ivory-cream/70"
                 >
-                  +91 80 XXXX XXXX
+                  +91 91083 33136
                 </span>
               </li>
               <li className="flex items-start gap-3">

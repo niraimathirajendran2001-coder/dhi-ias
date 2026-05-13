@@ -8,23 +8,23 @@ import { cn } from '@/lib/utils'
 
 const testimonials = [
   {
-    name: 'Rahul Menon',
-    initials: 'RM',
-    rank: 'AIR 34, IAS (2024)',
+    name: 'xxxxxxx',
+    initials: 'T1',
+    rank: 'xxxxxxx',
     quote:
       "Aristocrat didn't just teach me how to clear the exam — they showed me how to think like an officer. The mentorship here is not a feature; it's the foundation.",
   },
   {
-    name: 'Priya Sharma',
-    initials: 'PS',
-    rank: 'AIR 112, IPS (2024)',
+    name: 'xxxxxxx',
+    initials: 'T2',
+    rank: 'xxxxxxx',
     quote:
       'I attempted UPSC twice before joining Aristocrat. The structured approach and personal mentorship changed everything. My mentor was available at 11 PM the night before my interview.',
   },
   {
-    name: 'Ananya Krishnan',
-    initials: 'AK',
-    rank: 'AIR 67, IFS (2023)',
+    name: 'xxxxxxx',
+    initials: 'T3',
+    rank: 'xxxxxxx',
     quote:
       'The faculty at Aristocrat brings real administrative experience into the classroom. When your Polity teacher has actually drafted policy, the subject comes alive in ways no textbook can replicate.',
   },

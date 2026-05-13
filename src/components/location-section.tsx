@@ -155,7 +155,7 @@ export function LocationSection() {
                   Aristocrat IAS Academy
                 </h3>
                 <p className="mt-1 text-sm text-white/70">
-                  Chandralayout, Bengaluru — 560040
+                  Chandra Layout, Bengaluru — 560040
                 </p>
 
                 <Button
@@ -196,28 +196,27 @@ export function LocationSection() {
             <div className="mt-5 flex items-start gap-3">
               <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
               <p className="text-[15px] leading-relaxed text-stone-gray dark:text-ivory-cream/70">
-                Aristocrat IAS Academy, Chandralayout, Bengaluru — 560040,
-                Karnataka
+                4th Cross, 4th Main, Chandra Layout, 4th Main Rd, Basaveshwara HBCS Layout, 2nd Stage Rd, Maruthi Nagar, Attiguppe, Bengaluru, Karnataka 560040
               </p>
             </div>
 
             {/* Phone, WhatsApp, Email */}
             <div className="mt-4 space-y-3">
               <a
-                href="tel:+9180XXXX0000"
+                href="tel:+919108333136"
                 className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-all duration-200 hover:text-navy dark:hover:text-ivory-cream hover:translate-x-1"
               >
                 <Phone className="h-5 w-5 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
-                +91 80 XXXX XXXX
+                +91 91083 33136
               </a>
               <a
-                href="https://wa.me/9198XXX00000"
+                href="https://wa.me/919845806645"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-all duration-200 hover:text-forest-teal hover:translate-x-1"
               >
                 <MessageCircle className="h-5 w-5 shrink-0 text-forest-teal" />
-                +91 98XXX XXXXX
+                +91 98458 06645
               </a>
               <a
                 href="mailto:info@aristocratiasacademy.in"

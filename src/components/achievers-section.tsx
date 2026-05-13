@@ -7,14 +7,14 @@ import { cn } from '@/lib/utils'
 
 /* ─── Achiever Data ─── */
 const achievers = [
-  { name: 'Vikram Patel', initials: 'VP', rank: 'AIR 23', service: 'IAS', year: '2024' },
-  { name: 'Rahul Menon', initials: 'RM', rank: 'AIR 34', service: 'IAS', year: '2024' },
-  { name: 'Kavitha Rao', initials: 'KR', rank: 'AIR 45', service: 'IAS', year: '2023' },
-  { name: 'Ananya Krishnan', initials: 'AK', rank: 'AIR 67', service: 'IFS', year: '2023' },
-  { name: 'Deepak Kumar', initials: 'DK', rank: 'AIR 78', service: 'IFS', year: '2024' },
-  { name: 'Priya Sharma', initials: 'PS', rank: 'AIR 112', service: 'IPS', year: '2024' },
-  { name: 'Arjun Reddy', initials: 'AR', rank: 'AIR 156', service: 'IRS', year: '2023' },
-  { name: 'Ramesh Gowda', initials: 'RG', rank: 'AIR 92', service: 'KAS', year: '2024' },
+  { name: 'xxxxxxx', initials: 'A1', rank: 'xxxxxxx', service: 'IAS', year: 'xxxxxxx' },
+  { name: 'xxxxxxx', initials: 'A2', rank: 'xxxxxxx', service: 'IAS', year: 'xxxxxxx' },
+  { name: 'xxxxxxx', initials: 'A3', rank: 'xxxxxxx', service: 'IAS', year: 'xxxxxxx' },
+  { name: 'xxxxxxx', initials: 'A4', rank: 'xxxxxxx', service: 'IFS', year: 'xxxxxxx' },
+  { name: 'xxxxxxx', initials: 'A5', rank: 'xxxxxxx', service: 'IFS', year: 'xxxxxxx' },
+  { name: 'xxxxxxx', initials: 'A6', rank: 'xxxxxxx', service: 'IPS', year: 'xxxxxxx' },
+  { name: 'xxxxxxx', initials: 'A7', rank: 'xxxxxxx', service: 'IRS', year: 'xxxxxxx' },
+  { name: 'xxxxxxx', initials: 'A8', rank: 'xxxxxxx', service: 'KAS', year: 'xxxxxxx' },
 ]
 
 /* ─── Service Color Map ─── */

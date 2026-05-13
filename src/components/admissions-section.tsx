@@ -85,9 +85,9 @@ const referralOptions = [
 ]
 
 const feeStructure = [
-  { course: 'GS Foundation', duration: '12 months', fee: '₹1,20,000' },
-  { course: 'KAS Coaching', duration: '8 months', fee: '₹85,000' },
-  { course: 'Test Series', duration: '6 months', fee: '₹15,000' },
+  { course: 'GS Foundation', duration: '12 months', fee: '₹xxxxxxx' },
+  { course: 'KAS Coaching', duration: '8 months', fee: '₹xxxxxxx' },
+  { course: 'Test Series', duration: '6 months', fee: '₹xxxxxxx' },
 ]
 
 interface FormData {

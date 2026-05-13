@@ -8,11 +8,11 @@ import { cn } from '@/lib/utils'
 /* ─── Story Data ─── */
 const stories = [
   {
-    name: 'Priya Sharma',
-    initials: 'PS',
-    rank: 'AIR 23, CSE 2024',
+    name: 'xxxxxxx',
+    initials: 'S1',
+    rank: 'xxxxxxx',
     service: 'IAS',
-    year: '2024',
+    year: 'xxxxxxx',
     testimonial:
       'Aristocrat\'s structured approach and personalized mentorship transformed my preparation. The faculty\'s guidance on answer writing was the game-changer for my Mains score.',
     tips: [
@@ -22,11 +22,11 @@ const stories = [
     ],
   },
   {
-    name: 'Vikram Patel',
-    initials: 'VP',
-    rank: 'AIR 45, CSE 2023',
+    name: 'xxxxxxx',
+    initials: 'S2',
+    rank: 'xxxxxxx',
     service: 'IAS',
-    year: '2023',
+    year: 'xxxxxxx',
     testimonial:
       'The mock interview sessions at Aristocrat were incredibly close to the real UPSC interview. I walked in confident and walked out with a top rank.',
     tips: [
@@ -36,11 +36,11 @@ const stories = [
     ],
   },
   {
-    name: 'Ananya Krishnan',
-    initials: 'AK',
-    rank: 'AIR 67, CSE 2024',
+    name: 'xxxxxxx',
+    initials: 'S3',
+    rank: 'xxxxxxx',
     service: 'IFS',
-    year: '2024',
+    year: 'xxxxxxx',
     testimonial:
       'Coming from an engineering background, I was unsure about optional selection. Aristocrat\'s counselling helped me choose the right optional and score 290+.',
     tips: [
@@ -50,11 +50,11 @@ const stories = [
     ],
   },
   {
-    name: 'Deepak Kumar',
-    initials: 'DK',
-    rank: 'AIR 112, CSE 2023',
+    name: 'xxxxxxx',
+    initials: 'S4',
+    rank: 'xxxxxxx',
     service: 'IPS',
-    year: '2023',
+    year: 'xxxxxxx',
     testimonial:
       'The daily answer writing practice and weekly tests at Aristocrat built my consistency. Their current affairs modules are the best in the industry.',
     tips: [

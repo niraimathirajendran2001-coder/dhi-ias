@@ -22,14 +22,36 @@ function getTimeLeft() {
 }
 
 /* ─── Decorative Gold Particles ─── */
+/* Deterministic positions to avoid hydration mismatch */
+const goldParticleData = [
+  { left: 5, top: 12, size: 3.0, delay: 0.3, duration: 5 },
+  { left: 12, top: 45, size: 2.5, delay: 1.5, duration: 6 },
+  { left: 20, top: 78, size: 4.0, delay: 2.8, duration: 4 },
+  { left: 28, top: 30, size: 2.2, delay: 0.8, duration: 7 },
+  { left: 35, top: 65, size: 3.5, delay: 3.2, duration: 5 },
+  { left: 42, top: 18, size: 2.8, delay: 1.0, duration: 6 },
+  { left: 50, top: 90, size: 3.2, delay: 2.2, duration: 4 },
+  { left: 58, top: 35, size: 4.5, delay: 0.5, duration: 7 },
+  { left: 65, top: 55, size: 2.0, delay: 3.8, duration: 5 },
+  { left: 72, top: 82, size: 3.8, delay: 1.8, duration: 6 },
+  { left: 78, top: 25, size: 2.6, delay: 2.5, duration: 4 },
+  { left: 85, top: 48, size: 4.2, delay: 0.2, duration: 7 },
+  { left: 90, top: 70, size: 3.0, delay: 3.5, duration: 5 },
+  { left: 95, top: 15, size: 2.4, delay: 1.2, duration: 6 },
+  { left: 8, top: 92, size: 3.6, delay: 2.0, duration: 4 },
+  { left: 55, top: 8, size: 2.8, delay: 3.0, duration: 7 },
+  { left: 38, top: 50, size: 4.0, delay: 0.7, duration: 5 },
+  { left: 68, top: 38, size: 3.4, delay: 2.6, duration: 6 },
+]
+
 function GoldParticles() {
-  const particles = Array.from({ length: 18 }, (_, i) => ({
+  const particles = goldParticleData.map((p, i) => ({
     id: i,
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100}%`,
-    size: 2 + Math.random() * 3,
-    delay: Math.random() * 4,
-    duration: 3 + Math.random() * 4,
+    left: `${p.left}%`,
+    top: `${p.top}%`,
+    size: p.size,
+    delay: p.delay,
+    duration: p.duration,
   }))
 
   return (
@@ -114,16 +136,22 @@ function CountdownBox({
 
 /* ─── Main Section ─── */
 export default function CountdownSection() {
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft)
+  // Initialize with zeros to avoid hydration mismatch (server can't compute client time)
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
   useEffect(() => {
+    // Set initial value asynchronously to avoid cascading render lint warning
+    const initialTimer = setTimeout(() => setTimeLeft(getTimeLeft()), 0)
     const interval = setInterval(() => {
       setTimeLeft(getTimeLeft())
     }, 1000)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearTimeout(initialTimer)
+      clearInterval(interval)
+    }
   }, [])
 
   return (

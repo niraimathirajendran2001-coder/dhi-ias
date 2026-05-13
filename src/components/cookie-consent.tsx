@@ -89,7 +89,7 @@ export function CookieConsent() {
   return (
     <AnimatePresence>
       {/* Backdrop overlay when preferences expanded */}
-      <AnimatePresence>
+      <AnimatePresence key="cookie-backdrop-wrapper">
         {showPreferences && (
           <motion.div
             key="cookie-backdrop"
@@ -103,6 +103,7 @@ export function CookieConsent() {
         )}
       </AnimatePresence>
       <motion.div
+        key="cookie-consent-panel"
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}

@@ -35,7 +35,7 @@ const courses: Course[] = [
     description:
       'Comprehensive integrated program covering all GS papers, CSAT, and essay writing.',
     tooltipText: 'Our flagship program — 1200+ hours of guided preparation',
-    fee: '\u20B91,20,000',
+    fee: '\u20B9xxxxxxx',
     isMostPopular: true,
   },
   {
@@ -50,7 +50,7 @@ const courses: Course[] = [
     description:
       'Dedicated Karnataka Administrative Service preparation with state-specific focus.',
     tooltipText: 'Karnataka-specific syllabus & KPSC exam strategy',
-    fee: '\u20B985,000',
+    fee: '\u20B9xxxxxxx',
   },
   {
     name: 'Optional Subjects',
@@ -64,7 +64,7 @@ const courses: Course[] = [
     description:
       'History, Geography, PSIR, Sociology, Public Administration & Anthropology.',
     tooltipText: 'Expert-led optional papers with answer writing practice',
-    fee: '\u20B945,000 onwards',
+    fee: '\u20B9xxxxxxx onwards',
   },
   {
     name: 'Test Series',
@@ -78,7 +78,7 @@ const courses: Course[] = [
     description:
       '50 Prelims tests + 15 Mains tests with detailed individual evaluation and model answers.',
     tooltipText: 'Performance analytics & All-India ranking included',
-    fee: '\u20B915,000',
+    fee: '\u20B9xxxxxxx',
   },
   {
     name: 'Current Affairs Program',
@@ -88,7 +88,7 @@ const courses: Course[] = [
     description:
       'Daily analyses, monthly compilations, and expert-led discussions on national & international events.',
     tooltipText: 'Stay updated with curated daily & monthly digests',
-    fee: '\u20B98,000/month',
+    fee: '\u20B9xxxxxxx/month',
   },
   {
     name: 'Interview Guidance',
@@ -102,7 +102,7 @@ const courses: Course[] = [
     description:
       'Mock interviews with former UPSC board members, personality development & DAF analysis.',
     tooltipText: 'Personalized DAF analysis & mock interview sessions',
-    fee: '\u20B925,000',
+    fee: '\u20B9xxxxxxx',
     isLimitedSeats: true,
   },
 ]

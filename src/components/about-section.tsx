@@ -146,7 +146,7 @@ export default function AboutSection() {
                   <span
                     className="font-serif text-[40px] font-semibold text-sovereign-gold dark:text-champagne-gold"
                   >
-                    AK
+                    xxx
                   </span>
                 </div>
               </div>
@@ -157,17 +157,12 @@ export default function AboutSection() {
               <h3
                 className="font-serif text-[22px] md:text-[26px] font-semibold mb-1 text-navy dark:text-ivory-cream"
               >
-                Arun Kumar
+                xxxxxxx
               </h3>
               <p
                 className="font-sans text-[14px] font-medium mb-5 text-sovereign-gold dark:text-champagne-gold"
               >
                 Founder &amp; Director
-              </p>
-              <p
-                className="font-sans text-[14px] font-medium mb-6 text-sovereign-gold dark:text-champagne-gold"
-              >
-                Former IAS Officer | Karnataka Cadre (2005 Batch)
               </p>
 
               {/* Quote with decorative gold quotation mark */}

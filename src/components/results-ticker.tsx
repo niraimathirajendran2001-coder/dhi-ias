@@ -3,16 +3,16 @@
 import { cn } from '@/lib/utils'
 
 const RESULTS = [
-  'Rahul Menon — AIR 34, IAS',
-  'Priya Sharma — AIR 112, IPS',
-  'Ananya Krishnan — AIR 67, IFS',
-  'Vikram Patel — AIR 23, IAS',
-  'Meera Nair — AIR 89, IPS',
-  'Arjun Reddy — AIR 156, IRS',
-  'Kavitha Rao — AIR 45, IAS',
-  'Deepak Kumar — AIR 78, IFS',
-  'Sanya Joseph — AIR 201, IPS',
-  'Ramesh Gowda — AIR 92, KAS',
+  'xxxxxxx — AIR xx, IAS',
+  'xxxxxxx — AIR xx, IPS',
+  'xxxxxxx — AIR xx, IFS',
+  'xxxxxxx — AIR xx, IAS',
+  'xxxxxxx — AIR xx, IPS',
+  'xxxxxxx — AIR xx, IRS',
+  'xxxxxxx — AIR xx, IAS',
+  'xxxxxxx — AIR xx, IFS',
+  'xxxxxxx — AIR xx, IPS',
+  'xxxxxxx — AIR xx, KAS',
 ]
 
 function Separator() {
