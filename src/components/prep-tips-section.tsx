@@ -113,13 +113,18 @@ function TipCard({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={cn(
         'group relative rounded-xl',
-        'glass-card gold-top-border',
+        'gold-top-border',
         'p-5 sm:p-6',
         'hover-lift transition-all duration-300',
-        'border border-ivory-cream/10 dark:border-ivory-cream/5',
+        'border border-[rgba(200,150,12,0.15)] dark:border-[rgba(232,184,48,0.12)]',
         'hover:border-[#C8960C]/40 dark:hover:border-champagne-gold/40',
         'flex flex-col',
       )}
+      style={{
+        background: 'linear-gradient(135deg, rgba(15,31,75,0.85), rgba(26,46,107,0.75))',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+      }}
     >
       {/* Icon */}
       <div

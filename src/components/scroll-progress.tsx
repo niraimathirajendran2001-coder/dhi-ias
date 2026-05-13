@@ -1,23 +1,29 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useSyncExternalStore } from 'react'
+
+function subscribeToScroll(callback: () => void) {
+  window.addEventListener('scroll', callback, { passive: true })
+  return () => window.removeEventListener('scroll', callback)
+}
+
+function getScrollSnapshot() {
+  if (typeof window === 'undefined') return 0
+  const scrollTop = window.scrollY
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight
+  return docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+}
+
+function getServerSnapshot() {
+  return 0
+}
 
 export function ScrollProgress() {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
-      setProgress(scrollPercent)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Initialize
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  const progress = useSyncExternalStore(
+    subscribeToScroll,
+    getScrollSnapshot,
+    getServerSnapshot,
+  )
 
   return (
     <div

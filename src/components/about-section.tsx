@@ -51,8 +51,8 @@ const philosophyQuotes = [
     subtext: 'We build structured routines and accountable study frameworks that transform effort into results.',
   },
   {
-    quote: 'Every aspirant deserves a mentor who has walked the path before them.',
-    subtext: 'Our faculty comprises former civil servants and seasoned educators who bring lived experience to every interaction.',
+    quote: 'Every aspirant deserves a mentor who believes in their potential.',
+    subtext: 'Our faculty comprises experienced educators and mentors who bring deep commitment and insight to every interaction.',
   },
 ]
 
@@ -177,11 +177,11 @@ export default function AboutSection() {
                   <p
                     className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
                   >
-                    When I left the service after a decade in the Karnataka cadre, I did so with one
-                    conviction: that the path to becoming a civil servant should not depend on where
-                    you were born or what resources you had access to. The UPSC examination is one of
-                    the fairest systems in the world — but the preparation ecosystem around it is
-                    not.
+                    When I embarked on the journey of founding Aristocrat IAS Academy, I carried one
+                    conviction in my heart: that the path to becoming a civil servant should not
+                    depend on where you were born or what resources you had access to. The UPSC
+                    examination is one of the fairest systems in the world — but the preparation
+                    ecosystem around it is not.
                   </p>
                   <p
                     className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
@@ -194,12 +194,13 @@ export default function AboutSection() {
                   <p
                     className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
                   >
-                    I have sat on the other side of the interview table. I know what the examiners
-                    look for. I know the common mistakes that even brilliant aspirants make. And I
-                    know that the difference between a candidate who clears and one who doesn&apos;t
-                    is rarely about intelligence — it is about guidance at the right moment,
-                    discipline over a sustained period, and an environment that treats preparation as
-                    the serious endeavor it is.
+                    We have studied the examination inside out — the patterns, the expectations, the
+                    subtle nuances that separate a good answer from a great one. We understand the
+                    common mistakes that even brilliant aspirants make. And we know that the
+                    difference between a candidate who clears and one who doesn&apos;t is rarely
+                    about intelligence — it is about guidance at the right moment, discipline over
+                    a sustained period, and an environment that treats preparation as the serious
+                    endeavor it is.
                   </p>
                   <p
                     className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"

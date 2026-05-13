@@ -1287,3 +1287,38 @@ Unresolved Issues / Risks:
 - Minor warning about logo image aspect ratio (non-critical, cosmetic)
 - Minor framer-motion scroll container position warning (non-critical)
 - On first visit, page loader appears after hydration (brief flash of content before loader overlay) — acceptable tradeoff for hydration safety
+---
+Task ID: 11
+Agent: Main Orchestrator
+Task: Apply user-requested changes — remove WhatsApp, update chatbot, remove sections, rewrite director message, fix fees, fix invisible tips section, fix hydration errors
+
+Work Log:
+- Analyzed uploaded images using VLM skill — identified two overlapping icons (scroll-to-top + chat), and the Expert Tips section rendering
+- Removed WhatsApp button from page.tsx (removed import and component usage)
+- Updated ChatbotWidget: replaced MessageCircle icon with custom AristocratLogoIcon (stylized "A" with gold ring SVG), added "Ask your doubts to me" animated popup tooltip that appears 3s after page load and disappears after 8s
+- Removed 3 sections from page.tsx: SuccessStoriesSection (SUCCESS STORIES), SuccessTimeline (OUR JOURNEY), VideoTestimonialsSection (HEAR FROM OUR TOPPERS)
+- Rewrote AboutSection Director's message to be general — removed references to "leaving the service after a decade in the Karnataka cadre" and "sitting on the other side of the interview table". Changed to "When I embarked on the journey of founding Aristocrat IAS Academy" and "We have studied the examination inside out". Kept all heart-touching lines intact.
+- Updated philosophy quote #3 from "Every aspirant deserves a mentor who has walked the path before them" to "Every aspirant deserves a mentor who believes in their potential" with updated subtext removing "former civil servants" reference
+- Replaced Mentorship fees with xxxx placeholders: ₹5,000 → ₹xxxx, ₹8,000 → ₹xxxx, ₹15,000 → ₹xxxx
+- Fixed EXPERT TIPS section invisibility: replaced `glass-card` class (which had white background) with inline dark navy gradient background + blur + gold border, since the text uses `text-ivory-cream` (light text) on a navy section
+- Fixed ScrollProgress hydration mismatch: replaced useState+useEffect pattern with useSyncExternalStore (scroll event subscription, client snapshot from scrollY, server snapshot returns 0)
+- Cleaned up duplicate cron jobs (4 → 1), created fresh webDevReview cron (job ID: 146848, 15-min fixed_rate)
+- Ran lint: clean (0 errors)
+- QA with agent-browser: page loads correctly, no hydration errors, no duplicate key errors in console
+
+Stage Summary:
+- 7 changes applied per user request:
+  1. WhatsApp icon removed, chatbot preserved with logo icon + "Ask your doubts to me" popup
+  2. 3 sections removed: SUCCESS STORIES, OUR JOURNEY, HEAR FROM OUR TOPPERS
+  3. Director message rewritten to be general (not former civil servant) while maintaining heart-touching tone
+  4. Mentorship fees replaced with xxxx placeholders
+  5. EXPERT TIPS section fixed (was invisible due to light text on light card)
+  6. ScrollProgress hydration mismatch fixed with useSyncExternalStore
+- Lint clean, dev server stable, no console errors
+- Single cron job running for periodic review (15-min intervals)
+
+Unresolved Issues / Risks:
+- Minor warning: logo image aspect ratio (non-critical)
+- Minor warning: framer-motion scroll container position (non-critical)
+- xxxxxxx/xxxx placeholders need real data from academy office
+- Future: real Google Maps embed, payment integration, student portal

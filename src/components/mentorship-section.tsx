@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 const tiers = [
   {
     name: 'Foundation Mentor',
-    price: '₹5,000',
+    price: '₹xxxx',
     period: '/mo',
     popular: false,
     savings: null,
@@ -24,7 +24,7 @@ const tiers = [
   },
   {
     name: 'Advanced Guide',
-    price: '₹8,000',
+    price: '₹xxxx',
     period: '/mo',
     popular: true,
     savings: null,
@@ -39,7 +39,7 @@ const tiers = [
   },
   {
     name: 'Premium Strategist',
-    price: '₹15,000',
+    price: '₹xxxx',
     period: '/mo',
     popular: false,
     savings: 'Save 20%',

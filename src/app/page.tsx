@@ -15,7 +15,6 @@ import { FAQSection } from '@/components/faq-section'
 import AdmissionsSection from '@/components/admissions-section'
 import { LocationSection } from '@/components/location-section'
 import Footer from '@/components/footer'
-import { WhatsAppButton } from '@/components/whatsapp-button'
 import { ChatbotWidget } from '@/components/chatbot-widget'
 import { BackToTop } from '@/components/back-to-top'
 import { AnnouncementBar } from '@/components/announcement-bar'
@@ -27,13 +26,10 @@ import ComparisonSection from '@/components/comparison-section'
 import PageLoader from '@/components/page-loader'
 import GallerySection from '@/components/gallery-section'
 import ExamCalendarSection from '@/components/exam-calendar-section'
-import SuccessTimeline from '@/components/success-timeline'
 import StudyPlannerSection from '@/components/study-planner-section'
-import VideoTestimonialsSection from '@/components/video-testimonials-section'
 import { SyllabusSection } from '@/components/syllabus-section'
 import { MentorshipSection } from '@/components/mentorship-section'
 import { CookieConsent } from '@/components/cookie-consent'
-import SuccessStoriesSection from '@/components/success-stories-section'
 import PrepTipsSection from '@/components/prep-tips-section'
 
 export default function Home() {
@@ -104,30 +100,15 @@ export default function Home() {
 
         <SectionDivider variant="gold-line" />
 
-        {/* Success Stories — Cream background */}
-        <SuccessStoriesSection />
-
-        <SectionDivider variant="gold-line" />
-
         {/* Exam Calendar — Navy background */}
         <ExamCalendarSection />
 
         <SectionDivider variant="wave" />
 
-        {/* Success Timeline — Cream background */}
-        <SuccessTimeline />
-
-        <SectionDivider variant="gold-line" />
-
         {/* Study Planner — Cream background */}
         <StudyPlannerSection />
 
         <SectionDivider variant="wave" />
-
-        {/* Video Testimonials — Navy background */}
-        <VideoTestimonialsSection />
-
-        <SectionDivider variant="gold-line" />
 
         {/* Gallery — Cream background */}
         <GallerySection />
@@ -185,7 +166,6 @@ export default function Home() {
       <CookieConsent />
       <BackToTop />
       <ChatbotWidget />
-      <WhatsAppButton />
     </div>
   )
 }

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, X, Send, Loader2 } from 'lucide-react'
+import { X, Send, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -13,8 +13,33 @@ interface Message {
   content: string
 }
 
+/** Aristocrat Academy Logo Icon — stylized "A" with Ashoka Chakra accent */
+function AristocratLogoIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 40 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      {/* Outer gold ring */}
+      <circle cx="20" cy="20" r="18" stroke="#C8960C" strokeWidth="1.5" opacity="0.9" />
+      {/* Inner ring */}
+      <circle cx="20" cy="20" r="15" stroke="#C8960C" strokeWidth="0.5" opacity="0.4" />
+      {/* Stylized "A" letterform */}
+      <path
+        d="M20 8L12 28H16L17.5 24H22.5L24 28H28L20 8ZM18.5 21L20 16L21.5 21H18.5Z"
+        fill="#E8B830"
+      />
+      {/* Small chakra dot at apex */}
+      <circle cx="20" cy="7" r="1.2" fill="#C8960C" />
+    </svg>
+  )
+}
+
 export function ChatbotWidget() {
   const [isOpen, setIsOpen] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
@@ -37,6 +62,17 @@ export function ChatbotWidget() {
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus()
+    }
+  }, [isOpen])
+
+  // Show "Ask your doubts" tooltip after a delay
+  useEffect(() => {
+    if (isOpen) return
+    const showTimer = setTimeout(() => setShowTooltip(true), 3000)
+    const hideTimer = setTimeout(() => setShowTooltip(false), 8000)
+    return () => {
+      clearTimeout(showTimer)
+      clearTimeout(hideTimer)
     }
   }, [isOpen])
 
@@ -88,9 +124,14 @@ export function ChatbotWidget() {
     }
   }
 
+  const handleOpenChat = () => {
+    setShowTooltip(false)
+    setIsOpen(true)
+  }
+
   return (
     <>
-      {/* Chat Bubble Button */}
+      {/* Chat Bubble Button with Logo Icon */}
       <AnimatePresence>
         {!isOpen && (
           <motion.div
@@ -98,21 +139,59 @@ export function ChatbotWidget() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 260, damping: 20, delay: 0.2 }}
-            className="fixed bottom-[3rem] right-5 sm:right-6 z-50 group/chat"
+            className="fixed bottom-[1.5rem] right-5 sm:right-6 z-50 group/chat"
           >
-            {/* Vertical gold connector line to WhatsApp button below */}
-            <div className="fab-connector" style={{ top: '100%', height: '2.5rem' }} />
             <Button
-              onClick={() => setIsOpen(true)}
-              className="w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-shadow bg-navy dark:bg-[#0A1428] text-ivory-cream gold-ring-btn chatbot-gold-ring-pulse"
+              onClick={handleOpenChat}
+              className={cn(
+                'w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300',
+                'bg-navy dark:bg-[#0A1428] text-ivory-cream',
+                'gold-ring-btn chatbot-gold-ring-pulse',
+                'hover:scale-110',
+              )}
               aria-label="Open chat assistant"
             >
-              <MessageCircle className="w-5 h-5" />
+              <AristocratLogoIcon className="w-8 h-8" />
             </Button>
-            {/* Tooltip */}
-            <span className="tooltip-left">
-              Chat with us
-            </span>
+
+            {/* "Ask your doubts to me" Popup Tooltip */}
+            <AnimatePresence>
+              {showTooltip && (
+                <motion.div
+                  initial={{ opacity: 0, x: 10, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: 10, scale: 0.9 }}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className={cn(
+                    'absolute right-full mr-3 top-1/2 -translate-y-1/2',
+                    'whitespace-nowrap',
+                    'px-4 py-2.5 rounded-xl',
+                    'bg-navy dark:bg-[#0A1428]',
+                    'border border-[rgba(200,150,12,0.3)] dark:border-[rgba(232,184,48,0.3)]',
+                    'shadow-[0_4px_20px_rgba(0,0,0,0.25)]',
+                    'cursor-pointer',
+                  )}
+                  onClick={handleOpenChat}
+                >
+                  {/* Arrow pointing right */}
+                  <div
+                    className={cn(
+                      'absolute right-[-6px] top-1/2 -translate-y-1/2',
+                      'w-3 h-3 rotate-45',
+                      'bg-navy dark:bg-[#0A1428]',
+                      'border-r border-t',
+                      'border-[rgba(200,150,12,0.3)] dark:border-[rgba(232,184,48,0.3)]',
+                    )}
+                  />
+                  <p className="font-sans text-[13px] font-medium text-ivory-cream">
+                    Ask your doubts to me
+                  </p>
+                  <p className="font-sans text-[11px] text-[#C8960C] dark:text-champagne-gold mt-0.5">
+                    Click to start chatting →
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>
@@ -125,18 +204,15 @@ export function ChatbotWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed z-50 bottom-[3rem] right-3 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-[400px] max-h-[70vh] flex flex-col rounded-xl overflow-hidden shadow-2xl border border-light-gray dark:border-[#1C2541] bg-ivory-cream dark:bg-[#0D1525]"
+            className="fixed z-50 bottom-[1.5rem] right-3 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-[400px] max-h-[70vh] flex flex-col rounded-xl overflow-hidden shadow-2xl border border-light-gray dark:border-[#1C2541] bg-ivory-cream dark:bg-[#0D1525]"
           >
             {/* Header */}
             <div
               className="flex items-center justify-between px-4 py-3 shrink-0 bg-navy dark:bg-[#0A1428]"
             >
-              <div className="flex items-center gap-2">
-                {/* Gold ring instead of green dot */}
-                <div
-                  className="w-2.5 h-2.5 rounded-full bg-sovereign-gold dark:bg-champagne-gold"
-                  style={{ boxShadow: '0 0 6px rgba(200,150,12,0.5)' }}
-                />
+              <div className="flex items-center gap-2.5">
+                {/* Logo icon instead of green dot */}
+                <AristocratLogoIcon className="w-6 h-6" />
                 <h3
                   className="font-serif text-[18px] font-medium text-ivory-cream"
                 >
