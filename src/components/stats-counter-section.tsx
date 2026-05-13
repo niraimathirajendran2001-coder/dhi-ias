@@ -58,16 +58,16 @@ function StatItem({
   const count = useCountUp(value, inView)
 
   return (
-    <div className="flex flex-col items-center px-4 text-center">
+    <div className="flex flex-col items-center px-4 text-center animate-gentle-float">
       <motion.span
-        className="font-serif stat-number text-5xl md:text-6xl gold-gradient-text"
+        className="font-serif stat-number text-5xl md:text-6xl gold-gradient-text stat-gold-underline"
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
         {count}
-        {suffix}
+        <span className="text-champagne-gold">{suffix}</span>
       </motion.span>
       <span
         className="mt-2 text-sm font-sans body-text text-ivory-cream/70"

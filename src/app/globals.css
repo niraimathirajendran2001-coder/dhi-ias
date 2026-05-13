@@ -626,3 +626,205 @@
   border: 2px solid rgba(200, 150, 12, 0.3);
   animation: glow-pulse 3s ease-in-out infinite;
 }
+
+/* ══════════════════════════════════════════════
+   PREMIUM STYLING ENHANCEMENTS — Task 8-a
+   ══════════════════════════════════════════════ */
+
+/* Gold underline that slides from left on hover */
+.gold-underline-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.gold-underline-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #C8960C, #E8B830);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 1px;
+}
+
+.gold-underline-hover:hover::after {
+  width: 100%;
+}
+
+.dark .gold-underline-hover::after {
+  background: linear-gradient(90deg, #E8B830, #F5D060);
+}
+
+/* Combined premium card hover: lift + shadow + gold border + subtle glow */
+.card-hover-premium {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease;
+}
+
+.card-hover-premium:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 8px 24px rgba(15, 31, 75, 0.1),
+    0 20px 48px rgba(200, 150, 12, 0.08),
+    0 0 0 1px rgba(200, 150, 12, 0.15);
+  border-color: rgba(200, 150, 12, 0.4);
+}
+
+.dark .card-hover-premium:hover {
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 20px 48px rgba(200, 150, 12, 0.12),
+    0 0 0 1px rgba(232, 184, 48, 0.2);
+  border-color: rgba(232, 184, 48, 0.3);
+}
+
+/* Text shadow with gold glow for depth */
+.text-shadow-gold {
+  text-shadow: 0 2px 20px rgba(200, 150, 12, 0.15);
+}
+
+.dark .text-shadow-gold {
+  text-shadow: 0 2px 20px rgba(232, 184, 48, 0.2);
+}
+
+/* Pulsing gold glow animation */
+@keyframes gold-pulse-glow-anim {
+  0%, 100% { box-shadow: 0 0 8px rgba(200, 150, 12, 0.15), 0 0 16px rgba(200, 150, 12, 0.05); }
+  50% { box-shadow: 0 0 16px rgba(200, 150, 12, 0.3), 0 0 32px rgba(200, 150, 12, 0.1); }
+}
+
+.gold-pulse-glow {
+  animation: gold-pulse-glow-anim 3s ease-in-out infinite;
+}
+
+.dark .gold-pulse-glow {
+  animation: gold-pulse-glow-anim-dark 3s ease-in-out infinite;
+}
+
+@keyframes gold-pulse-glow-anim-dark {
+  0%, 100% { box-shadow: 0 0 8px rgba(232, 184, 48, 0.15), 0 0 16px rgba(232, 184, 48, 0.05); }
+  50% { box-shadow: 0 0 16px rgba(232, 184, 48, 0.3), 0 0 32px rgba(232, 184, 48, 0.1); }
+}
+
+/* Glassmorphism for countdown boxes with enhanced blur */
+.glass-countdown {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(200, 150, 12, 0.2);
+}
+
+.dark .glass-countdown {
+  background: rgba(17, 24, 39, 0.5);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(232, 184, 48, 0.15);
+}
+
+/* Subtle gold left border on hover (for FAQ items) */
+.faq-gold-left {
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+.faq-gold-left[data-state="open"] {
+  border-left: 3px solid #C8960C;
+}
+
+.dark .faq-gold-left[data-state="open"] {
+  border-left: 3px solid #E8B830;
+}
+
+/* Gold underline decoration below stat numbers */
+.stat-gold-underline {
+  position: relative;
+}
+
+.stat-gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C8960C, #E8B830, #C8960C, transparent);
+  border-radius: 1px;
+}
+
+.dark .stat-gold-underline::after {
+  background: linear-gradient(90deg, transparent, #E8B830, #F5D060, #E8B830, transparent);
+}
+
+/* Gentle floating animation for stat cards */
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-gentle-float {
+  animation: gentle-float 4s ease-in-out infinite;
+}
+
+.animate-gentle-float:nth-child(2) { animation-delay: 0.5s; }
+.animate-gentle-float:nth-child(3) { animation-delay: 1s; }
+.animate-gentle-float:nth-child(4) { animation-delay: 1.5s; }
+
+/* Pulsing dot for CTAs */
+@keyframes pulse-cta-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.8); opacity: 0; }
+}
+
+.cta-pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0F1F4B;
+  animation: pulse-cta-dot 2s ease-in-out infinite;
+}
+
+.dark .cta-pulse-dot::after {
+  background: #0A1428;
+}
+
+/* Gold shimmer on director portrait hover */
+@keyframes gold-shimmer-portrait {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.portrait-gold-shimmer {
+  position: relative;
+}
+
+.portrait-gold-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(200, 150, 12, 0.3) 45%,
+    rgba(232, 184, 48, 0.4) 50%,
+    rgba(200, 150, 12, 0.3) 55%,
+    transparent 60%
+  );
+  background-size: 250% 100%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.portrait-gold-shimmer:hover::before {
+  opacity: 1;
+  animation: gold-shimmer-portrait 1.5s ease forwards;
+}

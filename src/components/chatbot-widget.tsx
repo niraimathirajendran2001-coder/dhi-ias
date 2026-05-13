@@ -98,7 +98,7 @@ export function ChatbotWidget() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-            className="fixed bottom-24 right-6 z-50"
+            className="fixed bottom-24 right-5 sm:right-6 z-50"
           >
             <Button
               onClick={() => setIsOpen(true)}
@@ -121,7 +121,7 @@ export function ChatbotWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed z-50 bottom-24 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[400px] max-h-[70vh] flex flex-col rounded-xl overflow-hidden shadow-2xl border border-light-gray dark:border-[#1C2541] bg-ivory-cream dark:bg-[#0D1525]"
+            className="fixed z-50 bottom-24 right-3 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-[400px] max-h-[70vh] flex flex-col rounded-xl overflow-hidden shadow-2xl border border-light-gray dark:border-[#1C2541] bg-ivory-cream dark:bg-[#0D1525]"
           >
             {/* Header */}
             <div

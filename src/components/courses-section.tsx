@@ -194,14 +194,16 @@ export default function CoursesSection() {
                   'gold-border-animate',
                   'transition-all duration-300',
                   'hover:-translate-y-[4px] hover:shadow-lg',
+                  'hover:border-t-[2px] hover:border-t-sovereign-gold dark:hover:border-t-champagne-gold',
                   course.isMostPopular
                     ? 'border-sovereign-gold dark:border-champagne-gold bg-gold-pale/30 dark:bg-[#1A1A10]/30'
-                    : 'border-light-gray dark:border-[#1C2541]'
+                    : 'border-light-gray dark:border-[#1C2541]',
+                  'shadow-[inset_0_2px_4px_rgba(0,0,0,0.04)]'
                 )}
               >
-                {/* Most Popular ribbon treatment */}
+                {/* Most Popular ribbon treatment — slight rotation */}
                 {course.isMostPopular && (
-                  <div className="ribbon" aria-label="Most Popular">
+                  <div className="ribbon -rotate-[2deg]" aria-label="Most Popular">
                     Most Popular
                   </div>
                 )}
@@ -277,10 +279,10 @@ export default function CoursesSection() {
                   </div>
                 )}
 
-                {/* Know More Link */}
+                {/* Know More Link with gold underline hover */}
                 <a
                   href="#"
-                  className="mt-3 inline-flex items-center gap-1 text-sm font-sans font-medium text-sovereign-gold dark:text-champagne-gold transition-colors hover:underline"
+                  className="mt-3 inline-flex items-center gap-1 text-sm font-sans font-medium text-sovereign-gold dark:text-champagne-gold gold-underline-hover transition-colors"
                   onClick={(e) => e.preventDefault()}
                 >
                   Know More

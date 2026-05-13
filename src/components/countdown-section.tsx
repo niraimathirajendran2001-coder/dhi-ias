@@ -80,14 +80,10 @@ function CountdownBox({
       className={cn(
         'flex flex-col items-center justify-center',
         'rounded-xl p-4 sm:p-6',
-        'glass-card',
-        'border border-[rgba(200,150,12,0.25)]',
+        'glass-countdown gold-pulse-glow',
         'relative overflow-hidden',
       )}
       style={{
-        background: 'rgba(255,255,255,0.06)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
         minWidth: '80px',
       }}
     >

@@ -1,6 +1,6 @@
 'use client'
 
-import { GraduationCap, Trophy, Users } from 'lucide-react'
+import { GraduationCap, Trophy, Users, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
@@ -47,13 +47,13 @@ const containerVariants = {
 const cardVariants = {
   hidden: {
     opacity: 0,
-    y: 20,
+    x: -30,
   },
   visible: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.5,
       ease: 'easeOut',
     },
   },
@@ -153,6 +153,16 @@ export default function WhyAristocratSection() {
                 <p className="mt-3 line-clamp-2 text-sm font-sans leading-relaxed text-mid-gray dark:text-ivory-cream/50">
                   {feature.description}
                 </p>
+
+                {/* Learn More link with arrow */}
+                <a
+                  href="#"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-sans font-medium text-sovereign-gold dark:text-champagne-gold gold-underline-hover transition-colors"
+                  onClick={(e) => e.preventDefault()}
+                >
+                  Learn More
+                  <ArrowRight size={14} />
+                </a>
               </div>
             </motion.article>
           ))}

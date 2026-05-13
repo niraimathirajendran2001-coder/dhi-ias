@@ -118,6 +118,14 @@ export default function HeroSection() {
         initial="hidden"
         animate="visible"
       >
+        {/* Decorative thin gold line above label */}
+        <motion.div
+          className="mb-3"
+          variants={lineVariants}
+        >
+          <div className="h-px w-8 bg-sovereign-gold dark:bg-champagne-gold" />
+        </motion.div>
+
         {/* Gold uppercase label */}
         <motion.p
           className="font-sans ui-label text-[11px] mb-6 text-sovereign-gold dark:text-champagne-gold"
@@ -128,9 +136,17 @@ export default function HeroSection() {
 
         {/* Main headline — Cormorant Garamond at display size */}
         <motion.h1
-          className="font-serif display-headline text-[clamp(2.75rem,7vw,4.5rem)] mb-6 text-ivory-cream"
+          className="font-serif display-headline text-[clamp(2.75rem,7vw,4.5rem)] mb-6 text-ivory-cream text-shadow-gold relative"
           variants={headlineVariants}
         >
+          {/* Subtle gold radial gradient glow behind headline */}
+          <span
+            className="absolute inset-0 -z-10 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse at 30% 50%, rgba(200,150,12,0.08) 0%, transparent 60%)',
+            }}
+            aria-hidden="true"
+          />
           Where Civil Servants Begin.
         </motion.h1>
 
@@ -163,7 +179,7 @@ export default function HeroSection() {
             href="#admissions"
             className={cn(
               'inline-flex items-center justify-center font-sans font-semibold rounded-md',
-              'px-8 py-4 text-sm transition-all duration-300',
+              'px-8 py-4 sm:py-5 text-sm transition-all duration-300',
               'hover:brightness-110 active:scale-[0.98]',
               'btn-gold-shimmer',
               'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]'
@@ -187,10 +203,7 @@ export default function HeroSection() {
 
       {/* Gold gradient overlay at bottom edge for smooth transition */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-20"
-        style={{
-          background: 'linear-gradient(to top, #FAFAF7 0%, transparent 100%)',
-        }}
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-20 bg-gradient-to-t from-ivory-cream dark:from-[#0D1525] to-transparent"
         aria-hidden="true"
       />
 

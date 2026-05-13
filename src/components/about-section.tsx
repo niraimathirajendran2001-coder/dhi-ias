@@ -135,7 +135,7 @@ export default function AboutSection() {
           <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
             {/* Portrait with gold ring + subtle pulse */}
             <motion.div variants={fadeInLeft} className="flex-shrink-0 self-center md:self-start">
-              <div className="gold-ring-pulse inline-block">
+              <div className="gold-ring-pulse portrait-gold-shimmer inline-block">
                 <div
                   className="flex items-center justify-center rounded-full bg-navy dark:bg-[#0A1428] border-[3px] border-sovereign-gold dark:border-champagne-gold"
                   style={{
@@ -221,6 +221,24 @@ export default function AboutSection() {
                     begins.
                   </p>
                 </div>
+              </div>
+
+              {/* Read Full Message expandable link */}
+              <div className="mt-4">
+                <button
+                  className="inline-flex items-center gap-1 text-[13px] font-sans font-medium text-sovereign-gold dark:text-champagne-gold gold-underline-hover transition-colors"
+                  onClick={(e) => {
+                    const el = e.currentTarget.previousElementSibling as HTMLElement | null
+                    if (el) {
+                      el.classList.toggle('line-clamp-3')
+                    }
+                  }}
+                >
+                  Read Full Message
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
               </div>
             </motion.div>
           </div>

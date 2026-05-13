@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 import {
   Accordion,
   AccordionContent,
@@ -122,12 +121,23 @@ export function FAQSection() {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="rounded-lg border px-4 sm:px-5 overflow-hidden transition-all duration-200 border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827]"
+                className="rounded-lg border px-4 sm:px-5 overflow-hidden transition-all duration-200 border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827] faq-gold-left hover:bg-ivory-cream/50 dark:hover:bg-[#1C2541]/50"
               >
                 <AccordionTrigger className="hover:no-underline py-4 text-left font-sans text-[15px] font-semibold group text-navy dark:text-ivory-cream px-1"
                 >
                   <span className="flex-1 pr-4">{faq.question}</span>
-                  <ChevronDown className="w-5 h-5 shrink-0 transition-transform duration-200 text-sovereign-gold dark:text-champagne-gold group-[&[data-state=open]]:rotate-180" />
+                  <span className="relative w-5 h-5 flex items-center justify-center shrink-0">
+                    <span className="absolute inset-0 flex items-center justify-center text-sovereign-gold dark:text-champagne-gold transition-all duration-200 group-[&[data-state=open]]:opacity-0 group-[&[data-state=open]]:rotate-90">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 1V13M1 7H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                    <span className="absolute inset-0 flex items-center justify-center text-sovereign-gold dark:text-champagne-gold transition-all duration-200 opacity-0 rotate-0 group-[&[data-state=open]]:opacity-100 group-[&[data-state=open]]:rotate-0">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 7H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                  </span>
                 </AccordionTrigger>
                 <AccordionContent className="font-sans body-text text-[14px] pb-4 px-1 text-stone-gray dark:text-ivory-cream/70">
                   {faq.answer}

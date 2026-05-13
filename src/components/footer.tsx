@@ -110,7 +110,7 @@ export default function Footer() {
               Driven by results.
             </p>
 
-            {/* Social Icons with hover scale + gold color transition */}
+            {/* Social Icons with gold background circle on hover */}
             <div className="flex items-center gap-4">
               {[
                 { Icon: Instagram, label: 'Instagram' },
@@ -123,12 +123,14 @@ export default function Footer() {
                   href="#"
                   aria-label={label}
                   className={cn(
+                    'flex items-center justify-center size-9 rounded-full',
                     'transition-all duration-300',
-                    'hover:scale-125 hover:drop-shadow-[0_0_6px_rgba(200,150,12,0.4)]',
-                    'text-ivory-cream hover:text-sovereign-gold dark:hover:text-champagne-gold'
+                    'text-ivory-cream hover:text-navy dark:hover:text-[#0A1428]',
+                    'hover:bg-sovereign-gold dark:hover:bg-champagne-gold',
+                    'hover:scale-110 hover:shadow-md hover:shadow-[rgba(200,150,12,0.3)]'
                   )}
                 >
-                  <Icon className="size-5" />
+                  <Icon className="size-4" />
                 </a>
               ))}
             </div>

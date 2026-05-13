@@ -22,10 +22,15 @@ import { AnnouncementBar } from '@/components/announcement-bar'
 import { SectionDivider } from '@/components/section-divider'
 import CountdownSection from '@/components/countdown-section'
 import AchieversSection from '@/components/achievers-section'
+import DailyQuizSection from '@/components/daily-quiz-section'
+import ComparisonSection from '@/components/comparison-section'
+import PageLoader from '@/components/page-loader'
+import GallerySection from '@/components/gallery-section'
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
+      <PageLoader />
       <AnnouncementBar />
       <ScrollProgress />
       <Header />
@@ -54,12 +59,22 @@ export default function Home() {
 
         <SectionDivider variant="gold-line" />
 
+        {/* Daily Quiz — Cream background */}
+        <DailyQuizSection />
+
+        <SectionDivider variant="gold-line" />
+
         {/* Courses — Light gradient background */}
         <section id="courses">
           <CoursesSection />
         </section>
 
         <SectionDivider variant="ornament" />
+
+        {/* Comparison — Navy background */}
+        <ComparisonSection />
+
+        <SectionDivider variant="wave" />
 
         {/* Faculty — Navy dark section */}
         <section id="faculty">
@@ -79,6 +94,11 @@ export default function Home() {
         <AchieversSection />
 
         <SectionDivider variant="wave" />
+
+        {/* Gallery — Cream background */}
+        <GallerySection />
+
+        <SectionDivider variant="gold-line" />
 
         {/* About — Cream background */}
         <section id="about">

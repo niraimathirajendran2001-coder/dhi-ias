@@ -201,6 +201,7 @@ export function ResourcesSection() {
                       placeholder="Your full name"
                       className={cn(
                         'bg-white dark:bg-[#111827]',
+                        'focus-visible:ring-2 focus-visible:ring-sovereign-gold dark:focus-visible:ring-champagne-gold focus-visible:ring-offset-1',
                         errors.fullName && 'border-red-500 focus-visible:ring-red-500/30'
                       )}
                       {...register('fullName')}
@@ -221,6 +222,7 @@ export function ResourcesSection() {
                       placeholder="your@email.com"
                       className={cn(
                         'bg-white dark:bg-[#111827]',
+                        'focus-visible:ring-2 focus-visible:ring-sovereign-gold dark:focus-visible:ring-champagne-gold focus-visible:ring-offset-1',
                         errors.email && 'border-red-500 focus-visible:ring-red-500/30'
                       )}
                       {...register('email')}
@@ -241,6 +243,7 @@ export function ResourcesSection() {
                       placeholder="+91 XXXXX XXXXX"
                       className={cn(
                         'bg-white dark:bg-[#111827]',
+                        'focus-visible:ring-2 focus-visible:ring-sovereign-gold dark:focus-visible:ring-champagne-gold focus-visible:ring-offset-1',
                         errors.phone && 'border-red-500 focus-visible:ring-red-500/30'
                       )}
                       {...register('phone')}
@@ -296,14 +299,16 @@ export function ResourcesSection() {
                   'hover:-translate-y-2 hover:shadow-lg',
                   'hover:shadow-[rgba(200,150,12,0.08)]',
                   'border-l-4 border-l-transparent hover:border-l-sovereign-gold dark:hover:border-l-champagne-gold',
-                  'premium-shadow'
+                  'premium-shadow card-hover-premium'
                 )}
               >
                 <res.icon
                   className="mb-3 h-6 w-6 text-sovereign-gold dark:text-champagne-gold"
                   strokeWidth={1.8}
                 />
-                <h4 className="text-base font-sans card-title text-navy dark:text-ivory-cream">{res.title}</h4>
+                <div className="flex items-center gap-2">
+                  <h4 className="text-base font-sans card-title text-navy dark:text-ivory-cream">{res.title}</h4>
+                </div>
                 <p className="mt-0.5 text-[13px] text-mid-gray dark:text-ivory-cream/50">
                   {res.description}
                 </p>

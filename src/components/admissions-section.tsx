@@ -192,7 +192,16 @@ export default function AdmissionsSection() {
                 variants={scaleIn}
                 className="relative flex flex-col md:flex-row items-center gap-4 md:gap-0"
               >
-                <div className="flex flex-col items-center text-center">
+                <div className="flex flex-col items-center text-center relative">
+                  {/* Large semi-transparent step number behind icon */}
+                  <span
+                    className="absolute -top-4 left-1/2 -translate-x-1/2 font-serif text-[72px] font-bold leading-none select-none pointer-events-none"
+                    style={{ color: 'rgba(200,150,12,0.08)' }}
+                    aria-hidden="true"
+                  >
+                    {String(step.number).padStart(2, '0')}
+                  </span>
+
                   {/* Step badge with decorative icon */}
                   <div
                     className="relative flex items-center justify-center rounded-full mb-3 border-2 border-sovereign-gold dark:border-champagne-gold"
@@ -411,7 +420,7 @@ export default function AdmissionsSection() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 h-auto font-sans text-[16px] font-semibold rounded-md btn-gold-shimmer bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]"
+                  className="w-full py-4 h-auto font-sans text-[16px] font-semibold rounded-md btn-gold-shimmer bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] relative cta-pulse-dot"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
@@ -488,7 +497,12 @@ export default function AdmissionsSection() {
                 {feeStructure.map((row, index) => (
                   <tr
                     key={row.course}
-                    className="transition-colors duration-200 bg-royal-navy/60 dark:bg-[#0D1525]/80"
+                    className={cn(
+                      'transition-colors duration-200',
+                      index % 2 === 0
+                        ? 'bg-royal-navy dark:bg-[#0D1525]/80'
+                        : 'bg-royal-navy/60 dark:bg-[#0D1525]/60'
+                    )}
                     style={{
                       backgroundColor: index % 2 === 0 ? '#1A2E6B' : 'rgba(26,46,107,0.6)',
                     }}

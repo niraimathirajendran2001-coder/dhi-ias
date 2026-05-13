@@ -130,6 +130,17 @@ export default function TestimonialsSection() {
         style={{ background: 'linear-gradient(to top, #FAFAF7, transparent)' }}
         aria-hidden="true"
       />
+      {/* Gradient overlay on dark mode */}
+      <div
+        className="absolute top-0 left-0 right-0 h-24 pointer-events-none hidden dark:block"
+        style={{ background: 'linear-gradient(to bottom, #0D1525, transparent)' }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none hidden dark:block"
+        style={{ background: 'linear-gradient(to top, #0D1525, transparent)' }}
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -265,17 +276,17 @@ export default function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Navigation Dots */}
-        <div className="mt-8 flex items-center justify-center gap-2">
+        {/* Navigation Dots — gold and larger */}
+        <div className="mt-8 flex items-center justify-center gap-2.5">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => emblaApi?.scrollTo(index)}
               className={cn(
-                'h-2.5 rounded-full transition-all duration-300',
+                'h-3 rounded-full transition-all duration-300',
                 selectedIndex === index
-                  ? 'w-8 bg-sovereign-gold dark:bg-champagne-gold'
-                  : 'w-2.5 bg-sovereign-gold/30 dark:bg-champagne-gold/30 hover:bg-sovereign-gold/60 dark:hover:bg-champagne-gold/60'
+                  ? 'w-10 bg-sovereign-gold dark:bg-champagne-gold'
+                  : 'w-3 bg-sovereign-gold/30 dark:bg-champagne-gold/30 hover:bg-sovereign-gold/60 dark:hover:bg-champagne-gold/60'
               )}
               aria-label={`Go to testimonial ${index + 1}`}
               aria-current={selectedIndex === index ? 'true' : undefined}

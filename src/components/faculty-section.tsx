@@ -79,7 +79,9 @@ function FacultyCard({
         'border-[#243A80] dark:border-[#1C2541] bg-[#1A2E6B] dark:bg-[#0D1525]',
         'hover:-translate-y-[3px] hover:border-t-[4px] hover:border-t-[#C8960C]',
         'hover:shadow-lg hover:shadow-[rgba(200,150,12,0.08)]',
-        'border-t-[2px] border-t-transparent'
+        'hover:border-[#C8960C]/30',
+        'border-t-[2px] border-t-transparent',
+        'hover:ring-1 hover:ring-[#C8960C]/20'
       )}
     >
       {/* Avatar with gold ring animation on hover */}
@@ -88,7 +90,7 @@ function FacultyCard({
           className={cn(
             'flex h-20 w-20 items-center justify-center rounded-full',
             'bg-navy dark:bg-[#0A1428] text-champagne-gold',
-            'font-serif text-xl font-semibold tracking-wide',
+            'font-serif text-2xl font-bold tracking-wide',
             'transition-all duration-300',
             'ring-2 ring-transparent group-hover:ring-sovereign-gold dark:group-hover:ring-champagne-gold group-hover:ring-offset-2 group-hover:ring-offset-[#1A2E6B] dark:group-hover:ring-offset-[#0D1525]'
           )}
@@ -107,6 +109,9 @@ function FacultyCard({
         {member.name}
       </h3>
 
+      {/* Gold accent bar below name */}
+      <div className="mb-2 h-[2px] w-8 bg-gradient-to-r from-sovereign-gold to-champagne-gold" />
+
       {/* Subject */}
       <p className="mb-2 text-[14px] font-medium text-champagne-gold">
         {member.subject}
@@ -116,6 +121,16 @@ function FacultyCard({
       <p className="text-[13px] leading-snug text-ivory-cream/60">
         {member.credential}
       </p>
+
+      {/* View Profile link */}
+      <a
+        href="#"
+        className="mt-3 inline-flex items-center gap-1 text-[12px] font-sans font-medium text-champagne-gold gold-underline-hover transition-colors"
+        onClick={(e) => e.preventDefault()}
+      >
+        View Profile
+        <ArrowRight size={12} />
+      </a>
     </motion.div>
   )
 }

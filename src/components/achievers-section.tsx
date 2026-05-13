@@ -44,11 +44,12 @@ function AchieverCard({
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className={cn(
         'group relative rounded-xl',
-        'bg-white border border-[#E8E8E4]',
+        'bg-white dark:bg-[#111827] border border-light-gray dark:border-[#1C2541]',
         'p-5 sm:p-6 text-center',
         'premium-shadow hover-lift gold-border-animate',
         'transition-all duration-300',
         'overflow-hidden',
+        'card-hover-premium',
       )}
     >
       {/* Circular initials avatar */}
@@ -64,7 +65,7 @@ function AchieverCard({
           style={{ backgroundColor: '#0F1F4B' }}
         >
           <span
-            className="font-serif text-lg font-semibold"
+            className="font-serif text-lg font-bold"
             style={{ color: '#E8B830' }}
           >
             {achiever.initials}
@@ -74,8 +75,7 @@ function AchieverCard({
 
       {/* Name */}
       <h3
-        className="font-serif text-[18px] font-semibold mb-2"
-        style={{ color: '#0F1F4B' }}
+        className="font-serif text-[18px] font-semibold mb-2 text-navy dark:text-ivory-cream"
       >
         {achiever.name}
       </h3>
@@ -83,7 +83,7 @@ function AchieverCard({
       {/* Rank Badge */}
       <div className="flex justify-center mb-2">
         <span
-          className="inline-flex items-center px-3 py-1 rounded-full font-sans text-[11px] font-semibold tracking-wide"
+          className="inline-flex items-center px-3 py-1 rounded-full font-sans text-[11px] font-semibold tracking-wide shadow-sm"
           style={{
             backgroundColor: serviceColor,
             color: '#FAFAF7',
@@ -95,16 +95,14 @@ function AchieverCard({
 
       {/* Service */}
       <p
-        className="font-sans text-[13px] font-medium mb-1"
-        style={{ color: '#3D3D3A' }}
+        className="font-sans text-[13px] font-medium mb-1 text-stone-gray dark:text-ivory-cream/70"
       >
         {achiever.service}
       </p>
 
       {/* Year */}
       <p
-        className="font-mono text-[11px]"
-        style={{ color: '#737370' }}
+        className="font-mono text-[11px] text-mid-gray dark:text-ivory-cream/50"
       >
         {achiever.year}
       </p>
@@ -120,8 +118,7 @@ export default function AchieversSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-16 md:py-24 overflow-hidden"
-      style={{ backgroundColor: '#FAFAF7' }}
+      className="relative py-16 md:py-24 overflow-hidden bg-ivory-cream dark:bg-[#0D1525]"
       aria-labelledby="achievers-heading"
     >
       {/* Subtle gradient background */}
@@ -147,19 +144,18 @@ export default function AchieversSection() {
           <h2
             id="achievers-heading"
             className={cn(
-              'font-serif section-heading text-[36px] leading-tight text-[#0F1F4B] md:text-[44px]',
+              'font-serif section-heading text-[36px] leading-tight text-navy dark:text-ivory-cream md:text-[44px]',
             )}
           >
             Our Achievers
           </h2>
 
           {/* Gold Separator */}
-          <div className="mx-auto mt-5 mb-4 h-[2px] w-10 bg-[#C8960C]" />
+          <div className="mx-auto mt-5 mb-4 h-[2px] w-10 bg-sovereign-gold dark:bg-champagne-gold" />
 
           {/* Subtext */}
           <p
-            className="font-sans body-text text-[15px] md:text-[16px]"
-            style={{ color: '#737370' }}
+            className="font-sans body-text text-[15px] md:text-[16px] text-mid-gray dark:text-ivory-cream/50"
           >
             Building the Next Generation of Civil Servants
           </p>
@@ -185,11 +181,10 @@ export default function AchieversSection() {
             className={cn(
               'inline-flex items-center gap-2',
               'font-sans text-[14px] font-medium',
+              'text-sovereign-gold dark:text-champagne-gold',
               'transition-colors duration-200',
+              'hover:text-champagne-gold dark:hover:text-[#F5D060]',
             )}
-            style={{ color: '#C8960C' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = '#E8B830')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = '#C8960C')}
           >
             View All Results
             <ArrowRight className="w-4 h-4" />

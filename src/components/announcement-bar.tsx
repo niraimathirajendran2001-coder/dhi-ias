@@ -70,10 +70,10 @@ export function AnnouncementBar() {
         <AnimatePresence mode="wait">
           <motion.p
             key={currentIndex}
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            initial={{ x: 30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -30, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="font-sans text-[13px] font-medium whitespace-nowrap"
             style={{ color: '#0F1F4B' }}
           >
@@ -82,10 +82,10 @@ export function AnnouncementBar() {
         </AnimatePresence>
       </div>
 
-      {/* Dismiss Button */}
+      {/* Dismiss Button with gold hover */}
       <button
         onClick={handleDismiss}
-        className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-sm transition-colors hover:bg-black/10 cursor-pointer"
+        className="absolute right-3 top-1/2 -translate-y-1/2 p-0.5 rounded-sm transition-colors hover:bg-[#0F1F4B]/15 cursor-pointer"
         style={{ color: '#0F1F4B' }}
         aria-label="Dismiss announcement"
       >

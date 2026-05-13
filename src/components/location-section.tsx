@@ -160,7 +160,7 @@ export function LocationSection() {
 
                 <Button
                   asChild
-                  className="mt-5 gap-2 rounded-md font-semibold btn-gold-shimmer bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]"
+                  className="mt-5 gap-2 rounded-md font-semibold btn-gold-shimmer bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] hover:ring-2 hover:ring-sovereign-gold dark:hover:ring-champagne-gold hover:ring-offset-2 hover:ring-offset-navy dark:hover:ring-offset-[#0A1428] transition-all duration-300"
                 >
                   <a href={googleMapsUrl} target="_blank" rel="noopener noreferrer">
                     <ExternalLink className="h-4 w-4" />
@@ -205,7 +205,7 @@ export function LocationSection() {
             <div className="mt-4 space-y-3">
               <a
                 href="tel:+9180XXXX0000"
-                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-colors hover:text-navy dark:hover:text-ivory-cream"
+                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-all duration-200 hover:text-navy dark:hover:text-ivory-cream hover:translate-x-1"
               >
                 <Phone className="h-5 w-5 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                 +91 80 XXXX XXXX
@@ -214,14 +214,14 @@ export function LocationSection() {
                 href="https://wa.me/9198XXX00000"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-colors hover:text-forest-teal"
+                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-all duration-200 hover:text-forest-teal hover:translate-x-1"
               >
                 <MessageCircle className="h-5 w-5 shrink-0 text-forest-teal" />
                 +91 98XXX XXXXX
               </a>
               <a
                 href="mailto:info@aristocratiasacademy.in"
-                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-colors hover:text-navy dark:hover:text-ivory-cream"
+                className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-all duration-200 hover:text-navy dark:hover:text-ivory-cream hover:translate-x-1"
               >
                 <Mail className="h-5 w-5 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
                 info@aristocratiasacademy.in
