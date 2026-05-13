@@ -1261,3 +1261,29 @@ Unresolved Issues / Risks:
 - xxxxxxx placeholders need to be replaced with actual data from the academy office when available
 - Could further improve styling details per the cron task mandate
 - Future: real Google Maps embed, payment integration, student portal
+
+---
+Task ID: 10
+Agent: Main Orchestrator
+Task: Fix console errors — duplicate key in video testimonials, hydration mismatch in PageLoader, duplicate key in CookieConsent
+
+Work Log:
+- Read all affected component files to understand the root cause of each error
+- **Video Testimonials (duplicate key)**: Changed `key={testimonial.name}` to `key={testimonial.initials}` on line 482 since all 5 regular testimonials have the same name "xxxxxxx" placeholder, causing React key collision
+- **PageLoader (hydration mismatch)**: Replaced module-level `wasLoaderShown` variable (which reads `sessionStorage` at import time, returning `false` on server but potentially `true` on client) with `useSyncExternalStore` pattern. Server snapshot returns `true` (assume loader already shown = don't render), client reads actual sessionStorage value. This eliminates the hydration mismatch because both server and first client render agree. Added `subscribeToSessionStorage`, `getSessionSnapshot`, and `getServerSnapshot` helper functions. Also removed `isVisible` and `hasLoaded` states, replaced with `hasDismissed` state derived from component lifecycle.
+- **CookieConsent (duplicate key)**: Removed nested `AnimatePresence` wrapper around the backdrop overlay. The outer `AnimatePresence` was wrapping an inner `AnimatePresence` (key="cookie-backdrop-wrapper") which caused React to generate empty/duplicate keys. Now the backdrop is a direct conditional child of the outer AnimatePresence with its own unique key.
+- Verified all fee/faculty/toppers data already uses "xxxxxxx" placeholders across all components (courses-section, faculty-section, achievers-section, testimonials-section, video-testimonials-section, success-stories-section, admissions-section, about-section)
+- Ran lint: clean (0 errors, 0 warnings)
+- QA tested with agent-browser: navigated homepage, scrolled full page, checked console — no duplicate key errors, no hydration mismatch errors
+- Minor remaining warnings: scroll container position (framer-motion), logo image aspect ratio (non-critical)
+
+Stage Summary:
+- 3 critical bugs fixed: duplicate key in video testimonials, hydration mismatch in PageLoader, duplicate key in CookieConsent
+- All fee/faculty/toppers data confirmed as "xxxxxxx" placeholders
+- Lint clean, dev server 200, no console errors
+- No sections added or removed — only bug fixes applied
+
+Unresolved Issues / Risks:
+- Minor warning about logo image aspect ratio (non-critical, cosmetic)
+- Minor framer-motion scroll container position warning (non-critical)
+- On first visit, page loader appears after hydration (brief flash of content before loader overlay) — acceptable tradeoff for hydration safety

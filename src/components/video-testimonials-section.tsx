@@ -479,7 +479,7 @@ export default function VideoTestimonialsSection() {
           {/* Regular Cards */}
           {regularTestimonials.map((testimonial, index) => (
             <RegularCard
-              key={testimonial.name}
+              key={testimonial.initials}
               testimonial={testimonial}
               index={index + 1}
             />

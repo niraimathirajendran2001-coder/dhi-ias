@@ -89,19 +89,17 @@ export function CookieConsent() {
   return (
     <AnimatePresence>
       {/* Backdrop overlay when preferences expanded */}
-      <AnimatePresence key="cookie-backdrop-wrapper">
-        {showPreferences && (
-          <motion.div
-            key="cookie-backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black/20 dark:bg-black/40 backdrop-blur-sm"
-            aria-hidden="true"
-          />
-        )}
-      </AnimatePresence>
+      {showPreferences && (
+        <motion.div
+          key="cookie-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 z-40 bg-black/20 dark:bg-black/40 backdrop-blur-sm"
+          aria-hidden="true"
+        />
+      )}
       <motion.div
         key="cookie-consent-panel"
         initial={{ y: 100, opacity: 0 }}

@@ -1,13 +1,28 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useSyncExternalStore } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-/* ─── Module-level session check (runs once when module loads) ─── */
-const wasLoaderShown =
-  typeof window !== 'undefined'
-    ? sessionStorage.getItem('aristocrat-loader-shown') === 'true'
-    : false
+/* ─── Session storage helpers for useSyncExternalStore ─── */
+const STORAGE_KEY = 'aristocrat-loader-shown'
+
+function subscribeToSessionStorage(callback: () => void) {
+  window.addEventListener('storage', callback)
+  return () => window.removeEventListener('storage', callback)
+}
+
+function getSessionSnapshot(): boolean {
+  if (typeof window === 'undefined') return true // SSR fallback: assume already shown
+  try {
+    return sessionStorage.getItem(STORAGE_KEY) === 'true'
+  } catch {
+    return false
+  }
+}
+
+function getServerSnapshot(): boolean {
+  return true // SSR: assume already shown (don't render loader)
+}
 
 /* ─── Ashoka Chakra SVG with 8 spokes ─── */
 function LoaderAshokaChakra() {
@@ -144,21 +159,36 @@ function GoldParticles() {
 }
 
 export default function PageLoader() {
-  const [isVisible, setIsVisible] = useState(!wasLoaderShown)
-  const [hasLoaded, setHasLoaded] = useState(wasLoaderShown)
+  // useSyncExternalStore reads sessionStorage safely without hydration mismatch.
+  // Server snapshot = true (already shown = don't render loader).
+  // Client reads actual value. On first visit, React re-renders to show loader.
+  const wasLoaderShown = useSyncExternalStore(
+    subscribeToSessionStorage,
+    getSessionSnapshot,
+    getServerSnapshot,
+  )
+
   const [isExiting, setIsExiting] = useState(false)
+  const [hasDismissed, setHasDismissed] = useState(false)
 
   const startExit = useCallback(() => {
     setIsExiting(true)
     // After gold ring expansion animation (0.9s), trigger split reveal
     setTimeout(() => {
-      setIsVisible(false)
-      sessionStorage.setItem('aristocrat-loader-shown', 'true')
+      setHasDismissed(true)
+      try {
+        sessionStorage.setItem(STORAGE_KEY, 'true')
+        window.dispatchEvent(
+          new StorageEvent('storage', { key: STORAGE_KEY, newValue: 'true' }),
+        )
+      } catch {
+        // Ignore storage errors
+      }
     }, 900)
   }, [])
 
   useEffect(() => {
-    // If already shown in this session, skip everything
+    // If already shown in this session, don't auto-dismiss (loader isn't visible)
     if (wasLoaderShown) return
 
     // Auto-dismiss after 2.5 seconds (gives time for animations)
@@ -167,19 +197,14 @@ export default function PageLoader() {
     }, 2500)
 
     return () => clearTimeout(timer)
-  }, [startExit])
+  }, [wasLoaderShown, startExit])
 
-  // After exit animation completes, mark as fully loaded
-  function handleExitComplete() {
-    setHasLoaded(true)
-  }
-
-  // Don't render anything if already loaded
-  if (hasLoaded) return null
+  // Don't render anything if already shown in this session or fully dismissed
+  if (wasLoaderShown || hasDismissed) return null
 
   return (
-    <AnimatePresence onExitComplete={handleExitComplete}>
-      {isVisible && (
+    <AnimatePresence>
+      {!hasDismissed && (
         <motion.div
           key="page-loader"
           initial={{ opacity: 1 }}
