@@ -98,17 +98,21 @@ export function ChatbotWidget() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-            className="fixed bottom-24 right-5 sm:right-6 z-50"
+            className="fixed bottom-[3rem] right-5 sm:right-6 z-50 group/chat"
           >
             <Button
               onClick={() => setIsOpen(true)}
-              className="w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow bg-navy dark:bg-[#0A1428] text-ivory-cream"
+              className="w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-shadow bg-navy dark:bg-[#0A1428] text-ivory-cream chatbot-gold-ring-pulse"
               aria-label="Open chat assistant"
             >
               <MessageCircle className="w-6 h-6" />
             </Button>
-            {/* Pulse ring */}
-            <span className="absolute inset-0 rounded-full animate-ping opacity-20 pointer-events-none bg-sovereign-gold" />
+            {/* Gold ring pulse — replaces green dot */}
+            <span className="absolute inset-0 rounded-full pointer-events-none border-2 border-sovereign-gold dark:border-champagne-gold animate-ping opacity-20" />
+            {/* Tooltip */}
+            <span className="tooltip-left">
+              Chat with us
+            </span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -121,15 +125,17 @@ export function ChatbotWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="fixed z-50 bottom-24 right-3 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-[400px] max-h-[70vh] flex flex-col rounded-xl overflow-hidden shadow-2xl border border-light-gray dark:border-[#1C2541] bg-ivory-cream dark:bg-[#0D1525]"
+            className="fixed z-50 bottom-[3rem] right-3 sm:right-6 w-[calc(100vw-1.5rem)] sm:w-[400px] max-h-[70vh] flex flex-col rounded-xl overflow-hidden shadow-2xl border border-light-gray dark:border-[#1C2541] bg-ivory-cream dark:bg-[#0D1525]"
           >
             {/* Header */}
             <div
               className="flex items-center justify-between px-4 py-3 shrink-0 bg-navy dark:bg-[#0A1428]"
             >
               <div className="flex items-center gap-2">
+                {/* Gold ring instead of green dot */}
                 <div
-                  className="w-2 h-2 rounded-full bg-green-500"
+                  className="w-2.5 h-2.5 rounded-full bg-sovereign-gold dark:bg-champagne-gold"
+                  style={{ boxShadow: '0 0 6px rgba(200,150,12,0.5)' }}
                 />
                 <h3
                   className="font-serif text-[18px] font-medium text-ivory-cream"

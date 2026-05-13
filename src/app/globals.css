@@ -828,3 +828,339 @@
   opacity: 1;
   animation: gold-shimmer-portrait 1.5s ease forwards;
 }
+
+/* ══════════════════════════════════════════════
+   PREMIUM STYLING ENHANCEMENTS — Task 9-a
+   ══════════════════════════════════════════════ */
+
+/* Gold shimmer sweep — text gradient sweep left to right, repeating */
+@keyframes gold-shimmer-sweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer-sweep {
+  background: linear-gradient(90deg, #C8960C 0%, #E8B830 25%, #F5D060 50%, #E8B830 75%, #C8960C 100%);
+  background-size: 200% auto;
+  animation: gold-shimmer-sweep 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gold-shimmer-sweep {
+  background: linear-gradient(90deg, #E8B830 0%, #F5D060 25%, #FFF3C4 50%, #F5D060 75%, #E8B830 100%);
+  background-size: 200% auto;
+  animation: gold-shimmer-sweep 3s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Split-screen reveal — top half slides up */
+@keyframes split-reveal-top {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+.split-reveal-top {
+  animation: split-reveal-top 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Split-screen reveal — bottom half slides down */
+@keyframes split-reveal-bottom {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+.split-reveal-bottom {
+  animation: split-reveal-bottom 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Tooltip that appears to the left of element on hover */
+.tooltip-left {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-ibm-plex-sans);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+  background: #1C1C1E;
+  color: #FAFAF7;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  transform: translateY(-50%) translateX(8px);
+}
+
+.tooltip-left::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: #1C1C1E;
+}
+
+.dark .tooltip-left {
+  background: #E8E8E4;
+  color: #1C1C1E;
+}
+
+.dark .tooltip-left::after {
+  border-left-color: #E8E8E4;
+}
+
+.group:hover .tooltip-left,
+[data-tooltip-parent]:hover .tooltip-left {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+/* Magnetic button — slight scale + enhanced shadow on hover */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 25px rgba(200, 150, 12, 0.25), 0 4px 12px rgba(15, 31, 75, 0.15);
+}
+
+.btn-magnetic:active {
+  transform: scale(0.98);
+}
+
+.dark .btn-magnetic:hover {
+  box-shadow: 0 8px 25px rgba(232, 184, 48, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Active nav dot indicator — small gold dot below active link */
+.active-nav-dot {
+  position: relative;
+}
+
+.active-nav-dot::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #C8960C;
+  box-shadow: 0 0 6px rgba(200, 150, 12, 0.4);
+}
+
+.dark .active-nav-dot::after {
+  background: #E8B830;
+  box-shadow: 0 0 6px rgba(232, 184, 48, 0.4);
+}
+
+/* Floating shape — gentle drift animation for hero decorations */
+@keyframes floating-shape {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, -15px) rotate(5deg);
+  }
+  50% {
+    transform: translate(-5px, -25px) rotate(-3deg);
+  }
+  75% {
+    transform: translate(-15px, -10px) rotate(2deg);
+  }
+}
+
+.floating-shape {
+  animation: floating-shape 12s ease-in-out infinite;
+}
+
+.floating-shape:nth-child(2) { animation-duration: 16s; animation-delay: -2s; }
+.floating-shape:nth-child(3) { animation-duration: 14s; animation-delay: -4s; }
+.floating-shape:nth-child(4) { animation-duration: 18s; animation-delay: -6s; }
+.floating-shape:nth-child(5) { animation-duration: 15s; animation-delay: -3s; }
+
+/* Vignette — dark edge overlay */
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(15, 31, 75, 0.25) 80%,
+    rgba(15, 31, 75, 0.55) 100%
+  );
+  z-index: 2;
+}
+
+.dark .vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(10, 20, 40, 0.35) 80%,
+    rgba(10, 20, 40, 0.65) 100%
+  );
+}
+
+/* Expanding gold ring for page loader exit */
+@keyframes gold-ring-expand {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    border-width: 3px;
+  }
+  60% {
+    opacity: 0.6;
+    border-width: 2px;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+.gold-ring-expand {
+  animation: gold-ring-expand 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Gold particle orbit for page loader */
+@keyframes gold-particle-orbit {
+  0% { transform: rotate(0deg) translateX(var(--orbit-radius, 60px)) rotate(0deg); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: rotate(360deg) translateX(var(--orbit-radius, 60px)) rotate(-360deg); opacity: 0.6; }
+}
+
+.gold-particle-orbit {
+  animation: gold-particle-orbit var(--orbit-duration, 4s) linear infinite;
+}
+
+/* Typing cursor blink */
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: cursor-blink 0.8s step-end infinite;
+  color: #C8960C;
+  font-weight: 300;
+}
+
+.dark .typing-cursor::after {
+  color: #E8B830;
+}
+
+/* Gold ring pulse for chatbot button */
+@keyframes chatbot-gold-ring-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(200, 150, 12, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(200, 150, 12, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(200, 150, 12, 0);
+  }
+}
+
+.chatbot-gold-ring-pulse {
+  animation: chatbot-gold-ring-pulse 2.5s ease-in-out infinite;
+}
+
+.dark .chatbot-gold-ring-pulse {
+  animation: chatbot-gold-ring-pulse-dark 2.5s ease-in-out infinite;
+}
+
+@keyframes chatbot-gold-ring-pulse-dark {
+  0% {
+    box-shadow: 0 0 0 0 rgba(232, 184, 48, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(232, 184, 48, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 184, 48, 0);
+  }
+}
+
+/* Bounce-in animation for floating buttons */
+@keyframes bounce-in {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.15); }
+  70% { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Gold gradient bottom border for header on scroll */
+.header-gold-border {
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, transparent 5%, #C8960C, #E8B830, #C8960C, transparent 95%) 1;
+}
+
+.dark .header-gold-border {
+  border-image: linear-gradient(90deg, transparent 5%, #E8B830, #F5D060, #E8B830, transparent 95%) 1;
+}
+
+/* Footer animated gold underline on links */
+.footer-link-animated {
+  position: relative;
+  display: inline-block;
+}
+
+.footer-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #C8960C, #E8B830);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-link-animated:hover::after {
+  width: 100%;
+}
+
+.dark .footer-link-animated::after {
+  background: linear-gradient(90deg, #E8B830, #F5D060);
+}
+
+/* Particle dust — subtle upward drift */
+@keyframes particle-dust {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(var(--drift-x, 20px));
+    opacity: 0;
+  }
+}
+
+.particle-dust {
+  animation: particle-dust var(--dust-duration, 8s) linear infinite;
+  animation-delay: var(--dust-delay, 0s);
+}

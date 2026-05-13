@@ -16,19 +16,15 @@ const WHATSAPP_URL =
 
 export function WhatsAppButton() {
   return (
-    <div className="fixed bottom-5 right-5 sm:right-6 z-50 group/wa">
-      {/* Tooltip — CSS-only, appears on hover */}
+    <div className="fixed bottom-[1rem] right-5 sm:right-6 z-50 group/wa">
+      {/* Tooltip — appears to the left on hover */}
       <span
         className={cn(
-          'absolute right-full mr-3 top-1/2 -translate-y-1/2',
-          'whitespace-nowrap px-3 py-1.5 rounded-[6px]',
-          'bg-carbon text-ivory-cream text-xs font-medium leading-snug',
-          'opacity-0 pointer-events-none',
-          'transition-opacity duration-200 group-hover/wa:opacity-100',
+          'tooltip-left',
         )}
         role="tooltip"
       >
-        Chat with us on WhatsApp
+        WhatsApp
       </span>
 
       {/* Button */}
@@ -47,6 +43,7 @@ export function WhatsAppButton() {
           'focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-sovereign-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background',
           /* Pulse animation — CSS class defined in globals.css */
           'whatsapp-pulse-btn',
+          'animate-bounce-in',
         )}
       >
         <MessageCircle className="w-6 h-6" strokeWidth={2} />

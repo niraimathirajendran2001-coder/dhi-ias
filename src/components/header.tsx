@@ -160,8 +160,8 @@ export function Header() {
         className={cn(
           'fixed left-0 right-0 z-50 transition-all duration-300',
           isScrolled
-            ? 'bg-navy border-b border-sovereign-gold/25'
-            : 'bg-ivory-cream/80 backdrop-blur-md',
+            ? 'bg-navy dark:bg-[#0A1428] header-gold-border backdrop-blur-lg'
+            : 'bg-ivory-cream/80 dark:bg-[#0D1525]/80 backdrop-blur-md',
         )}
         style={{ top: announcementVisible ? 36 : 0 }}
         animate={{ height: headerHeight }}
@@ -222,8 +222,9 @@ export function Header() {
                     'relative px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap',
                     isScrolled
                       ? 'text-ivory-cream/80 hover:text-champagne-gold'
-                      : 'text-navy/80 hover:text-sovereign-gold',
-                    isActive && (isScrolled ? 'text-champagne-gold' : 'text-sovereign-gold'),
+                      : 'text-navy/80 hover:text-sovereign-gold dark:text-ivory-cream/80 dark:hover:text-champagne-gold',
+                    isActive && (isScrolled ? 'text-champagne-gold' : 'text-sovereign-gold dark:text-champagne-gold'),
+                    isActive && 'active-nav-dot',
                   )}
                   aria-current={isActive ? 'page' : undefined}
                 >
@@ -231,7 +232,7 @@ export function Header() {
                   {isActive && (
                     <motion.span
                       layoutId="desktop-nav-underline"
-                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-sovereign-gold rounded-full"
+                      className="absolute bottom-0 left-3 right-3 h-[2px] bg-sovereign-gold dark:bg-champagne-gold rounded-full"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -251,9 +252,10 @@ export function Header() {
             <Button
               onClick={() => scrollToSection('admissions')}
               className={cn(
-                'hidden sm:inline-flex bg-sovereign-gold text-navy hover:bg-champagne-gold',
+                'hidden sm:inline-flex bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] hover:bg-champagne-gold dark:hover:bg-[#F5D060]',
                 'font-semibold rounded-[6px] h-10 px-5 text-sm',
-                'transition-colors duration-200',
+                'transition-all duration-300',
+                'hover:shadow-[0_0_20px_rgba(200,150,12,0.35)] dark:hover:shadow-[0_0_20px_rgba(232,184,48,0.3)]',
               )}
             >
               Book Demo Class

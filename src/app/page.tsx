@@ -26,6 +26,8 @@ import DailyQuizSection from '@/components/daily-quiz-section'
 import ComparisonSection from '@/components/comparison-section'
 import PageLoader from '@/components/page-loader'
 import GallerySection from '@/components/gallery-section'
+import ExamCalendarSection from '@/components/exam-calendar-section'
+import SuccessTimeline from '@/components/success-timeline'
 
 export default function Home() {
   return (
@@ -93,7 +95,17 @@ export default function Home() {
         {/* Achievers — Cream background */}
         <AchieversSection />
 
+        <SectionDivider variant="gold-line" />
+
+        {/* Exam Calendar — Navy background */}
+        <ExamCalendarSection />
+
         <SectionDivider variant="wave" />
+
+        {/* Success Timeline — Cream background */}
+        <SuccessTimeline />
+
+        <SectionDivider variant="gold-line" />
 
         {/* Gallery — Cream background */}
         <GallerySection />

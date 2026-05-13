@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 const containerVariants = {
   hidden: {},
@@ -59,6 +59,109 @@ const ctaVariants = {
   },
 }
 
+/* ─── Typing animation hook ─── */
+function useTypingEffect(text: string, speed: number = 30, startDelay: number = 1200) {
+  const [displayedText, setDisplayedText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
+
+  useEffect(() => {
+    let i = 0
+    const startTimer = setTimeout(() => {
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          setDisplayedText(text.slice(0, i + 1))
+          i++
+        } else {
+          setIsTyping(false)
+          clearInterval(interval)
+        }
+      }, speed)
+      return () => clearInterval(interval)
+    }, startDelay)
+
+    return () => clearTimeout(startTimer)
+  }, [text, speed, startDelay])
+
+  return { displayedText, isTyping }
+}
+
+/* ─── Floating geometric shapes ─── */
+function FloatingShapes() {
+  const shapes = [
+    { type: 'triangle', x: '8%', y: '15%', size: 60, opacity: 0.04 },
+    { type: 'circle', x: '85%', y: '25%', size: 40, opacity: 0.03 },
+    { type: 'triangle', x: '75%', y: '70%', size: 50, opacity: 0.035 },
+    { type: 'circle', x: '15%', y: '75%', size: 30, opacity: 0.03 },
+    { type: 'diamond', x: '92%', y: '55%', size: 35, opacity: 0.04 },
+  ]
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      {shapes.map((shape, i) => (
+        <div
+          key={i}
+          className="absolute floating-shape"
+          style={{
+            left: shape.x,
+            top: shape.y,
+            opacity: shape.opacity,
+            animationDelay: `${-i * 2.5}s`,
+          }}
+        >
+          {shape.type === 'triangle' && (
+            <svg width={shape.size} height={shape.size} viewBox="0 0 60 60">
+              <polygon points="30,5 55,50 5,50" fill="#C8960C" />
+            </svg>
+          )}
+          {shape.type === 'circle' && (
+            <svg width={shape.size} height={shape.size} viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="18" fill="none" stroke="#C8960C" strokeWidth="1.5" />
+            </svg>
+          )}
+          {shape.type === 'diamond' && (
+            <svg width={shape.size} height={shape.size} viewBox="0 0 40 40">
+              <polygon points="20,2 38,20 20,38 2,20" fill="none" stroke="#E8B830" strokeWidth="1.5" />
+            </svg>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+/* ─── Particle dust ─── */
+function ParticleDust() {
+  const particles = Array.from({ length: 12 }, (_, i) => ({
+    id: i,
+    left: `${5 + Math.random() * 90}%`,
+    size: 2 + Math.random() * 2,
+    duration: 6 + Math.random() * 6,
+    delay: Math.random() * 8,
+    driftX: -30 + Math.random() * 60,
+  }))
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      {particles.map((p) => (
+        <span
+          key={p.id}
+          className="absolute rounded-full bg-sovereign-gold dark:bg-champagne-gold particle-dust"
+          style={{
+            left: p.left,
+            bottom: '-10px',
+            width: p.size,
+            height: p.size,
+            opacity: 0,
+            '--dust-duration': `${p.duration}s`,
+            '--dust-delay': `${p.delay}s`,
+            '--drift-x': `${p.driftX}px`,
+          } as React.CSSProperties}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -68,6 +171,10 @@ export default function HeroSection() {
 
   // Parallax: Ashoka Chakra moves at 40% of scroll speed
   const chakraY = useTransform(scrollYProgress, [0, 1], [0, 150])
+
+  // Typing effect for subtitle
+  const subtitleText = 'Elite UPSC & KAS coaching guided by former civil servants. Structured mentorship. Proven results. Your path to serving the nation starts here.'
+  const { displayedText, isTyping } = useTypingEffect(subtitleText, 25, 1400)
 
   return (
     <section
@@ -101,6 +208,15 @@ export default function HeroSection() {
         className="absolute inset-0 pointer-events-none pattern-dots"
         aria-hidden="true"
       />
+
+      {/* Floating geometric shapes — subtle triangles, circles at 3-5% opacity */}
+      <FloatingShapes />
+
+      {/* Particle dust — small gold dots drifting upward */}
+      <ParticleDust />
+
+      {/* Vignette — dark edges */}
+      <div className="vignette" aria-hidden="true" />
 
       {/* Right side: Ashoka Chakra decorative watermark — hidden on mobile, with parallax */}
       <motion.div
@@ -160,17 +276,16 @@ export default function HeroSection() {
           />
         </motion.div>
 
-        {/* Supporting subtext */}
+        {/* Supporting subtext — typing animation */}
         <motion.p
           className="font-sans body-text text-lg max-w-lg mb-10 text-ivory-cream/65"
           variants={subtextVariants}
         >
-          Elite UPSC &amp; KAS coaching guided by former civil servants.
-          Structured mentorship. Proven results. Your path to serving the
-          nation starts here.
+          {displayedText}
+          {isTyping && <span className="typing-cursor" />}
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTAs with magnetic hover */}
         <motion.div
           className="flex flex-col sm:flex-row gap-4"
           variants={ctaVariants}
@@ -181,7 +296,7 @@ export default function HeroSection() {
               'inline-flex items-center justify-center font-sans font-semibold rounded-md',
               'px-8 py-4 sm:py-5 text-sm transition-all duration-300',
               'hover:brightness-110 active:scale-[0.98]',
-              'btn-gold-shimmer',
+              'btn-gold-shimmer btn-magnetic',
               'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]'
             )}
           >
@@ -193,7 +308,7 @@ export default function HeroSection() {
               'inline-flex items-center justify-center font-sans font-semibold rounded-md',
               'px-8 py-4 text-sm transition-all duration-300',
               'border-2 hover:bg-ivory-cream hover:text-navy active:scale-[0.98]',
-              'border-ivory-cream text-ivory-cream'
+              'border-ivory-cream text-ivory-cream btn-magnetic'
             )}
           >
             Explore Courses

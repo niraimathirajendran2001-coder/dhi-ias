@@ -34,6 +34,14 @@ const courseLinks = [
   'Interview Guidance',
 ]
 
+const mediaLogos = [
+  'The Hindu',
+  'Indian Express',
+  'Deccan Herald',
+  'The Times of India',
+  'Bangalore Mirror',
+]
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -48,6 +56,27 @@ export default function Footer() {
     <footer
       className="relative pt-16 pb-8 overflow-hidden bg-navy dark:bg-[#0A1428]"
     >
+      {/* Wave/curve SVG separator at the very top */}
+      <div className="absolute -top-1 left-0 right-0 z-20" aria-hidden="true">
+        <svg
+          viewBox="0 0 1440 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-[30px] sm:h-[40px]"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0 40V20C240 0 480 0 720 10C960 20 1200 30 1440 15V40H0Z"
+            className="fill-navy dark:fill-[#0A1428]"
+          />
+          <path
+            d="M0 40V25C360 5 720 5 1080 15C1260 20 1380 25 1440 20V40H0Z"
+            fill="#0F1F4B"
+            opacity="0.5"
+          />
+        </svg>
+      </div>
+
       {/* Subtle gradient background */}
       <div
         className="absolute inset-0"
@@ -73,6 +102,42 @@ export default function Footer() {
       />
 
       <div className="relative mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+        {/* Newsletter section with gradient background */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-12 -mt-2 rounded-xl p-6 sm:p-8 relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, rgba(200,150,12,0.1) 0%, rgba(200,150,12,0.05) 50%, rgba(232,184,48,0.08) 100%)',
+            border: '1px solid rgba(200,150,12,0.15)',
+          }}
+        >
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              <h3 className="font-serif text-[22px] sm:text-[26px] font-semibold text-champagne-gold mb-1">
+                Stay Updated
+              </h3>
+              <p className="font-sans text-[13px] text-ivory-cream/50">
+                Get UPSC tips, current affairs updates, and exclusive offers.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 sm:w-[260px] h-11 px-4 rounded-lg bg-white/5 border border-sovereign-gold/20 text-ivory-cream text-sm font-sans placeholder:text-ivory-cream/30 focus:outline-none focus:border-sovereign-gold/50 focus:ring-1 focus:ring-sovereign-gold/30 transition-all"
+              />
+              <button
+                className="h-11 px-5 rounded-lg bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] font-semibold text-sm font-sans btn-gold-shimmer transition-all duration-200 hover:bg-champagne-gold dark:hover:bg-[#F5D060]"
+              >
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Four Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
           {/* Column 1: Brand */}
@@ -153,7 +218,7 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="font-sans text-[14px] transition-colors duration-200 text-ivory-cream/70 hover:text-sovereign-gold dark:hover:text-champagne-gold"
+                    className="font-sans text-[14px] transition-colors duration-200 text-ivory-cream/70 hover:text-sovereign-gold dark:hover:text-champagne-gold footer-link-animated"
                   >
                     {link}
                   </a>
@@ -179,7 +244,7 @@ export default function Footer() {
                 <li key={link}>
                   <a
                     href="#"
-                    className="font-sans text-[14px] transition-colors duration-200 text-ivory-cream/70 hover:text-sovereign-gold dark:hover:text-champagne-gold"
+                    className="font-sans text-[14px] transition-colors duration-200 text-ivory-cream/70 hover:text-sovereign-gold dark:hover:text-champagne-gold footer-link-animated"
                   >
                     {link}
                   </a>
@@ -236,13 +301,36 @@ export default function Footer() {
             </ul>
             <a
               href="#admissions"
-              className="inline-flex items-center gap-1 mt-5 font-sans text-[14px] font-medium transition-colors duration-200 text-sovereign-gold dark:text-champagne-gold hover:text-champagne-gold"
+              className="inline-flex items-center gap-1 mt-5 font-sans text-[14px] font-medium transition-colors duration-200 text-sovereign-gold dark:text-champagne-gold hover:text-champagne-gold footer-link-animated"
             >
               Book a Demo Class
               <ArrowRight className="size-4" />
             </a>
           </motion.div>
         </div>
+
+        {/* "As seen in" media logos row */}
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mb-10 pt-8"
+        >
+          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-ivory-cream/25 text-center mb-4">
+            As Seen In
+          </p>
+          <div className="flex items-center justify-center flex-wrap gap-x-8 gap-y-3">
+            {mediaLogos.map((name) => (
+              <span
+                key={name}
+                className="font-serif text-[14px] sm:text-[16px] text-ivory-cream/15 hover:text-ivory-cream/30 transition-colors duration-300 select-none"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Separator — gold gradient */}
         <div
