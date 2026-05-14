@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo, useSyncExternalStore } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, MessageCircle } from 'lucide-react'
+import { Menu, X, Phone, MessageCircle, Scale } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
@@ -43,6 +44,14 @@ const NAV_DESCRIPTIONS: Record<string, string> = {
 const SCROLL_THRESHOLD = 50
 const HEADER_HEIGHT_DEFAULT = 80
 const HEADER_HEIGHT_SCROLLED = 60
+
+/* ------------------------------------------------------------------ */
+/*  Sub-nav for Free Resources (shown in desktop nav)                  */
+/* ------------------------------------------------------------------ */
+
+const FREE_RESOURCE_LINKS = [
+  { label: 'Constitution Explorer', href: '/constitution-explorer', icon: Scale },
+]
 
 /* ------------------------------------------------------------------ */
 /*  Hook: Active Section via IntersectionObserver                      */
@@ -100,26 +109,6 @@ function useScrolled(threshold: number): boolean {
   return scrolled
 }
 
-const ANNOUNCEMENT_KEY = 'aristocrat-announcement-dismissed'
-
-function subscribeToAnnouncement(callback: () => void) {
-  window.addEventListener('storage', callback)
-  return () => window.removeEventListener('storage', callback)
-}
-
-function getAnnouncementVisible(): boolean {
-  if (typeof window === 'undefined') return false
-  try {
-    return localStorage.getItem(ANNOUNCEMENT_KEY) !== 'true'
-  } catch {
-    return true
-  }
-}
-
-function getAnnouncementServerSnapshot(): boolean {
-  return false
-}
-
 /* ------------------------------------------------------------------ */
 /*  Component: Header                                                  */
 /* ------------------------------------------------------------------ */
@@ -129,11 +118,7 @@ export function Header() {
   const sectionIds = useMemo(() => NAV_ITEMS.map((item) => item.id), [])
   const activeSection = useActiveSection(sectionIds)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const announcementVisible = useSyncExternalStore(
-    subscribeToAnnouncement,
-    getAnnouncementVisible,
-    getAnnouncementServerSnapshot,
-  )
+  const [resourcesOpen, setResourcesOpen] = useState(false)
 
   /* ---- Smooth-scroll handler ---- */
   const scrollToSection = useCallback((id: string) => {
@@ -174,7 +159,7 @@ export function Header() {
             ? 'bg-navy dark:bg-[#0A1428] header-gold-border backdrop-blur-lg'
             : 'bg-ivory-cream/80 dark:bg-[#0D1525]/80 backdrop-blur-md',
         )}
-        style={{ top: announcementVisible ? 36 : 0 }}
+        style={{ top: 0 }}
         animate={{ height: headerHeight }}
         transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
         role="banner"
@@ -221,6 +206,70 @@ export function Header() {
           >
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id
+
+              // Resources item gets a dropdown with Constitution Explorer
+              if (item.id === 'resources') {
+                return (
+                  <div
+                    key={item.id}
+                    className="relative"
+                    onMouseEnter={() => setResourcesOpen(true)}
+                    onMouseLeave={() => setResourcesOpen(false)}
+                  >
+                    <a
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        scrollToSection(item.id)
+                      }}
+                      className={cn(
+                        'relative px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap flex items-center gap-1',
+                        isScrolled
+                          ? 'text-ivory-cream/80 hover:text-champagne-gold'
+                          : 'text-navy/80 hover:text-sovereign-gold dark:text-ivory-cream/80 dark:hover:text-champagne-gold',
+                        isActive && (isScrolled ? 'text-champagne-gold' : 'text-sovereign-gold dark:text-champagne-gold'),
+                        isActive && 'active-nav-dot',
+                      )}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {item.label}
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                    </a>
+
+                    {/* Dropdown */}
+                    {resourcesOpen && (
+                      <div
+                        className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-lg overflow-hidden z-50"
+                        style={{
+                          background: isScrolled ? '#0F1F4B' : '#FFFFFF',
+                          border: '1px solid rgba(200,150,12,0.2)',
+                        }}
+                      >
+                        {FREE_RESOURCE_LINKS.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            className="flex items-center gap-2 px-4 py-3 text-[13px] font-medium transition-colors hover:bg-white/5"
+                            style={{
+                              color: isScrolled ? '#FAFAF7' : '#0F1F4B',
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.color = '#C8960C'
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.color = isScrolled ? '#FAFAF7' : '#0F1F4B'
+                            }}
+                          >
+                            <link.icon className="w-4 h-4" strokeWidth={1.8} />
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              }
+
               return (
                 <a
                   key={item.id}
@@ -403,6 +452,22 @@ export function Header() {
                     </motion.a>
                   )
                 })}
+
+                {/* ── Constitution Explorer link ── */}
+                <div className="mx-2 my-2 h-px bg-white/10" />
+                <Link
+                  href="/constitution-explorer"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 py-3 px-4 rounded-[6px] transition-colors duration-200 mobile-nav-link-hover text-ivory-cream/75 hover:text-ivory-cream hover:bg-white/5"
+                >
+                  <Scale className="w-5 h-5 text-sovereign-gold" strokeWidth={1.8} />
+                  <div className="flex flex-col">
+                    <span className="text-base font-medium">Constitution Explorer</span>
+                    <span className="text-xs font-sans mt-0.5 text-ivory-cream/35">
+                      Interactive Tool — All 395 Articles
+                    </span>
+                  </div>
+                </Link>
               </nav>
 
               {/* ---- Pinned Bottom: CTA + Contact ---- */}

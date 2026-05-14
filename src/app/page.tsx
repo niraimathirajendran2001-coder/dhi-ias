@@ -17,7 +17,6 @@ import { LocationSection } from '@/components/location-section'
 import Footer from '@/components/footer'
 import { ChatbotWidget } from '@/components/chatbot-widget'
 import { BackToTop } from '@/components/back-to-top'
-import { AnnouncementBar } from '@/components/announcement-bar'
 import { SectionDivider } from '@/components/section-divider'
 import CountdownSection from '@/components/countdown-section'
 import AchieversSection from '@/components/achievers-section'
@@ -36,7 +35,6 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
       <PageLoader />
-      <AnnouncementBar />
       <ScrollProgress />
       <Header />
 
