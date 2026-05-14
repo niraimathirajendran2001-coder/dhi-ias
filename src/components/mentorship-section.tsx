@@ -43,7 +43,7 @@ const tiers = [
     period: '/mo',
     popular: false,
     savings: 'Save 20%',
-    description: 'Elite all-access mentorship with unlimited support',
+    description: 'All-access mentorship with unlimited support',
     features: [
       { label: 'Weekly 1-on-1 sessions', included: true },
       { label: 'Study plan customization', included: true },

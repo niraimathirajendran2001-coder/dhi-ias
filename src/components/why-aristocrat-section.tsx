@@ -15,9 +15,9 @@ const features: FeatureCard[] = [
   {
     icon: <GraduationCap size={40} className="text-sovereign-gold" />,
     stat: '12+',
-    label: 'Former Civil Servants & Experts',
+    label: 'Expert Educators & Mentors',
     description:
-      'Our faculty includes former IAS, IRS, and IFS officers who bring real administrative experience into every lecture.',
+      'Our faculty includes seasoned educators and subject matter experts who bring deep domain knowledge into every lecture.',
   },
   {
     icon: <Trophy size={40} className="text-sovereign-gold" />,

@@ -30,7 +30,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Aristocrat IAS Academy | Premium UPSC & KAS Coaching in Bengaluru",
   description:
-    "Aristocrat IAS Academy — Chandralayout, Bengaluru. Elite UPSC, IAS, KAS coaching with expert faculty, proven results, and structured mentorship. Your path to civil service begins here.",
+    "Aristocrat IAS Academy — Chandralayout, Bengaluru. UPSC, IAS, KAS coaching with expert faculty, proven results, and structured mentorship. Your path to civil service begins here.",
   keywords: [
     "IAS coaching Bengaluru",
     "UPSC coaching Chandralayout",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Aristocrat IAS Academy | Where Civil Servants Begin",
     description:
-      "Elite UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship.",
+      "UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship.",
     url: "https://aristocratiasacademy.in",
     siteName: "Aristocrat IAS Academy",
     type: "website",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Aristocrat IAS Academy | Where Civil Servants Begin",
     description:
-      "Elite UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship.",
+      "UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship.",
   },
 };
 

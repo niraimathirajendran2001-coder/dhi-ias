@@ -37,14 +37,6 @@ const courseLinks = [
   { name: 'Interview Guidance', href: '#courses' },
 ]
 
-const mediaLogos = [
-  'The Hindu',
-  'Indian Express',
-  'Deccan Herald',
-  'The Times of India',
-  'Bangalore Mirror',
-]
-
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: {
@@ -214,21 +206,23 @@ export default function Footer() {
             <p
               className="font-sans text-[13px] leading-relaxed mb-6 text-ivory-cream/50"
             >
-              Elite UPSC &amp; KAS coaching in Chandralayout, Bengaluru. Guided by experience.
+              UPSC & KAS coaching in Chandralayout, Bengaluru. Guided by experience.
               Driven by results.
             </p>
 
             {/* Social Icons with gold background circle on hover */}
             <div className="flex items-center gap-4">
               {[
-                { Icon: Instagram, label: 'Instagram' },
-                { Icon: Youtube, label: 'YouTube' },
-                { Icon: Facebook, label: 'Facebook' },
-                { Icon: Twitter, label: 'Twitter' },
-              ].map(({ Icon, label }) => (
+                { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/aristocratiasacademy/' },
+                { Icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@AristocratIASAcademy' },
+                { Icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/AristocratIASAcademy' },
+                { Icon: Twitter, label: 'Twitter', href: 'https://twitter.com/AristocratIAS' },
+              ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className={cn(
                     'flex items-center justify-center size-9 rounded-full',
@@ -351,29 +345,6 @@ export default function Footer() {
             </a>
           </motion.div>
         </div>
-
-        {/* "As seen in" media logos row */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mb-10 pt-8"
-        >
-          <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-ivory-cream/25 text-center mb-4">
-            As Seen In
-          </p>
-          <div className="flex items-center justify-center flex-wrap gap-x-8 gap-y-3">
-            {mediaLogos.map((name) => (
-              <span
-                key={name}
-                className="font-serif text-[14px] sm:text-[16px] text-ivory-cream/15 hover:text-ivory-cream/30 transition-colors duration-300 select-none"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Separator — gold gradient */}
         <div

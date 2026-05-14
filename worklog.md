@@ -27,3 +27,35 @@ Stage Summary:
 Unresolved Issues:
 - Dev server process dies periodically (sandbox environment limitation, not a code bug)
 - Earlier bug list still pending: og:image, "As Seen In" footer removal, social links, "Elite"/"Former Civil Servant" text removal, countdown auto-update, hero visual, brand lockup, comparison table fix, SPA SEO routes, hydration fixes
+
+---
+Task ID: session-restart
+Agent: Main Orchestrator
+Task: Restart website, QA, fix pending bugs
+
+Work Log:
+- Restarted dev server (Next.js 16.1.3 Turbopack on port 3000)
+- Verified both pages return HTTP 200: homepage and constitution-explorer
+- Ran ESLint — clean, zero errors
+- QA with agent-browser on both pages — no runtime errors
+- Fixed footer.tsx: removed "As Seen In" media logos section, updated social links to real URLs (Instagram, YouTube, Facebook, Twitter), removed unused mediaLogos constant
+- Fixed footer.tsx: removed "Elite" from brand description
+- Fixed hero-section.tsx: changed "Elite UPSC & KAS coaching guided by former civil servants" → "UPSC & KAS coaching guided by experienced educators"
+- Fixed why-aristocrat-section.tsx: changed "Former Civil Servants & Experts" → "Expert Educators & Mentors"
+- Fixed faq-section.tsx: removed "former civil servants" reference from faculty answer
+- Fixed layout.tsx: removed "Elite" from meta description, OpenGraph, and Twitter card descriptions
+- Fixed mentorship-section.tsx: changed "Elite all-access mentorship" → "All-access mentorship"
+- Created 15-minute cron job for ongoing QA and development review
+- Dev server is stable and serving both pages
+
+Stage Summary:
+- All "As Seen In" footer content REMOVED
+- Social links updated to real URLs (Instagram/YouTube/Facebook/Twitter)
+- "Elite" and "Former Civil Servant" text removed from all components (hero, footer, why-aristocrat, faq, mentorship, layout metadata)
+- Lint clean, no runtime errors
+- Cron job created (job_id: 149699) for 15-minute review cycle
+- DO NOT push to GitHub until user explicitly approves
+
+Unresolved Issues:
+- Dev server process dies periodically (sandbox environment limitation)
+- Still pending: og:image, countdown auto-update, hero visual, brand lockup, comparison table fix, SPA SEO routes, hydration fixes

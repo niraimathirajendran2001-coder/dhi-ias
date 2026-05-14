@@ -201,7 +201,7 @@ export default function HeroSection() {
   const { displayedText: taglineDisplayed, isTyping: isTaglineTyping } = useTypingEffect(taglineText, 45, 1200)
 
   // Typing effect for subtitle
-  const subtitleText = 'Elite UPSC & KAS coaching guided by former civil servants. Structured mentorship. Proven results. Your path to serving the nation starts here.'
+  const subtitleText = 'UPSC & KAS coaching guided by experienced educators. Structured mentorship. Proven results. Your path to serving the nation starts here.'
   const { displayedText, isTyping } = useTypingEffect(subtitleText, 25, 3500)
 
   return (

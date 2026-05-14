@@ -27,7 +27,7 @@ const faqs = [
   {
     question: 'Who are the faculty members?',
     answer:
-      'Our faculty comprises 12+ expert educators with extensive experience in UPSC coaching. They include former civil servants, subject matter specialists, and seasoned academicians who bring real-world insights and proven teaching methods to every class.',
+      'Our faculty comprises 12+ expert educators with extensive experience in UPSC coaching. They include subject matter specialists, seasoned academicians, and experienced mentors who bring deep domain insights and proven teaching methods to every class.',
   },
   {
     question: 'Does the academy provide study materials?',
