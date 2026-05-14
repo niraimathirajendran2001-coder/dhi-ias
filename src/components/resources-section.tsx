@@ -10,9 +10,11 @@ import {
   BookOpen,
   FileText,
   PenTool,
+  Scale,
   CheckCircle2,
   Loader2,
 } from 'lucide-react'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -31,7 +33,14 @@ const leadSchema = z.object({
 type LeadFormData = z.infer<typeof leadSchema>
 
 /* ─── Resource Card Data ─── */
-const resources = [
+const resources: {
+  icon: typeof Newspaper
+  title: string
+  description: string
+  linkText: string
+  href?: string
+  pill?: string
+}[] = [
   {
     icon: Newspaper,
     title: 'Daily Current Affairs',
@@ -55,6 +64,14 @@ const resources = [
     title: 'Practice Questions',
     description: 'Free 20-question quiz',
     linkText: 'Start Quiz →',
+  },
+  {
+    icon: Scale,
+    title: 'Constitution Explorer',
+    description: 'All 395 Articles. Every landmark judgment. Every UPSC question. One interactive map.',
+    linkText: 'Explore →',
+    href: '/constitution-explorer',
+    pill: 'Interactive Tool',
   },
 ]
 
@@ -286,37 +303,78 @@ export function ResourcesSection() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="grid gap-4 sm:grid-cols-2"
           >
-            {resources.map((res, i) => (
-              <motion.div
-                key={res.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.08 * i }}
-                className={cn(
-                  'group cursor-pointer rounded-xl border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827] p-4',
-                  'transition-all duration-300',
-                  'hover:-translate-y-2 hover:shadow-lg',
-                  'hover:shadow-[rgba(200,150,12,0.08)]',
-                  'border-l-4 border-l-transparent hover:border-l-sovereign-gold dark:hover:border-l-champagne-gold',
-                  'premium-shadow card-hover-premium'
-                )}
-              >
-                <res.icon
-                  className="mb-3 h-6 w-6 text-sovereign-gold dark:text-champagne-gold"
-                  strokeWidth={1.8}
-                />
-                <div className="flex items-center gap-2">
-                  <h4 className="text-base font-sans card-title text-navy dark:text-ivory-cream">{res.title}</h4>
-                </div>
-                <p className="mt-0.5 text-[13px] text-mid-gray dark:text-ivory-cream/50">
-                  {res.description}
-                </p>
-                <span className="mt-2 inline-block text-sm font-medium text-sovereign-gold dark:text-champagne-gold transition-colors hover:underline">
-                  {res.linkText}
-                </span>
-              </motion.div>
-            ))}
+            {resources.map((res, i) => {
+              const cardContent = (
+                <>
+                  {res.pill && (
+                    <span
+                      className="inline-block rounded-full font-sans uppercase tracking-[1px] mb-2"
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 500,
+                        padding: '3px 10px',
+                        background: '#E1F5EE',
+                        color: '#0D6E6E',
+                      }}
+                    >
+                      {res.pill}
+                    </span>
+                  )}
+                  <res.icon
+                    className="mb-3 h-6 w-6 text-sovereign-gold dark:text-champagne-gold"
+                    strokeWidth={1.8}
+                  />
+                  <div className="flex items-center gap-2">
+                    <h4 className="text-base font-sans card-title text-navy dark:text-ivory-cream">{res.title}</h4>
+                  </div>
+                  <p className="mt-0.5 text-[13px] text-mid-gray dark:text-ivory-cream/50">
+                    {res.description}
+                  </p>
+                  <span className="mt-2 inline-block text-sm font-medium text-sovereign-gold dark:text-champagne-gold transition-colors hover:underline">
+                    {res.linkText}
+                  </span>
+                </>
+              )
+
+              if (res.href) {
+                return (
+                  <Link
+                    key={res.title}
+                    href={res.href}
+                    className={cn(
+                      'group cursor-pointer rounded-xl border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827] p-4 block',
+                      'transition-all duration-300',
+                      'hover:-translate-y-2 hover:shadow-lg',
+                      'hover:shadow-[rgba(200,150,12,0.08)]',
+                      'border-l-4 border-l-transparent hover:border-l-sovereign-gold dark:hover:border-l-champagne-gold',
+                      'premium-shadow card-hover-premium'
+                    )}
+                  >
+                    {cardContent}
+                  </Link>
+                )
+              }
+
+              return (
+                <motion.div
+                  key={res.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.08 * i }}
+                  className={cn(
+                    'group cursor-pointer rounded-xl border border-light-gray dark:border-[#1C2541] bg-white dark:bg-[#111827] p-4',
+                    'transition-all duration-300',
+                    'hover:-translate-y-2 hover:shadow-lg',
+                    'hover:shadow-[rgba(200,150,12,0.08)]',
+                    'border-l-4 border-l-transparent hover:border-l-sovereign-gold dark:hover:border-l-champagne-gold',
+                    'premium-shadow card-hover-premium'
+                  )}
+                >
+                  {cardContent}
+                </motion.div>
+              )
+            })}
           </motion.div>
         </div>
       </div>
