@@ -454,7 +454,7 @@ export function Header() {
 
                 <div className="flex gap-3">
                   <a
-                    href="https://wa.me/919876543210?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20DHI%20Academy."
+                    href="https://wa.me/919108333136?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20DHI%20Academy."
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
@@ -467,7 +467,7 @@ export function Header() {
                     WhatsApp
                   </a>
                   <a
-                    href="tel:+919876543210"
+                    href="tel:+919108333136"
                     className={cn(
                       'flex-1 inline-flex items-center justify-center gap-2',
                       'h-12 rounded-[6px] border border-white/20 text-ivory-cream',

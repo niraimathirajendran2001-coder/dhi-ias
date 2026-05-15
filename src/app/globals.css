@@ -59,6 +59,11 @@
   --color-deep-crimson: #B8122C;
   --color-teal-light-bg: #D1FAE5;
   --color-crimson-light-bg: #FDE8EB;
+  --color-dhi-red: #E31837;
+  --color-dhi-red-light: #FF4A5F;
+  --color-dhi-red-dark: #B8122C;
+  --color-dhi-ink: #101114;
+  --color-dhi-paper: #FFF7F7;
 }
 
 :root {
@@ -170,6 +175,112 @@
 
 .dark ::-webkit-scrollbar-thumb {
   background: #4A5568;
+}
+
+/* DHI brand system */
+.bg-dhi-red {
+  background-color: #E31837;
+}
+
+.bg-dhi-red-dark {
+  background-color: #B8122C;
+}
+
+.bg-dhi-ink {
+  background-color: #101114;
+}
+
+.bg-dhi-paper {
+  background-color: #FFF7F7;
+}
+
+.text-dhi-red {
+  color: #E31837;
+}
+
+.text-dhi-red-light {
+  color: #FF4A5F;
+}
+
+.text-dhi-red-dark {
+  color: #B8122C;
+}
+
+.text-dhi-ink {
+  color: #101114;
+}
+
+.border-dhi-red\/15 {
+  border-color: rgba(227, 24, 55, 0.15);
+}
+
+.border-dhi-red\/30 {
+  border-color: rgba(227, 24, 55, 0.3);
+}
+
+.bg-dhi-red\/10 {
+  background-color: rgba(227, 24, 55, 0.1);
+}
+
+.bg-dhi-red\/15 {
+  background-color: rgba(227, 24, 55, 0.15);
+}
+
+.bg-dhi-red\/25 {
+  background-color: rgba(227, 24, 55, 0.25);
+}
+
+.dhi-hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 24% 22%, rgba(227, 24, 55, 0.18), transparent 32%),
+    radial-gradient(circle at 78% 20%, rgba(255, 74, 95, 0.12), transparent 28%);
+  background-size: 42px 42px, 42px 42px, 100% 100%, 100% 100%;
+}
+
+.dhi-butterfly-card {
+  position: relative;
+  min-height: 560px;
+  display: grid;
+  place-items: center;
+}
+
+.dhi-wing {
+  position: absolute;
+  width: 210px;
+  height: 320px;
+  border: 2px solid rgba(227, 24, 55, 0.5);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 74, 95, 0.28), transparent 28%),
+    linear-gradient(150deg, rgba(227, 24, 55, 0.2), rgba(255, 255, 255, 0.02));
+  filter: drop-shadow(0 28px 60px rgba(227, 24, 55, 0.22));
+}
+
+.dhi-wing-left {
+  left: 4px;
+  top: 22px;
+  border-radius: 72% 28% 64% 36% / 44% 28% 72% 56%;
+  transform: rotate(-18deg);
+}
+
+.dhi-wing-right {
+  right: 10px;
+  bottom: 34px;
+  border-radius: 34% 66% 38% 62% / 34% 58% 42% 66%;
+  transform: rotate(15deg);
+}
+
+.dhi-spine {
+  position: absolute;
+  left: 50%;
+  top: 74px;
+  width: 12px;
+  height: 360px;
+  transform: translateX(-50%) rotate(3deg);
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff, #101114 35%, #101114 70%, #fff);
+  opacity: 0.8;
 }
 
 /* Marquee animation */

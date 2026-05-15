@@ -28,9 +28,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DHI Academy | UPSC & KAS Coaching in Bengaluru — Transforming Lives",
+  metadataBase: new URL("https://dhiacademy.in"),
+  title: "DHI Academy | UPSC & KAS Coaching in Bengaluru - Transforming Lives",
   description:
-    "DHI Academy — Chandralayout, Bengaluru. UPSC & KAS coaching with expert faculty, proven results, and structured mentorship. Transforming Lives.",
+    "DHI Academy in Chandralayout, Bengaluru. UPSC & KAS coaching with expert faculty, structured mentorship, and exam-focused preparation.",
   keywords: [
     "IAS coaching Bengaluru",
     "UPSC coaching Chandralayout",
@@ -48,19 +49,21 @@ export const metadata: Metadata = {
     icon: "/dhi-logo.jpg",
   },
   openGraph: {
-    title: "DHI Academy | UPSC & KAS Coaching in Bengaluru — Transforming Lives",
+    title: "DHI Academy | UPSC & KAS Coaching in Bengaluru - Transforming Lives",
     description:
-      "UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship. Transforming Lives.",
+      "UPSC & KAS coaching in Chandralayout, Bengaluru with expert faculty, structured mentorship, and exam-focused preparation.",
     url: "https://dhiacademy.in",
     siteName: "DHI Academy",
     type: "website",
     locale: "en_IN",
+    images: ["/og-image.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DHI Academy | UPSC & KAS Coaching in Bengaluru — Transforming Lives",
+    title: "DHI Academy | UPSC & KAS Coaching in Bengaluru - Transforming Lives",
     description:
-      "UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship. Transforming Lives.",
+      "UPSC & KAS coaching in Chandralayout, Bengaluru with expert faculty, structured mentorship, and exam-focused preparation.",
+    images: ["/og-image.png"],
   },
 };
 

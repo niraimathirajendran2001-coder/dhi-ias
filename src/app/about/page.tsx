@@ -68,7 +68,7 @@ const stats = [
   { label: 'Faculty Members', value: '7+', icon: Users },
   { label: 'Subjects Covered', value: '15+', icon: BookOpen },
   { label: 'Years Combined Experience', value: '30+', icon: Award },
-  { label: 'Success Rate', value: '85%', icon: Target },
+  { label: 'Mentorship Focus', value: '1:1', icon: Target },
 ]
 
 /* ------------------------------------------------------------------ */

@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
 /* ------------------------------------------------------------------ */
-/*  Topper Data (Generic placeholders)                                 */
+/*  Result Data                                                        */
 /* ------------------------------------------------------------------ */
 
 interface Topper {
@@ -22,21 +22,17 @@ interface Topper {
 }
 
 const toppers: Topper[] = [
-  { initials: 'AK', name: 'Aspirant K', rank: 'Top 50', exam: 'UPSC CSE', year: '2024', optional: 'Sociology' },
-  { initials: 'RS', name: 'Aspirant S', rank: 'Top 100', exam: 'UPSC CSE', year: '2024', optional: 'PSIR' },
-  { initials: 'MP', name: 'Aspirant P', rank: 'Top 150', exam: 'UPSC CSE', year: '2024', optional: 'Geography' },
-  { initials: 'NK', name: 'Aspirant N', rank: 'Selected', exam: 'KPSC KAS', year: '2024', optional: 'Public Admin' },
-  { initials: 'VD', name: 'Aspirant D', rank: 'Top 200', exam: 'UPSC CSE', year: '2023', optional: 'Sociology' },
-  { initials: 'SK', name: 'Aspirant K', rank: 'Selected', exam: 'KPSC KAS', year: '2023', optional: 'Kannada Lit' },
-  { initials: 'PJ', name: 'Aspirant J', rank: 'Top 300', exam: 'UPSC CSE', year: '2023', optional: 'Geography' },
-  { initials: 'AR', name: 'Aspirant R', rank: 'Selected', exam: 'UPSC IFoS', year: '2023', optional: 'Forestry' },
+  { initials: 'VR', name: 'Verified results archive', rank: 'Updating', exam: 'UPSC / KAS', year: '2026', optional: 'With consent' },
+  { initials: 'MT', name: 'Mentorship testimonials', rank: 'Curating', exam: 'Student stories', year: '2026', optional: 'Faculty verified' },
+  { initials: 'TS', name: 'Test-series outcomes', rank: 'Compiling', exam: 'Prelims & Mains', year: '2026', optional: 'Performance data' },
+  { initials: 'IR', name: 'Interview journeys', rank: 'Documenting', exam: 'Personality test', year: '2026', optional: 'Student approved' },
 ]
 
 const resultStats = [
-  { icon: Trophy, value: '50+', label: 'Selections in UPSC CSE' },
-  { icon: Star, value: '30+', label: 'Top 100 Rankers' },
-  { icon: TrendingUp, value: '85%', label: 'Success Rate' },
-  { icon: Users, value: '1000+', label: 'Students Trained' },
+  { icon: Trophy, value: 'Verified', label: 'Results only after consent' },
+  { icon: Star, value: 'Mentored', label: 'Student journeys documented' },
+  { icon: TrendingUp, value: 'Tracked', label: 'Test performance improvement' },
+  { icon: Users, value: 'Guided', label: 'Classroom and mentorship support' },
 ]
 
 interface SuccessReason {
@@ -127,7 +123,7 @@ export default function ResultsPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif display-headline text-4xl sm:text-5xl md:text-6xl text-ivory-cream mb-6"
             >
-              Our Toppers
+              Results & Student Journeys
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -135,8 +131,8 @@ export default function ResultsPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-sans body-text text-ivory-cream/60 max-w-2xl mx-auto"
             >
-              DHI Academy takes pride in the success of its students. Our structured mentorship
-              and dedicated faculty have helped aspirants achieve their Civil Services dream.
+              DHI Academy publishes student achievements with care, consent, and verification.
+              This page is being prepared as a credible archive of results and learning journeys.
             </motion.p>
           </div>
         </section>
@@ -186,7 +182,7 @@ export default function ResultsPage() {
                 Success Stories
               </p>
               <h2 className="font-serif section-heading text-3xl sm:text-4xl text-navy dark:text-ivory-cream">
-                Our <span className="text-sovereign-gold dark:text-champagne-gold">Achievers</span>
+                Verified <span className="text-sovereign-gold dark:text-champagne-gold">Updates</span>
               </h2>
             </motion.div>
 
@@ -239,7 +235,7 @@ export default function ResultsPage() {
               className="mt-10 text-center"
             >
               <p className="font-sans text-sm text-mid-gray dark:text-ivory-cream/50 italic">
-                Many more toppers have chosen to remain anonymous. We respect their privacy.
+                Verified achiever profiles will be published only with student consent and supporting details.
               </p>
             </motion.div>
           </div>
