@@ -21,43 +21,43 @@ interface FacultyMember {
 
 const faculty: FacultyMember[] = [
   {
-    name: 'Mayank',
+    name: 'XXXXXX',
     subject: 'World History & Ethics',
-    bio: 'Appeared UPSC Civil Service Mains exam. Over 2 years of teaching experience in GS – History. Over 5 years of experience in UPSC/Civil content field.',
+    bio: 'Appeared UPSC Civil Service Mains exam. Over 2 years of teaching experience in GS - History. Over 5 years of experience in UPSC/Civil content field.',
     credentials: ['UPSC CSE Mains', '5+ yrs Content', '2+ yrs Teaching'],
   },
   {
-    name: 'Dr. Shailaja',
+    name: 'XXXXXX',
     subject: 'Ancient, Medieval & Modern History, Art & Culture, Sci & Tech',
     bio: 'Appeared UPSC Civil Service Interview 2019. Over 2 years of teaching experience. Mentoring expert for over 4 years.',
     credentials: ['UPSC Interview 2019', '4+ yrs Mentoring', '2+ yrs Teaching'],
   },
   {
-    name: 'Syed Younus',
+    name: 'XXXXXX',
     subject: 'English Communication & Presentation Skills',
     bio: 'Former Director at My Concepts. Relationship Manager and Faculty member for enhancement of English Communication and Presentation skills.',
     credentials: ['Former Director', 'Communication Expert', 'Faculty Member'],
   },
   {
-    name: 'Dheeraj Yalamanchi',
+    name: 'XXXXXX',
     subject: 'Sociology',
     bio: 'Passionate towards making a difference in UPSC CSE preparation through result-oriented teaching and personalized mentorship. UPSC CSE Interview, 5 CSE Mains & 2 IFoS Mains. Over 3 years experience.',
     credentials: ['UPSC CSE Interview', '5 CSE Mains', '3+ yrs Teaching'],
   },
   {
-    name: 'Ajay TL',
+    name: 'XXXXXX',
     subject: 'Environment, Geography & Forestry',
     bio: '7 years of experience in teaching for UPSC exam. Specialized in Environment, Geography and Forestry subjects.',
     credentials: ['7+ yrs Teaching', 'Environment Expert', 'Geography Specialist'],
   },
   {
-    name: 'Devicharan Shetty',
+    name: 'XXXXXX',
     subject: 'Kannada Literature',
     bio: 'Appeared in UPSC CSE and KPSC Mains. 5+ years of experience in teaching Kannada Literature optional.',
     credentials: ['UPSC & KPSC Mains', '5+ yrs Teaching', 'Kannada Literature'],
   },
   {
-    name: 'Vinay R',
+    name: 'XXXXXX',
     subject: 'Polity & Society',
     bio: 'Appeared in UPSC Civil Service Mains exam. Over 4 years of experience in mentoring and teaching. Over 6 years of experience in UPSC Civil Service content field.',
     credentials: ['UPSC CSE Mains', '6+ yrs Content', '4+ yrs Mentoring'],
@@ -230,9 +230,9 @@ export default function AboutPage() {
               viewport={{ once: true, margin: '-50px' }}
               className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
             >
-              {faculty.map((member) => (
+              {faculty.map((member, index) => (
                 <motion.div
-                  key={member.name}
+                  key={`${member.subject}-${index}`}
                   variants={fadeInUp}
                   className="group relative p-6 pt-8 rounded-xl bg-white dark:bg-card border border-light-gray dark:border-border card-hover-premium overflow-hidden"
                 >
