@@ -442,7 +442,7 @@ export default function NavigationTree({
                           e.currentTarget.style.background =
                             'rgba(255,255,255,0.08)'
                           const textEl =
-                            e.currentTarget.querySelector('[data-art-text]')
+                            e.currentTarget.querySelector<HTMLElement>('[data-art-text]')
                           if (textEl) textEl.style.color = '#FFFFFF'
                         }
                       }}
@@ -450,7 +450,7 @@ export default function NavigationTree({
                         if (!isSelected) {
                           e.currentTarget.style.background = 'transparent'
                           const textEl =
-                            e.currentTarget.querySelector('[data-art-text]')
+                            e.currentTarget.querySelector<HTMLElement>('[data-art-text]')
                           if (textEl)
                             textEl.style.color = 'rgba(255,255,255,0.8)'
                         }
