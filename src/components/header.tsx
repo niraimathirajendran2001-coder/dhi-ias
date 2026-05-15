@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, MessageCircle, Scale } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
@@ -20,24 +21,20 @@ interface NavItem {
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', href: '#home', id: 'home' },
-  { label: 'About', href: '#about', id: 'about' },
-  { label: 'Courses', href: '#courses', id: 'courses' },
-  { label: 'Faculty', href: '#faculty', id: 'faculty' },
-  { label: 'Results', href: '#results', id: 'results' },
+  { label: 'Home', href: '/', id: 'home' },
+  { label: 'About', href: '/about', id: 'about' },
+  { label: 'Courses', href: '/courses', id: 'courses' },
+  { label: 'Results', href: '/results', id: 'results' },
   { label: 'Resources', href: '#resources', id: 'resources' },
-  { label: 'Admissions', href: '#admissions', id: 'admissions' },
-  { label: 'Contact', href: '#contact', id: 'contact' },
+  { label: 'Contact', href: '/contact', id: 'contact' },
 ]
 
 const NAV_DESCRIPTIONS: Record<string, string> = {
   home: 'Welcome & Overview',
   about: 'Our Story & Team',
   courses: 'Programs & Fees',
-  faculty: 'Expert Mentors',
   results: 'Selections & Toppers',
   resources: 'Free Study Material',
-  admissions: 'Enroll & Inquire',
   contact: 'Location & Reach Us',
 }
 
@@ -52,45 +49,6 @@ const HEADER_HEIGHT_SCROLLED = 60
 const FREE_RESOURCE_LINKS = [
   { label: 'Constitution Explorer', href: '/constitution-explorer', icon: Scale },
 ]
-
-/* ------------------------------------------------------------------ */
-/*  Hook: Active Section via IntersectionObserver                      */
-/* ------------------------------------------------------------------ */
-
-function useActiveSection(ids: string[]): string {
-  const [activeId, setActiveId] = useState<string>(ids[0] ?? '')
-
-  useEffect(() => {
-    const observers: IntersectionObserver[] = []
-
-    ids.forEach((id) => {
-      const element = document.getElementById(id)
-      if (!element) return
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveId(id)
-          }
-        },
-        {
-          /* Trigger when section is in the top 20%-40% of the viewport */
-          rootMargin: '-20% 0px -60% 0px',
-          threshold: 0,
-        },
-      )
-
-      observer.observe(element)
-      observers.push(observer)
-    })
-
-    return () => {
-      observers.forEach((obs) => obs.disconnect())
-    }
-  }, [ids])
-
-  return activeId
-}
 
 /* ------------------------------------------------------------------ */
 /*  Hook: Scroll State                                                 */
@@ -115,19 +73,19 @@ function useScrolled(threshold: number): boolean {
 
 export function Header() {
   const isScrolled = useScrolled(SCROLL_THRESHOLD)
-  const sectionIds = useMemo(() => NAV_ITEMS.map((item) => item.id), [])
-  const activeSection = useActiveSection(sectionIds)
+  const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [resourcesOpen, setResourcesOpen] = useState(false)
 
-  /* ---- Smooth-scroll handler ---- */
-  const scrollToSection = useCallback((id: string) => {
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-    setMobileMenuOpen(false)
-  }, [])
+  /* ---- Determine active nav item from pathname ---- */
+  const getIsActive = useCallback(
+    (item: NavItem) => {
+      if (item.id === 'resources') return false // Resources is a dropdown trigger
+      if (item.href === '/') return pathname === '/'
+      return pathname.startsWith(item.href)
+    },
+    [pathname],
+  )
 
   /* ---- Escape key closes drawer ---- */
   useEffect(() => {
@@ -166,18 +124,14 @@ export function Header() {
       >
         <div className="h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* -------- Logo -------- */}
-          <a
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault()
-              scrollToSection('home')
-            }}
+          <Link
+            href="/"
             className="flex-shrink-0 select-none flex items-center gap-2.5"
-            aria-label="Aristocrat IAS Academy — go to home"
+            aria-label="DHI Academy — go to home"
           >
             <Image
-              src="/logo.jpg"
-              alt="Aristocrat IAS Academy Logo"
+              src="/dhi-logo.jpg"
+              alt="DHI Academy Logo"
               width={44}
               height={44}
               className="rounded-full"
@@ -190,13 +144,16 @@ export function Header() {
                   isScrolled ? 'text-ivory-cream' : 'text-navy',
                 )}
               >
-                ARISTOCRAT
+                DHI
               </span>
               <span className="block font-sans text-[9px] sm:text-[10px] font-semibold tracking-[0.2em] uppercase text-sovereign-gold leading-none mt-0.5">
-                IAS ACADEMY
+                ACADEMY
+              </span>
+              <span className="block font-sans text-[8px] sm:text-[9px] font-medium tracking-wider text-sovereign-gold/70 leading-none mt-0.5 italic">
+                Transforming Lives
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* -------- Desktop Nav -------- */}
           <nav
@@ -205,7 +162,10 @@ export function Header() {
             aria-label="Primary"
           >
             {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.id
+              const isActive = item.id === 'resources'
+                ? pathname === '/constitution-explorer'
+                : pathname === item.href ||
+                  (item.href !== '/' && pathname.startsWith(item.href))
 
               // Resources item gets a dropdown with Constitution Explorer
               if (item.id === 'resources') {
@@ -216,25 +176,19 @@ export function Header() {
                     onMouseEnter={() => setResourcesOpen(true)}
                     onMouseLeave={() => setResourcesOpen(false)}
                   >
-                    <a
-                      href={item.href}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        scrollToSection(item.id)
-                      }}
+                    <span
                       className={cn(
-                        'relative px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap flex items-center gap-1',
+                        'relative px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap flex items-center gap-1 cursor-default',
                         isScrolled
                           ? 'text-ivory-cream/80 hover:text-champagne-gold'
                           : 'text-navy/80 hover:text-sovereign-gold dark:text-ivory-cream/80 dark:hover:text-champagne-gold',
                         isActive && (isScrolled ? 'text-champagne-gold' : 'text-sovereign-gold dark:text-champagne-gold'),
                         isActive && 'active-nav-dot',
                       )}
-                      aria-current={isActive ? 'page' : undefined}
                     >
                       {item.label}
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                    </a>
+                    </span>
 
                     {/* Dropdown */}
                     {resourcesOpen && (
@@ -271,13 +225,9 @@ export function Header() {
               }
 
               return (
-                <a
+                <Link
                   key={item.id}
                   href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    scrollToSection(item.id)
-                  }}
                   className={cn(
                     'relative px-3 py-2 text-[13px] font-medium transition-colors duration-200 whitespace-nowrap',
                     isScrolled
@@ -293,10 +243,9 @@ export function Header() {
                     <motion.span
                       layoutId="desktop-nav-underline"
                       className="absolute bottom-0 left-3 right-3 h-[2px] bg-sovereign-gold dark:bg-champagne-gold rounded-full"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-                </a>
+                </Link>
               )
             })}
           </nav>
@@ -309,17 +258,18 @@ export function Header() {
             </div>
 
             {/* CTA — visible on sm+ */}
-            <Button
-              onClick={() => scrollToSection('admissions')}
-              className={cn(
-                'hidden sm:inline-flex bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] hover:bg-champagne-gold dark:hover:bg-[#F5D060]',
-                'font-semibold rounded-[6px] h-10 px-5 text-sm',
-                'transition-all duration-300',
-                'hover:shadow-[0_0_20px_rgba(200,150,12,0.35)] dark:hover:shadow-[0_0_20px_rgba(232,184,48,0.3)]',
-              )}
-            >
-              Book Demo Class
-            </Button>
+            <Link href="/contact">
+              <Button
+                className={cn(
+                  'hidden sm:inline-flex bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] hover:bg-champagne-gold dark:hover:bg-[#F5D060]',
+                  'font-semibold rounded-[6px] h-10 px-5 text-sm',
+                  'transition-all duration-300',
+                  'hover:shadow-[0_0_20px_rgba(200,150,12,0.35)] dark:hover:shadow-[0_0_20px_rgba(232,184,48,0.3)]',
+                )}
+              >
+                Join DHI
+              </Button>
+            </Link>
 
             {/* Hamburger — visible below lg */}
             <button
@@ -371,30 +321,30 @@ export function Header() {
             >
               {/* ---- Drawer Header ---- */}
               <div className="flex items-center justify-between p-6 pb-4">
-                <a
-                  href="#home"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    scrollToSection('home')
-                  }}
+                <Link
+                  href="/"
+                  onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-2.5"
                 >
                   <Image
-                    src="/logo.jpg"
-                    alt="Aristocrat IAS Academy Logo"
+                    src="/dhi-logo.jpg"
+                    alt="DHI Academy Logo"
                     width={36}
                     height={36}
                     className="rounded-full"
                   />
                   <div className="flex flex-col">
                     <span className="block font-serif text-xl font-semibold text-ivory-cream leading-none">
-                      ARISTOCRAT
+                      DHI
                     </span>
                     <span className="block font-sans text-[9px] font-semibold tracking-[0.2em] uppercase text-sovereign-gold leading-none mt-0.5">
-                      IAS ACADEMY
+                      ACADEMY
+                    </span>
+                    <span className="block font-sans text-[8px] font-medium tracking-wider text-sovereign-gold/70 leading-none mt-0.5 italic">
+                      Transforming Lives
                     </span>
                   </div>
-                </a>
+                </Link>
                 <button
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
@@ -415,22 +365,59 @@ export function Header() {
                 aria-label="Mobile"
               >
                 {NAV_ITEMS.map((item, index) => {
-                  const isActive = activeSection === item.id
+                  const isActive = item.id === 'resources'
+                    ? pathname === '/constitution-explorer'
+                    : pathname === item.href ||
+                      (item.href !== '/' && pathname.startsWith(item.href))
+
+                  // Resources item shows sub-links in mobile
+                  if (item.id === 'resources') {
+                    return (
+                      <div key={item.id}>
+                        <motion.div
+                          initial={{ opacity: 0, x: 24 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{
+                            delay: 0.04 * index,
+                            duration: 0.3,
+                            ease: 'easeOut',
+                          }}
+                          className={cn(
+                            'flex flex-col py-3 px-4 rounded-[6px] transition-colors duration-200 mobile-nav-link-hover',
+                            isActive
+                              ? 'text-champagne-gold bg-white/5'
+                              : 'text-ivory-cream/75 hover:text-ivory-cream hover:bg-white/5',
+                          )}
+                        >
+                          <span className="text-lg font-medium">{item.label}</span>
+                          <span className={cn(
+                            'text-xs font-sans mt-0.5',
+                            isActive ? 'text-champagne-gold/60' : 'text-ivory-cream/35'
+                          )}>
+                            {NAV_DESCRIPTIONS[item.id]}
+                          </span>
+                        </motion.div>
+                        {/* Sub-links for Resources */}
+                        {FREE_RESOURCE_LINKS.map((link) => (
+                          <Link
+                            key={link.href}
+                            href={link.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="flex items-center gap-3 py-2 px-8 rounded-[6px] transition-colors duration-200 mobile-nav-link-hover text-ivory-cream/75 hover:text-ivory-cream hover:bg-white/5"
+                          >
+                            <link.icon className="w-4 h-4 text-sovereign-gold" strokeWidth={1.8} />
+                            <span className="text-sm font-medium">{link.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )
+                  }
+
                   return (
-                    <motion.a
+                    <Link
                       key={item.id}
                       href={item.href}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        scrollToSection(item.id)
-                      }}
-                      initial={{ opacity: 0, x: 24 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{
-                        delay: 0.04 * index,
-                        duration: 0.3,
-                        ease: 'easeOut',
-                      }}
+                      onClick={() => setMobileMenuOpen(false)}
                       className={cn(
                         'flex flex-col py-3 px-4 rounded-[6px] transition-colors duration-200 mobile-nav-link-hover',
                         isActive
@@ -446,28 +433,9 @@ export function Header() {
                       )}>
                         {NAV_DESCRIPTIONS[item.id]}
                       </span>
-                      {isActive && (
-                        <span className="ml-3 h-[2px] w-6 bg-sovereign-gold rounded-full flex-shrink-0" />
-                      )}
-                    </motion.a>
+                    </Link>
                   )
                 })}
-
-                {/* ── Constitution Explorer link ── */}
-                <div className="mx-2 my-2 h-px bg-white/10" />
-                <Link
-                  href="/constitution-explorer"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 py-3 px-4 rounded-[6px] transition-colors duration-200 mobile-nav-link-hover text-ivory-cream/75 hover:text-ivory-cream hover:bg-white/5"
-                >
-                  <Scale className="w-5 h-5 text-sovereign-gold" strokeWidth={1.8} />
-                  <div className="flex flex-col">
-                    <span className="text-base font-medium">Constitution Explorer</span>
-                    <span className="text-xs font-sans mt-0.5 text-ivory-cream/35">
-                      Interactive Tool — All 395 Articles
-                    </span>
-                  </div>
-                </Link>
               </nav>
 
               {/* ---- Pinned Bottom: CTA + Contact ---- */}
@@ -476,16 +444,17 @@ export function Header() {
                   <span className="text-ivory-cream/50 text-xs font-sans">Dark Mode</span>
                   <ThemeToggle />
                 </div>
-                <Button
-                  onClick={() => scrollToSection('admissions')}
-                  className="w-full bg-sovereign-gold text-navy hover:bg-champagne-gold font-bold rounded-[6px] h-14 text-base transition-colors duration-200 btn-gold-shimmer"
-                >
-                  Book Demo Class
-                </Button>
+                <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+                  <Button
+                    className="w-full bg-sovereign-gold text-navy hover:bg-champagne-gold font-bold rounded-[6px] h-14 text-base transition-colors duration-200 btn-gold-shimmer"
+                  >
+                    Join DHI
+                  </Button>
+                </Link>
 
                 <div className="flex gap-3">
                   <a
-                    href="https://wa.me/919876543210?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Aristocrat%20IAS%20Academy."
+                    href="https://wa.me/919876543210?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20DHI%20Academy."
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(

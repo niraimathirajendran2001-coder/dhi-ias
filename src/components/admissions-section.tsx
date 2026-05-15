@@ -67,12 +67,16 @@ const steps = [
 ]
 
 const courseOptions = [
-  'GS Foundation',
-  'KAS Coaching',
-  'Optional Subjects',
-  'Test Series',
+  'IPM (Integrated Prelims & Mains)',
+  'Foundation Course',
+  'Mains Test Series 2025',
+  'Optional Test Series',
+  'Year Long Mains (YLM)',
+  'Year Long Prelims (YLP)',
+  'ASTRA Test Series 2025',
+  'Ethics (GS Paper 4)',
+  'Essay Paper',
   'Current Affairs',
-  'Interview Guidance',
 ]
 
 const referralOptions = [
@@ -85,9 +89,9 @@ const referralOptions = [
 ]
 
 const feeStructure = [
-  { course: 'GS Foundation', duration: '12 months', fee: '₹xxxxxxx' },
-  { course: 'KAS Coaching', duration: '8 months', fee: '₹xxxxxxx' },
-  { course: 'Test Series', duration: '6 months', fee: '₹xxxxxxx' },
+  { course: 'IPM (Prelims & Mains)', duration: '12 months', fee: '₹xxxxxxx' },
+  { course: 'Foundation Course', duration: '10 months', fee: '₹xxxxxxx' },
+  { course: 'ASTRA Test Series', duration: '6 months', fee: '₹xxxxxxx' },
 ]
 
 interface FormData {
@@ -181,7 +185,7 @@ export default function AdmissionsSection() {
             variants={fadeInUp}
             className="font-serif section-heading text-[36px] md:text-[44px] leading-tight mb-4 text-ivory-cream"
           >
-            Your Journey Starts Here
+            Ready to Transform Your Future?
           </motion.h2>
           <motion.div
             variants={fadeInUp}
@@ -463,7 +467,7 @@ export default function AdmissionsSection() {
                       Submitting...
                     </span>
                   ) : (
-                    'Book My Free Demo Class'
+                    'Start Your Transformation'
                   )}
                 </Button>
               </motion.form>

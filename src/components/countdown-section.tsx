@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 /* ─── Target Date ─── */
-const TARGET_DATE = new Date('2026-06-15T09:00:00+05:30').getTime()
+const TARGET_DATE = new Date('2025-05-25T09:30:00+05:30').getTime()
 
 /* ─── Time Left Calculation ─── */
 function getTimeLeft() {
@@ -221,7 +221,7 @@ export default function CountdownSection() {
           className="mt-5 font-sans text-[13px]"
           style={{ color: 'rgba(250,250,247,0.45)' }}
         >
-          June 15, 2026 &middot; Morning Batch
+          May 25, 2025 &middot; UPSC CSE Prelims 2025
         </motion.p>
 
         {/* CTA Button */}
@@ -233,7 +233,7 @@ export default function CountdownSection() {
           className="mt-8"
         >
           <a
-            href="#admissions"
+            href="/contact"
             className={cn(
               'inline-flex items-center gap-2',
               'px-8 py-3.5 rounded-lg',

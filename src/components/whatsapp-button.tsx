@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 /* ------------------------------------------------------------------ */
 
 const WHATSAPP_URL =
-  'https://wa.me/919845806645?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Aristocrat%20IAS%20Academy.'
+  'https://wa.me/919845806645?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20DHI%20Academy.'
 
 /* ------------------------------------------------------------------ */
 /*  Component: WhatsAppButton                                          */

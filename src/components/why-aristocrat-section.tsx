@@ -15,23 +15,30 @@ const features: FeatureCard[] = [
   {
     icon: <GraduationCap size={40} className="text-sovereign-gold" />,
     stat: '12+',
-    label: 'Expert Educators & Mentors',
+    label: 'Expert Faculty & Mentors',
     description:
-      'Our faculty includes seasoned educators and subject matter experts who bring deep domain knowledge into every lecture.',
+      'Our faculty comprises experienced educators and subject matter experts who bring deep domain knowledge.',
   },
   {
     icon: <Trophy size={40} className="text-sovereign-gold" />,
-    stat: '200+',
-    label: 'UPSC & KAS Selections',
+    stat: '100%',
+    label: 'Comprehensive Content',
     description:
-      'Consistent results across UPSC CSE and KAS examinations. Our students don\u2019t just clear \u2014 they rank.',
+      'We develop our own content strictly related to the syllabus and relevance for the examination.',
   },
   {
     icon: <Users size={40} className="text-sovereign-gold" />,
     stat: '1-on-1',
-    label: 'Personal Mentorship for Every Student',
+    label: 'Individual Attention',
     description:
-      'From Day 1 to interview day, every aspirant is paired with a dedicated faculty mentor. Not the week before Prelims \u2014 from the start.',
+      'Sound academic base with quality teaching and individual attention for each aspirant.',
+  },
+  {
+    icon: <GraduationCap size={40} className="text-sovereign-gold" />,
+    stat: '365',
+    label: 'Updated Pedagogy',
+    description:
+      'We constantly update our content and modify our pedagogy according to the evolving UPSC pattern.',
   },
 ]
 
@@ -74,11 +81,11 @@ const headingVariants = {
   },
 }
 
-export default function WhyAristocratSection() {
+export default function WhyDHISection() {
   return (
     <section
       className="relative py-16 md:py-24 lg:py-24 overflow-hidden"
-      aria-labelledby="why-aristocrat-heading"
+      aria-labelledby="why-dhi-heading"
     >
       {/* Subtle gradient background instead of flat white */}
       <div
@@ -97,14 +104,14 @@ export default function WhyAristocratSection() {
           viewport={{ once: true, amount: 0.3 }}
           variants={headingVariants}
         >
-          <span className="section-label ui-label section-label-diamond">THE ARISTOCRAT DIFFERENCE</span>
+          <span className="section-label ui-label section-label-diamond">THE DHI DIFFERENCE</span>
 
           {/* Section Heading */}
           <h2
-            id="why-aristocrat-heading"
+            id="why-dhi-heading"
             className="mt-3 font-serif section-heading text-[40px] text-navy dark:text-ivory-cream md:text-[46px]"
           >
-            Why Future Officers Choose Us
+            Why DHI Academy
           </h2>
 
           {/* Gold Separator */}
@@ -113,7 +120,7 @@ export default function WhyAristocratSection() {
 
         {/* Feature Cards */}
         <motion.div
-          className="mt-12 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-3"
+          className="mt-12 grid grid-cols-1 gap-8 md:mt-16 md:grid-cols-2 lg:grid-cols-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}

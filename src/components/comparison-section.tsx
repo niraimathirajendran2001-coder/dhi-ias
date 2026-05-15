@@ -10,57 +10,57 @@ const comparisonData = [
   {
     feature: 'Faculty',
     others: 'Retired Teachers',
-    aristocrat: 'Bureaucrats & Scholars',
-    aristocratHighlight: true,
+    dhi: 'Bureaucrats & Scholars',
+    dhiHighlight: true,
     othersHighlight: false,
   },
   {
     feature: 'Mentorship',
     others: 'Group-only Sessions',
-    aristocrat: '1-on-1 from Day 1',
-    aristocratHighlight: true,
+    dhi: '1-on-1 from Day 1',
+    dhiHighlight: true,
     othersHighlight: false,
   },
   {
     feature: 'Test Evaluation',
     others: 'Generic Model Answers',
-    aristocrat: 'Individual Feedback',
-    aristocratHighlight: true,
+    dhi: 'Individual Feedback',
+    dhiHighlight: true,
     othersHighlight: false,
   },
   {
     feature: 'Batch Size',
     others: '100+ Students',
-    aristocrat: 'Max 40 Students',
-    aristocratHighlight: true,
+    dhi: 'Max 40 Students',
+    dhiHighlight: true,
     othersHighlight: true,
   },
   {
     feature: 'Study Material',
     others: 'Outdated Photocopies',
-    aristocrat: 'Curated & Updated',
-    aristocratHighlight: true,
+    dhi: 'Curated & Updated',
+    dhiHighlight: true,
     othersHighlight: false,
   },
   {
     feature: 'Interview Prep',
     others: 'In-house Faculty',
-    aristocrat: 'Former UPSC Board Members',
-    aristocratHighlight: true,
+    dhi: 'Former UPSC Board Members',
+    dhiHighlight: true,
     othersHighlight: false,
   },
   {
     feature: 'Current Affairs',
     others: 'Weekly Summary',
-    aristocrat: 'Daily Analysis',
-    aristocratHighlight: true,
+    dhi: 'Daily Analysis',
+    dhiHighlight: true,
     othersHighlight: false,
   },
   {
     feature: 'Result Rate',
     others: 'Industry Average 15%',
-    aristocrat: '70%+ Selection Rate',
-    aristocratHighlight: true,
+    dhi: '95% Success Rate (Mains)',
+    dhiHighlight: true,
     othersHighlight: false,
   },
 ]
@@ -119,7 +119,7 @@ function ComparisonCard({
           </div>
         </div>
 
-        {/* Aristocrat */}
+        {/* DHI */}
         <div
           className={cn(
             'flex items-center gap-3 p-3 rounded-lg',
@@ -132,10 +132,10 @@ function ComparisonCard({
           </span>
           <div>
             <span className="block font-sans text-[10px] ui-label text-[#E8B830]/70 mb-0.5">
-              Aristocrat
+              DHI
             </span>
             <span className="font-sans text-[13px] font-medium text-[#E8B830]">
-              {item.aristocrat}
+              {item.dhi}
             </span>
           </div>
         </div>
@@ -183,14 +183,14 @@ function ComparisonRow({
         </div>
       </td>
 
-      {/* Aristocrat — highlighted with gold background gradient */}
+      {/* DHI — highlighted with gold background gradient */}
       <td className={cn('px-5 py-4', 'comparison-highlight')}>
         <div className="flex items-center gap-3">
           <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#C8960C]/20 dark:bg-champagne-gold/20 flex items-center justify-center">
             <Check className="w-3 h-3 text-[#E8B830] dark:text-champagne-gold" />
           </span>
           <span className="font-sans text-[14px] font-medium text-[#E8B830] dark:text-champagne-gold">
-            {item.aristocrat}
+            {item.dhi}
           </span>
         </div>
       </td>
@@ -233,7 +233,7 @@ export default function ComparisonSection() {
         >
           {/* Section Label */}
           <p className="section-label ui-label section-label-diamond mb-4 text-[#C8960C] dark:text-champagne-gold">
-            THE ARISTOCRAT ADVANTAGE
+            THE DHI ADVANTAGE
           </p>
 
           {/* Heading */}
@@ -280,7 +280,7 @@ export default function ComparisonSection() {
                     Others
                   </th>
                   <th className={cn('px-5 py-4 text-left font-sans ui-label text-[11px] text-[#E8B830] dark:text-champagne-gold', 'comparison-highlight')}>
-                    Aristocrat
+                    DHI
                   </th>
                 </tr>
               </thead>

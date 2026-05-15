@@ -12,21 +12,21 @@ const testimonials = [
     initials: 'T1',
     rank: 'xxxxxxx',
     quote:
-      "Aristocrat didn't just teach me how to clear the exam — they showed me how to think like an officer. The mentorship here is not a feature; it's the foundation.",
+      "DHI didn't just teach me how to clear the exam — they showed me how to think like an officer. The mentorship here is not a feature; it's the foundation.",
   },
   {
     name: 'xxxxxxx',
     initials: 'T2',
     rank: 'xxxxxxx',
     quote:
-      'I attempted UPSC twice before joining Aristocrat. The structured approach and personal mentorship changed everything. My mentor was available at 11 PM the night before my interview.',
+      'I attempted UPSC twice before joining DHI. The structured approach and personal mentorship changed everything. My mentor was available at 11 PM the night before my interview.',
   },
   {
     name: 'xxxxxxx',
     initials: 'T3',
     rank: 'xxxxxxx',
     quote:
-      'The faculty at Aristocrat brings real administrative experience into the classroom. When your Polity teacher has actually drafted policy, the subject comes alive in ways no textbook can replicate.',
+      'The faculty at DHI brings real administrative experience into the classroom. When your Polity teacher has actually drafted policy, the subject comes alive in ways no textbook can replicate.',
   },
 ]
 

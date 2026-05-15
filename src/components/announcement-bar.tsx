@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 
 const announcements = [
-  '🎯 New KAS Batch Starting July 2026 — Enroll Now!',
-  '📚 Free UPSC Study Plan — Download Today!',
-  '🏆 200+ Selections — Join the Legacy!',
+  '🎯 Scholarship Test — Register Now!',
+  '📚 IPM New Batch Starting Soon — Enroll Now!',
+  '🏆 95% Success Rate (Mains) — Transform Your Future!',
 ]
 
-const STORAGE_KEY = 'aristocrat-announcement-dismissed'
+const STORAGE_KEY = 'dhi-announcement-dismissed'
 
 function subscribeToStorage(callback: () => void) {
   window.addEventListener('storage', callback)

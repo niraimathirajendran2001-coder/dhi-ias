@@ -204,7 +204,7 @@ export default function GallerySection() {
               'font-serif section-heading text-[36px] leading-tight text-[#0F1F4B] dark:text-[#FAFAF7] md:text-[44px]',
             )}
           >
-            Life at Aristocrat
+            Life at DHI Academy
           </h2>
 
           {/* Gold Separator */}

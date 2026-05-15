@@ -23,7 +23,7 @@ interface Course {
 
 const courses: Course[] = [
   {
-    name: 'GS Foundation (Prelims + Mains)',
+    name: 'IPM (Integrated Prelims & Mains)',
     icon: BookOpen,
     badge: {
       label: 'Most Popular',
@@ -33,77 +33,116 @@ const courses: Course[] = [
     duration: '12 Months',
     nextBatch: 'June 2026',
     description:
-      'Comprehensive integrated program covering all GS papers, CSAT, and essay writing.',
-    tooltipText: 'Our flagship program — 1200+ hours of guided preparation',
+      'Comprehensive integrated program covering all GS papers for both Prelims and Mains.',
+    tooltipText: 'Our flagship program — integrated preparation for all stages',
     fee: '\u20B9xxxxxxx',
     isMostPopular: true,
   },
   {
-    name: 'KAS Coaching',
+    name: 'Foundation Course',
     icon: Landmark,
     badge: {
       label: 'New Batch',
       className: 'border-teal-light-bg bg-teal-light-bg text-forest-teal font-sans',
     },
-    duration: '8 Months',
+    duration: '10 Months',
     nextBatch: 'July 2026',
     description:
-      'Dedicated Karnataka Administrative Service preparation with state-specific focus.',
-    tooltipText: 'Karnataka-specific syllabus & KPSC exam strategy',
+      'Build a strong foundation for UPSC CSE with structured guidance from basics to advanced.',
+    tooltipText: 'Perfect for beginners starting their UPSC journey',
     fee: '\u20B9xxxxxxx',
   },
   {
-    name: 'Optional Subjects',
-    icon: Layers,
-    badge: {
-      label: '6 Subjects Available',
-      className: 'border-navy bg-navy text-ivory-cream font-sans',
-    },
-    duration: '4-6 Months',
-    nextBatch: 'Rolling Admissions',
-    description:
-      'History, Geography, PSIR, Sociology, Public Administration & Anthropology.',
-    tooltipText: 'Expert-led optional papers with answer writing practice',
-    fee: '\u20B9xxxxxxx onwards',
-  },
-  {
-    name: 'Test Series',
+    name: 'Mains Test Series 2025',
     icon: ClipboardCheck,
     badge: {
       label: 'Enroll Now',
       className: 'border-teal-light-bg bg-teal-light-bg text-forest-teal font-sans',
     },
     duration: '6 Months',
-    nextBatch: 'Prelims 2026 Batch',
+    nextBatch: 'Ongoing',
     description:
-      '50 Prelims tests + 15 Mains tests with detailed individual evaluation and model answers.',
-    tooltipText: 'Performance analytics & All-India ranking included',
+      'Comprehensive Mains answer writing practice with detailed evaluation and model answers.',
+    tooltipText: 'Performance analytics & detailed feedback included',
     fee: '\u20B9xxxxxxx',
   },
   {
-    name: 'Current Affairs Program',
+    name: 'Optional Test Series',
+    icon: Layers,
+    badge: {
+      label: '3 Subjects',
+      className: 'border-navy bg-navy text-ivory-cream font-sans',
+    },
+    duration: '4-6 Months',
+    nextBatch: 'Rolling Admissions',
+    description:
+      'Sociology, PSIR & Geography — expert-led optional papers with answer writing practice.',
+    tooltipText: 'Specialized test series for each optional subject',
+    fee: '\u20B9xxxxxxx onwards',
+  },
+  {
+    name: 'Year Long Mains (YLM)',
     icon: Newspaper,
+    duration: '12 Months',
+    nextBatch: 'Monthly Enrollment',
+    description:
+      'Sustained Mains preparation throughout the year with weekly answer writing and evaluation.',
+    tooltipText: 'Consistent practice for Mains excellence',
+    fee: '\u20B9xxxxxxx',
+  },
+  {
+    name: 'Year Long Prelims (YLP)',
+    icon: MessageSquare,
+    duration: '12 Months',
+    nextBatch: 'Monthly Enrollment',
+    description:
+      'Year-long Prelims preparation with topic-wise tests and comprehensive revision cycles.',
+    tooltipText: 'Systematic Prelims preparation throughout the year',
+    fee: '\u20B9xxxxxxx',
+  },
+  {
+    name: 'ASTRA Test Series 2025',
+    icon: ClipboardCheck,
+    badge: {
+      label: 'New',
+      className: 'border-crimson-light-bg bg-crimson-light-bg text-deep-crimson font-sans',
+    },
+    duration: '6 Months',
+    nextBatch: 'Ongoing',
+    description:
+      'All-India mock test series simulating real exam conditions with detailed performance analysis.',
+    tooltipText: 'Benchmark your preparation against the best',
+    fee: '\u20B9xxxxxxx',
+  },
+  {
+    name: 'Ethics (GS Paper 4)',
+    icon: BookOpen,
+    duration: '3 Months',
+    nextBatch: 'Rolling Admissions',
+    description:
+      'Dedicated course for GS Paper 4 covering ethics, integrity, aptitude, and case studies.',
+    tooltipText: 'Master the Ethics paper with expert guidance',
+    fee: '\u20B9xxxxxxx',
+  },
+  {
+    name: 'Essay Paper',
+    icon: Newspaper,
+    duration: '2 Months',
+    nextBatch: 'Rolling Admissions',
+    description:
+      'Structured essay writing program with practice sessions, feedback, and model essays.',
+    tooltipText: 'Develop a structured approach to essay writing',
+    fee: '\u20B9xxxxxxx',
+  },
+  {
+    name: 'Current Affairs',
+    icon: MessageSquare,
     duration: 'Ongoing',
     nextBatch: 'Monthly Enrollment',
     description:
       'Daily analyses, monthly compilations, and expert-led discussions on national & international events.',
     tooltipText: 'Stay updated with curated daily & monthly digests',
     fee: '\u20B9xxxxxxx/month',
-  },
-  {
-    name: 'Interview Guidance',
-    icon: MessageSquare,
-    badge: {
-      label: 'Limited Seats',
-      className: 'border-crimson-light-bg bg-crimson-light-bg text-deep-crimson font-sans',
-    },
-    duration: '2 Months',
-    nextBatch: 'Post-Mains 2026',
-    description:
-      'Mock interviews with former UPSC board members, personality development & DAF analysis.',
-    tooltipText: 'Personalized DAF analysis & mock interview sessions',
-    fee: '\u20B9xxxxxxx',
-    isLimitedSeats: true,
   },
 ]
 
@@ -291,9 +330,8 @@ export default function CoursesSection() {
 
                 {/* Know More Link with gold underline hover */}
                 <a
-                  href="#"
+                  href="/courses"
                   className="mt-3 inline-flex items-center gap-1 text-sm font-sans font-medium text-sovereign-gold dark:text-champagne-gold gold-underline-hover transition-colors"
-                  onClick={(e) => e.preventDefault()}
                 >
                   Know More
                   <ArrowRight size={14} />

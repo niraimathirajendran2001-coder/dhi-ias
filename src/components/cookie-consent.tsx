@@ -6,7 +6,7 @@ import { ShieldCheck, Settings, ChevronDown, ChevronUp } from 'lucide-react'
 import { Switch } from '@/components/ui/switch'
 import { cn } from '@/lib/utils'
 
-const STORAGE_KEY = 'aristocrat-cookie-consent'
+const STORAGE_KEY = 'dhi-cookie-consent'
 
 interface CookiePreferences {
   essential: boolean

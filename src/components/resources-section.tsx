@@ -42,10 +42,26 @@ const resources: {
   pill?: string
 }[] = [
   {
+    icon: Scale,
+    title: 'Constitution Explorer',
+    description: 'All 395 Articles. Every landmark judgment. Every UPSC question. One interactive map.',
+    linkText: 'Explore →',
+    href: '/constitution-explorer',
+    pill: 'Interactive Tool',
+  },
+  {
+    icon: PenTool,
+    title: 'Daily Quiz',
+    description: 'Practice UPSC questions daily',
+    linkText: 'Start Quiz →',
+    href: '/courses',
+  },
+  {
     icon: Newspaper,
-    title: 'Daily Current Affairs',
+    title: 'Current Affairs',
     description: 'Latest summaries updated daily',
     linkText: 'Read Now →',
+    href: '/courses',
   },
   {
     icon: BookOpen,
@@ -58,20 +74,6 @@ const resources: {
     title: 'Monthly Magazine',
     description: 'May 2026 Edition',
     linkText: 'Download →',
-  },
-  {
-    icon: PenTool,
-    title: 'Practice Questions',
-    description: 'Free 20-question quiz',
-    linkText: 'Start Quiz →',
-  },
-  {
-    icon: Scale,
-    title: 'Constitution Explorer',
-    description: 'All 395 Articles. Every landmark judgment. Every UPSC question. One interactive map.',
-    linkText: 'Explore →',
-    href: '/constitution-explorer',
-    pill: 'Interactive Tool',
   },
 ]
 
@@ -155,7 +157,7 @@ export function ResourcesSection() {
               'text-navy dark:text-ivory-cream'
             )}
           >
-            Start Your UPSC Journey — Free
+            Free Resources for Your Journey
           </h2>
         </div>
 

@@ -20,21 +20,20 @@ import { cn } from '@/lib/utils'
 import { toast } from 'sonner'
 
 const quickLinks = [
-  { name: 'About Us', href: '#about' },
-  { name: 'Courses', href: '#courses' },
-  { name: 'Faculty', href: '#faculty' },
-  { name: 'Results & Toppers', href: '#results' },
-  { name: 'Admissions', href: '#admissions' },
-  { name: 'Contact Us', href: '#contact' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Courses', href: '/courses' },
+  { name: 'Faculty', href: '/about#team' },
+  { name: 'Results & Toppers', href: '/results' },
+  { name: 'Contact Us', href: '/contact' },
 ]
 
 const courseLinks = [
-  { name: 'GS Foundation', href: '#courses' },
-  { name: 'KAS Coaching', href: '#courses' },
-  { name: 'Optional Subjects', href: '#courses' },
-  { name: 'Test Series', href: '#courses' },
-  { name: 'Current Affairs', href: '#courses' },
-  { name: 'Interview Guidance', href: '#courses' },
+  { name: 'IPM (Integrated Prelims & Mains)', href: '/courses' },
+  { name: 'Foundation Course', href: '/courses' },
+  { name: 'Mains Test Series', href: '/courses' },
+  { name: 'Optional Test Series', href: '/courses' },
+  { name: 'Current Affairs', href: '/courses' },
+  { name: 'Interview Guidance', href: '/courses' },
 ]
 
 const fadeInUp = {
@@ -184,8 +183,8 @@ export default function Footer() {
           >
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/logo.jpg"
-                alt="Aristocrat IAS Academy Logo"
+                src="/dhi-logo.jpg"
+                alt="DHI Academy Logo"
                 width={48}
                 height={48}
                 className="rounded-full"
@@ -194,29 +193,28 @@ export default function Footer() {
                 <h2
                   className="font-serif text-[24px] font-semibold leading-none text-champagne-gold"
                 >
-                  ARISTOCRAT
+                  DHI
                 </h2>
                 <p
                   className="font-sans text-[11px] uppercase tracking-[0.15em] mt-0.5 text-ivory-cream/70"
                 >
-                  IAS ACADEMY
+                  ACADEMY
                 </p>
               </div>
             </div>
             <p
               className="font-sans text-[13px] leading-relaxed mb-6 text-ivory-cream/50"
             >
-              UPSC & KAS coaching in Chandralayout, Bengaluru. Guided by experience.
-              Driven by results.
+              UPSC & KAS coaching in Chandralayout, Bengaluru. Transforming Lives through structured mentorship and proven results.
             </p>
 
             {/* Social Icons with gold background circle on hover */}
             <div className="flex items-center gap-4">
               {[
-                { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/aristocratiasacademy/' },
-                { Icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@AristocratIASAcademy' },
-                { Icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/AristocratIASAcademy' },
-                { Icon: Twitter, label: 'Twitter', href: 'https://twitter.com/AristocratIAS' },
+                { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/dhiacademy/' },
+                { Icon: Youtube, label: 'YouTube', href: 'https://www.youtube.com/@DhiAcademy' },
+                { Icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/DhiAcademy' },
+                { Icon: Twitter, label: 'Twitter', href: 'https://twitter.com/DhiAcademy' },
               ].map(({ Icon, label, href }) => (
                 <a
                   key={label}
@@ -308,7 +306,7 @@ export default function Footer() {
                 <span
                   className="font-sans text-[14px] text-ivory-cream/70"
                 >
-                  Chandra Layout, Bengaluru 560040
+                  Bus Stand, 1561, 2nd Floor, 8th Cross Rd, above SBI Bank, opposite Chandra Layout, Bengaluru, Karnataka 560040
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -324,7 +322,7 @@ export default function Footer() {
                 <span
                   className="font-sans text-[14px] text-ivory-cream/70"
                 >
-                  info@aristocratiasacademy.in
+                  info@dhiacademy.in
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -337,7 +335,7 @@ export default function Footer() {
               </li>
             </ul>
             <a
-              href="#admissions"
+              href="/contact"
               className="inline-flex items-center gap-1 mt-5 font-sans text-[14px] font-medium transition-colors duration-200 text-sovereign-gold dark:text-champagne-gold hover:text-champagne-gold footer-link-animated"
             >
               Book a Demo Class
@@ -357,12 +355,12 @@ export default function Footer() {
           <p
             className="font-sans text-[12px] text-ivory-cream/40"
           >
-            &copy; 2026 Aristocrat IAS Academy. All rights reserved.
+            &copy; 2026 DHI Academy. All rights reserved.
           </p>
           <p
             className="font-serif italic text-[13px] order-first md:order-none text-champagne-gold/60"
           >
-            Built for those who dare to serve.
+            Transforming Lives.
           </p>
           <p
             className="font-sans text-[12px] text-ivory-cream/40"

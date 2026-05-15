@@ -13,8 +13,8 @@ interface Message {
   content: string
 }
 
-/** Aristocrat Academy Logo Icon — stylized "A" with Ashoka Chakra accent */
-function AristocratLogoIcon({ className }: { className?: string }) {
+/** DHI Academy Logo Icon — stylized "D" with accent */
+function DHILogoIcon({ className }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 40 40"
@@ -26,7 +26,7 @@ function AristocratLogoIcon({ className }: { className?: string }) {
       <circle cx="20" cy="20" r="18" stroke="#C8960C" strokeWidth="1.5" opacity="0.9" />
       {/* Inner ring */}
       <circle cx="20" cy="20" r="15" stroke="#C8960C" strokeWidth="0.5" opacity="0.4" />
-      {/* Stylized "A" letterform */}
+      {/* Stylized "D" letterform */}
       <path
         d="M20 8L12 28H16L17.5 24H22.5L24 28H28L20 8ZM18.5 21L20 16L21.5 21H18.5Z"
         fill="#E8B830"
@@ -43,7 +43,7 @@ export function ChatbotWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Hello! Welcome to Aristocrat IAS Academy. How can I help you today? Ask me about our courses, admissions, fee structure, or UPSC preparation tips.',
+      content: 'Hello! Welcome to DHI Academy. How can I help you today? Ask me about our courses, admissions, fee structure, or UPSC preparation tips.',
     },
   ])
   const [input, setInput] = useState('')
@@ -109,7 +109,7 @@ export function ChatbotWidget() {
         ...prev,
         {
           role: 'assistant',
-          content: 'I apologize, but I am currently unavailable. Please try again later or contact us at info@aristocratiasacademy.in',
+          content: 'I apologize, but I am currently unavailable. Please try again later or contact us at info@dhiacademy.in',
         },
       ])
     } finally {
@@ -151,7 +151,7 @@ export function ChatbotWidget() {
               )}
               aria-label="Open chat assistant"
             >
-              <AristocratLogoIcon className="w-8 h-8" />
+              <DHILogoIcon className="w-8 h-8" />
             </Button>
 
             {/* "Ask your doubts to me" Popup Tooltip */}
@@ -212,11 +212,11 @@ export function ChatbotWidget() {
             >
               <div className="flex items-center gap-2.5">
                 {/* Logo icon instead of green dot */}
-                <AristocratLogoIcon className="w-6 h-6" />
+                <DHILogoIcon className="w-6 h-6" />
                 <h3
                   className="font-serif text-[18px] font-medium text-ivory-cream"
                 >
-                  Ask Aristocrat
+                  Ask DHI
                 </h3>
               </div>
               <Button

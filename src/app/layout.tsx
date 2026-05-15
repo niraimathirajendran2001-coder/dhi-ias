@@ -28,39 +28,39 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aristocrat IAS Academy | Premium UPSC & KAS Coaching in Bengaluru",
+  title: "DHI Academy | UPSC & KAS Coaching in Bengaluru — Transforming Lives",
   description:
-    "Aristocrat IAS Academy — Chandralayout, Bengaluru. UPSC, IAS, KAS coaching with expert faculty, proven results, and structured mentorship. Your path to civil service begins here.",
+    "DHI Academy — Chandralayout, Bengaluru. UPSC & KAS coaching with expert faculty, proven results, and structured mentorship. Transforming Lives.",
   keywords: [
     "IAS coaching Bengaluru",
     "UPSC coaching Chandralayout",
     "KAS coaching Bangalore",
     "IAS academy",
     "civil services coaching",
-    "Aristocrat IAS",
+    "DHI Academy",
     "UPSC preparation",
     "IAS toppers",
     "GS foundation course",
     "UPSC test series",
   ],
-  authors: [{ name: "Aristocrat IAS Academy" }],
+  authors: [{ name: "DHI Academy" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "/dhi-logo.jpg",
   },
   openGraph: {
-    title: "Aristocrat IAS Academy | Where Civil Servants Begin",
+    title: "DHI Academy | UPSC & KAS Coaching in Bengaluru — Transforming Lives",
     description:
-      "UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship.",
-    url: "https://aristocratiasacademy.in",
-    siteName: "Aristocrat IAS Academy",
+      "UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship. Transforming Lives.",
+    url: "https://dhiacademy.in",
+    siteName: "DHI Academy",
     type: "website",
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aristocrat IAS Academy | Where Civil Servants Begin",
+    title: "DHI Academy | UPSC & KAS Coaching in Bengaluru — Transforming Lives",
     description:
-      "UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship.",
+      "UPSC & KAS coaching in Chandralayout, Bengaluru. Expert faculty. Proven results. Structured mentorship. Transforming Lives.",
   },
 };
 

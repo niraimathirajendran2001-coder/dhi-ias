@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useSyncExternalStore } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 /* ─── Session storage helpers for useSyncExternalStore ─── */
-const STORAGE_KEY = 'aristocrat-loader-shown'
+const STORAGE_KEY = 'dhi-loader-shown'
 
 function subscribeToSessionStorage(callback: () => void) {
   window.addEventListener('storage', callback)
@@ -241,19 +241,19 @@ export default function PageLoader() {
               {/* Gold orbiting particles around brand text */}
               <GoldParticles />
 
-              {/* ARISTOCRAT */}
+              {/* DHI */}
               <h1 className="font-serif text-[36px] sm:text-[48px] md:text-[56px] font-semibold tracking-tight gold-shimmer-sweep relative z-10">
-                ARISTOCRAT
+                DHI
               </h1>
 
-              {/* IAS ACADEMY */}
+              {/* ACADEMY */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.5 }}
                 className="font-sans ui-label text-[12px] sm:text-[14px] tracking-[0.2em] mt-2 text-sovereign-gold dark:text-champagne-gold relative z-10"
               >
-                IAS ACADEMY
+                ACADEMY
               </motion.p>
             </motion.div>
 

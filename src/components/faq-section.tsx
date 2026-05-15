@@ -10,14 +10,14 @@ import {
 
 const faqs = [
   {
-    question: 'What courses does Aristocrat IAS Academy offer?',
+    question: 'What courses does DHI Academy offer?',
     answer:
-      'We offer comprehensive courses including GS Foundation (12 months), KAS Coaching (8 months), Optional Subject coaching, Test Series (6 months), Current Affairs programs, and Interview Guidance. Each course is designed with structured mentorship and proven methodology.',
+      'We offer comprehensive courses including IPM (Integrated Prelims & Mains), Foundation Course, Mains Test Series 2025, Optional Test Series (Sociology, PSIR, Geography), Year Long Mains (YLM), Year Long Prelims (YLP), ASTRA Test Series 2025, Ethics (GS Paper 4), Essay Paper, and Current Affairs programs. Each course is designed with structured mentorship and proven methodology.',
   },
   {
     question: 'What is the fee structure for your courses?',
     answer:
-      'Our GS Foundation course is ₹1,20,000 for 12 months, KAS Coaching is ₹85,000 for 8 months, and the Test Series is ₹15,000 for 6 months. All fees are inclusive of study material, test series, and mentorship. We also offer EMI options for student convenience.',
+      'Our fee structure varies by course. All fees are inclusive of study material, test series, and mentorship. We also offer EMI options for student convenience. Contact us for detailed fee information for each course.',
   },
   {
     question: 'How do I enroll in a course?',
@@ -32,17 +32,17 @@ const faqs = [
   {
     question: 'Does the academy provide study materials?',
     answer:
-      'Yes, we provide comprehensive study materials for all our courses, including curated notes, current affairs compilations, reference books, and practice question sets. All study materials are included in the course fee and are regularly updated to align with the latest UPSC syllabus.',
+      'Yes, we develop our own comprehensive study materials strictly related to the syllabus and relevance for the examination. All study materials are included in the course fee and are constantly updated according to the evolving UPSC pattern.',
   },
   {
-    question: 'What is the success rate of Aristocrat IAS Academy?',
+    question: 'What is the success rate of DHI Academy?',
     answer:
-      'We are proud to have 200+ selections over our 15+ years of experience. Our structured approach, expert faculty, and personalized mentorship have consistently helped aspirants clear the UPSC and KAS examinations. Many of our alumni are serving officers today.',
+      'We are proud to have a 95% success rate in Mains. Our structured approach, expert faculty, and personalized mentorship have consistently helped aspirants clear the UPSC and KAS examinations. Many of our alumni are serving officers today.',
   },
   {
     question: 'Can working professionals join your courses?',
     answer:
-      'Absolutely! We offer flexible batch timings including weekend and evening batches designed specifically for working professionals. Our GS Foundation and KAS courses have dedicated weekend schedules. Contact us to find a batch that fits your schedule.',
+      'Absolutely! We offer flexible batch timings including weekend and evening batches designed specifically for working professionals. Contact us to find a batch that fits your schedule.',
   },
   {
     question: 'Do you offer online classes or is it only classroom-based?',
@@ -50,9 +50,9 @@ const faqs = [
       'We offer both classroom and online learning modes. Our hybrid approach ensures you can attend live classes from anywhere while still benefiting from interactive sessions, doubt clearing, and mentorship. Recorded sessions are also available for revision.',
   },
   {
-    question: 'Is there a demo class before enrollment?',
+    question: 'Is there a scholarship test available?',
     answer:
-      'Yes! We offer free demo classes for all our courses so you can experience our teaching methodology, interact with faculty, and make an informed decision. Simply fill out the inquiry form or call us to schedule your free demo class.',
+      'Yes! DHI Academy conducts a Scholarship Test for aspirants. This is a great opportunity to assess your preparation level and potentially earn a scholarship for our courses. Contact us to know about upcoming test dates and registration details.',
   },
 ]
 

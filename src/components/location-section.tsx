@@ -34,7 +34,7 @@ const socialLinks = [
 ]
 
 const googleMapsUrl =
-  'https://www.google.com/maps/search/Aristocrat+IAS+Academy+Chandralayout+Bengaluru+560040'
+  'https://www.google.com/maps/search/DHI+Academy+Chandralayout+Bengaluru+560040'
 
 /* ─── Decorative Compass SVG ─── */
 function CompassDecorative() {
@@ -152,7 +152,7 @@ export function LocationSection() {
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
                 <h3 className="font-serif text-xl font-bold text-white md:text-2xl">
-                  Aristocrat IAS Academy
+                  DHI Academy
                 </h3>
                 <p className="mt-1 text-sm text-white/70">
                   Chandra Layout, Bengaluru — 560040
@@ -219,11 +219,11 @@ export function LocationSection() {
                 +91 98458 06645
               </a>
               <a
-                href="mailto:info@aristocratiasacademy.in"
+                href="mailto:info@dhiacademy.in"
                 className="flex items-center gap-3 text-[15px] text-stone-gray dark:text-ivory-cream/70 transition-all duration-200 hover:text-navy dark:hover:text-ivory-cream hover:translate-x-1"
               >
                 <Mail className="h-5 w-5 shrink-0 text-sovereign-gold dark:text-champagne-gold" />
-                info@aristocratiasacademy.in
+                info@dhiacademy.in
               </a>
             </div>
 

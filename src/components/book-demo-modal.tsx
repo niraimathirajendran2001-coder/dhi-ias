@@ -25,12 +25,16 @@ import { toast } from 'sonner'
 
 /* ─── Course Options ─── */
 const courseOptions = [
-  'GS Foundation',
-  'KAS Coaching',
-  'Optional Subject',
-  'Test Series',
+  'IPM (Integrated Prelims & Mains)',
+  'Foundation Course',
+  'Mains Test Series 2025',
+  'Optional Test Series',
+  'Year Long Mains (YLM)',
+  'Year Long Prelims (YLP)',
+  'ASTRA Test Series 2025',
+  'Ethics (GS Paper 4)',
+  'Essay Paper',
   'Current Affairs',
-  'Interview Guidance',
 ]
 
 /* ─── Props ─── */

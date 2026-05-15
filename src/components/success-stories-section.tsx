@@ -14,7 +14,7 @@ const stories = [
     service: 'IAS',
     year: 'xxxxxxx',
     testimonial:
-      'Aristocrat\'s structured approach and personalized mentorship transformed my preparation. The faculty\'s guidance on answer writing was the game-changer for my Mains score.',
+      'DHI Academy\'s structured approach and personalized mentorship transformed my preparation. The faculty\'s guidance on answer writing was the game-changer for my Mains score.',
     tips: [
       'Focus on answer writing practice from Day 1 — join a good test series',
       'Revise standard books at least 4 times before Prelims',
@@ -28,7 +28,7 @@ const stories = [
     service: 'IAS',
     year: 'xxxxxxx',
     testimonial:
-      'The mock interview sessions at Aristocrat were incredibly close to the real UPSC interview. I walked in confident and walked out with a top rank.',
+      'The mock interview sessions at DHI Academy were incredibly close to the real UPSC interview. I walked in confident and walked out with a top rank.',
     tips: [
       'Start interview preparation early — don\'t wait for Mains results',
       'Build a balanced DAF with hobbies that show depth and character',
@@ -42,7 +42,7 @@ const stories = [
     service: 'IFS',
     year: 'xxxxxxx',
     testimonial:
-      'Coming from an engineering background, I was unsure about optional selection. Aristocrat\'s counselling helped me choose the right optional and score 290+.',
+      'Coming from an engineering background, I was unsure about optional selection. DHI Academy\'s counselling helped me choose the right optional and score 290+.',
     tips: [
       'Choose your optional based on interest and scoring potential, not trends',
       'Current affairs should complement your optional, not replace standard books',
@@ -56,7 +56,7 @@ const stories = [
     service: 'IPS',
     year: 'xxxxxxx',
     testimonial:
-      'The daily answer writing practice and weekly tests at Aristocrat built my consistency. Their current affairs modules are the best in the industry.',
+      'The daily answer writing practice and weekly tests at DHI Academy built my consistency. Their current affairs modules are the best in the industry.',
     tips: [
       'Consistency beats intensity — study 6-8 hours daily, not 14 hours on weekends',
       'Use the Pomodoro technique to maintain focus during long study hours',

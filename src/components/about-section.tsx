@@ -109,7 +109,7 @@ export default function AboutSection() {
             variants={fadeInUp}
             className="section-label ui-label section-label-diamond inline-block mb-4"
           >
-            ABOUT US
+            Transforming Lives.
           </motion.span>
           <motion.h2
             variants={fadeInUp}
@@ -177,7 +177,7 @@ export default function AboutSection() {
                   <p
                     className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
                   >
-                    When I embarked on the journey of founding Aristocrat IAS Academy, I carried one
+                    When I embarked on the journey of founding DHI Academy, I carried one
                     conviction in my heart: that the path to becoming a civil servant should not
                     depend on where you were born or what resources you had access to. The UPSC
                     examination is one of the fairest systems in the world — but the preparation
@@ -186,7 +186,7 @@ export default function AboutSection() {
                   <p
                     className="font-serif message-body text-[15px] md:text-[16px] mb-4 text-carbon dark:text-ivory-cream/90"
                   >
-                    Aristocrat IAS Academy was founded to bridge that gap. Not by making promises we
+                    DHI Academy was founded to bridge that gap. Not by making promises we
                     cannot keep, but by building a system where every aspirant receives the same
                     quality of mentorship, the same depth of study material, and the same personal
                     attention — regardless of their background.

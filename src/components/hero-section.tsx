@@ -197,11 +197,11 @@ export default function HeroSection() {
   const chakraY = useTransform(scrollYProgress, [0, 1], [0, 150])
 
   // Typing effect for tagline
-  const taglineText = 'Where Strategy Meets Selection'
+  const taglineText = 'Transforming Lives'
   const { displayedText: taglineDisplayed, isTyping: isTaglineTyping } = useTypingEffect(taglineText, 45, 1200)
 
   // Typing effect for subtitle
-  const subtitleText = 'UPSC & KAS coaching guided by experienced educators. Structured mentorship. Proven results. Your path to serving the nation starts here.'
+  const subtitleText = 'DHI Academy guides aspirants through every stage of UPSC & KAS with expert mentorship, comprehensive content, and a proven track record. Transforming Lives since inception.'
   const { displayedText, isTyping } = useTypingEffect(subtitleText, 25, 3500)
 
   return (
@@ -284,7 +284,7 @@ export default function HeroSection() {
           className="font-sans ui-label text-[11px] mb-6 text-sovereign-gold dark:text-champagne-gold"
           variants={labelVariants}
         >
-          Aristocrat IAS Academy
+          DHI Academy
         </motion.p>
 
         {/* Main headline — Cormorant Garamond at display size */}
@@ -300,7 +300,7 @@ export default function HeroSection() {
             }}
             aria-hidden="true"
           />
-          Where Civil Servants Begin.
+          Transform Your Civil Services Journey.
         </motion.h1>
 
         {/* Gold decorative line */}
@@ -337,7 +337,7 @@ export default function HeroSection() {
           variants={ctaVariants}
         >
           <a
-            href="#admissions"
+            href="/courses"
             className={cn(
               'inline-flex items-center justify-center font-sans font-bold rounded-md',
               'px-8 py-4 sm:py-5 text-sm transition-all duration-300',
@@ -347,10 +347,10 @@ export default function HeroSection() {
               'shadow-[0_2px_8px_rgba(200,150,12,0.35)]'
             )}
           >
-            Book Free Demo Class
+            Explore Courses
           </a>
           <a
-            href="#courses"
+            href="/contact"
             className={cn(
               'inline-flex items-center justify-center font-sans font-semibold rounded-md',
               'px-8 py-4 text-sm transition-all duration-300',
@@ -358,7 +358,18 @@ export default function HeroSection() {
               'border-ivory-cream text-ivory-cream btn-magnetic cta-gold-border-glow'
             )}
           >
-            Explore Courses
+            Contact Us
+          </a>
+          <a
+            href="/courses"
+            className={cn(
+              'inline-flex items-center justify-center font-sans font-semibold rounded-md',
+              'px-8 py-4 text-sm transition-all duration-300',
+              'border-2 hover:bg-sovereign-gold hover:text-navy active:scale-[0.98]',
+              'border-sovereign-gold dark:border-champagne-gold text-sovereign-gold dark:text-champagne-gold btn-magnetic cta-gold-border-glow'
+            )}
+          >
+            Scholarship Test
           </a>
         </motion.div>
       </motion.div>
