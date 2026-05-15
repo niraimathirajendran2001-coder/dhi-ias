@@ -121,7 +121,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="font-serif display-headline text-4xl sm:text-5xl md:text-6xl text-ivory-cream mb-6"
             >
-              About DHI Academy
+              Preparation is not information collection.
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -129,7 +129,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="font-serif pull-quote text-xl sm:text-2xl text-sovereign-gold/80 dark:text-champagne-gold/80 max-w-2xl mx-auto"
             >
-              Transforming Lives
+              It is thinking transformation.
             </motion.p>
           </div>
         </section>
@@ -150,25 +150,23 @@ export default function AboutPage() {
                   Who We Are
                 </p>
                 <h2 className="font-serif section-heading text-3xl sm:text-4xl text-navy dark:text-ivory-cream mb-6">
-                  Guiding Aspirants Towards{' '}
-                  <span className="text-sovereign-gold dark:text-champagne-gold">Civil Services</span>
+                  DHI exists for aspirants who want{' '}
+                  <span className="text-sovereign-gold dark:text-champagne-gold">direction, discipline, and depth.</span>
                 </h2>
                 <p className="font-sans body-text text-mid-gray dark:text-ivory-cream/70 leading-relaxed mb-6">
-                  DHI Academy aspires to train and guide students for the Civil Services
-                  Examination. With the aim to achieve the success story, we believe that we
-                  understand the pulse of this examination and the needs of the aspirants.
+                  Civil services preparation is not about collecting more PDFs, more classes,
+                  or more motivational lines. It is about learning how to think, recall,
+                  write, revise, and improve under exam pressure.
                 </p>
                 <p className="font-sans body-text text-mid-gray dark:text-ivory-cream/70 leading-relaxed mb-6">
-                  Since UPSC has been constantly revising and evolving the pattern of Civil
-                  Services Examination, therefore we make sure to update our content and modify
-                  our pedagogy accordingly. At DHI Academy, we don&apos;t just teach
-                  pre-available content, but also develop our own comprehensive content strictly
-                  related to the syllabus and relevance for the examination.
+                  DHI Academy builds preparation around the DHI 4R Method: Read, Recall,
+                  Respond, and Refine. Students are guided through concepts, revision,
+                  tests, answer-writing, and mentor feedback as one connected loop.
                 </p>
                 <p className="font-sans body-text text-mid-gray dark:text-ivory-cream/70 leading-relaxed">
-                  The aim is to prepare the aspirants for each stage of the exam by developing
-                  sound academic base with quality teaching and individual attention and
-                  developing competitive attitude amongst them.
+                  This is how DHI stays different from mass coaching: fewer hollow claims,
+                  more academic structure, more personal correction, and a serious campus
+                  culture for UPSC and KAS aspirants.
                 </p>
               </motion.div>
 
@@ -218,8 +216,8 @@ export default function AboutPage() {
                 Meet Our <span className="text-sovereign-gold dark:text-champagne-gold">Faculty</span>
               </h2>
               <p className="font-sans body-text text-mid-gray dark:text-ivory-cream/60 mt-4 max-w-2xl mx-auto">
-                Our experienced faculty members bring years of UPSC expertise and a deep
-                commitment to student success.
+                Faculty names are currently masked until final confirmation. Subject
+                expertise is shown so students can still understand the academic coverage.
               </p>
             </motion.div>
 
@@ -289,7 +287,7 @@ export default function AboutPage() {
                 Ready to Begin Your <span className="text-sovereign-gold dark:text-champagne-gold">Journey?</span>
               </h2>
               <p className="font-sans body-text text-ivory-cream/60 mb-8">
-                Join DHI Academy and take the first step towards your Civil Services career.
+                Book a strategy call and take the first step towards a clearer Civil Services plan.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/courses">

@@ -323,12 +323,12 @@ export default function CoursesPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact">
                   <Button className="bg-sovereign-gold dark:bg-champagne-gold text-ivory-cream dark:text-navy hover:bg-champagne-gold dark:hover:bg-[#F5D060] font-semibold rounded-lg h-12 px-8 btn-gold-shimmer">
-                    Get Free Counselling
+                    Get Course Guidance
                     <ChevronRight className="w-4 h-4 ml-1" />
                   </Button>
                 </Link>
                 <a
-                  href="https://wa.me/919108333136?text=Hi%2C%20I%27d%20like%20to%20know%20about%20DHI%20Academy%20courses."
+                  href="https://wa.me/919844868662?text=Hi%2C%20I%27d%20like%20to%20know%20about%20DHI%20Academy%20courses."
                   target="_blank"
                   rel="noopener noreferrer"
                 >

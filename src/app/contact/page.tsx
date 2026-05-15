@@ -39,8 +39,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Phone',
-    value: '+91 91083 33136',
-    href: 'tel:+919108333136',
+    value: '+91 98448 68662 / +91 98448 68663',
+    href: 'tel:+919844868662',
   },
   {
     icon: Mail,
@@ -51,7 +51,7 @@ const contactInfo = [
   {
     icon: Clock,
     label: 'Office Hours',
-    value: 'Mon–Sat: 8 AM – 8 PM',
+    value: 'Mon-Sat: 8 AM - 8 PM',
     href: null,
   },
 ]
@@ -85,13 +85,18 @@ export default function ContactPage() {
     name: '',
     email: '',
     phone: '',
+    targetExam: '',
+    attemptYear: '',
+    currentStage: '',
+    optionalSubject: '',
+    preferredMode: '',
     message: '',
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
@@ -99,7 +104,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!formData.name || !formData.phone || !formData.message) {
+    if (!formData.name || !formData.phone || !formData.targetExam || !formData.attemptYear || !formData.currentStage) {
       toast.error('Please fill in all required fields.')
       return
     }
@@ -110,13 +115,35 @@ export default function ContactPage() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: [
+            `Target exam: ${formData.targetExam}`,
+            `Attempt year: ${formData.attemptYear}`,
+            `Current stage: ${formData.currentStage}`,
+            `Optional subject: ${formData.optionalSubject || 'Not specified'}`,
+            `Preferred mode: ${formData.preferredMode || 'Not specified'}`,
+            `Student note: ${formData.message || 'No extra note'}`,
+          ].join('\n'),
+        }),
       })
 
       if (res.ok) {
         toast.success('Message sent successfully! We will get back to you shortly.')
         setIsSuccess(true)
-        setFormData({ name: '', email: '', phone: '', message: '' })
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          targetExam: '',
+          attemptYear: '',
+          currentStage: '',
+          optionalSubject: '',
+          preferredMode: '',
+          message: '',
+        })
         setTimeout(() => setIsSuccess(false), 5000)
       } else {
         toast.error('Something went wrong. Please try again.')
@@ -182,10 +209,11 @@ export default function ContactPage() {
               >
                 <div className="p-6 sm:p-8 rounded-xl bg-white dark:bg-card border border-light-gray dark:border-border premium-shadow">
                   <h2 className="font-serif section-heading text-2xl text-navy dark:text-ivory-cream mb-2">
-                    Send Us a Message
+                    Book a Preparation Audit
                   </h2>
                   <p className="font-sans text-sm text-mid-gray dark:text-ivory-cream/50 mb-8">
-                    Fill out the form below and we&apos;ll get back to you within 24 hours.
+                    Tell us where you are in the UPSC/KAS journey. A counsellor will call,
+                    understand your preparation level, and recommend the right next step.
                   </p>
 
                   {isSuccess && (
@@ -246,17 +274,91 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="targetExam" className="font-sans text-sm font-medium text-navy dark:text-ivory-cream">
+                          Target Exam <span className="text-sovereign-gold">*</span>
+                        </Label>
+                        <Input
+                          id="targetExam"
+                          name="targetExam"
+                          required
+                          value={formData.targetExam}
+                          onChange={handleChange}
+                          placeholder="UPSC CSE, KAS, IFoS..."
+                          className="h-11 font-sans"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="attemptYear" className="font-sans text-sm font-medium text-navy dark:text-ivory-cream">
+                          Attempt Year <span className="text-sovereign-gold">*</span>
+                        </Label>
+                        <Input
+                          id="attemptYear"
+                          name="attemptYear"
+                          required
+                          value={formData.attemptYear}
+                          onChange={handleChange}
+                          placeholder="2026 / 2027"
+                          className="h-11 font-sans"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="currentStage" className="font-sans text-sm font-medium text-navy dark:text-ivory-cream">
+                          Current Stage <span className="text-sovereign-gold">*</span>
+                        </Label>
+                        <Input
+                          id="currentStage"
+                          name="currentStage"
+                          required
+                          value={formData.currentStage}
+                          onChange={handleChange}
+                          placeholder="Beginner, Prelims, Mains..."
+                          className="h-11 font-sans"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="optionalSubject" className="font-sans text-sm font-medium text-navy dark:text-ivory-cream">
+                          Optional Subject
+                        </Label>
+                        <Input
+                          id="optionalSubject"
+                          name="optionalSubject"
+                          value={formData.optionalSubject}
+                          onChange={handleChange}
+                          placeholder="Sociology, PSIR, Geography..."
+                          className="h-11 font-sans"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="preferredMode" className="font-sans text-sm font-medium text-navy dark:text-ivory-cream">
+                        Preferred Mode
+                      </Label>
+                      <Input
+                        id="preferredMode"
+                        name="preferredMode"
+                        value={formData.preferredMode}
+                        onChange={handleChange}
+                        placeholder="Classroom / Online / Hybrid"
+                        className="h-11 font-sans"
+                      />
+                    </div>
+
                     <div className="space-y-2">
                       <Label htmlFor="message" className="font-sans text-sm font-medium text-navy dark:text-ivory-cream">
-                        Message <span className="text-sovereign-gold">*</span>
+                        Preparation Concern
                       </Label>
                       <Textarea
                         id="message"
                         name="message"
-                        required
                         value={formData.message}
                         onChange={handleChange}
-                        placeholder="How can we help you?"
+                        placeholder="Tell us what is blocking your preparation right now."
                         rows={5}
                         className="font-sans resize-none"
                       />
@@ -275,11 +377,20 @@ export default function ContactPage() {
                       ) : (
                         <>
                           <Send className="w-4 h-4 mr-2" />
-                          Send Message
+                          Request Counselling
                         </>
                       )}
                     </Button>
                   </form>
+
+                  <div className="mt-8 grid gap-3 rounded-2xl border border-dhi-red/15 bg-dhi-red/10 p-5 sm:grid-cols-3">
+                    {['Counsellor call', 'Preparation audit', 'Course recommendation'].map((step) => (
+                      <div key={step} className="flex items-center gap-2 text-sm font-semibold text-navy dark:text-ivory-cream">
+                        <CheckCircle2 className="size-4 text-dhi-red" />
+                        {step}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
 
@@ -314,11 +425,11 @@ export default function ContactPage() {
                               rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                               className="font-sans text-sm text-navy dark:text-ivory-cream hover:text-sovereign-gold dark:hover:text-champagne-gold transition-colors gold-underline-hover"
                             >
-                              {info.value}
+                              {info.label === 'Office Hours' ? 'Mon-Sat: 8 AM - 8 PM' : info.value}
                             </a>
                           ) : (
                             <p className="font-sans text-sm text-navy dark:text-ivory-cream">
-                              {info.value}
+                              {info.label === 'Office Hours' ? 'Mon-Sat: 8 AM - 8 PM' : info.value}
                             </p>
                           )}
                         </div>
@@ -357,7 +468,7 @@ export default function ContactPage() {
                     Reach out on WhatsApp for instant responses during office hours.
                   </p>
                   <a
-                    href="https://wa.me/919108333136?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20DHI%20Academy."
+                    href="https://wa.me/919844868662?text=Hi%2C%20I%27d%20like%20to%20book%20a%20DHI%20Academy%20strategy%20call."
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -398,7 +509,7 @@ export default function ContactPage() {
               className="rounded-xl overflow-hidden border border-light-gray dark:border-border premium-shadow"
             >
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6!2d77.55!3d12.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3d1c2e0f0a0d%3A0x0!2sChandra+Layout%2C+Bengaluru!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps?q=DHI%20IAS%20Academy%201561%202nd%20Floor%208th%20Cross%20Chandra%20Layout%20Bengaluru&output=embed"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -418,7 +529,7 @@ export default function ContactPage() {
               className="mt-6 text-center"
             >
               <a
-                href="https://maps.google.com/?q=DHI+Academy+Chandra+Layout+Bengaluru"
+                href="https://maps.google.com/?q=DHI+IAS+Academy+1561+2nd+Floor+8th+Cross+Chandra+Layout+Bengaluru"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-sans text-sm font-semibold text-sovereign-gold dark:text-champagne-gold hover:text-deep-crimson dark:hover:text-champagne-gold transition-colors gold-underline-hover"

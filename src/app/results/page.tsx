@@ -246,6 +246,10 @@ export default function ResultsPage() {
                 Heartiest congratulations to DHI Academy students for their remarkable achievement
                 in UPSC CSE and UPSC IFS 2025.
               </p>
+              <p className="mx-auto mt-4 max-w-2xl rounded-full border border-white/10 bg-white/[0.06] px-5 py-3 text-sm font-medium text-white/58">
+                Trust note: published officer/result details are maintained as verified,
+                consent-approved academy records.
+              </p>
             </motion.div>
 
             <motion.div

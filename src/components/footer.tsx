@@ -22,18 +22,14 @@ import { toast } from 'sonner'
 const quickLinks = [
   { name: 'About Us', href: '/about' },
   { name: 'Courses', href: '/courses' },
-  { name: 'Faculty', href: '/about#team' },
-  { name: 'Results & Toppers', href: '/results' },
+  { name: 'Wall of Officers', href: '/results' },
   { name: 'Contact Us', href: '/contact' },
 ]
 
-const courseLinks = [
-  { name: 'IPM (Integrated Prelims & Mains)', href: '/courses' },
-  { name: 'Foundation Course', href: '/courses' },
-  { name: 'Mains Test Series', href: '/courses' },
-  { name: 'Optional Test Series', href: '/courses' },
-  { name: 'Current Affairs', href: '/courses' },
-  { name: 'Interview Guidance', href: '/courses' },
+const freeToolLinks = [
+  { name: 'Constitution Explorer', href: '/constitution-explorer' },
+  { name: 'UPSC Readiness Checklist', href: '/contact' },
+  { name: 'Polity Revision Flow', href: '/constitution-explorer' },
 ]
 
 const fadeInUp: Variants = {
@@ -67,7 +63,7 @@ export default function Footer() {
         }),
       })
       if (res.ok) {
-        toast.success('Thank you for subscribing! Check your inbox for UPSC tips.')
+        toast.success('Checklist request received. Our team will share the readiness checklist shortly.')
         setEmail('')
       } else {
         toast.error('Something went wrong. Please try again.')
@@ -144,10 +140,10 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
               <h3 className="font-serif text-[22px] sm:text-[26px] font-semibold text-champagne-gold mb-1">
-                Stay Updated
+                Get the 7-Day UPSC Readiness Checklist
               </h3>
               <p className="font-sans text-[13px] text-ivory-cream/50">
-                Get UPSC tips, current affairs updates, and exclusive offers.
+                A practical self-audit for beginners, Prelims aspirants, and Mains-focused students.
               </p>
             </div>
             <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -165,7 +161,7 @@ export default function Footer() {
                   disabled={isSubscribing}
                   className="h-11 px-5 rounded-lg bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] font-semibold text-sm font-sans btn-gold-shimmer transition-all duration-200 hover:bg-champagne-gold dark:hover:bg-[#F5D060] disabled:opacity-60"
                 >
-                  {isSubscribing ? <Loader2 className="size-5 animate-spin" /> : 'Subscribe'}
+                  {isSubscribing ? <Loader2 className="size-5 animate-spin" /> : 'Get Checklist'}
                 </button>
               </form>
             </div>
@@ -205,7 +201,7 @@ export default function Footer() {
             <p
               className="font-sans text-[13px] leading-relaxed mb-6 text-ivory-cream/50"
             >
-              UPSC & KAS coaching in Chandralayout, Bengaluru. Transforming Lives through structured mentorship and proven results.
+              UPSC & KAS coaching in Chandra Layout, Bengaluru. Transforming Lives through structured mentorship, disciplined study systems, and exam-ready thinking.
             </p>
 
             {/* Social Icons with gold background circle on hover */}
@@ -272,10 +268,10 @@ export default function Footer() {
             <h3
               className="font-sans ui-label text-[14px] mb-5 text-champagne-gold"
             >
-              Our Courses
+              Free Tools
             </h3>
             <ul className="space-y-3">
-              {courseLinks.map((link) => (
+              {freeToolLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
@@ -306,7 +302,7 @@ export default function Footer() {
                 <span
                   className="font-sans text-[14px] text-ivory-cream/70"
                 >
-                  Bus Stand, 1561, 2nd Floor, 8th Cross Rd, above SBI Bank, opposite Chandra Layout, Bengaluru, Karnataka 560040
+                  1561, 2nd Floor, above SBI Bank, 8th Cross, Chandra Layout, Bengaluru, Karnataka 560040
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -314,7 +310,7 @@ export default function Footer() {
                 <span
                   className="font-sans text-[14px] text-ivory-cream/70"
                 >
-                  +91 91083 33136
+                  +91 98448 68662 / +91 98448 68663
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -338,7 +334,7 @@ export default function Footer() {
               href="/contact"
               className="inline-flex items-center gap-1 mt-5 font-sans text-[14px] font-medium transition-colors duration-200 text-sovereign-gold dark:text-champagne-gold hover:text-champagne-gold footer-link-animated"
             >
-              Book a Demo Class
+              Book Strategy Call
               <ArrowRight className="size-4" />
             </a>
           </motion.div>

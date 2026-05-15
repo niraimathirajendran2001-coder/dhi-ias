@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, MessageCircle, Scale } from 'lucide-react'
+import { MapPin, Menu, X, Phone, MessageCircle, Scale } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -25,7 +25,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'About', href: '/about', id: 'about' },
   { label: 'Courses', href: '/courses', id: 'courses' },
   { label: 'Results', href: '/results', id: 'results' },
-  { label: 'Resources', href: '#resources', id: 'resources' },
+  { label: 'Free Tools', href: '#free-tools', id: 'resources' },
   { label: 'Contact', href: '/contact', id: 'contact' },
 ]
 
@@ -34,7 +34,7 @@ const NAV_DESCRIPTIONS: Record<string, string> = {
   about: 'Our Story & Team',
   courses: 'Programs & Fees',
   results: 'Selections & Toppers',
-  resources: 'Free Study Material',
+  resources: 'Explorer & Revision Tools',
   contact: 'Location & Reach Us',
 }
 
@@ -49,6 +49,9 @@ const HEADER_HEIGHT_SCROLLED = 60
 const FREE_RESOURCE_LINKS = [
   { label: 'Constitution Explorer', href: '/constitution-explorer', icon: Scale },
 ]
+
+const WHATSAPP_LINK =
+  'https://wa.me/919844868662?text=Hi%2C%20I%27d%20like%20to%20book%20a%20DHI%20Academy%20strategy%20call.'
 
 /* ------------------------------------------------------------------ */
 /*  Hook: Scroll State                                                 */
@@ -126,17 +129,19 @@ export function Header() {
           {/* -------- Logo -------- */}
           <Link
             href="/"
-            className="flex-shrink-0 select-none flex items-center gap-2.5"
+            className="flex-shrink-0 select-none flex items-center gap-3"
             aria-label="DHI Academy — go to home"
           >
-            <Image
-              src="/dhi-logo.jpg"
-              alt="DHI Academy Logo"
-              width={44}
-              height={44}
-              className="rounded-full"
-              priority
-            />
+            <span className="relative grid size-12 place-items-center rounded-2xl border border-dhi-red/30 bg-white shadow-[0_12px_34px_rgba(227,24,55,0.18)]">
+              <Image
+                src="/dhi-logo.jpg"
+                alt="DHI Academy Logo"
+                width={42}
+                height={42}
+                className="rounded-xl object-cover"
+                priority
+              />
+            </span>
             <div className="flex flex-col">
               <span
                 className={cn(
@@ -261,13 +266,13 @@ export function Header() {
             <Link href="/contact">
               <Button
                 className={cn(
-                  'hidden sm:inline-flex bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] hover:bg-champagne-gold dark:hover:bg-[#F5D060]',
-                  'font-semibold rounded-[6px] h-10 px-5 text-sm',
+                  'hidden sm:inline-flex bg-dhi-red text-white hover:bg-dhi-red-dark',
+                  'font-semibold rounded-full h-10 px-5 text-sm',
                   'transition-all duration-300',
                   'hover:shadow-[0_0_20px_rgba(227,24,55,0.35)] dark:hover:shadow-[0_0_20px_rgba(255,45,75,0.3)]',
                 )}
               >
-                Join DHI
+                Book Strategy Call
               </Button>
             </Link>
 
@@ -331,7 +336,7 @@ export function Header() {
                     alt="DHI Academy Logo"
                     width={36}
                     height={36}
-                    className="rounded-full"
+                    className="rounded-xl border border-dhi-red/30 bg-white"
                   />
                   <div className="flex flex-col">
                     <span className="block font-serif text-xl font-semibold text-ivory-cream leading-none">
@@ -446,20 +451,31 @@ export function Header() {
                 </div>
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
                   <Button
-                    className="w-full bg-sovereign-gold text-navy hover:bg-champagne-gold font-bold rounded-[6px] h-14 text-base transition-colors duration-200 btn-gold-shimmer"
+                    className="w-full bg-dhi-red text-white hover:bg-dhi-red-dark font-bold rounded-full h-14 text-base transition-colors duration-200"
                   >
-                    Join DHI
+                    Book Strategy Call
                   </Button>
                 </Link>
 
-                <div className="flex gap-3">
+                <div className="grid grid-cols-3 gap-3">
                   <a
-                    href="https://wa.me/919108333136?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20DHI%20Academy."
+                    href="tel:+919844868662"
+                    className={cn(
+                      'inline-flex items-center justify-center gap-2',
+                      'h-12 rounded-xl border border-white/20 text-ivory-cream',
+                      'hover:bg-white/5 transition-colors duration-200 text-sm font-medium',
+                    )}
+                  >
+                    <Phone className="w-4 h-4" />
+                    Call
+                  </a>
+                  <a
+                    href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(
-                      'flex-1 inline-flex items-center justify-center gap-2',
-                      'h-12 rounded-[6px] border border-white/20 text-ivory-cream',
+                      'inline-flex items-center justify-center gap-2',
+                      'h-12 rounded-xl border border-white/20 text-ivory-cream',
                       'hover:bg-white/5 transition-colors duration-200 text-sm font-medium',
                     )}
                   >
@@ -467,15 +483,17 @@ export function Header() {
                     WhatsApp
                   </a>
                   <a
-                    href="tel:+919108333136"
+                    href="https://maps.google.com/?q=DHI+IAS+Academy+1561+2nd+Floor+8th+Cross+Chandra+Layout+Bengaluru"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={cn(
-                      'flex-1 inline-flex items-center justify-center gap-2',
-                      'h-12 rounded-[6px] border border-white/20 text-ivory-cream',
+                      'inline-flex items-center justify-center gap-2',
+                      'h-12 rounded-xl border border-white/20 text-ivory-cream',
                       'hover:bg-white/5 transition-colors duration-200 text-sm font-medium',
                     )}
                   >
-                    <Phone className="w-4 h-4" />
-                    Call Us
+                    <MapPin className="w-4 h-4" />
+                    Visit
                   </a>
                 </div>
               </div>

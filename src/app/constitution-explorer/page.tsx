@@ -2,7 +2,7 @@
 
 import { Suspense, useState, useCallback, useEffect, useMemo } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Bookmark, Download, FileQuestion, Sparkles, Tags } from 'lucide-react'
 import { Header } from '@/components/header'
 import NavigationTree from '@/components/constitution/NavigationTree'
 import ArticleDetail from '@/components/constitution/ArticleDetail'
@@ -16,6 +16,13 @@ import { getArticleById, type FilterTag } from '@/lib/constitution-helpers'
 
 const DEFAULT_ARTICLE = 'article_21'
 const HEADER_HEIGHT = 80
+
+const EXPLORER_FEATURES = [
+  { label: 'Saved articles', icon: Bookmark },
+  { label: 'High-frequency tags', icon: Tags },
+  { label: 'PYQ context', icon: FileQuestion },
+  { label: 'Revision sheets', icon: Download },
+]
 
 /* ------------------------------------------------------------------ */
 /*  Main Page — wraps explorer in Suspense for useSearchParams          */
@@ -117,7 +124,36 @@ function ConstitutionExplorer() {
       </div>
 
       {/* ── Desktop / Tablet: Three-zone layout ── */}
-      <div className="hidden md:flex flex-1" style={{ height: `calc(100vh - ${HEADER_HEIGHT}px - 45px)` }}>
+      <section className="border-b border-slate-200 bg-dhi-paper px-4 py-5 dark:border-white/10 dark:bg-card/40 sm:px-6">
+        <div className="mx-auto flex max-w-7xl flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.26em] text-dhi-red">
+              <Sparkles className="size-4" />
+              DHI Free Tool
+            </p>
+            <h1 className="mt-2 font-serif text-3xl font-semibold tracking-tight text-dhi-ink dark:text-white">
+              India Polity, mapped for UPSC revision.
+            </h1>
+            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600 dark:text-white/62">
+              Open Article 21, trace connected articles, revise cases and schedules,
+              and turn Constitution study into a structured recall system.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap lg:justify-end">
+            {EXPLORER_FEATURES.map((feature) => (
+              <div
+                key={feature.label}
+                className="inline-flex items-center gap-2 rounded-full border border-dhi-red/15 bg-white px-3 py-2 text-xs font-bold text-dhi-ink shadow-sm dark:border-white/10 dark:bg-white/[0.05] dark:text-white"
+              >
+                <feature.icon className="size-3.5 text-dhi-red" />
+                {feature.label}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="hidden md:flex flex-1" style={{ height: `calc(100vh - ${HEADER_HEIGHT}px - 185px)` }}>
         {/* Zone A — Navigation Tree (280px fixed left) */}
         <div
           className="flex-shrink-0 overflow-y-auto"

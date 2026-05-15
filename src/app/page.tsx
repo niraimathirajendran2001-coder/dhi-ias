@@ -8,10 +8,12 @@ import Link from 'next/link'
 import {
   ArrowRight,
   BookOpenCheck,
-  CalendarCheck,
+  ClipboardCheck,
   GraduationCap,
   MapPin,
   MessageCircle,
+  PenLine,
+  RefreshCw,
   ShieldCheck,
   Sparkles,
   Target,
@@ -25,27 +27,32 @@ const proofPoints = [
 
 const pathways = [
   {
-    title: 'Foundation & IPM',
-    text: 'Build your base for Prelims and Mains with structured classes, mentorship, and syllabus discipline.',
+    title: 'Build Foundation',
+    text: 'For beginners and early-stage aspirants who need syllabus clarity, classroom structure, and disciplined study rhythm.',
+    cta: 'See Foundation Plan',
     icon: GraduationCap,
   },
   {
-    title: 'Test Series',
-    text: 'Practice answer writing, Prelims accuracy, and evaluation-led improvement across the preparation cycle.',
+    title: 'Improve Test Performance',
+    text: 'For students who know the syllabus but need accuracy, speed, evaluation, and repeatable score improvement.',
+    cta: 'Explore Test Series',
     icon: BookOpenCheck,
   },
   {
-    title: 'Focused Modules',
-    text: 'Ethics, Essay, CSAT, current affairs, optionals, crash courses, and interview guidance.',
+    title: 'Master Mains Writing',
+    text: 'For aspirants preparing for Mains, Essay, Ethics, optional papers, and interview-stage articulation.',
+    cta: 'Get Module Guidance',
     icon: Target,
   },
 ]
 
-const differentiators = [
-  'Content aligned to the changing UPSC pattern',
-  'Faculty and mentors with real exam exposure',
-  'Individual attention instead of crowd-coaching',
-  'Answer-writing practice with actionable feedback',
+const readinessOptions = ['Beginner', 'Prelims 2026', 'Mains', 'Optional', 'KAS']
+
+const preparationLoop = [
+  { step: 'Read', text: 'Understand concepts with syllabus-linked notes.', icon: BookOpenCheck },
+  { step: 'Recall', text: 'Revise actively before the test pressure begins.', icon: RefreshCw },
+  { step: 'Respond', text: 'Write answers, solve PYQs, and attempt mocks.', icon: PenLine },
+  { step: 'Refine', text: 'Use mentor feedback to correct the next attempt.', icon: ClipboardCheck },
 ]
 
 export default function Home() {
@@ -69,28 +76,45 @@ export default function Home() {
               </div>
 
               <h1 className="max-w-4xl font-serif text-[3.2rem] font-semibold leading-[0.95] tracking-[-0.045em] text-white sm:text-[4.6rem] lg:text-[5.8rem]">
-                A sharper path to the civil services dream.
+                Where serious aspirants become exam-ready thinkers.
               </h1>
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
-                DHI Academy helps UPSC and KAS aspirants prepare with academic depth,
-                accountable mentorship, and exam-focused discipline from foundation to interview.
+                DHI Academy helps UPSC and KAS aspirants transform information into
+                disciplined thinking, answer quality, and exam temperament.
               </p>
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Link
-                  href="/courses"
+                  href="/contact"
                   className="group inline-flex h-14 items-center justify-center rounded-full bg-dhi-red px-7 text-sm font-bold text-white shadow-[0_18px_50px_rgba(227,24,55,0.32)] transition hover:-translate-y-0.5 hover:bg-dhi-red-dark"
                 >
-                  Explore Programs
+                  Start Your UPSC Plan
                   <ArrowRight className="ml-2 size-4 transition group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/constitution-explorer"
                   className="inline-flex h-14 items-center justify-center rounded-full border border-white/20 bg-white/[0.08] px-7 text-sm font-bold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/[0.14]"
                 >
-                  Book Free Counselling
+                  Try Constitution Explorer
                 </Link>
+              </div>
+
+              <div className="mt-10 rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-4 backdrop-blur">
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/45">
+                  I am preparing for
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {readinessOptions.map((option) => (
+                    <Link
+                      key={option}
+                      href={`/contact?stage=${encodeURIComponent(option)}`}
+                      className="rounded-full border border-white/12 bg-black/20 px-4 py-2 text-sm font-semibold text-white/78 transition hover:border-dhi-red/60 hover:bg-dhi-red/15 hover:text-white"
+                    >
+                      {option}
+                    </Link>
+                  ))}
+                </div>
               </div>
 
               <div className="mt-12 grid gap-3 sm:grid-cols-3">
@@ -111,14 +135,17 @@ export default function Home() {
                 <div className="relative z-10 rounded-[2rem] border border-white/10 bg-white/[0.07] p-8 shadow-2xl backdrop-blur-xl">
                   <p className="text-xs font-semibold uppercase tracking-[0.32em] text-dhi-red-light">DHI Method</p>
                   <h2 className="mt-4 font-serif text-4xl font-semibold leading-tight text-white">
-                    Learn. Test. Reflect. Rise.
+                    The DHI 4R Method.
                   </h2>
+                  <p className="mt-3 text-sm leading-6 text-white/58">
+                    Read, Recall, Respond, Refine. A preparation loop designed for thinking transformation.
+                  </p>
                   <div className="mt-7 space-y-4">
                     {[
-                      ['01', 'Concept clarity'],
-                      ['02', 'Structured practice'],
-                      ['03', 'Mentor feedback'],
-                      ['04', 'Exam temperament'],
+                      ['01', 'Mentor-marked answer sheet'],
+                      ['02', 'Weekly revision planner'],
+                      ['03', 'PYQ-linked concept map'],
+                      ['04', 'Feedback to next action'],
                     ].map(([number, label]) => (
                       <div key={number} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-black/20 p-4">
                         <span className="font-mono text-xs text-dhi-red-light">{number}</span>
@@ -152,7 +179,14 @@ export default function Home() {
                 <article key={item.title} className="group rounded-[1.75rem] border border-slate-200 bg-white p-6 shadow-[0_20px_70px_rgba(15,23,42,0.07)] transition hover:-translate-y-1 hover:border-dhi-red/30 dark:border-white/10 dark:bg-white/[0.04]">
                   <item.icon className="size-8 text-dhi-red" />
                   <h3 className="mt-6 font-serif text-2xl font-semibold text-dhi-ink dark:text-white">{item.title}</h3>
+                  <p className="mt-3 text-xs font-bold uppercase tracking-[0.2em] text-dhi-red">
+                    Who this is for
+                  </p>
                   <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-white/60">{item.text}</p>
+                  <Link href="/courses" className="mt-6 inline-flex items-center text-sm font-bold text-dhi-red hover:text-dhi-red-dark">
+                    {item.cta}
+                    <ArrowRight className="ml-2 size-4" />
+                  </Link>
                 </article>
               ))}
             </div>
@@ -171,19 +205,22 @@ export default function Home() {
             <div className="rounded-[2rem] bg-dhi-ink p-8 text-white shadow-2xl">
               <ShieldCheck className="size-9 text-dhi-red-light" />
               <h2 className="mt-8 font-serif text-4xl font-semibold leading-tight">
-                Built for serious aspirants, not casual browsing.
+                DHI is built around process, not promises.
               </h2>
               <p className="mt-5 leading-8 text-white/65">
-                The design direction now mirrors the DHI mark: decisive red, disciplined
-                black, breathable white, and transformation-led visual movement.
+                The DHI 4R Method turns preparation into a visible loop: learn, revise,
+                write, receive feedback, and improve with direction.
               </p>
             </div>
 
             <div className="grid gap-4">
-              {differentiators.map((item) => (
-                <div key={item} className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.04]">
-                  <CalendarCheck className="mt-1 size-5 shrink-0 text-dhi-red" />
-                  <p className="text-base font-medium leading-7 text-dhi-ink dark:text-white/78">{item}</p>
+              {preparationLoop.map((item) => (
+                <div key={item.step} className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-white/10 dark:bg-white/[0.04]">
+                  <item.icon className="mt-1 size-5 shrink-0 text-dhi-red" />
+                  <div>
+                    <p className="font-serif text-xl font-semibold text-dhi-ink dark:text-white">{item.step}</p>
+                    <p className="mt-1 text-sm leading-6 text-slate-600 dark:text-white/62">{item.text}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -199,8 +236,8 @@ export default function Home() {
                   Constitution Explorer
                 </h2>
                 <p className="mt-4 max-w-2xl leading-8 text-slate-600 dark:text-white/62">
-                  A focused learning tool for Articles, cases, schedules, and UPSC-linked revision.
-                  It deserves its own space instead of being buried in the homepage.
+                  India Polity, mapped for UPSC revision: Articles, cases, schedules,
+                  high-frequency tags, PYQ context, and saved revision flow.
                 </p>
                 <Link href="/constitution-explorer" className="mt-7 inline-flex h-12 items-center rounded-full bg-dhi-ink px-6 text-sm font-bold text-white transition hover:bg-black">
                   Open Explorer

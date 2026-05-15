@@ -13,6 +13,8 @@ interface Message {
   content: string
 }
 
+const QUICK_ACTIONS = ['Courses', 'Fees', 'Book counselling', 'Constitution Explorer', 'Location']
+
 /** DHI Academy Logo Icon — stylized "D" with accent */
 function DHILogoIcon({ className }: { className?: string }) {
   return (
@@ -43,7 +45,7 @@ export function ChatbotWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: 'Hello! Welcome to DHI Academy. How can I help you today? Ask me about our courses, admissions, fee structure, or UPSC preparation tips.',
+      content: 'Hello! Welcome to DHI Academy. I can help you explore courses, preparation stages, Constitution Explorer, and campus contact details. For fees, batch timing, and official confirmations, I will connect you to a counsellor.',
     },
   ])
   const [input, setInput] = useState('')
@@ -109,7 +111,7 @@ export function ChatbotWidget() {
         ...prev,
         {
           role: 'assistant',
-          content: 'I apologize, but I am currently unavailable. Please try again later or contact us at info@dhiacademy.in',
+          content: 'I apologize, but I am currently unavailable. Please try again later or contact DHI at +91 98448 68662 / +91 98448 68663.',
         },
       ])
     } finally {
@@ -127,6 +129,18 @@ export function ChatbotWidget() {
   const handleOpenChat = () => {
     setShowTooltip(false)
     setIsOpen(true)
+  }
+
+  const handleQuickAction = (action: string) => {
+    const promptMap: Record<string, string> = {
+      Courses: 'Which DHI course is right for my current preparation stage?',
+      Fees: 'I want verified fee details from a counsellor.',
+      'Book counselling': 'I want to book a DHI strategy call.',
+      'Constitution Explorer': 'Tell me about the Constitution Explorer free tool.',
+      Location: 'Share DHI Academy campus location and contact details.',
+    }
+    setInput(promptMap[action] || action)
+    inputRef.current?.focus()
   }
 
   return (
@@ -271,6 +285,19 @@ export function ChatbotWidget() {
                 )}
               </div>
             </ScrollArea>
+
+            <div className="flex flex-wrap gap-2 px-4 pb-3">
+              {QUICK_ACTIONS.map((action) => (
+                <button
+                  key={action}
+                  type="button"
+                  onClick={() => handleQuickAction(action)}
+                  className="rounded-full border border-dhi-red/20 bg-white px-3 py-1.5 text-xs font-semibold text-dhi-ink transition hover:border-dhi-red/50 hover:text-dhi-red dark:bg-white/[0.06] dark:text-ivory-cream"
+                >
+                  {action}
+                </button>
+              ))}
+            </div>
 
             {/* Input */}
             <div
