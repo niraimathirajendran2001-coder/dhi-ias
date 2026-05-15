@@ -3,7 +3,7 @@
 import { Header } from '@/components/header'
 import Footer from '@/components/footer'
 import { BreadcrumbNav } from '@/components/breadcrumb-nav'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'framer-motion'
 import {
   BookOpen,
   GraduationCap,
@@ -156,12 +156,12 @@ const categoryLabels: Record<string, { title: string; subtitle: string }> = {
 /*  Animation Variants                                                 */
 /* ------------------------------------------------------------------ */
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
 }
 
