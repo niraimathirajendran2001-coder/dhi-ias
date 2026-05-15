@@ -2,6 +2,7 @@
 
 import { Header } from '@/components/header'
 import Footer from '@/components/footer'
+import { BreadcrumbNav } from '@/components/breadcrumb-nav'
 import { motion } from 'framer-motion'
 import {
   BookOpen,
@@ -215,6 +216,8 @@ export default function CoursesPage() {
             </motion.p>
           </div>
         </section>
+
+        <BreadcrumbNav items={[{ label: 'Courses' }]} />
 
         {/* ── Course Categories ── */}
         {categories.map((category, catIdx) => {

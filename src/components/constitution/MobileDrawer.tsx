@@ -48,12 +48,12 @@ export default function MobileDrawer({
           className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:hidden"
           style={{
             height: 52,
-            background: '#0F1F4B',
+            background: '#1C1C1E',
           }}
         >
           <span
             className="font-sans"
-            style={{ fontSize: 13, color: '#E8B830' }}
+            style={{ fontSize: 13, color: '#FF2D4B' }}
           >
             Navigate Constitution
           </span>
@@ -93,7 +93,7 @@ export default function MobileDrawer({
             className="absolute bottom-0 left-0 right-0 rounded-t-2xl"
             style={{
               height: '78vh',
-              background: '#0F1F4B',
+              background: '#1C1C1E',
               animation: 'slideUp 250ms ease-out',
             }}
           >

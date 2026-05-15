@@ -133,8 +133,8 @@ function TabButton({
       className="flex items-center gap-2 pb-2 font-sans transition-colors"
       style={{
         fontSize: 13,
-        color: active ? '#0F1F4B' : '#3D3D3A',
-        borderBottom: active ? '2px solid #C8960C' : '2px solid transparent',
+        color: active ? '#1C1C1E' : '#3D3D3A',
+        borderBottom: active ? '2px solid #E31837' : '2px solid transparent',
         background: 'none',
         borderLeft: 'none',
         borderRight: 'none',
@@ -150,7 +150,7 @@ function TabButton({
           width: 18,
           height: 18,
           fontSize: 11,
-          background: '#0F1F4B',
+          background: '#1C1C1E',
           color: '#FFFFFF',
         }}
       >

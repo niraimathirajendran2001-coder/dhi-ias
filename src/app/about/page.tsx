@@ -2,6 +2,7 @@
 
 import { Header } from '@/components/header'
 import Footer from '@/components/footer'
+import { BreadcrumbNav } from '@/components/breadcrumb-nav'
 import { motion } from 'framer-motion'
 import { Users, BookOpen, Award, Target, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
@@ -133,6 +134,8 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <BreadcrumbNav items={[{ label: 'About Us' }]} />
+
         {/* ── Who We Are ── */}
         <section className="py-16 md:py-24 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -231,13 +234,19 @@ export default function AboutPage() {
                 <motion.div
                   key={member.name}
                   variants={fadeInUp}
-                  className="group p-6 rounded-xl bg-white dark:bg-card border border-light-gray dark:border-border card-hover-premium gold-border-animate"
+                  className="group relative p-6 pt-8 rounded-xl bg-white dark:bg-card border border-light-gray dark:border-border card-hover-premium overflow-hidden"
                 >
-                  {/* Avatar placeholder */}
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-navy/5 dark:bg-ivory-cream/5 flex items-center justify-center">
-                    <span className="font-serif text-2xl text-sovereign-gold dark:text-champagne-gold font-semibold">
-                      {member.name.charAt(0)}
-                    </span>
+                  {/* Accent top strip */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sovereign-gold to-champagne-gold opacity-60 group-hover:opacity-100 transition-opacity" />
+
+                  {/* Avatar with gradient border ring */}
+                  <div className="relative w-16 h-16 mx-auto mb-4">
+                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sovereign-gold to-champagne-gold opacity-20" />
+                    <div className="relative w-full h-full rounded-full bg-white dark:bg-card flex items-center justify-center border-2 border-sovereign-gold/20 group-hover:border-sovereign-gold/40 transition-colors">
+                      <span className="font-serif text-2xl text-sovereign-gold dark:text-champagne-gold font-semibold">
+                        {member.name.charAt(0)}
+                      </span>
+                    </div>
                   </div>
 
                   <h3 className="font-serif text-xl font-semibold text-navy dark:text-ivory-cream text-center mb-1">

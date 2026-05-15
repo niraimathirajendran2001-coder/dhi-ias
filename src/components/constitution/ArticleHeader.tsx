@@ -54,10 +54,10 @@ export default function ArticleHeader({
   /* ---- Build status pills (max 2) ---- */
   const statusPills: { label: string; bg: string; text: string }[] = []
   if (article.upsc_importance === 'HIGH') {
-    statusPills.push({ label: 'HIGH UPSC Priority', bg: '#0F1F4B', text: '#FFFFFF' })
+    statusPills.push({ label: 'HIGH UPSC Priority', bg: '#1C1C1E', text: '#FFFFFF' })
   }
   if (article.amended) {
-    statusPills.push({ label: 'Recently Amended', bg: '#C8960C', text: '#0F1F4B' })
+    statusPills.push({ label: 'Recently Amended', bg: '#E31837', text: '#1C1C1E' })
   }
   if (article.is_deleted && statusPills.length < 2) {
     statusPills.push({ label: 'Repealed', bg: '#FDEAEA', text: '#8B1A1A' })
@@ -94,7 +94,7 @@ export default function ArticleHeader({
               fontWeight: 500,
               padding: '3px 10px',
               background: '#FDF4DC',
-              color: '#C8960C',
+              color: '#E31837',
             }}
           >
             {article.chapter}
@@ -113,7 +113,7 @@ export default function ArticleHeader({
         style={{
           fontSize: 28,
           fontWeight: 400,
-          color: '#0F1F4B',
+          color: '#1C1C1E',
           lineHeight: 1.3,
         }}
       >
@@ -148,7 +148,7 @@ export default function ArticleHeader({
           className="flex items-center gap-1.5 font-sans transition-colors"
           style={{
             fontSize: 12,
-            color: saved ? '#C8960C' : '#3D3D3A',
+            color: saved ? '#E31837' : '#3D3D3A',
             cursor: 'pointer',
             background: 'none',
             border: 'none',
@@ -157,8 +157,8 @@ export default function ArticleHeader({
         >
           <Bookmark
             className="w-3.5 h-3.5"
-            fill={saved ? '#C8960C' : 'none'}
-            stroke={saved ? '#C8960C' : 'currentColor'}
+            fill={saved ? '#E31837' : 'none'}
+            stroke={saved ? '#E31837' : 'currentColor'}
           />
           {saved ? 'Saved' : 'Save for revision'}
         </button>

@@ -108,23 +108,23 @@ export function CookieConsent() {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
           'fixed bottom-0 left-0 right-0 z-50',
-          'bg-[#0F1F4B] dark:bg-[#0A1428]',
+          'bg-[#1C1C1E] dark:bg-[#0F0F11]',
           'shadow-[0_-8px_30px_rgba(0,0,0,0.3)]',
         )}
       >
         {/* Gold accent line at top */}
-        <div className="h-[2px] bg-gradient-to-r from-transparent via-[#C8960C] to-[#E8B830] dark:via-[#E8B830] dark:to-[#F5D060]" />
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-[#E31837] to-[#FF2D4B] dark:via-[#FF2D4B] dark:to-[#FF4D6A]" />
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           {/* Main content */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             {/* Icon + Text */}
             <div className="flex items-start gap-3 flex-1">
-              <ShieldCheck className="w-5 h-5 mt-0.5 text-[#C8960C] dark:text-champagne-gold shrink-0" />
+              <ShieldCheck className="w-5 h-5 mt-0.5 text-[#E31837] dark:text-champagne-gold shrink-0" />
               <p className="font-sans text-[14px] leading-relaxed text-ivory-cream/80 dark:text-ivory-cream/70">
                 We use cookies to enhance your experience. By continuing, you agree to our{' '}
                 <a
                   href="#contact"
-                  className="text-[#C8960C] dark:text-champagne-gold underline underline-offset-2 hover:text-[#E8B830] transition-colors"
+                  className="text-[#E31837] dark:text-champagne-gold underline underline-offset-2 hover:text-[#FF2D4B] transition-colors"
                 >
                   Privacy Policy
                 </a>
@@ -142,7 +142,7 @@ export function CookieConsent() {
                   'font-sans text-[13px] font-medium',
                   'border border-ivory-cream/30 dark:border-ivory-cream/20',
                   'text-ivory-cream/80 dark:text-ivory-cream/60',
-                  'hover:border-[#C8960C] dark:hover:border-champagne-gold',
+                  'hover:border-[#E31837] dark:hover:border-champagne-gold',
                   'hover:text-ivory-cream',
                   'transition-all duration-200',
                   'w-full sm:w-auto justify-center',
@@ -165,8 +165,8 @@ export function CookieConsent() {
                   'transition-all duration-300',
                   'btn-gold-shimmer',
                   'w-full sm:w-auto text-center',
-                  'bg-gradient-to-br from-[#C8960C] to-[#E8B830] dark:from-champagne-gold dark:to-[#F5D060]',
-                  'text-navy dark:text-[#0F1F4B]',
+                  'bg-gradient-to-br from-[#E31837] to-[#FF2D4B] dark:from-champagne-gold dark:to-[#FF4D6A]',
+                  'text-navy dark:text-[#1C1C1E]',
                 )}
               >
                 Accept All
@@ -243,8 +243,8 @@ export function CookieConsent() {
                         'font-sans text-[13px] font-semibold tracking-wide',
                         'transition-all duration-300',
                         'btn-gold-shimmer',
-                        'bg-gradient-to-br from-[#C8960C] to-[#E8B830] dark:from-champagne-gold dark:to-[#F5D060]',
-                        'text-navy dark:text-[#0F1F4B]',
+                        'bg-gradient-to-br from-[#E31837] to-[#FF2D4B] dark:from-champagne-gold dark:to-[#FF4D6A]',
+                        'text-navy dark:text-[#1C1C1E]',
                       )}
                     >
                       Save Preferences

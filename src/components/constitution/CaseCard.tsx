@@ -40,7 +40,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
       <div className="flex items-start justify-between gap-2">
         <span
           className="font-sans"
-          style={{ fontSize: 13, fontWeight: 500, color: '#0F1F4B' }}
+          style={{ fontSize: 13, fontWeight: 500, color: '#1C1C1E' }}
         >
           {caseData.case_name}
         </span>
@@ -70,7 +70,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
                 fontSize: 10,
                 fontWeight: 500,
                 padding: '3px 10px',
-                background: '#0F1F4B',
+                background: '#1C1C1E',
                 color: '#FFFFFF',
               }}
             >
@@ -106,7 +106,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
             className="ml-1 font-sans underline"
             style={{
               fontSize: 13,
-              color: '#0F1F4B',
+              color: '#1C1C1E',
               background: 'none',
               border: 'none',
               cursor: 'pointer',
@@ -124,7 +124,7 @@ export default function CaseCard({ caseData }: CaseCardProps) {
           className="mt-3 rounded-r-md"
           style={{
             background: '#FDF4DC',
-            borderLeft: '3px solid #C8960C',
+            borderLeft: '3px solid #E31837',
             padding: '8px 12px',
           }}
         >

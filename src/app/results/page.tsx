@@ -2,8 +2,9 @@
 
 import { Header } from '@/components/header'
 import Footer from '@/components/footer'
+import { BreadcrumbNav } from '@/components/breadcrumb-nav'
 import { motion } from 'framer-motion'
-import { Trophy, Star, TrendingUp, Users, Award, ChevronRight, ArrowRight } from 'lucide-react'
+import { Trophy, Star, TrendingUp, Users, Award, ChevronRight, ArrowRight, BookOpen, Target, ClipboardList, GraduationCap, Rocket } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 
@@ -36,6 +37,45 @@ const resultStats = [
   { icon: Star, value: '30+', label: 'Top 100 Rankers' },
   { icon: TrendingUp, value: '85%', label: 'Success Rate' },
   { icon: Users, value: '1000+', label: 'Students Trained' },
+]
+
+interface SuccessReason {
+  title: string
+  desc: string
+  icon: React.ComponentType<{ className?: string }>
+}
+
+const successReasons: SuccessReason[] = [
+  {
+    title: 'Comprehensive Content',
+    desc: 'We develop our own comprehensive content strictly related to the syllabus, updated regularly to match evolving UPSC patterns.',
+    icon: BookOpen,
+  },
+  {
+    title: 'Individual Attention',
+    desc: 'Every student receives personalized mentorship and guidance. We focus on your weak areas and help you strengthen them.',
+    icon: Target,
+  },
+  {
+    title: 'Test-Based Learning',
+    desc: 'Regular tests and evaluations with detailed feedback help students track their progress and improve consistently.',
+    icon: ClipboardList,
+  },
+  {
+    title: 'Expert Faculty',
+    desc: 'Our faculty members have appeared in UPSC interviews and Mains, bringing real exam experience to their teaching.',
+    icon: GraduationCap,
+  },
+  {
+    title: 'Competitive Environment',
+    desc: 'We develop a competitive attitude amongst aspirants, fostering peer learning and healthy motivation.',
+    icon: Trophy,
+  },
+  {
+    title: 'All-Stage Preparation',
+    desc: 'From Prelims to Mains to Interview, we prepare aspirants for every stage of the Civil Services Examination.',
+    icon: Rocket,
+  },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -100,6 +140,8 @@ export default function ResultsPage() {
             </motion.p>
           </div>
         </section>
+
+        <BreadcrumbNav items={[{ label: 'Results & Toppers' }]} />
 
         {/* ── Stats Section ── */}
         <section className="py-16 md:py-20 bg-background">
@@ -228,44 +270,15 @@ export default function ResultsPage() {
               viewport={{ once: true, margin: '-50px' }}
               className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
             >
-              {[
-                {
-                  title: 'Comprehensive Content',
-                  desc: 'We develop our own comprehensive content strictly related to the syllabus, updated regularly to match evolving UPSC patterns.',
-                  icon: '📚',
-                },
-                {
-                  title: 'Individual Attention',
-                  desc: 'Every student receives personalized mentorship and guidance. We focus on your weak areas and help you strengthen them.',
-                  icon: '🎯',
-                },
-                {
-                  title: 'Test-Based Learning',
-                  desc: 'Regular tests and evaluations with detailed feedback help students track their progress and improve consistently.',
-                  icon: '📝',
-                },
-                {
-                  title: 'Expert Faculty',
-                  desc: 'Our faculty members have appeared in UPSC interviews and Mains, bringing real exam experience to their teaching.',
-                  icon: '👨‍🏫',
-                },
-                {
-                  title: 'Competitive Environment',
-                  desc: 'We develop a competitive attitude amongst aspirants, fostering peer learning and healthy motivation.',
-                  icon: '🏆',
-                },
-                {
-                  title: 'All-Stage Preparation',
-                  desc: 'From Prelims to Mains to Interview, we prepare aspirants for every stage of the Civil Services Examination.',
-                  icon: '🚀',
-                },
-              ].map((item) => (
+              {successReasons.map((item) => (
                 <motion.div
                   key={item.title}
                   variants={fadeInUp}
                   className="p-6 rounded-xl bg-white dark:bg-card border border-light-gray dark:border-border card-hover-premium"
                 >
-                  <div className="text-3xl mb-4">{item.icon}</div>
+                  <div className="mb-4">
+                    <item.icon className="w-8 h-8 text-sovereign-gold dark:text-champagne-gold" />
+                  </div>
                   <h3 className="font-serif text-lg font-semibold text-navy dark:text-ivory-cream mb-2">
                     {item.title}
                   </h3>

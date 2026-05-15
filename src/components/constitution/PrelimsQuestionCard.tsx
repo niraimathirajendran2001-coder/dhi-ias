@@ -41,7 +41,7 @@ export default function PrelimsQuestionCard({
             fontSize: 11,
             fontWeight: 500,
             padding: '3px 10px',
-            background: '#0F1F4B',
+            background: '#1C1C1E',
             color: '#FFFFFF',
           }}
         >
@@ -99,18 +99,18 @@ export default function PrelimsQuestionCard({
             fontSize: 13,
             fontWeight: 500,
             padding: '8px 16px',
-            border: '1px solid #0F1F4B',
-            color: '#0F1F4B',
+            border: '1px solid #1C1C1E',
+            color: '#1C1C1E',
             background: 'transparent',
             cursor: 'pointer',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = '#0F1F4B'
+            e.currentTarget.style.background = '#1C1C1E'
             e.currentTarget.style.color = '#FFFFFF'
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.background = 'transparent'
-            e.currentTarget.style.color = '#0F1F4B'
+            e.currentTarget.style.color = '#1C1C1E'
           }}
         >
           Reveal Answer
@@ -120,7 +120,7 @@ export default function PrelimsQuestionCard({
           className="mt-3 rounded-r-md"
           style={{
             background: '#FDF4DC',
-            borderLeft: '3px solid #C8960C',
+            borderLeft: '3px solid #E31837',
             padding: '8px 12px',
           }}
         >

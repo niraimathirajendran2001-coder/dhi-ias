@@ -97,7 +97,7 @@ export default function ScheduleModal({
             style={{
               fontSize: 22,
               fontWeight: 400,
-              color: '#0F1F4B',
+              color: '#1C1C1E',
             }}
           >
             {schedule.schedule_title}
@@ -114,7 +114,7 @@ export default function ScheduleModal({
                 fontWeight: 500,
                 padding: '3px 10px',
                 background:
-                  schedule.upsc_importance === 'HIGH' ? '#0F1F4B' : '#E8E8E4',
+                  schedule.upsc_importance === 'HIGH' ? '#1C1C1E' : '#E8E8E4',
                 color:
                   schedule.upsc_importance === 'HIGH' ? '#FFFFFF' : '#3D3D3A',
               }}
@@ -142,7 +142,7 @@ export default function ScheduleModal({
             className="mt-4 rounded-r-md"
             style={{
               background: '#FDF4DC',
-              borderLeft: '3px solid #C8960C',
+              borderLeft: '3px solid #E31837',
               padding: '8px 12px',
             }}
           >

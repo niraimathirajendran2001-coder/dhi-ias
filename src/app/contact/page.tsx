@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Header } from '@/components/header'
 import Footer from '@/components/footer'
+import { BreadcrumbNav } from '@/components/breadcrumb-nav'
 import { motion } from 'framer-motion'
 import {
   MapPin,
@@ -164,6 +165,8 @@ export default function ContactPage() {
             </motion.p>
           </div>
         </section>
+
+        <BreadcrumbNav items={[{ label: 'Contact Us' }]} />
 
         {/* ── Contact Form + Info ── */}
         <section className="py-16 md:py-24 bg-background">

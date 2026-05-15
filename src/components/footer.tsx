@@ -98,7 +98,7 @@ export default function Footer() {
           />
           <path
             d="M0 40V25C360 5 720 5 1080 15C1260 20 1380 25 1440 20V40H0Z"
-            fill="#0F1F4B"
+            fill="#1C1C1E"
             opacity="0.5"
           />
         </svg>
@@ -108,7 +108,7 @@ export default function Footer() {
       <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(180deg, #0F1F4B 0%, #0D1A3F 60%, #0A1428 100%)',
+          background: 'linear-gradient(180deg, #1C1C1E 0%, #151517 60%, #0F0F11 100%)',
         }}
       />
 
@@ -116,7 +116,7 @@ export default function Footer() {
       <div
         className="absolute top-0 left-0 right-0 h-[2px] z-10"
         style={{
-          background: 'linear-gradient(90deg, transparent 5%, #C8960C, #E8B830, #C8960C, transparent 95%)',
+          background: 'linear-gradient(90deg, transparent 5%, #E31837, #FF2D4B, #E31837, transparent 95%)',
         }}
         aria-hidden="true"
       />
@@ -137,8 +137,8 @@ export default function Footer() {
           viewport={{ once: true }}
           className="mb-12 -mt-2 rounded-xl p-6 sm:p-8 relative overflow-hidden"
           style={{
-            background: 'linear-gradient(135deg, rgba(200,150,12,0.1) 0%, rgba(200,150,12,0.05) 50%, rgba(232,184,48,0.08) 100%)',
-            border: '1px solid rgba(200,150,12,0.15)',
+            background: 'linear-gradient(135deg, rgba(227,24,55,0.1) 0%, rgba(227,24,55,0.05) 50%, rgba(255,45,75,0.08) 100%)',
+            border: '1px solid rgba(227,24,55,0.15)',
           }}
         >
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -227,7 +227,7 @@ export default function Footer() {
                     'transition-all duration-300',
                     'text-ivory-cream hover:text-navy dark:hover:text-[#0A1428]',
                     'hover:bg-sovereign-gold dark:hover:bg-champagne-gold',
-                    'hover:scale-110 hover:shadow-md hover:shadow-[rgba(200,150,12,0.3)]'
+                    'hover:scale-110 hover:shadow-md hover:shadow-[rgba(227,24,55,0.3)]'
                   )}
                 >
                   <Icon className="size-4" />
@@ -347,7 +347,7 @@ export default function Footer() {
         {/* Separator — gold gradient */}
         <div
           className="h-px w-full mb-6"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(200,150,12,0.3), rgba(232,184,48,0.3), rgba(200,150,12,0.3), transparent)' }}
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(227,24,55,0.3), rgba(255,45,75,0.3), rgba(227,24,55,0.3), transparent)' }}
         />
 
         {/* Bottom Bar */}

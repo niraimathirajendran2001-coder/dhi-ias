@@ -186,7 +186,7 @@ export default function NavigationTree({
   return (
     <nav
       className="h-full flex flex-col font-sans overflow-hidden"
-      style={{ background: '#0F1F4B' }}
+      style={{ background: '#1C1C1E' }}
       aria-label="Constitution navigation"
     >
       <style>{`
@@ -194,14 +194,14 @@ export default function NavigationTree({
           width: 4px;
         }
         .nav-tree-scroll::-webkit-scrollbar-track {
-          background: #0F1F4B;
+          background: #1C1C1E;
         }
         .nav-tree-scroll::-webkit-scrollbar-thumb {
-          background: #C8960C;
+          background: #E31837;
           border-radius: 2px;
         }
         .nav-tree-scroll::-webkit-scrollbar-thumb:hover {
-          background: #E8B830;
+          background: #FF2D4B;
         }
       `}</style>
 
@@ -218,8 +218,8 @@ export default function NavigationTree({
             <span
               className="inline-flex items-center justify-center rounded-full text-[10px] font-sans font-medium"
               style={{
-                background: '#C8960C',
-                color: '#0F1F4B',
+                background: '#E31837',
+                color: '#1C1C1E',
                 width: 18,
                 height: 18,
                 fontSize: 10,
@@ -232,7 +232,7 @@ export default function NavigationTree({
           {/* Gold divider */}
           <div
             className="w-full mb-2"
-            style={{ height: 1, background: '#C8960C', opacity: 0.4 }}
+            style={{ height: 1, background: '#E31837', opacity: 0.4 }}
           />
 
           <div className="flex flex-col gap-0.5 max-h-32 overflow-y-auto nav-tree-scroll">
@@ -244,11 +244,11 @@ export default function NavigationTree({
                 style={{
                   background:
                     selectedArticleId === id
-                      ? 'rgba(200,150,12,0.15)'
+                      ? 'rgba(227,24,55,0.15)'
                       : 'transparent',
                   borderLeft:
                     selectedArticleId === id
-                      ? '3px solid #C8960C'
+                      ? '3px solid #E31837'
                       : '3px solid transparent',
                 }}
                 onMouseEnter={(e) => {
@@ -338,9 +338,9 @@ export default function NavigationTree({
                 padding: '3px 10px',
                 background:
                   activeFilter === tag
-                    ? '#C8960C'
+                    ? '#E31837'
                     : 'rgba(255,255,255,0.1)',
-                color: activeFilter === tag ? '#0F1F4B' : '#FFFFFF',
+                color: activeFilter === tag ? '#1C1C1E' : '#FFFFFF',
                 borderRadius: 20,
               }}
               aria-pressed={activeFilter === tag}
@@ -430,10 +430,10 @@ export default function NavigationTree({
                       style={{
                         padding: '5px 12px 5px 20px',
                         background: isSelected
-                          ? 'rgba(200,150,12,0.15)'
+                          ? 'rgba(227,24,55,0.15)'
                           : 'transparent',
                         borderLeft: isSelected
-                          ? '3px solid #C8960C'
+                          ? '3px solid #E31837'
                           : '3px solid transparent',
                         cursor: 'pointer',
                       }}
@@ -471,7 +471,7 @@ export default function NavigationTree({
                             style={{
                               width: 6,
                               height: 6,
-                              background: '#C8960C',
+                              background: '#E31837',
                             }}
                           />
                           {tooltipId === articleNode.article_id && (
@@ -480,7 +480,7 @@ export default function NavigationTree({
                               style={{
                                 fontSize: 10,
                                 background: '#1C1C1E',
-                                color: '#FAFAF7',
+                                color: '#FFFFFF',
                                 zIndex: 50,
                               }}
                             >

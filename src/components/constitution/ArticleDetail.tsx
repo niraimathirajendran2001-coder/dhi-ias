@@ -83,7 +83,7 @@ export default function ArticleDetail({
             className="rounded-r-lg"
             style={{
               background: '#F4F4F1',
-              borderLeft: '4px solid #0F1F4B',
+              borderLeft: '4px solid #1C1C1E',
               padding: '20px 24px',
             }}
           >
@@ -109,14 +109,14 @@ export default function ArticleDetail({
             className="font-sans uppercase tracking-[2px] flex items-center gap-1.5"
             style={{ fontSize: 10, color: '#3D3D3A', marginBottom: 8 }}
           >
-            <Feather className="w-3 h-3" style={{ color: '#C8960C' }} />
+            <Feather className="w-3 h-3" style={{ color: '#E31837' }} />
             What this means
           </div>
           <div
             className="rounded-r-lg"
             style={{
               background: '#FDF4DC',
-              borderLeft: '4px solid #C8960C',
+              borderLeft: '4px solid #E31837',
               padding: '20px 24px',
             }}
           >
@@ -219,17 +219,17 @@ export default function ArticleDetail({
                     fontSize: 12,
                     fontWeight: 500,
                     padding: '5px 14px',
-                    background: '#0F1F4B',
+                    background: '#1C1C1E',
                     color: '#FFFFFF',
                     border: 'none',
                     cursor: 'pointer',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#C8960C'
-                    e.currentTarget.style.color = '#0F1F4B'
+                    e.currentTarget.style.background = '#E31837'
+                    e.currentTarget.style.color = '#1C1C1E'
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = '#0F1F4B'
+                    e.currentTarget.style.background = '#1C1C1E'
                     e.currentTarget.style.color = '#FFFFFF'
                   }}
                   title={
@@ -277,7 +277,7 @@ export default function ArticleDetail({
                     style={{
                       fontSize: 16,
                       fontWeight: 400,
-                      color: '#0F1F4B',
+                      color: '#1C1C1E',
                     }}
                   >
                     {sched.schedule_title}
@@ -290,7 +290,7 @@ export default function ArticleDetail({
                     fontWeight: 500,
                     padding: '3px 10px',
                     background:
-                      sched.upsc_importance === 'HIGH' ? '#0F1F4B' : '#E8E8E4',
+                      sched.upsc_importance === 'HIGH' ? '#1C1C1E' : '#E8E8E4',
                     color:
                       sched.upsc_importance === 'HIGH' ? '#FFFFFF' : '#3D3D3A',
                   }}
@@ -310,7 +310,7 @@ export default function ArticleDetail({
                 style={{
                   fontSize: 13,
                   fontWeight: 500,
-                  color: '#0F1F4B',
+                  color: '#1C1C1E',
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
@@ -441,8 +441,8 @@ function TabButton({
       className="flex items-center gap-2 pb-2 font-sans transition-colors"
       style={{
         fontSize: 13,
-        color: active ? '#0F1F4B' : '#3D3D3A',
-        borderBottom: active ? '2px solid #C8960C' : '2px solid transparent',
+        color: active ? '#1C1C1E' : '#3D3D3A',
+        borderBottom: active ? '2px solid #E31837' : '2px solid transparent',
         background: 'none',
         borderLeft: 'none',
         borderRight: 'none',
@@ -458,7 +458,7 @@ function TabButton({
           width: 18,
           height: 18,
           fontSize: 11,
-          background: '#0F1F4B',
+          background: '#1C1C1E',
           color: '#FFFFFF',
         }}
       >

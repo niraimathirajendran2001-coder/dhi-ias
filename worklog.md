@@ -276,3 +276,99 @@ Stage Summary:
 - All "Aristocrat" references removed from entire codebase
 - Homepage is now a clean LANDING PAGE that links to individual sub-pages (not all content on one page)
 - DO NOT push to GitHub until user explicitly approves
+
+---
+Task ID: brand-color-fix
+Agent: Color Fix Agent
+Task: Fix hardcoded old brand colors in active components
+
+Work Log:
+- Fixed cookie-consent.tsx: 18 replacements (#0F1F4B→#1C1C1E, #0A1428→#0F0F11, #C8960C→#E31837, #E8B830→#FF2D4B, #F5D060→#FF4D6A)
+- Fixed scroll-progress.tsx: 2 replacements (#C8960C→#E31837, #E8B830→#FF2D4B)
+- Fixed chatbot-widget.tsx: 11 replacements (#C8960C→#E31837, #E8B830→#FF2D4B, #0A1428→#0F0F11, rgba(200,150,12,0.3)→rgba(227,24,55,0.3), rgba(232,184,48,0.3)→rgba(255,45,75,0.3))
+- Fixed constitution/ArticleDetail.tsx: 10 replacements (#0F1F4B→#1C1C1E, #C8960C→#E31837)
+- Fixed constitution/NavigationTree.tsx: 13 replacements (#0F1F4B→#1C1C1E, #C8960C→#E31837, #E8B830→#FF2D4B, rgba(200,150,12,0.15)→rgba(227,24,55,0.15), #FAFAF7→#FFFFFF)
+- Fixed constitution/PrelimsQuestionCard.tsx: 6 replacements (#0F1F4B→#1C1C1E, #C8960C→#E31837)
+- Fixed constitution/MobileDrawer.tsx: 3 replacements (#0F1F4B→#1C1C1E, #E8B830→#FF2D4B)
+- Fixed constitution/ScheduleModal.tsx: 3 replacements (#0F1F4B→#1C1C1E, #C8960C→#E31837)
+- Fixed constitution/CaseCard.tsx: 4 replacements (#0F1F4B→#1C1C1E, #C8960C→#E31837)
+- Fixed constitution/MainsQuestionCard.tsx: 6 replacements (#0F1F4B→#1C1C1E, #1A2E6B→#2D2D30, #C8960C→#E31837)
+- Fixed constitution/ArticleHeader.tsx: 7 replacements (#0F1F4B→#1C1C1E, #C8960C→#E31837)
+- Fixed constitution/ContextPanel.tsx: 3 replacements (#0F1F4B→#1C1C1E, #C8960C→#E31837)
+- Verified: grep for all old color values (#0F1F4B, #1A2E6B, #243A80, #C8960C, #E8B830, #F5D060, #FAFAF7, #0A1428, rgba(200,150,12,...), rgba(232,184,48,...)) returns ZERO matches across all 12 files
+- Tailwind utility class names (bg-navy, text-sovereign-gold, text-ivory-cream, etc.) were NOT modified
+
+Stage Summary:
+- All old color references replaced in 12 active component files
+- Total replacements: ~86 individual color value changes across 12 files
+- Zero remaining old brand color references in the edited files
+
+---
+Task ID: ui-improvements-1
+Agent: UI Improvements Agent
+Task: Replace emojis with Lucide icons on Results page + Add breadcrumb navigation to inner pages
+
+Work Log:
+
+### Task 1: Replace Emojis with Lucide Icons on Results Page
+
+**File:** `/home/z/my-project/src/app/results/page.tsx`
+
+**Changes:**
+1. Updated Lucide icon import to add: `BookOpen, Target, ClipboardList, GraduationCap, Rocket`
+2. Added `SuccessReason` interface and `successReasons` const array (extracted from inline JSX):
+   - `icon: '📚'` → `icon: BookOpen`
+   - `icon: '🎯'` → `icon: Target`
+   - `icon: '📝'` → `icon: ClipboardList`
+   - `icon: '👨‍🏫'` → `icon: GraduationCap`
+   - `icon: '🏆'` → `icon: Trophy` (already imported)
+   - `icon: '🚀'` → `icon: Rocket`
+3. Updated rendering: `<div className="text-3xl mb-4">{item.icon}</div>` → `<div className="mb-4"><item.icon className="w-8 h-8 text-sovereign-gold dark:text-champagne-gold" /></div>`
+
+### Task 2: Add Breadcrumb Navigation to Inner Pages
+
+**New File:** `/home/z/my-project/src/components/breadcrumb-nav.tsx`
+- Reusable `BreadcrumbNav` component with `BreadcrumbItem[]` prop
+- Home icon + "Home" link (label hidden on mobile via `hidden sm:inline`)
+- ChevronRight separators between items
+- Active (last) item rendered as bold text, intermediate items as links
+- Dark mode support with proper color tokens
+- ARIA `aria-label="Breadcrumb"` for accessibility
+
+**Files Modified (added breadcrumb import + component):**
+
+| File | Breadcrumb Items |
+|---|---|
+| `/home/z/my-project/src/app/about/page.tsx` | `[{ label: 'About Us' }]` |
+| `/home/z/my-project/src/app/courses/page.tsx` | `[{ label: 'Courses' }]` |
+| `/home/z/my-project/src/app/results/page.tsx` | `[{ label: 'Results & Toppers' }]` |
+| `/home/z/my-project/src/app/contact/page.tsx` | `[{ label: 'Contact Us' }]` |
+
+Breadcrumb placed between hero section and first content section in each page.
+
+### Verification
+- `bun run lint` ✅ passed with no errors
+
+---
+Task ID: ui-improvements-2
+Agent: UI Improvements Agent
+Task: Improve faculty cards visual styling on About page
+
+Work Log:
+- Updated `/home/z/my-project/src/app/about/page.tsx` — faculty card section
+  1. **Card wrapper div**: Changed class from `group p-6 rounded-xl bg-white dark:bg-card border border-light-gray dark:border-border card-hover-premium gold-border-animate` to `group relative p-6 pt-8 rounded-xl bg-white dark:bg-card border border-light-gray dark:border-border card-hover-premium overflow-hidden`
+     - Added `relative` for positioning the accent strip
+     - Changed `p-6` to `p-6 pt-8` for extra top padding to accommodate the strip
+     - Added `overflow-hidden` to clip the accent strip to card boundaries
+     - Removed `gold-border-animate` (no longer needed)
+  2. **Accent top strip**: Added `<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sovereign-gold to-champagne-gold opacity-60 group-hover:opacity-100 transition-opacity" />` — a thin red gradient line at top of each card that brightens on hover
+  3. **Avatar redesign**: Replaced simple single-div avatar with nested structure:
+     - Outer relative container (`relative w-16 h-16 mx-auto mb-4`)
+     - Gradient background circle (`absolute inset-0 rounded-full bg-gradient-to-br from-sovereign-gold to-champagne-gold opacity-20`) — subtle glow behind the avatar
+     - Inner circle with gradient border (`border-2 border-sovereign-gold/20 group-hover:border-sovereign-gold/40 transition-colors`) — border brightens on hover
+     - Initial letter remains styled with brand red color
+- `bun run lint` ✅ passed with zero errors
+
+Stage Summary:
+- Faculty cards now have gradient accent strip, gradient-bordered avatars, and hover effects
+- Visual enhancements: accent line at top, avatar gradient ring, hover border brightening, strip opacity increase on hover

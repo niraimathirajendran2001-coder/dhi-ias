@@ -23,16 +23,16 @@ function DHILogoIcon({ className }: { className?: string }) {
       className={className}
     >
       {/* Outer gold ring */}
-      <circle cx="20" cy="20" r="18" stroke="#C8960C" strokeWidth="1.5" opacity="0.9" />
+      <circle cx="20" cy="20" r="18" stroke="#E31837" strokeWidth="1.5" opacity="0.9" />
       {/* Inner ring */}
-      <circle cx="20" cy="20" r="15" stroke="#C8960C" strokeWidth="0.5" opacity="0.4" />
+      <circle cx="20" cy="20" r="15" stroke="#E31837" strokeWidth="0.5" opacity="0.4" />
       {/* Stylized "D" letterform */}
       <path
         d="M20 8L12 28H16L17.5 24H22.5L24 28H28L20 8ZM18.5 21L20 16L21.5 21H18.5Z"
-        fill="#E8B830"
+        fill="#FF2D4B"
       />
       {/* Small chakra dot at apex */}
-      <circle cx="20" cy="7" r="1.2" fill="#C8960C" />
+      <circle cx="20" cy="7" r="1.2" fill="#E31837" />
     </svg>
   )
 }
@@ -145,7 +145,7 @@ export function ChatbotWidget() {
               onClick={handleOpenChat}
               className={cn(
                 'w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300',
-                'bg-navy dark:bg-[#0A1428] text-ivory-cream',
+                'bg-navy dark:bg-[#0F0F11] text-ivory-cream',
                 'gold-ring-btn chatbot-gold-ring-pulse',
                 'hover:scale-110',
               )}
@@ -166,8 +166,8 @@ export function ChatbotWidget() {
                     'absolute right-full mr-3 top-1/2 -translate-y-1/2',
                     'whitespace-nowrap',
                     'px-4 py-2.5 rounded-xl',
-                    'bg-navy dark:bg-[#0A1428]',
-                    'border border-[rgba(200,150,12,0.3)] dark:border-[rgba(232,184,48,0.3)]',
+                    'bg-navy dark:bg-[#0F0F11]',
+                    'border border-[rgba(227,24,55,0.3)] dark:border-[rgba(255,45,75,0.3)]',
                     'shadow-[0_4px_20px_rgba(0,0,0,0.25)]',
                     'cursor-pointer',
                   )}
@@ -178,15 +178,15 @@ export function ChatbotWidget() {
                     className={cn(
                       'absolute right-[-6px] top-1/2 -translate-y-1/2',
                       'w-3 h-3 rotate-45',
-                      'bg-navy dark:bg-[#0A1428]',
+                      'bg-navy dark:bg-[#0F0F11]',
                       'border-r border-t',
-                      'border-[rgba(200,150,12,0.3)] dark:border-[rgba(232,184,48,0.3)]',
+                      'border-[rgba(227,24,55,0.3)] dark:border-[rgba(255,45,75,0.3)]',
                     )}
                   />
                   <p className="font-sans text-[13px] font-medium text-ivory-cream">
                     Ask your doubts to me
                   </p>
-                  <p className="font-sans text-[11px] text-[#C8960C] dark:text-champagne-gold mt-0.5">
+                  <p className="font-sans text-[11px] text-[#E31837] dark:text-champagne-gold mt-0.5">
                     Click to start chatting →
                   </p>
                 </motion.div>
@@ -208,7 +208,7 @@ export function ChatbotWidget() {
           >
             {/* Header */}
             <div
-              className="flex items-center justify-between px-4 py-3 shrink-0 bg-navy dark:bg-[#0A1428]"
+              className="flex items-center justify-between px-4 py-3 shrink-0 bg-navy dark:bg-[#0F0F11]"
             >
               <div className="flex items-center gap-2.5">
                 {/* Logo icon instead of green dot */}
@@ -245,8 +245,8 @@ export function ChatbotWidget() {
                       className={cn(
                         'max-w-[80%] px-4 py-2.5 rounded-xl text-[14px] font-sans leading-relaxed',
                         msg.role === 'user'
-                          ? 'rounded-br-sm bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]'
-                          : 'rounded-bl-sm bg-navy dark:bg-[#0A1428] text-ivory-cream'
+                          ? 'rounded-br-sm bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0F0F11]'
+                          : 'rounded-bl-sm bg-navy dark:bg-[#0F0F11] text-ivory-cream'
                       )}
                     >
                       {msg.content}
@@ -260,7 +260,7 @@ export function ChatbotWidget() {
                     className="flex justify-start"
                   >
                     <div
-                      className="px-4 py-2.5 rounded-xl rounded-bl-sm text-[14px] font-sans bg-navy dark:bg-[#0A1428] text-ivory-cream"
+                      className="px-4 py-2.5 rounded-xl rounded-bl-sm text-[14px] font-sans bg-navy dark:bg-[#0F0F11] text-ivory-cream"
                     >
                       <span className="flex items-center gap-2">
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -292,7 +292,7 @@ export function ChatbotWidget() {
                 className={cn(
                   'h-10 w-10 shrink-0 rounded-lg',
                   input.trim()
-                    ? 'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428]'
+                    ? 'bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0F0F11]'
                     : 'bg-light-gray dark:bg-[#1C2541] text-mid-gray dark:text-ivory-cream/50'
                 )}
                 aria-label="Send message"

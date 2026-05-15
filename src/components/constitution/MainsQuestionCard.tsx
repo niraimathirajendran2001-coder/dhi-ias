@@ -42,7 +42,7 @@ export default function MainsQuestionCard({
             fontSize: 11,
             fontWeight: 500,
             padding: '3px 10px',
-            background: '#0F1F4B',
+            background: '#1C1C1E',
             color: '#FFFFFF',
           }}
         >
@@ -54,7 +54,7 @@ export default function MainsQuestionCard({
             fontSize: 11,
             fontWeight: 500,
             padding: '3px 10px',
-            background: '#1A2E6B',
+            background: '#2D2D30',
             color: '#FFFFFF',
           }}
         >
@@ -67,8 +67,8 @@ export default function MainsQuestionCard({
             fontWeight: 500,
             padding: '3px 10px',
             background: '#FFFFFF',
-            color: '#0F1F4B',
-            border: '1px solid #0F1F4B',
+            color: '#1C1C1E',
+            border: '1px solid #1C1C1E',
           }}
         >
           {question.marks || '15'} marks
@@ -91,7 +91,7 @@ export default function MainsQuestionCard({
             className="flex items-center gap-1.5 font-sans transition-colors"
             style={{
               fontSize: 12,
-              color: '#0F1F4B',
+              color: '#1C1C1E',
               background: 'none',
               border: 'none',
               cursor: 'pointer',
@@ -112,7 +112,7 @@ export default function MainsQuestionCard({
                     style={{
                       width: 6,
                       height: 6,
-                      background: '#C8960C',
+                      background: '#E31837',
                     }}
                   />
                   <span

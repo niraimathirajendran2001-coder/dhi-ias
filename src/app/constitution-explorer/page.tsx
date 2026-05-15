@@ -26,10 +26,9 @@ export default function ConstitutionExplorerPage() {
     <Suspense
       fallback={
         <div
-          className="flex items-center justify-center min-h-screen"
-          style={{ background: '#FAFAF7' }}
+          className="flex items-center justify-center min-h-screen bg-background"
         >
-          <div className="font-sans" style={{ fontSize: 14, color: '#3D3D3A' }}>
+          <div className="font-sans text-stone-gray" style={{ fontSize: 14 }}>
             Loading Constitution Explorer…
           </div>
         </div>
@@ -86,17 +85,15 @@ function ConstitutionExplorer() {
 
   return (
     <div
-      className="min-h-screen flex flex-col"
-      style={{ background: '#FAFAF7' }}
+      className="min-h-screen flex flex-col bg-background"
     >
       <Header />
 
       {/* ── Sub-header bar with back link ── */}
       <div
-        className="flex-shrink-0 flex items-center gap-4 px-6 border-b"
+        className="flex-shrink-0 flex items-center gap-4 px-6 border-b bg-navy"
         style={{
           paddingTop: HEADER_HEIGHT,
-          background: '#0F1F4B',
           borderColor: 'rgba(255,255,255,0.08)',
         }}
       >
@@ -104,7 +101,7 @@ function ConstitutionExplorer() {
           onClick={() => router.push('/')}
           className="flex items-center gap-1.5 font-sans text-[13px] transition-colors py-3"
           style={{ color: 'rgba(255,255,255,0.6)', background: 'none', border: 'none', cursor: 'pointer' }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = '#E8B830' }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = '#E31837' }}
           onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(255,255,255,0.6)' }}
         >
           <ArrowLeft className="w-3.5 h-3.5" />
@@ -112,8 +109,8 @@ function ConstitutionExplorer() {
         </button>
         <span style={{ color: 'rgba(255,255,255,0.2)' }}>|</span>
         <span
-          className="font-sans uppercase tracking-[2px]"
-          style={{ fontSize: 11, color: '#C8960C' }}
+          className="font-sans uppercase tracking-[2px] text-sovereign-gold"
+          style={{ fontSize: 11 }}
         >
           Constitution Explorer
         </span>

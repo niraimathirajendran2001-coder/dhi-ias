@@ -195,8 +195,8 @@ export function Header() {
                       <div
                         className="absolute top-full left-0 mt-1 w-56 rounded-lg shadow-lg overflow-hidden z-50"
                         style={{
-                          background: isScrolled ? '#0F1F4B' : '#FFFFFF',
-                          border: '1px solid rgba(200,150,12,0.2)',
+                          background: isScrolled ? '#1C1C1E' : '#FFFFFF',
+                          border: '1px solid rgba(227,24,55,0.2)',
                         }}
                       >
                         {FREE_RESOURCE_LINKS.map((link) => (
@@ -205,13 +205,13 @@ export function Header() {
                             href={link.href}
                             className="flex items-center gap-2 px-4 py-3 text-[13px] font-medium transition-colors hover:bg-white/5"
                             style={{
-                              color: isScrolled ? '#FAFAF7' : '#0F1F4B',
+                              color: isScrolled ? '#FFFFFF' : '#1C1C1E',
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.color = '#C8960C'
+                              e.currentTarget.style.color = '#E31837'
                             }}
                             onMouseLeave={(e) => {
-                              e.currentTarget.style.color = isScrolled ? '#FAFAF7' : '#0F1F4B'
+                              e.currentTarget.style.color = isScrolled ? '#FFFFFF' : '#1C1C1E'
                             }}
                           >
                             <link.icon className="w-4 h-4" strokeWidth={1.8} />
@@ -264,7 +264,7 @@ export function Header() {
                   'hidden sm:inline-flex bg-sovereign-gold dark:bg-champagne-gold text-navy dark:text-[#0A1428] hover:bg-champagne-gold dark:hover:bg-[#F5D060]',
                   'font-semibold rounded-[6px] h-10 px-5 text-sm',
                   'transition-all duration-300',
-                  'hover:shadow-[0_0_20px_rgba(200,150,12,0.35)] dark:hover:shadow-[0_0_20px_rgba(232,184,48,0.3)]',
+                  'hover:shadow-[0_0_20px_rgba(227,24,55,0.35)] dark:hover:shadow-[0_0_20px_rgba(255,45,75,0.3)]',
                 )}
               >
                 Join DHI
