@@ -132,7 +132,7 @@ export function Header() {
             className="flex-shrink-0 select-none flex items-center gap-3"
             aria-label="DHI Academy — go to home"
           >
-            <span className="relative grid size-12 place-items-center rounded-2xl border border-dhi-red/30 bg-white shadow-[0_12px_34px_rgba(227,24,55,0.18)]">
+            <span className="dhi-logo-motion relative grid size-12 place-items-center rounded-2xl border border-dhi-red/30 bg-white shadow-[0_12px_34px_rgba(227,24,55,0.18)]">
               <Image
                 src="/dhi-logo.jpg"
                 alt="DHI Academy Logo"

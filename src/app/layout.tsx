@@ -46,7 +46,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "DHI Academy" }],
   icons: {
-    icon: "/dhi-logo.jpg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/dhi-icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "DHI Academy | UPSC & KAS Coaching in Bengaluru - Transforming Lives",

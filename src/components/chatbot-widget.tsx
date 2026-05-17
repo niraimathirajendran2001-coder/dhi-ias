@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Send, Loader2 } from 'lucide-react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -18,24 +19,15 @@ const QUICK_ACTIONS = ['Courses', 'Fees', 'Book counselling', 'Constitution Expl
 /** DHI Academy Logo Icon — stylized "D" with accent */
 function DHILogoIcon({ className }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      {/* Outer gold ring */}
-      <circle cx="20" cy="20" r="18" stroke="#E31837" strokeWidth="1.5" opacity="0.9" />
-      {/* Inner ring */}
-      <circle cx="20" cy="20" r="15" stroke="#E31837" strokeWidth="0.5" opacity="0.4" />
-      {/* Stylized "D" letterform */}
-      <path
-        d="M20 8L12 28H16L17.5 24H22.5L24 28H28L20 8ZM18.5 21L20 16L21.5 21H18.5Z"
-        fill="#FF2D4B"
+    <span className={cn('relative block overflow-hidden rounded-full bg-white', className)}>
+      <Image
+        src="/dhi-icon.png"
+        alt="DHI Academy"
+        fill
+        sizes="40px"
+        className="object-contain p-0.5"
       />
-      {/* Small chakra dot at apex */}
-      <circle cx="20" cy="7" r="1.2" fill="#E31837" />
-    </svg>
+    </span>
   )
 }
 
@@ -165,7 +157,7 @@ export function ChatbotWidget() {
               )}
               aria-label="Open chat assistant"
             >
-              <DHILogoIcon className="w-8 h-8" />
+              <DHILogoIcon className="dhi-chatbot-motion w-8 h-8" />
             </Button>
 
             {/* "Ask your doubts to me" Popup Tooltip */}
@@ -226,7 +218,7 @@ export function ChatbotWidget() {
             >
               <div className="flex items-center gap-2.5">
                 {/* Logo icon instead of green dot */}
-                <DHILogoIcon className="w-6 h-6" />
+                <DHILogoIcon className="dhi-chatbot-motion w-6 h-6" />
                 <h3
                   className="font-serif text-[18px] font-medium text-ivory-cream"
                 >
