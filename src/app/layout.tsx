@@ -47,7 +47,6 @@ export const metadata: Metadata = {
   authors: [{ name: "DHI Academy" }],
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
       { url: "/dhi-icon.png", type: "image/png", sizes: "512x512" },
     ],
